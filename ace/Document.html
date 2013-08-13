@@ -1,0 +1,123 @@
+        <!DOCTYPE html>
+        <html>
+        <head>
+                <meta charset="utf-8">
+        <title>Document class / ace Library / Dart Documentation</title>
+        <link rel="stylesheet" type="text/css"
+            href="../styles.css">
+        <link href="//fonts.googleapis.com/css?family=Open+Sans:400,600,700,800" rel="stylesheet" type="text/css">
+        <link rel="shortcut icon" href="../favicon.ico">
+        
+        </head>
+        <body data-library="ace" data-type="Document">
+        <div class="page">
+        <div class="header">
+          <a href="../index.html"><div class="logo"></div></a>
+          <a href="../index.html">Dart Documentation</a>
+         &rsaquo; <a href="../ace.html">ace</a> &rsaquo; <a href="../ace/Document.html">Document</a>        <div id="search-box">
+          <input type="search" name="q" id="q" autocomplete="off"
+              class="search-input" placeholder="Search API">
+        </div>
+        
+      </div>
+      <div class="drop-down" id="drop-down"></div>
+      
+        <div class="nav">
+        
+</div>
+<div class="content">
+        <h2><strong>Document</strong>
+          class
+        </h2>
+        
+<button id="show-inherited" class="show-inherited">Hide inherited</button>
+<div class="doc">
+<pre class="source">
+class Document {
+ var _proxy;
+ 
+ int get length =&gt; _proxy.getLength();
+ 
+ String
+   get value =&gt; _proxy.getValue();
+   set value(String text) =&gt; _proxy.setValue(text);
+ 
+ Document._(js.Proxy proxy) : _proxy = js.retain(proxy);
+ 
+ void dispose() {
+   assert(_proxy != null);
+   js.release(_proxy);
+   _proxy = null;
+ }
+ 
+ String getLine(int row) =&gt; _proxy.getLine(row);
+}
+</pre>
+</div>
+<div>
+<h3>Properties</h3>
+<div class="field"><h4 id="length">
+<button class="show-code">Code</button>
+final int         <strong>length</strong> <a class="anchor-link"
+            href="#length"
+            title="Permalink to Document.length">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+int get length =&gt; _proxy.getLength();
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="value">
+<button class="show-code">Code</button>
+String         <strong>value</strong> <a class="anchor-link"
+            href="#value"
+            title="Permalink to Document.value">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+String
+ get value =&gt; _proxy.getValue();
+</pre>
+<pre class="source">
+set value(String text) =&gt; _proxy.setValue(text);
+</pre>
+</div>
+</div>
+</div>
+<div>
+<h3>Methods</h3>
+<div class="method"><h4 id="dispose">
+<button class="show-code">Code</button>
+void <strong>dispose</strong>() <a class="anchor-link" href="#dispose"
+              title="Permalink to Document.dispose">#</a></h4>
+<div class="doc">
+<pre class="source">
+void dispose() {
+ assert(_proxy != null);
+ js.release(_proxy);
+ _proxy = null;
+}
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="getLine">
+<button class="show-code">Code</button>
+String <strong>getLine</strong>(int row) <a class="anchor-link" href="#getLine"
+              title="Permalink to Document.getLine">#</a></h4>
+<div class="doc">
+<pre class="source">
+String getLine(int row) =&gt; _proxy.getLine(row);
+</pre>
+</div>
+</div>
+</div>
+        </div>
+        <div class="clear"></div>
+        </div>
+        <div class="footer">
+          <div>This page was generated at 2013-08-13 11:06:26.198</div>
+        </div>
+        <script async src="../client-live-nav.js"></script>
+        </body></html>
+        

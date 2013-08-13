@@ -1,0 +1,221 @@
+        <!DOCTYPE html>
+        <html>
+        <head>
+                <meta charset="utf-8">
+        <title>Range class / ace Library / Dart Documentation</title>
+        <link rel="stylesheet" type="text/css"
+            href="../styles.css">
+        <link href="//fonts.googleapis.com/css?family=Open+Sans:400,600,700,800" rel="stylesheet" type="text/css">
+        <link rel="shortcut icon" href="../favicon.ico">
+        
+        </head>
+        <body data-library="ace" data-type="Range">
+        <div class="page">
+        <div class="header">
+          <a href="../index.html"><div class="logo"></div></a>
+          <a href="../index.html">Dart Documentation</a>
+         &rsaquo; <a href="../ace.html">ace</a> &rsaquo; <a href="../ace/Range.html">Range</a>        <div id="search-box">
+          <input type="search" name="q" id="q" autocomplete="off"
+              class="search-input" placeholder="Search API">
+        </div>
+        
+      </div>
+      <div class="drop-down" id="drop-down"></div>
+      
+        <div class="nav">
+        
+</div>
+<div class="content">
+        <h2><strong>Range</strong>
+          class
+        </h2>
+        
+<button id="show-inherited" class="show-inherited">Hide inherited</button>
+<div class="doc">
+<pre class="source">
+class Range {
+ final Point start;
+ final Point end;
+ 
+ bool get isEmpty =&gt; start.row == end.row &amp;&amp; start.column == end.column;
+ bool get isMultiLine =&gt; start.row != end.row;
+ 
+ Range(int startRow, int startColumn, int endRow, int endColumn)
+     : this.fromPoints(new Point(startRow, startColumn), 
+                       new Point(endRow, endColumn));
+ 
+ Range.fromPoints(this.start, this.end);
+ 
+ Range._fromProxy(p)
+     : this(p.start.row, p.start.column, p.end.row, p.end.column);
+ 
+ bool operator ==(Object other) {
+   if(identical(this, other)) return true;
+   if(other is! Range) return false; 
+   return start == other.start &amp;&amp; end == other.end;
+ }  
+ int get hashCode =&gt; start.hashCode ^ end.hashCode;
+ 
+ js.Proxy _toProxy() =&gt; new js.Proxy(_context.ace.Range, 
+     start.row, start.column, end.row, end.column);
+ 
+ String toString() =&gt; 
+     'Range: [${start.row}/${start.column}] -&gt; [${end.row}/${end.column}]';
+}
+</pre>
+</div>
+<div>
+<h3>Constructors</h3>
+<div class="method"><h4 id="">
+<button class="show-code">Code</button>
+new <strong>Range</strong>(int startRow, int startColumn, int endRow, int endColumn) <a class="anchor-link" href="#"
+              title="Permalink to Range.Range">#</a></h4>
+<div class="doc">
+<div class="inherited">
+<p>Creates a new <a class="crossref" href="../dart_core/Object.html">Object</a> instance.</p>
+<p><a class="crossref" href="../dart_core/Object.html">Object</a> instances have no meaningful state, and are only useful
+through their identity. An <a class="crossref" href="../dart_core/Object.html">Object</a> instance is equal to itself
+only.</p>
+<div class="docs-inherited-from">docs inherited from Object </div></div>
+<pre class="source">
+Range(int startRow, int startColumn, int endRow, int endColumn)
+   : this.fromPoints(new Point(startRow, startColumn), 
+                     new Point(endRow, endColumn));
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="fromPoints">
+<button class="show-code">Code</button>
+new <strong>Range.fromPoints</strong>(<a href="../ace/Point.html">Point</a> start, <a href="../ace/Point.html">Point</a> end) <a class="anchor-link" href="#fromPoints"
+              title="Permalink to Range.Range.fromPoints">#</a></h4>
+<div class="doc">
+<pre class="source">
+Range.fromPoints(this.start, this.end);
+</pre>
+</div>
+</div>
+</div>
+<div>
+<h3>Properties</h3>
+<div class="field"><h4 id="end">
+<button class="show-code">Code</button>
+final <a href="../ace/Point.html">Point</a>         <strong>end</strong> <a class="anchor-link"
+            href="#end"
+            title="Permalink to Range.end">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+final Point end
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="hashCode">
+<button class="show-code">Code</button>
+final int         <strong>hashCode</strong> <a class="anchor-link"
+            href="#hashCode"
+            title="Permalink to Range.hashCode">#</a>
+        </h4>
+        <div class="doc">
+<div class="inherited">
+<p>Get a hash code for this object.</p>
+<p>All objects have hash codes. Hash codes are guaranteed to be the
+same for objects that are equal when compared using the equality
+operator <code>==</code>. Other than that there are no guarantees about
+the hash codes. They will not be consistent between runs and
+there are no distribution guarantees.</p>
+<p>If a subclass overrides <a class="crossref" href="../ace/Range.html#hashCode">hashCode</a> it should override the
+equality operator as well to maintain consistency.</p>
+<div class="docs-inherited-from">docs inherited from Object </div></div>
+<pre class="source">
+int get hashCode =&gt; start.hashCode ^ end.hashCode;
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="isEmpty">
+<button class="show-code">Code</button>
+final bool         <strong>isEmpty</strong> <a class="anchor-link"
+            href="#isEmpty"
+            title="Permalink to Range.isEmpty">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+bool get isEmpty =&gt; start.row == end.row &amp;&amp; start.column == end.column;
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="isMultiLine">
+<button class="show-code">Code</button>
+final bool         <strong>isMultiLine</strong> <a class="anchor-link"
+            href="#isMultiLine"
+            title="Permalink to Range.isMultiLine">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+bool get isMultiLine =&gt; start.row != end.row;
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="start">
+<button class="show-code">Code</button>
+final <a href="../ace/Point.html">Point</a>         <strong>start</strong> <a class="anchor-link"
+            href="#start"
+            title="Permalink to Range.start">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+final Point start
+</pre>
+</div>
+</div>
+</div>
+<div>
+<h3>Operators</h3>
+<div class="method"><h4 id="==">
+<button class="show-code">Code</button>
+bool <strong>operator ==</strong>(Object other) <a class="anchor-link" href="#=="
+              title="Permalink to Range.operator ==">#</a></h4>
+<div class="doc">
+<div class="inherited">
+<p>The equality operator.</p>
+<p>The default behavior for all <a class="crossref" href="../dart_core/Object.html">Object</a>s is to return true if and
+only if <code>this</code> and 
+<span class="param">other</span> are the same object.</p>
+<p>If a subclass overrides the equality operator it should override
+the <a class="crossref" href="../ace/Range.html#hashCode">hashCode</a> method as well to maintain consistency.</p>
+<div class="docs-inherited-from">docs inherited from Object </div></div>
+<pre class="source">
+bool operator ==(Object other) {
+ if(identical(this, other)) return true;
+ if(other is! Range) return false; 
+ return start == other.start &amp;&amp; end == other.end;
+}
+</pre>
+</div>
+</div>
+</div>
+<div>
+<h3>Methods</h3>
+<div class="method"><h4 id="toString">
+<button class="show-code">Code</button>
+String <strong>toString</strong>() <a class="anchor-link" href="#toString"
+              title="Permalink to Range.toString">#</a></h4>
+<div class="doc">
+<div class="inherited">
+<p>Returns a string representation of this object.</p>
+<div class="docs-inherited-from">docs inherited from Object </div></div>
+<pre class="source">
+String toString() =&gt; 
+   'Range: [${start.row}/${start.column}] -&gt; [${end.row}/${end.column}]';
+</pre>
+</div>
+</div>
+</div>
+        </div>
+        <div class="clear"></div>
+        </div>
+        <div class="footer">
+          <div>This page was generated at 2013-08-13 11:06:25.964</div>
+        </div>
+        <script async src="../client-live-nav.js"></script>
+        </body></html>
+        

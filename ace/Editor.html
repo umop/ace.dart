@@ -1,0 +1,894 @@
+        <!DOCTYPE html>
+        <html>
+        <head>
+                <meta charset="utf-8">
+        <title>Editor class / ace Library / Dart Documentation</title>
+        <link rel="stylesheet" type="text/css"
+            href="../styles.css">
+        <link href="//fonts.googleapis.com/css?family=Open+Sans:400,600,700,800" rel="stylesheet" type="text/css">
+        <link rel="shortcut icon" href="../favicon.ico">
+        
+        </head>
+        <body data-library="ace" data-type="Editor">
+        <div class="page">
+        <div class="header">
+          <a href="../index.html"><div class="logo"></div></a>
+          <a href="../index.html">Dart Documentation</a>
+         &rsaquo; <a href="../ace.html">ace</a> &rsaquo; <a href="../ace/Editor.html">Editor</a>        <div id="search-box">
+          <input type="search" name="q" id="q" autocomplete="off"
+              class="search-input" placeholder="Search API">
+        </div>
+        
+      </div>
+      <div class="drop-down" id="drop-down"></div>
+      
+        <div class="nav">
+        
+</div>
+<div class="content">
+        <h2><strong>Editor</strong>
+          class
+        </h2>
+        
+<button id="show-inherited" class="show-inherited">Hide inherited</button>
+<div class="doc">
+<pre class="source">
+class Editor {  
+ var _proxy;
+ js.Callback _jsOnBlur;
+ js.Callback _jsOnChange;
+ js.Callback _jsOnCopy;
+ js.Callback _jsOnFocus;
+ js.Callback _jsOnPaste;
+ 
+ final _onBlur = new StreamController.broadcast();
+ final _onChange = new StreamController&lt;Delta&gt;.broadcast();
+ final _onCopy = new StreamController&lt;String&gt;.broadcast();
+ final _onFocus = new StreamController.broadcast();
+ final _onPaste = new StreamController&lt;String&gt;.broadcast();
+ 
+ Stream get onBlur =&gt; _onBlur.stream;
+ Stream&lt;Delta&gt; get onChange =&gt; _onChange.stream;
+ Stream&lt;String&gt; get onCopy =&gt; _onCopy.stream;
+ Stream get onFocus =&gt; _onFocus.stream;
+ Stream&lt;String&gt; get onPaste =&gt; _onPaste.stream;  
+ 
+ String get copyText =&gt; _proxy.getCopyText();
+ 
+ Point get cursorPosition =&gt; new Point._fromProxy(_proxy.getCursorPosition());
+ 
+ int
+   get dragDelay =&gt; _proxy.getDragDelay();
+   set dragDelay(int dragDelay) =&gt; _proxy.setDragDelay(dragDelay);
+ 
+ int get firstVisibleRow =&gt; _proxy.getFirstVisibleRow();
+ 
+ bool
+   get highlightActiveLine =&gt; _proxy.getHighlightActiveLine();
+   set highlightActiveLine(bool highlightActiveLine) =&gt;
+       _proxy.setHighlightActiveLine(highlightActiveLine);
+   
+ bool
+   get highlightGutterLine =&gt; _proxy.getHighlightGutterLine();
+   set highlightGutterLine(bool highlightGutterLine) =&gt;
+       _proxy.setHighlightGutterLine(highlightGutterLine);
+   
+ bool
+   get highlightSelectedWord =&gt; _proxy.getHighlightSelectedWord();
+   set highlightSelectedWord(bool highlightSelectedWord) =&gt;
+       _proxy.setHighlightSelectedWord(highlightSelectedWord);
+   
+ bool get isFocused =&gt; _proxy.isFocused();
+ 
+ bool
+   get overwrite =&gt; _proxy.getOverwrite();
+   set overwrite(bool overwrite) =&gt; _proxy.setOverwrite(overwrite);
+ 
+ int
+   get printMarginColumn =&gt; _proxy.getPrintMarginColumn();
+   set printMarginColumn(int printMarginColumn) =&gt; 
+       _proxy.setPrintMarginColumn(printMarginColumn);
+   
+ bool
+   get readOnly =&gt; _proxy.getReadOnly();
+   set readOnly(bool readOnly) =&gt; _proxy.setReadOnly(readOnly);
+ 
+ int
+   get scrollSpeed =&gt; _proxy.getScrollSpeed();
+   set scrollSpeed(int scrollSpeed) =&gt; _proxy.setScrollSpeed(scrollSpeed);
+   
+ Selection get selection =&gt; new Selection._(_proxy.getSelection());
+ Range get selectionRange =&gt; new Range._fromProxy(_proxy.getSelectionRange());
+ 
+ EditSession _session;
+ EditSession get session {
+   if (_session == null) {
+     _session = new EditSession._(_proxy.getSession());
+   }
+   return _session;
+ }
+ 
+ bool
+   get showInvisibles =&gt; _proxy.getShowInvisibles();
+   set showInvisibles(bool showInvisibles) =&gt; 
+       _proxy.setShowInvisibles(showInvisibles);
+ 
+ String
+   get theme =&gt; _proxy.getTheme();
+   set theme(String theme) =&gt; _proxy.setTheme(theme);
+ 
+ String get value =&gt; _proxy.getValue();
+   
+ Editor._(js.Proxy proxy) : _proxy = js.retain(proxy) {
+   _jsOnBlur = new js.Callback.many((_,__) =&gt; _onBlur.add(this));
+   _jsOnChange = new js.Callback.many((e,__) {
+     Delta delta = new Delta._for(e.data);
+     _onChange.add(delta); 
+   });
+   _jsOnCopy = new js.Callback.many((e,__) =&gt; _onCopy.add(e));
+   _jsOnFocus = new js.Callback.many((_,__) =&gt; _onFocus.add(this));
+   _jsOnPaste = new js.Callback.many((e,__) =&gt; _onPaste.add(e));
+   _proxy.on('blur', _jsOnBlur);
+   _proxy.on('change', _jsOnChange);
+   _proxy.on('copy', _jsOnCopy);
+   _proxy.on('focus', _jsOnFocus);
+   _proxy.on('paste', _jsOnPaste);
+ }
+ 
+ void dispose() {
+   assert(_proxy != null);
+   if (_session != null) _session.dispose();
+   _onBlur.close();
+   _onChange.close();
+   _onCopy.close();
+   _onFocus.close();
+   _onPaste.close();
+   _jsOnBlur.dispose();
+   _jsOnChange.dispose();
+   _jsOnCopy.dispose();
+   _jsOnFocus.dispose();
+   _jsOnPaste.dispose();
+   _proxy.destroy();
+   js.release(_proxy);
+   _proxy = null;
+ }
+ 
+ void alignCursors() =&gt; _proxy.alignCursors();
+ void blockIndent() =&gt; _proxy.blockIndent();
+ void blockOutdent() =&gt; _proxy.blockOutdent();
+ void blur() =&gt; _proxy.blur();
+ void centerSelection() =&gt; _proxy.centerSelection();
+ void clearSelection() =&gt; _proxy.clearSelection();
+ int copyLinesDown() =&gt; _proxy.copyLinesDown();
+ int copyLinesUp() =&gt; _proxy.copyLinesUp();
+ void exitMultiSelectMode() =&gt; _proxy.exitMultiSelectMode();
+ void focus() =&gt; _proxy.focus();
+ void gotoPageDown() =&gt; _proxy.gotoPageDown();
+ void gotoPageUp() =&gt; _proxy.gotoPageUp();
+ void indent() =&gt; _proxy.indent();
+ void insert(String text) =&gt; _proxy.insert(text);
+ bool isRowFullyVisible(int row) =&gt; _proxy.isRowFullyVisible(row);
+ bool isRowVisible(int row) =&gt; _proxy.isRowVisible(row);
+ void navigateFileEnd() =&gt; _proxy.navigateFileEnd();
+ void navigateFileStart() =&gt; _proxy.navigateFileStart();
+ void navigateLeft(int times) =&gt; _proxy.navigateLeft(times);
+ void navigateLineEnd() =&gt; _proxy.navigateLineEnd();
+ void navigateLineStart() =&gt; _proxy.navigateLineStart();
+ void navigateRight(int times) =&gt; _proxy.navigateRight(times);
+ void navigateTo(int row, int column) =&gt; _proxy.navigateTo(row, column);
+ void navigateUp(int times) =&gt; _proxy.navigateUp(times);
+ void navigateWordLeft() =&gt; _proxy.navigateWordLeft();
+ void navigateWordRight() =&gt; _proxy.navigateWordRight();
+ void resize(bool force) =&gt; _proxy.resize(force);
+ String setValue(String val, int cursorPos) {
+   assert(cursorPos &gt;= -1 &amp;&amp; cursorPos &lt;= 1);
+   return _proxy.setValue(val, cursorPos);
+ }
+ void toggleOverwrite() =&gt; _proxy.toggleOverwrite();
+ void toLowerCase() =&gt; _proxy.toLowerCase();
+ void toUpperCase() =&gt; _proxy.toUpperCase();
+ void transposeLetters() =&gt; _proxy.transposeLetters();
+ void updateSelectionMarkers() =&gt; _proxy.updateSelectionMarkers();
+}
+</pre>
+</div>
+<div>
+<h3>Properties</h3>
+<div class="field"><h4 id="copyText">
+<button class="show-code">Code</button>
+final String         <strong>copyText</strong> <a class="anchor-link"
+            href="#copyText"
+            title="Permalink to Editor.copyText">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+String get copyText =&gt; _proxy.getCopyText();
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="cursorPosition">
+<button class="show-code">Code</button>
+final <a href="../ace/Point.html">Point</a>         <strong>cursorPosition</strong> <a class="anchor-link"
+            href="#cursorPosition"
+            title="Permalink to Editor.cursorPosition">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+Point get cursorPosition =&gt; new Point._fromProxy(_proxy.getCursorPosition());
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="dragDelay">
+<button class="show-code">Code</button>
+int         <strong>dragDelay</strong> <a class="anchor-link"
+            href="#dragDelay"
+            title="Permalink to Editor.dragDelay">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+int
+ get dragDelay =&gt; _proxy.getDragDelay();
+</pre>
+<pre class="source">
+set dragDelay(int dragDelay) =&gt; _proxy.setDragDelay(dragDelay);
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="firstVisibleRow">
+<button class="show-code">Code</button>
+final int         <strong>firstVisibleRow</strong> <a class="anchor-link"
+            href="#firstVisibleRow"
+            title="Permalink to Editor.firstVisibleRow">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+int get firstVisibleRow =&gt; _proxy.getFirstVisibleRow();
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="highlightActiveLine">
+<button class="show-code">Code</button>
+bool         <strong>highlightActiveLine</strong> <a class="anchor-link"
+            href="#highlightActiveLine"
+            title="Permalink to Editor.highlightActiveLine">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+bool
+ get highlightActiveLine =&gt; _proxy.getHighlightActiveLine();
+</pre>
+<pre class="source">
+set highlightActiveLine(bool highlightActiveLine) =&gt;
+   _proxy.setHighlightActiveLine(highlightActiveLine);
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="highlightGutterLine">
+<button class="show-code">Code</button>
+bool         <strong>highlightGutterLine</strong> <a class="anchor-link"
+            href="#highlightGutterLine"
+            title="Permalink to Editor.highlightGutterLine">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+bool
+ get highlightGutterLine =&gt; _proxy.getHighlightGutterLine();
+</pre>
+<pre class="source">
+set highlightGutterLine(bool highlightGutterLine) =&gt;
+   _proxy.setHighlightGutterLine(highlightGutterLine);
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="highlightSelectedWord">
+<button class="show-code">Code</button>
+bool         <strong>highlightSelectedWord</strong> <a class="anchor-link"
+            href="#highlightSelectedWord"
+            title="Permalink to Editor.highlightSelectedWord">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+bool
+ get highlightSelectedWord =&gt; _proxy.getHighlightSelectedWord();
+</pre>
+<pre class="source">
+set highlightSelectedWord(bool highlightSelectedWord) =&gt;
+   _proxy.setHighlightSelectedWord(highlightSelectedWord);
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="isFocused">
+<button class="show-code">Code</button>
+final bool         <strong>isFocused</strong> <a class="anchor-link"
+            href="#isFocused"
+            title="Permalink to Editor.isFocused">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+bool get isFocused =&gt; _proxy.isFocused();
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="onBlur">
+<button class="show-code">Code</button>
+final Stream         <strong>onBlur</strong> <a class="anchor-link"
+            href="#onBlur"
+            title="Permalink to Editor.onBlur">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+Stream get onBlur =&gt; _onBlur.stream;
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="onChange">
+<button class="show-code">Code</button>
+final Stream&lt;<a href="../ace/Delta.html">Delta</a>&gt;         <strong>onChange</strong> <a class="anchor-link"
+            href="#onChange"
+            title="Permalink to Editor.onChange">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+Stream&lt;Delta&gt; get onChange =&gt; _onChange.stream;
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="onCopy">
+<button class="show-code">Code</button>
+final Stream&lt;String&gt;         <strong>onCopy</strong> <a class="anchor-link"
+            href="#onCopy"
+            title="Permalink to Editor.onCopy">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+Stream&lt;String&gt; get onCopy =&gt; _onCopy.stream;
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="onFocus">
+<button class="show-code">Code</button>
+final Stream         <strong>onFocus</strong> <a class="anchor-link"
+            href="#onFocus"
+            title="Permalink to Editor.onFocus">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+Stream get onFocus =&gt; _onFocus.stream;
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="onPaste">
+<button class="show-code">Code</button>
+final Stream&lt;String&gt;         <strong>onPaste</strong> <a class="anchor-link"
+            href="#onPaste"
+            title="Permalink to Editor.onPaste">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+Stream&lt;String&gt; get onPaste =&gt; _onPaste.stream;
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="overwrite">
+<button class="show-code">Code</button>
+bool         <strong>overwrite</strong> <a class="anchor-link"
+            href="#overwrite"
+            title="Permalink to Editor.overwrite">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+bool
+ get overwrite =&gt; _proxy.getOverwrite();
+</pre>
+<pre class="source">
+set overwrite(bool overwrite) =&gt; _proxy.setOverwrite(overwrite);
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="printMarginColumn">
+<button class="show-code">Code</button>
+int         <strong>printMarginColumn</strong> <a class="anchor-link"
+            href="#printMarginColumn"
+            title="Permalink to Editor.printMarginColumn">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+int
+ get printMarginColumn =&gt; _proxy.getPrintMarginColumn();
+</pre>
+<pre class="source">
+set printMarginColumn(int printMarginColumn) =&gt; 
+   _proxy.setPrintMarginColumn(printMarginColumn);
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="readOnly">
+<button class="show-code">Code</button>
+bool         <strong>readOnly</strong> <a class="anchor-link"
+            href="#readOnly"
+            title="Permalink to Editor.readOnly">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+bool
+ get readOnly =&gt; _proxy.getReadOnly();
+</pre>
+<pre class="source">
+set readOnly(bool readOnly) =&gt; _proxy.setReadOnly(readOnly);
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="scrollSpeed">
+<button class="show-code">Code</button>
+int         <strong>scrollSpeed</strong> <a class="anchor-link"
+            href="#scrollSpeed"
+            title="Permalink to Editor.scrollSpeed">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+int
+ get scrollSpeed =&gt; _proxy.getScrollSpeed();
+</pre>
+<pre class="source">
+set scrollSpeed(int scrollSpeed) =&gt; _proxy.setScrollSpeed(scrollSpeed);
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="selection">
+<button class="show-code">Code</button>
+final <a href="../ace/Selection.html">Selection</a>         <strong>selection</strong> <a class="anchor-link"
+            href="#selection"
+            title="Permalink to Editor.selection">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+Selection get selection =&gt; new Selection._(_proxy.getSelection());
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="selectionRange">
+<button class="show-code">Code</button>
+final <a href="../ace/Range.html">Range</a>         <strong>selectionRange</strong> <a class="anchor-link"
+            href="#selectionRange"
+            title="Permalink to Editor.selectionRange">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+Range get selectionRange =&gt; new Range._fromProxy(_proxy.getSelectionRange());
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="session">
+<button class="show-code">Code</button>
+final <a href="../ace/EditSession.html">EditSession</a>         <strong>session</strong> <a class="anchor-link"
+            href="#session"
+            title="Permalink to Editor.session">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+EditSession get session {
+ if (_session == null) {
+   _session = new EditSession._(_proxy.getSession());
+ }
+ return _session;
+}
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="showInvisibles">
+<button class="show-code">Code</button>
+bool         <strong>showInvisibles</strong> <a class="anchor-link"
+            href="#showInvisibles"
+            title="Permalink to Editor.showInvisibles">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+bool
+ get showInvisibles =&gt; _proxy.getShowInvisibles();
+</pre>
+<pre class="source">
+set showInvisibles(bool showInvisibles) =&gt; 
+   _proxy.setShowInvisibles(showInvisibles);
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="theme">
+<button class="show-code">Code</button>
+String         <strong>theme</strong> <a class="anchor-link"
+            href="#theme"
+            title="Permalink to Editor.theme">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+String
+ get theme =&gt; _proxy.getTheme();
+</pre>
+<pre class="source">
+set theme(String theme) =&gt; _proxy.setTheme(theme);
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="value">
+<button class="show-code">Code</button>
+final String         <strong>value</strong> <a class="anchor-link"
+            href="#value"
+            title="Permalink to Editor.value">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+String get value =&gt; _proxy.getValue();
+</pre>
+</div>
+</div>
+</div>
+<div>
+<h3>Methods</h3>
+<div class="method"><h4 id="alignCursors">
+<button class="show-code">Code</button>
+void <strong>alignCursors</strong>() <a class="anchor-link" href="#alignCursors"
+              title="Permalink to Editor.alignCursors">#</a></h4>
+<div class="doc">
+<pre class="source">
+void alignCursors() =&gt; _proxy.alignCursors();
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="blockIndent">
+<button class="show-code">Code</button>
+void <strong>blockIndent</strong>() <a class="anchor-link" href="#blockIndent"
+              title="Permalink to Editor.blockIndent">#</a></h4>
+<div class="doc">
+<pre class="source">
+void blockIndent() =&gt; _proxy.blockIndent();
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="blockOutdent">
+<button class="show-code">Code</button>
+void <strong>blockOutdent</strong>() <a class="anchor-link" href="#blockOutdent"
+              title="Permalink to Editor.blockOutdent">#</a></h4>
+<div class="doc">
+<pre class="source">
+void blockOutdent() =&gt; _proxy.blockOutdent();
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="blur">
+<button class="show-code">Code</button>
+void <strong>blur</strong>() <a class="anchor-link" href="#blur"
+              title="Permalink to Editor.blur">#</a></h4>
+<div class="doc">
+<pre class="source">
+void blur() =&gt; _proxy.blur();
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="centerSelection">
+<button class="show-code">Code</button>
+void <strong>centerSelection</strong>() <a class="anchor-link" href="#centerSelection"
+              title="Permalink to Editor.centerSelection">#</a></h4>
+<div class="doc">
+<pre class="source">
+void centerSelection() =&gt; _proxy.centerSelection();
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="clearSelection">
+<button class="show-code">Code</button>
+void <strong>clearSelection</strong>() <a class="anchor-link" href="#clearSelection"
+              title="Permalink to Editor.clearSelection">#</a></h4>
+<div class="doc">
+<pre class="source">
+void clearSelection() =&gt; _proxy.clearSelection();
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="copyLinesDown">
+<button class="show-code">Code</button>
+int <strong>copyLinesDown</strong>() <a class="anchor-link" href="#copyLinesDown"
+              title="Permalink to Editor.copyLinesDown">#</a></h4>
+<div class="doc">
+<pre class="source">
+int copyLinesDown() =&gt; _proxy.copyLinesDown();
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="copyLinesUp">
+<button class="show-code">Code</button>
+int <strong>copyLinesUp</strong>() <a class="anchor-link" href="#copyLinesUp"
+              title="Permalink to Editor.copyLinesUp">#</a></h4>
+<div class="doc">
+<pre class="source">
+int copyLinesUp() =&gt; _proxy.copyLinesUp();
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="dispose">
+<button class="show-code">Code</button>
+void <strong>dispose</strong>() <a class="anchor-link" href="#dispose"
+              title="Permalink to Editor.dispose">#</a></h4>
+<div class="doc">
+<pre class="source">
+void dispose() {
+ assert(_proxy != null);
+ if (_session != null) _session.dispose();
+ _onBlur.close();
+ _onChange.close();
+ _onCopy.close();
+ _onFocus.close();
+ _onPaste.close();
+ _jsOnBlur.dispose();
+ _jsOnChange.dispose();
+ _jsOnCopy.dispose();
+ _jsOnFocus.dispose();
+ _jsOnPaste.dispose();
+ _proxy.destroy();
+ js.release(_proxy);
+ _proxy = null;
+}
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="exitMultiSelectMode">
+<button class="show-code">Code</button>
+void <strong>exitMultiSelectMode</strong>() <a class="anchor-link" href="#exitMultiSelectMode"
+              title="Permalink to Editor.exitMultiSelectMode">#</a></h4>
+<div class="doc">
+<pre class="source">
+void exitMultiSelectMode() =&gt; _proxy.exitMultiSelectMode();
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="focus">
+<button class="show-code">Code</button>
+void <strong>focus</strong>() <a class="anchor-link" href="#focus"
+              title="Permalink to Editor.focus">#</a></h4>
+<div class="doc">
+<pre class="source">
+void focus() =&gt; _proxy.focus();
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="gotoPageDown">
+<button class="show-code">Code</button>
+void <strong>gotoPageDown</strong>() <a class="anchor-link" href="#gotoPageDown"
+              title="Permalink to Editor.gotoPageDown">#</a></h4>
+<div class="doc">
+<pre class="source">
+void gotoPageDown() =&gt; _proxy.gotoPageDown();
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="gotoPageUp">
+<button class="show-code">Code</button>
+void <strong>gotoPageUp</strong>() <a class="anchor-link" href="#gotoPageUp"
+              title="Permalink to Editor.gotoPageUp">#</a></h4>
+<div class="doc">
+<pre class="source">
+void gotoPageUp() =&gt; _proxy.gotoPageUp();
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="indent">
+<button class="show-code">Code</button>
+void <strong>indent</strong>() <a class="anchor-link" href="#indent"
+              title="Permalink to Editor.indent">#</a></h4>
+<div class="doc">
+<pre class="source">
+void indent() =&gt; _proxy.indent();
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="insert">
+<button class="show-code">Code</button>
+void <strong>insert</strong>(String text) <a class="anchor-link" href="#insert"
+              title="Permalink to Editor.insert">#</a></h4>
+<div class="doc">
+<pre class="source">
+void insert(String text) =&gt; _proxy.insert(text);
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="isRowFullyVisible">
+<button class="show-code">Code</button>
+bool <strong>isRowFullyVisible</strong>(int row) <a class="anchor-link" href="#isRowFullyVisible"
+              title="Permalink to Editor.isRowFullyVisible">#</a></h4>
+<div class="doc">
+<pre class="source">
+bool isRowFullyVisible(int row) =&gt; _proxy.isRowFullyVisible(row);
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="isRowVisible">
+<button class="show-code">Code</button>
+bool <strong>isRowVisible</strong>(int row) <a class="anchor-link" href="#isRowVisible"
+              title="Permalink to Editor.isRowVisible">#</a></h4>
+<div class="doc">
+<pre class="source">
+bool isRowVisible(int row) =&gt; _proxy.isRowVisible(row);
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="navigateFileEnd">
+<button class="show-code">Code</button>
+void <strong>navigateFileEnd</strong>() <a class="anchor-link" href="#navigateFileEnd"
+              title="Permalink to Editor.navigateFileEnd">#</a></h4>
+<div class="doc">
+<pre class="source">
+void navigateFileEnd() =&gt; _proxy.navigateFileEnd();
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="navigateFileStart">
+<button class="show-code">Code</button>
+void <strong>navigateFileStart</strong>() <a class="anchor-link" href="#navigateFileStart"
+              title="Permalink to Editor.navigateFileStart">#</a></h4>
+<div class="doc">
+<pre class="source">
+void navigateFileStart() =&gt; _proxy.navigateFileStart();
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="navigateLeft">
+<button class="show-code">Code</button>
+void <strong>navigateLeft</strong>(int times) <a class="anchor-link" href="#navigateLeft"
+              title="Permalink to Editor.navigateLeft">#</a></h4>
+<div class="doc">
+<pre class="source">
+void navigateLeft(int times) =&gt; _proxy.navigateLeft(times);
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="navigateLineEnd">
+<button class="show-code">Code</button>
+void <strong>navigateLineEnd</strong>() <a class="anchor-link" href="#navigateLineEnd"
+              title="Permalink to Editor.navigateLineEnd">#</a></h4>
+<div class="doc">
+<pre class="source">
+void navigateLineEnd() =&gt; _proxy.navigateLineEnd();
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="navigateLineStart">
+<button class="show-code">Code</button>
+void <strong>navigateLineStart</strong>() <a class="anchor-link" href="#navigateLineStart"
+              title="Permalink to Editor.navigateLineStart">#</a></h4>
+<div class="doc">
+<pre class="source">
+void navigateLineStart() =&gt; _proxy.navigateLineStart();
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="navigateRight">
+<button class="show-code">Code</button>
+void <strong>navigateRight</strong>(int times) <a class="anchor-link" href="#navigateRight"
+              title="Permalink to Editor.navigateRight">#</a></h4>
+<div class="doc">
+<pre class="source">
+void navigateRight(int times) =&gt; _proxy.navigateRight(times);
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="navigateTo">
+<button class="show-code">Code</button>
+void <strong>navigateTo</strong>(int row, int column) <a class="anchor-link" href="#navigateTo"
+              title="Permalink to Editor.navigateTo">#</a></h4>
+<div class="doc">
+<pre class="source">
+void navigateTo(int row, int column) =&gt; _proxy.navigateTo(row, column);
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="navigateUp">
+<button class="show-code">Code</button>
+void <strong>navigateUp</strong>(int times) <a class="anchor-link" href="#navigateUp"
+              title="Permalink to Editor.navigateUp">#</a></h4>
+<div class="doc">
+<pre class="source">
+void navigateUp(int times) =&gt; _proxy.navigateUp(times);
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="navigateWordLeft">
+<button class="show-code">Code</button>
+void <strong>navigateWordLeft</strong>() <a class="anchor-link" href="#navigateWordLeft"
+              title="Permalink to Editor.navigateWordLeft">#</a></h4>
+<div class="doc">
+<pre class="source">
+void navigateWordLeft() =&gt; _proxy.navigateWordLeft();
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="navigateWordRight">
+<button class="show-code">Code</button>
+void <strong>navigateWordRight</strong>() <a class="anchor-link" href="#navigateWordRight"
+              title="Permalink to Editor.navigateWordRight">#</a></h4>
+<div class="doc">
+<pre class="source">
+void navigateWordRight() =&gt; _proxy.navigateWordRight();
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="resize">
+<button class="show-code">Code</button>
+void <strong>resize</strong>(bool force) <a class="anchor-link" href="#resize"
+              title="Permalink to Editor.resize">#</a></h4>
+<div class="doc">
+<pre class="source">
+void resize(bool force) =&gt; _proxy.resize(force);
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="setValue">
+<button class="show-code">Code</button>
+String <strong>setValue</strong>(String val, int cursorPos) <a class="anchor-link" href="#setValue"
+              title="Permalink to Editor.setValue">#</a></h4>
+<div class="doc">
+<pre class="source">
+String setValue(String val, int cursorPos) {
+ assert(cursorPos &gt;= -1 &amp;&amp; cursorPos &lt;= 1);
+ return _proxy.setValue(val, cursorPos);
+}
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="toggleOverwrite">
+<button class="show-code">Code</button>
+void <strong>toggleOverwrite</strong>() <a class="anchor-link" href="#toggleOverwrite"
+              title="Permalink to Editor.toggleOverwrite">#</a></h4>
+<div class="doc">
+<pre class="source">
+void toggleOverwrite() =&gt; _proxy.toggleOverwrite();
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="toLowerCase">
+<button class="show-code">Code</button>
+void <strong>toLowerCase</strong>() <a class="anchor-link" href="#toLowerCase"
+              title="Permalink to Editor.toLowerCase">#</a></h4>
+<div class="doc">
+<pre class="source">
+void toLowerCase() =&gt; _proxy.toLowerCase();
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="toUpperCase">
+<button class="show-code">Code</button>
+void <strong>toUpperCase</strong>() <a class="anchor-link" href="#toUpperCase"
+              title="Permalink to Editor.toUpperCase">#</a></h4>
+<div class="doc">
+<pre class="source">
+void toUpperCase() =&gt; _proxy.toUpperCase();
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="transposeLetters">
+<button class="show-code">Code</button>
+void <strong>transposeLetters</strong>() <a class="anchor-link" href="#transposeLetters"
+              title="Permalink to Editor.transposeLetters">#</a></h4>
+<div class="doc">
+<pre class="source">
+void transposeLetters() =&gt; _proxy.transposeLetters();
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="updateSelectionMarkers">
+<button class="show-code">Code</button>
+void <strong>updateSelectionMarkers</strong>() <a class="anchor-link" href="#updateSelectionMarkers"
+              title="Permalink to Editor.updateSelectionMarkers">#</a></h4>
+<div class="doc">
+<pre class="source">
+void updateSelectionMarkers() =&gt; _proxy.updateSelectionMarkers();
+</pre>
+</div>
+</div>
+</div>
+        </div>
+        <div class="clear"></div>
+        </div>
+        <div class="footer">
+          <div>This page was generated at 2013-08-13 11:06:26.185</div>
+        </div>
+        <script async src="../client-live-nav.js"></script>
+        </body></html>
+        

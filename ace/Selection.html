@@ -1,0 +1,525 @@
+        <!DOCTYPE html>
+        <html>
+        <head>
+                <meta charset="utf-8">
+        <title>Selection class / ace Library / Dart Documentation</title>
+        <link rel="stylesheet" type="text/css"
+            href="../styles.css">
+        <link href="//fonts.googleapis.com/css?family=Open+Sans:400,600,700,800" rel="stylesheet" type="text/css">
+        <link rel="shortcut icon" href="../favicon.ico">
+        
+        </head>
+        <body data-library="ace" data-type="Selection">
+        <div class="page">
+        <div class="header">
+          <a href="../index.html"><div class="logo"></div></a>
+          <a href="../index.html">Dart Documentation</a>
+         &rsaquo; <a href="../ace.html">ace</a> &rsaquo; <a href="../ace/Selection.html">Selection</a>        <div id="search-box">
+          <input type="search" name="q" id="q" autocomplete="off"
+              class="search-input" placeholder="Search API">
+        </div>
+        
+      </div>
+      <div class="drop-down" id="drop-down"></div>
+      
+        <div class="nav">
+        
+</div>
+<div class="content">
+        <h2><strong>Selection</strong>
+          class
+        </h2>
+        
+<button id="show-inherited" class="show-inherited">Hide inherited</button>
+<div class="doc">
+<pre class="source">
+class Selection {
+ var _proxy;
+ 
+ bool get isBackwards =&gt; _proxy.isBackwards();
+ bool get isEmpty =&gt; _proxy.isEmpty();
+ bool get isMultiLine =&gt; _proxy.isMultiLine();
+ 
+ Range get range =&gt; new Range._fromProxy(_proxy.getRange());
+ 
+ Selection._(js.Proxy proxy) : _proxy = js.retain(proxy);
+ 
+ void dispose() {
+   assert(_proxy != null);
+   js.release(_proxy);
+   _proxy = null;
+ }
+ 
+ void mergeOverlappingRanges() =&gt; _proxy.mergeOverlappingRanges();
+ void moveCursorBy(int rows, int columns) =&gt; 
+     _proxy.moveCursorBy(rows, columns);
+ void moveCursorDown() =&gt; _proxy.moveCursorDown();
+ void moveCursorFileEnd() =&gt; _proxy.moveCursorFileEnd();
+ void moveCursorFileStart() =&gt; _proxy.moveCursorFileStart();
+ void moveCursorLeft() =&gt; _proxy.moveCursorLeft();
+ void moveCursorLineEnd() =&gt; _proxy.moveCursorLineEnd();
+ void moveCursorLineStart() =&gt; _proxy.moveCursorLineStart();
+ void moveCursorLongWordLeft() =&gt; _proxy.moveCursorLongWordLeft();
+ void moveCursorLongWordRight() =&gt; _proxy.moveCursorLongWordRight();
+ void moveCursorRight() =&gt; _proxy.moveCursorRight();
+ void moveCursorShortWordLeft() =&gt; _proxy.moveCursorShortWordLeft();
+ void moveCursorShortWordRight() =&gt; _proxy.moveCursorShortWordRight();
+ void moveCursorTo(int row, int column, bool keepDesiredColumn) =&gt;
+     _proxy.moveCursorTo(row, column, keepDesiredColumn);
+ void moveCursorToScreen(int row, int column, bool keepDesiredColumn) =&gt;
+     _proxy.moveCursorToScreen(row, column, keepDesiredColumn);
+ void moveCursorUp() =&gt; _proxy.moveCursorUp();
+ void moveCursorWordLeft() =&gt; _proxy.moveCursorWordLeft();
+ void moveCursorWordRight() =&gt; _proxy.moveCursorWordRight();
+ void selectAll() =&gt; _proxy.selectAll();
+ void selectAWord() =&gt; _proxy.selectAWord();
+ void selectDown() =&gt; _proxy.selectDown();
+ void selectFileEnd() =&gt; _proxy.selectFileEnd();
+ void selectFileStart() =&gt; _proxy.selectFileStart();
+ void selectLeft() =&gt; _proxy.selectLeft();
+ void selectLine() =&gt; _proxy.selectLine();
+ void selectLineEnd() =&gt; _proxy.selectLineEnd();
+ void selectLineStart() =&gt; _proxy.selectLineStart();
+ void selectRight() =&gt; _proxy.selectRight();
+ void selectTo(int row, int column) =&gt; _proxy.selectTo(row, column);
+ void selectUp() =&gt; _proxy.selectUp();
+ void selectWord() =&gt; _proxy.selectWord();
+ void selectWordLeft() =&gt; _proxy.selectWordLeft();
+ void selectWordRight() =&gt; _proxy.selectWordRight();
+ void setSelectionAnchor(int row, int column) =&gt;
+     _proxy.setSelectionAnchor(row, column);
+ void shiftSelection(int columns) =&gt; _proxy.shiftSelection(columns);
+}
+</pre>
+</div>
+<div>
+<h3>Properties</h3>
+<div class="field"><h4 id="isBackwards">
+<button class="show-code">Code</button>
+final bool         <strong>isBackwards</strong> <a class="anchor-link"
+            href="#isBackwards"
+            title="Permalink to Selection.isBackwards">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+bool get isBackwards =&gt; _proxy.isBackwards();
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="isEmpty">
+<button class="show-code">Code</button>
+final bool         <strong>isEmpty</strong> <a class="anchor-link"
+            href="#isEmpty"
+            title="Permalink to Selection.isEmpty">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+bool get isEmpty =&gt; _proxy.isEmpty();
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="isMultiLine">
+<button class="show-code">Code</button>
+final bool         <strong>isMultiLine</strong> <a class="anchor-link"
+            href="#isMultiLine"
+            title="Permalink to Selection.isMultiLine">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+bool get isMultiLine =&gt; _proxy.isMultiLine();
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="range">
+<button class="show-code">Code</button>
+final <a href="../ace/Range.html">Range</a>         <strong>range</strong> <a class="anchor-link"
+            href="#range"
+            title="Permalink to Selection.range">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+Range get range =&gt; new Range._fromProxy(_proxy.getRange());
+</pre>
+</div>
+</div>
+</div>
+<div>
+<h3>Methods</h3>
+<div class="method"><h4 id="dispose">
+<button class="show-code">Code</button>
+void <strong>dispose</strong>() <a class="anchor-link" href="#dispose"
+              title="Permalink to Selection.dispose">#</a></h4>
+<div class="doc">
+<pre class="source">
+void dispose() {
+ assert(_proxy != null);
+ js.release(_proxy);
+ _proxy = null;
+}
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="mergeOverlappingRanges">
+<button class="show-code">Code</button>
+void <strong>mergeOverlappingRanges</strong>() <a class="anchor-link" href="#mergeOverlappingRanges"
+              title="Permalink to Selection.mergeOverlappingRanges">#</a></h4>
+<div class="doc">
+<pre class="source">
+void mergeOverlappingRanges() =&gt; _proxy.mergeOverlappingRanges();
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="moveCursorBy">
+<button class="show-code">Code</button>
+void <strong>moveCursorBy</strong>(int rows, int columns) <a class="anchor-link" href="#moveCursorBy"
+              title="Permalink to Selection.moveCursorBy">#</a></h4>
+<div class="doc">
+<pre class="source">
+void moveCursorBy(int rows, int columns) =&gt; 
+   _proxy.moveCursorBy(rows, columns);
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="moveCursorDown">
+<button class="show-code">Code</button>
+void <strong>moveCursorDown</strong>() <a class="anchor-link" href="#moveCursorDown"
+              title="Permalink to Selection.moveCursorDown">#</a></h4>
+<div class="doc">
+<pre class="source">
+void moveCursorDown() =&gt; _proxy.moveCursorDown();
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="moveCursorFileEnd">
+<button class="show-code">Code</button>
+void <strong>moveCursorFileEnd</strong>() <a class="anchor-link" href="#moveCursorFileEnd"
+              title="Permalink to Selection.moveCursorFileEnd">#</a></h4>
+<div class="doc">
+<pre class="source">
+void moveCursorFileEnd() =&gt; _proxy.moveCursorFileEnd();
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="moveCursorFileStart">
+<button class="show-code">Code</button>
+void <strong>moveCursorFileStart</strong>() <a class="anchor-link" href="#moveCursorFileStart"
+              title="Permalink to Selection.moveCursorFileStart">#</a></h4>
+<div class="doc">
+<pre class="source">
+void moveCursorFileStart() =&gt; _proxy.moveCursorFileStart();
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="moveCursorLeft">
+<button class="show-code">Code</button>
+void <strong>moveCursorLeft</strong>() <a class="anchor-link" href="#moveCursorLeft"
+              title="Permalink to Selection.moveCursorLeft">#</a></h4>
+<div class="doc">
+<pre class="source">
+void moveCursorLeft() =&gt; _proxy.moveCursorLeft();
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="moveCursorLineEnd">
+<button class="show-code">Code</button>
+void <strong>moveCursorLineEnd</strong>() <a class="anchor-link" href="#moveCursorLineEnd"
+              title="Permalink to Selection.moveCursorLineEnd">#</a></h4>
+<div class="doc">
+<pre class="source">
+void moveCursorLineEnd() =&gt; _proxy.moveCursorLineEnd();
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="moveCursorLineStart">
+<button class="show-code">Code</button>
+void <strong>moveCursorLineStart</strong>() <a class="anchor-link" href="#moveCursorLineStart"
+              title="Permalink to Selection.moveCursorLineStart">#</a></h4>
+<div class="doc">
+<pre class="source">
+void moveCursorLineStart() =&gt; _proxy.moveCursorLineStart();
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="moveCursorLongWordLeft">
+<button class="show-code">Code</button>
+void <strong>moveCursorLongWordLeft</strong>() <a class="anchor-link" href="#moveCursorLongWordLeft"
+              title="Permalink to Selection.moveCursorLongWordLeft">#</a></h4>
+<div class="doc">
+<pre class="source">
+void moveCursorLongWordLeft() =&gt; _proxy.moveCursorLongWordLeft();
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="moveCursorLongWordRight">
+<button class="show-code">Code</button>
+void <strong>moveCursorLongWordRight</strong>() <a class="anchor-link" href="#moveCursorLongWordRight"
+              title="Permalink to Selection.moveCursorLongWordRight">#</a></h4>
+<div class="doc">
+<pre class="source">
+void moveCursorLongWordRight() =&gt; _proxy.moveCursorLongWordRight();
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="moveCursorRight">
+<button class="show-code">Code</button>
+void <strong>moveCursorRight</strong>() <a class="anchor-link" href="#moveCursorRight"
+              title="Permalink to Selection.moveCursorRight">#</a></h4>
+<div class="doc">
+<pre class="source">
+void moveCursorRight() =&gt; _proxy.moveCursorRight();
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="moveCursorShortWordLeft">
+<button class="show-code">Code</button>
+void <strong>moveCursorShortWordLeft</strong>() <a class="anchor-link" href="#moveCursorShortWordLeft"
+              title="Permalink to Selection.moveCursorShortWordLeft">#</a></h4>
+<div class="doc">
+<pre class="source">
+void moveCursorShortWordLeft() =&gt; _proxy.moveCursorShortWordLeft();
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="moveCursorShortWordRight">
+<button class="show-code">Code</button>
+void <strong>moveCursorShortWordRight</strong>() <a class="anchor-link" href="#moveCursorShortWordRight"
+              title="Permalink to Selection.moveCursorShortWordRight">#</a></h4>
+<div class="doc">
+<pre class="source">
+void moveCursorShortWordRight() =&gt; _proxy.moveCursorShortWordRight();
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="moveCursorTo">
+<button class="show-code">Code</button>
+void <strong>moveCursorTo</strong>(int row, int column, bool keepDesiredColumn) <a class="anchor-link" href="#moveCursorTo"
+              title="Permalink to Selection.moveCursorTo">#</a></h4>
+<div class="doc">
+<pre class="source">
+void moveCursorTo(int row, int column, bool keepDesiredColumn) =&gt;
+   _proxy.moveCursorTo(row, column, keepDesiredColumn);
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="moveCursorToScreen">
+<button class="show-code">Code</button>
+void <strong>moveCursorToScreen</strong>(int row, int column, bool keepDesiredColumn) <a class="anchor-link" href="#moveCursorToScreen"
+              title="Permalink to Selection.moveCursorToScreen">#</a></h4>
+<div class="doc">
+<pre class="source">
+void moveCursorToScreen(int row, int column, bool keepDesiredColumn) =&gt;
+   _proxy.moveCursorToScreen(row, column, keepDesiredColumn);
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="moveCursorUp">
+<button class="show-code">Code</button>
+void <strong>moveCursorUp</strong>() <a class="anchor-link" href="#moveCursorUp"
+              title="Permalink to Selection.moveCursorUp">#</a></h4>
+<div class="doc">
+<pre class="source">
+void moveCursorUp() =&gt; _proxy.moveCursorUp();
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="moveCursorWordLeft">
+<button class="show-code">Code</button>
+void <strong>moveCursorWordLeft</strong>() <a class="anchor-link" href="#moveCursorWordLeft"
+              title="Permalink to Selection.moveCursorWordLeft">#</a></h4>
+<div class="doc">
+<pre class="source">
+void moveCursorWordLeft() =&gt; _proxy.moveCursorWordLeft();
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="moveCursorWordRight">
+<button class="show-code">Code</button>
+void <strong>moveCursorWordRight</strong>() <a class="anchor-link" href="#moveCursorWordRight"
+              title="Permalink to Selection.moveCursorWordRight">#</a></h4>
+<div class="doc">
+<pre class="source">
+void moveCursorWordRight() =&gt; _proxy.moveCursorWordRight();
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="selectAll">
+<button class="show-code">Code</button>
+void <strong>selectAll</strong>() <a class="anchor-link" href="#selectAll"
+              title="Permalink to Selection.selectAll">#</a></h4>
+<div class="doc">
+<pre class="source">
+void selectAll() =&gt; _proxy.selectAll();
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="selectAWord">
+<button class="show-code">Code</button>
+void <strong>selectAWord</strong>() <a class="anchor-link" href="#selectAWord"
+              title="Permalink to Selection.selectAWord">#</a></h4>
+<div class="doc">
+<pre class="source">
+void selectAWord() =&gt; _proxy.selectAWord();
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="selectDown">
+<button class="show-code">Code</button>
+void <strong>selectDown</strong>() <a class="anchor-link" href="#selectDown"
+              title="Permalink to Selection.selectDown">#</a></h4>
+<div class="doc">
+<pre class="source">
+void selectDown() =&gt; _proxy.selectDown();
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="selectFileEnd">
+<button class="show-code">Code</button>
+void <strong>selectFileEnd</strong>() <a class="anchor-link" href="#selectFileEnd"
+              title="Permalink to Selection.selectFileEnd">#</a></h4>
+<div class="doc">
+<pre class="source">
+void selectFileEnd() =&gt; _proxy.selectFileEnd();
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="selectFileStart">
+<button class="show-code">Code</button>
+void <strong>selectFileStart</strong>() <a class="anchor-link" href="#selectFileStart"
+              title="Permalink to Selection.selectFileStart">#</a></h4>
+<div class="doc">
+<pre class="source">
+void selectFileStart() =&gt; _proxy.selectFileStart();
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="selectLeft">
+<button class="show-code">Code</button>
+void <strong>selectLeft</strong>() <a class="anchor-link" href="#selectLeft"
+              title="Permalink to Selection.selectLeft">#</a></h4>
+<div class="doc">
+<pre class="source">
+void selectLeft() =&gt; _proxy.selectLeft();
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="selectLine">
+<button class="show-code">Code</button>
+void <strong>selectLine</strong>() <a class="anchor-link" href="#selectLine"
+              title="Permalink to Selection.selectLine">#</a></h4>
+<div class="doc">
+<pre class="source">
+void selectLine() =&gt; _proxy.selectLine();
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="selectLineEnd">
+<button class="show-code">Code</button>
+void <strong>selectLineEnd</strong>() <a class="anchor-link" href="#selectLineEnd"
+              title="Permalink to Selection.selectLineEnd">#</a></h4>
+<div class="doc">
+<pre class="source">
+void selectLineEnd() =&gt; _proxy.selectLineEnd();
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="selectLineStart">
+<button class="show-code">Code</button>
+void <strong>selectLineStart</strong>() <a class="anchor-link" href="#selectLineStart"
+              title="Permalink to Selection.selectLineStart">#</a></h4>
+<div class="doc">
+<pre class="source">
+void selectLineStart() =&gt; _proxy.selectLineStart();
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="selectRight">
+<button class="show-code">Code</button>
+void <strong>selectRight</strong>() <a class="anchor-link" href="#selectRight"
+              title="Permalink to Selection.selectRight">#</a></h4>
+<div class="doc">
+<pre class="source">
+void selectRight() =&gt; _proxy.selectRight();
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="selectTo">
+<button class="show-code">Code</button>
+void <strong>selectTo</strong>(int row, int column) <a class="anchor-link" href="#selectTo"
+              title="Permalink to Selection.selectTo">#</a></h4>
+<div class="doc">
+<pre class="source">
+void selectTo(int row, int column) =&gt; _proxy.selectTo(row, column);
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="selectUp">
+<button class="show-code">Code</button>
+void <strong>selectUp</strong>() <a class="anchor-link" href="#selectUp"
+              title="Permalink to Selection.selectUp">#</a></h4>
+<div class="doc">
+<pre class="source">
+void selectUp() =&gt; _proxy.selectUp();
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="selectWord">
+<button class="show-code">Code</button>
+void <strong>selectWord</strong>() <a class="anchor-link" href="#selectWord"
+              title="Permalink to Selection.selectWord">#</a></h4>
+<div class="doc">
+<pre class="source">
+void selectWord() =&gt; _proxy.selectWord();
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="selectWordLeft">
+<button class="show-code">Code</button>
+void <strong>selectWordLeft</strong>() <a class="anchor-link" href="#selectWordLeft"
+              title="Permalink to Selection.selectWordLeft">#</a></h4>
+<div class="doc">
+<pre class="source">
+void selectWordLeft() =&gt; _proxy.selectWordLeft();
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="selectWordRight">
+<button class="show-code">Code</button>
+void <strong>selectWordRight</strong>() <a class="anchor-link" href="#selectWordRight"
+              title="Permalink to Selection.selectWordRight">#</a></h4>
+<div class="doc">
+<pre class="source">
+void selectWordRight() =&gt; _proxy.selectWordRight();
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="setSelectionAnchor">
+<button class="show-code">Code</button>
+void <strong>setSelectionAnchor</strong>(int row, int column) <a class="anchor-link" href="#setSelectionAnchor"
+              title="Permalink to Selection.setSelectionAnchor">#</a></h4>
+<div class="doc">
+<pre class="source">
+void setSelectionAnchor(int row, int column) =&gt;
+   _proxy.setSelectionAnchor(row, column);
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="shiftSelection">
+<button class="show-code">Code</button>
+void <strong>shiftSelection</strong>(int columns) <a class="anchor-link" href="#shiftSelection"
+              title="Permalink to Selection.shiftSelection">#</a></h4>
+<div class="doc">
+<pre class="source">
+void shiftSelection(int columns) =&gt; _proxy.shiftSelection(columns);
+</pre>
+</div>
+</div>
+</div>
+        </div>
+        <div class="clear"></div>
+        </div>
+        <div class="footer">
+          <div>This page was generated at 2013-08-13 11:06:25.908</div>
+        </div>
+        <script async src="../client-live-nav.js"></script>
+        </body></html>
+        

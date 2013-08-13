@@ -1,0 +1,491 @@
+        <!DOCTYPE html>
+        <html>
+        <head>
+                <meta charset="utf-8">
+        <title>EditSession class / ace Library / Dart Documentation</title>
+        <link rel="stylesheet" type="text/css"
+            href="../styles.css">
+        <link href="//fonts.googleapis.com/css?family=Open+Sans:400,600,700,800" rel="stylesheet" type="text/css">
+        <link rel="shortcut icon" href="../favicon.ico">
+        
+        </head>
+        <body data-library="ace" data-type="EditSession">
+        <div class="page">
+        <div class="header">
+          <a href="../index.html"><div class="logo"></div></a>
+          <a href="../index.html">Dart Documentation</a>
+         &rsaquo; <a href="../ace.html">ace</a> &rsaquo; <a href="../ace/EditSession.html">EditSession</a>        <div id="search-box">
+          <input type="search" name="q" id="q" autocomplete="off"
+              class="search-input" placeholder="Search API">
+        </div>
+        
+      </div>
+      <div class="drop-down" id="drop-down"></div>
+      
+        <div class="nav">
+        
+</div>
+<div class="content">
+        <h2><strong>EditSession</strong>
+          class
+        </h2>
+        
+<button id="show-inherited" class="show-inherited">Hide inherited</button>
+<div class="doc">
+<pre class="source">
+class EditSession {
+ var _proxy;
+ 
+ int get length =&gt; _proxy.getLength();
+ 
+ String
+   get newLineMode =&gt; _proxy.getNewLineMode();
+   set newLineMode(String newLineMode) =&gt; _proxy.setNewLineMode(newLineMode);
+ 
+ bool
+   get overwrite =&gt; _proxy.getOverwrite();
+   set overwrite(bool overwrite) =&gt; _proxy.setOverwrite(overwrite);
+ 
+ int get screenWidth =&gt; _proxy.getScreenWidth();
+ 
+ int
+   get scrollLeft =&gt; _proxy.getScrollLeft();
+   set scrollLeft(int scrollLeft) =&gt; _proxy.setScrollLeft(scrollLeft);  
+   
+ int
+   get scrollTop =&gt; _proxy.getScrollTop();
+   set scrollTop(int scrollTop) =&gt; _proxy.setScrollTop(scrollTop);
+   
+ int
+   get tabSize =&gt; _proxy.getTabSize();
+   set tabSize(int tabSize) =&gt; _proxy.setTabSize(tabSize);
+   
+ String get tabString =&gt; _proxy.getTabString();
+   
+ bool
+   get useSoftTabs =&gt; _proxy.getUseSoftTabs();
+   set useSoftTabs(bool useSoftTabs) =&gt; _proxy.setUseSoftTabs(useSoftTabs);
+   
+ bool
+   get useWorker =&gt; _proxy.getUseWorker();
+   set useWorker(bool useWorker) =&gt; _proxy.setUseWorker(useWorker);
+   
+ String
+   get value =&gt; _proxy.getValue();
+   set value(String text) =&gt; _proxy.setValue(text);
+   
+ int get wrapLimit =&gt; _proxy.getWrapLimit();
+   
+ EditSession._(js.Proxy proxy) : _proxy = js.retain(proxy) {
+   // TODO(rms): add event listeners and expose as Streams
+ }
+ 
+ void dispose() {
+   assert(_proxy != null);
+   js.release(_proxy);
+   _proxy = null;
+ }
+   
+ void addGutterDecoration(int row, String className) =&gt;
+     _proxy.addGutterDecoration(row, className);
+ void clearAnnotations() =&gt; _proxy.clearAnnotations();
+ void clearBreakpoint(int row) =&gt; _proxy.clearBreakpoint(row);
+ void clearBreakpoints() =&gt; _proxy.clearBreakpoints();
+ int documentToScreenColumn(int docRow, int docColumn) =&gt;
+     _proxy.documentToScreenColumn(docRow, docColumn);
+ int documentToScreenRow(int docRow, int docColumn) =&gt;
+     _proxy.documentToScreenRow(docRow, docColumn);
+ int duplicateLines(int firstRow, int lastRow) =&gt;
+     _proxy.duplicateLines(firstRow, lastRow);
+ Range getAWordRange(int row, int column) =&gt;
+     new Range._fromProxy(_proxy.getAWordRange(row, column));
+ String getLine(int row) =&gt; _proxy.getLine(row);
+ int getRowLength(int row) =&gt; _proxy.getRowLength(row);
+ void indentRows(int startRow, int endRow, String indentString) =&gt;
+     _proxy.indentRows(startRow, endRow, indentString);
+ int moveLinesDown(int firstRow, int lastRow) =&gt;
+     _proxy.moveLinesDown(firstRow, lastRow);
+ int moveLinesUp(int firstRow, int lastRow) =&gt;
+     _proxy.moveLinesUp(firstRow, lastRow);
+ void setMode(String mode) =&gt; _proxy.setMode(mode);
+ void toggleOverwrite() =&gt; _proxy.toggleOverwrite();
+ String toString() =&gt; _proxy.toString();
+}
+</pre>
+</div>
+<div>
+<h3>Properties</h3>
+<div class="field"><h4 id="length">
+<button class="show-code">Code</button>
+final int         <strong>length</strong> <a class="anchor-link"
+            href="#length"
+            title="Permalink to EditSession.length">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+int get length =&gt; _proxy.getLength();
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="newLineMode">
+<button class="show-code">Code</button>
+String         <strong>newLineMode</strong> <a class="anchor-link"
+            href="#newLineMode"
+            title="Permalink to EditSession.newLineMode">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+String
+ get newLineMode =&gt; _proxy.getNewLineMode();
+</pre>
+<pre class="source">
+set newLineMode(String newLineMode) =&gt; _proxy.setNewLineMode(newLineMode);
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="overwrite">
+<button class="show-code">Code</button>
+bool         <strong>overwrite</strong> <a class="anchor-link"
+            href="#overwrite"
+            title="Permalink to EditSession.overwrite">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+bool
+ get overwrite =&gt; _proxy.getOverwrite();
+</pre>
+<pre class="source">
+set overwrite(bool overwrite) =&gt; _proxy.setOverwrite(overwrite);
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="screenWidth">
+<button class="show-code">Code</button>
+final int         <strong>screenWidth</strong> <a class="anchor-link"
+            href="#screenWidth"
+            title="Permalink to EditSession.screenWidth">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+int get screenWidth =&gt; _proxy.getScreenWidth();
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="scrollLeft">
+<button class="show-code">Code</button>
+int         <strong>scrollLeft</strong> <a class="anchor-link"
+            href="#scrollLeft"
+            title="Permalink to EditSession.scrollLeft">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+int
+ get scrollLeft =&gt; _proxy.getScrollLeft();
+</pre>
+<pre class="source">
+set scrollLeft(int scrollLeft) =&gt; _proxy.setScrollLeft(scrollLeft);
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="scrollTop">
+<button class="show-code">Code</button>
+int         <strong>scrollTop</strong> <a class="anchor-link"
+            href="#scrollTop"
+            title="Permalink to EditSession.scrollTop">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+int
+ get scrollTop =&gt; _proxy.getScrollTop();
+</pre>
+<pre class="source">
+set scrollTop(int scrollTop) =&gt; _proxy.setScrollTop(scrollTop);
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="tabSize">
+<button class="show-code">Code</button>
+int         <strong>tabSize</strong> <a class="anchor-link"
+            href="#tabSize"
+            title="Permalink to EditSession.tabSize">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+int
+ get tabSize =&gt; _proxy.getTabSize();
+</pre>
+<pre class="source">
+set tabSize(int tabSize) =&gt; _proxy.setTabSize(tabSize);
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="tabString">
+<button class="show-code">Code</button>
+final String         <strong>tabString</strong> <a class="anchor-link"
+            href="#tabString"
+            title="Permalink to EditSession.tabString">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+String get tabString =&gt; _proxy.getTabString();
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="useSoftTabs">
+<button class="show-code">Code</button>
+bool         <strong>useSoftTabs</strong> <a class="anchor-link"
+            href="#useSoftTabs"
+            title="Permalink to EditSession.useSoftTabs">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+bool
+ get useSoftTabs =&gt; _proxy.getUseSoftTabs();
+</pre>
+<pre class="source">
+set useSoftTabs(bool useSoftTabs) =&gt; _proxy.setUseSoftTabs(useSoftTabs);
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="useWorker">
+<button class="show-code">Code</button>
+bool         <strong>useWorker</strong> <a class="anchor-link"
+            href="#useWorker"
+            title="Permalink to EditSession.useWorker">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+bool
+ get useWorker =&gt; _proxy.getUseWorker();
+</pre>
+<pre class="source">
+set useWorker(bool useWorker) =&gt; _proxy.setUseWorker(useWorker);
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="value">
+<button class="show-code">Code</button>
+String         <strong>value</strong> <a class="anchor-link"
+            href="#value"
+            title="Permalink to EditSession.value">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+String
+ get value =&gt; _proxy.getValue();
+</pre>
+<pre class="source">
+set value(String text) =&gt; _proxy.setValue(text);
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="wrapLimit">
+<button class="show-code">Code</button>
+final int         <strong>wrapLimit</strong> <a class="anchor-link"
+            href="#wrapLimit"
+            title="Permalink to EditSession.wrapLimit">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+int get wrapLimit =&gt; _proxy.getWrapLimit();
+</pre>
+</div>
+</div>
+</div>
+<div>
+<h3>Methods</h3>
+<div class="method"><h4 id="addGutterDecoration">
+<button class="show-code">Code</button>
+void <strong>addGutterDecoration</strong>(int row, String className) <a class="anchor-link" href="#addGutterDecoration"
+              title="Permalink to EditSession.addGutterDecoration">#</a></h4>
+<div class="doc">
+<pre class="source">
+void addGutterDecoration(int row, String className) =&gt;
+   _proxy.addGutterDecoration(row, className);
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="clearAnnotations">
+<button class="show-code">Code</button>
+void <strong>clearAnnotations</strong>() <a class="anchor-link" href="#clearAnnotations"
+              title="Permalink to EditSession.clearAnnotations">#</a></h4>
+<div class="doc">
+<pre class="source">
+void clearAnnotations() =&gt; _proxy.clearAnnotations();
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="clearBreakpoint">
+<button class="show-code">Code</button>
+void <strong>clearBreakpoint</strong>(int row) <a class="anchor-link" href="#clearBreakpoint"
+              title="Permalink to EditSession.clearBreakpoint">#</a></h4>
+<div class="doc">
+<pre class="source">
+void clearBreakpoint(int row) =&gt; _proxy.clearBreakpoint(row);
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="clearBreakpoints">
+<button class="show-code">Code</button>
+void <strong>clearBreakpoints</strong>() <a class="anchor-link" href="#clearBreakpoints"
+              title="Permalink to EditSession.clearBreakpoints">#</a></h4>
+<div class="doc">
+<pre class="source">
+void clearBreakpoints() =&gt; _proxy.clearBreakpoints();
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="dispose">
+<button class="show-code">Code</button>
+void <strong>dispose</strong>() <a class="anchor-link" href="#dispose"
+              title="Permalink to EditSession.dispose">#</a></h4>
+<div class="doc">
+<pre class="source">
+void dispose() {
+ assert(_proxy != null);
+ js.release(_proxy);
+ _proxy = null;
+}
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="documentToScreenColumn">
+<button class="show-code">Code</button>
+int <strong>documentToScreenColumn</strong>(int docRow, int docColumn) <a class="anchor-link" href="#documentToScreenColumn"
+              title="Permalink to EditSession.documentToScreenColumn">#</a></h4>
+<div class="doc">
+<pre class="source">
+int documentToScreenColumn(int docRow, int docColumn) =&gt;
+   _proxy.documentToScreenColumn(docRow, docColumn);
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="documentToScreenRow">
+<button class="show-code">Code</button>
+int <strong>documentToScreenRow</strong>(int docRow, int docColumn) <a class="anchor-link" href="#documentToScreenRow"
+              title="Permalink to EditSession.documentToScreenRow">#</a></h4>
+<div class="doc">
+<pre class="source">
+int documentToScreenRow(int docRow, int docColumn) =&gt;
+   _proxy.documentToScreenRow(docRow, docColumn);
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="duplicateLines">
+<button class="show-code">Code</button>
+int <strong>duplicateLines</strong>(int firstRow, int lastRow) <a class="anchor-link" href="#duplicateLines"
+              title="Permalink to EditSession.duplicateLines">#</a></h4>
+<div class="doc">
+<pre class="source">
+int duplicateLines(int firstRow, int lastRow) =&gt;
+   _proxy.duplicateLines(firstRow, lastRow);
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="getAWordRange">
+<button class="show-code">Code</button>
+<a href="../ace/Range.html">Range</a> <strong>getAWordRange</strong>(int row, int column) <a class="anchor-link" href="#getAWordRange"
+              title="Permalink to EditSession.getAWordRange">#</a></h4>
+<div class="doc">
+<pre class="source">
+Range getAWordRange(int row, int column) =&gt;
+   new Range._fromProxy(_proxy.getAWordRange(row, column));
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="getLine">
+<button class="show-code">Code</button>
+String <strong>getLine</strong>(int row) <a class="anchor-link" href="#getLine"
+              title="Permalink to EditSession.getLine">#</a></h4>
+<div class="doc">
+<pre class="source">
+String getLine(int row) =&gt; _proxy.getLine(row);
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="getRowLength">
+<button class="show-code">Code</button>
+int <strong>getRowLength</strong>(int row) <a class="anchor-link" href="#getRowLength"
+              title="Permalink to EditSession.getRowLength">#</a></h4>
+<div class="doc">
+<pre class="source">
+int getRowLength(int row) =&gt; _proxy.getRowLength(row);
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="indentRows">
+<button class="show-code">Code</button>
+void <strong>indentRows</strong>(int startRow, int endRow, String indentString) <a class="anchor-link" href="#indentRows"
+              title="Permalink to EditSession.indentRows">#</a></h4>
+<div class="doc">
+<pre class="source">
+void indentRows(int startRow, int endRow, String indentString) =&gt;
+   _proxy.indentRows(startRow, endRow, indentString);
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="moveLinesDown">
+<button class="show-code">Code</button>
+int <strong>moveLinesDown</strong>(int firstRow, int lastRow) <a class="anchor-link" href="#moveLinesDown"
+              title="Permalink to EditSession.moveLinesDown">#</a></h4>
+<div class="doc">
+<pre class="source">
+int moveLinesDown(int firstRow, int lastRow) =&gt;
+   _proxy.moveLinesDown(firstRow, lastRow);
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="moveLinesUp">
+<button class="show-code">Code</button>
+int <strong>moveLinesUp</strong>(int firstRow, int lastRow) <a class="anchor-link" href="#moveLinesUp"
+              title="Permalink to EditSession.moveLinesUp">#</a></h4>
+<div class="doc">
+<pre class="source">
+int moveLinesUp(int firstRow, int lastRow) =&gt;
+   _proxy.moveLinesUp(firstRow, lastRow);
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="setMode">
+<button class="show-code">Code</button>
+void <strong>setMode</strong>(String mode) <a class="anchor-link" href="#setMode"
+              title="Permalink to EditSession.setMode">#</a></h4>
+<div class="doc">
+<pre class="source">
+void setMode(String mode) =&gt; _proxy.setMode(mode);
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="toggleOverwrite">
+<button class="show-code">Code</button>
+void <strong>toggleOverwrite</strong>() <a class="anchor-link" href="#toggleOverwrite"
+              title="Permalink to EditSession.toggleOverwrite">#</a></h4>
+<div class="doc">
+<pre class="source">
+void toggleOverwrite() =&gt; _proxy.toggleOverwrite();
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="toString">
+<button class="show-code">Code</button>
+String <strong>toString</strong>() <a class="anchor-link" href="#toString"
+              title="Permalink to EditSession.toString">#</a></h4>
+<div class="doc">
+<div class="inherited">
+<p>Returns a string representation of this object.</p>
+<div class="docs-inherited-from">docs inherited from Object </div></div>
+<pre class="source">
+String toString() =&gt; _proxy.toString();
+</pre>
+</div>
+</div>
+</div>
+        </div>
+        <div class="clear"></div>
+        </div>
+        <div class="footer">
+          <div>This page was generated at 2013-08-13 11:06:26.002</div>
+        </div>
+        <script async src="../client-live-nav.js"></script>
+        </body></html>
+        
