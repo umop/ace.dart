@@ -91,7 +91,7 @@ void <strong>dispose</strong>() <a class="anchor-link" href="#dispose"
 <pre class="source">
 void dispose() {
  assert(_proxy != null);
- onDispose();
+ _onDispose();
  js.release(_proxy);
  _proxy = null;
 }
@@ -108,22 +108,12 @@ String getLine(int row) =&gt; _proxy.getLine(row);
 </pre>
 </div>
 </div>
-<div class="method inherited"><h4 id="onDispose">
-<button class="show-code">Code</button>
-void <strong>onDispose</strong>() <a class="anchor-link" href="#onDispose"
-              title="Permalink to Document.onDispose">#</a></h4>
-<div class="inherited-from">inherited from <a href="../ace/_HasProxy.html">_HasProxy</a> </div><div class="doc">
-<pre class="source">
-void onDispose() {}
-</pre>
-</div>
-</div>
 </div>
         </div>
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2013-08-13 11:56:14.372</div>
+          <div>This page was generated at 2013-08-13 12:02:37.097</div>
         </div>
         <script async src="../client-live-nav.js"></script>
         </body></html>

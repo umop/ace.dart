@@ -134,7 +134,7 @@ class Editor extends _HasProxy {
    _proxy.on('paste', _jsOnPaste);
  }
  
- void onDispose() {
+ void _onDispose() {
    if (_session != null) _session.dispose();
    _onBlur.close();
    _onChange.close();
@@ -610,7 +610,7 @@ void <strong>dispose</strong>() <a class="anchor-link" href="#dispose"
 <pre class="source">
 void dispose() {
  assert(_proxy != null);
- onDispose();
+ _onDispose();
  js.release(_proxy);
  _proxy = null;
 }
@@ -797,29 +797,6 @@ void navigateWordRight() =&gt; _proxy.navigateWordRight();
 </pre>
 </div>
 </div>
-<div class="method"><h4 id="onDispose">
-<button class="show-code">Code</button>
-void <strong>onDispose</strong>() <a class="anchor-link" href="#onDispose"
-              title="Permalink to Editor.onDispose">#</a></h4>
-<div class="doc">
-<pre class="source">
-void onDispose() {
- if (_session != null) _session.dispose();
- _onBlur.close();
- _onChange.close();
- _onCopy.close();
- _onFocus.close();
- _onPaste.close();
- _jsOnBlur.dispose();
- _jsOnChange.dispose();
- _jsOnCopy.dispose();
- _jsOnFocus.dispose();
- _jsOnPaste.dispose();
- _proxy.destroy();
-}
-</pre>
-</div>
-</div>
 <div class="method"><h4 id="resize">
 <button class="show-code">Code</button>
 void <strong>resize</strong>(bool force) <a class="anchor-link" href="#resize"
@@ -898,7 +875,7 @@ void updateSelectionMarkers() =&gt; _proxy.updateSelectionMarkers();
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2013-08-13 11:56:14.357</div>
+          <div>This page was generated at 2013-08-13 12:02:37.085</div>
         </div>
         <script async src="../client-live-nav.js"></script>
         </body></html>
