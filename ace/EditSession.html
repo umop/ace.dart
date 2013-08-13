@@ -33,8 +33,7 @@
 <button id="show-inherited" class="show-inherited">Hide inherited</button>
 <div class="doc">
 <pre class="source">
-class EditSession {
- var _proxy;
+class EditSession extends _HasProxy {
  
  int get length =&gt; _proxy.getLength();
  
@@ -76,16 +75,10 @@ class EditSession {
    
  int get wrapLimit =&gt; _proxy.getWrapLimit();
    
- EditSession._(js.Proxy proxy) : _proxy = js.retain(proxy) {
+ EditSession._(js.Proxy proxy) : super(proxy) {
    // TODO(rms): add event listeners and expose as Streams
  }
- 
- void dispose() {
-   assert(_proxy != null);
-   js.release(_proxy);
-   _proxy = null;
- }
-   
+     
  void addGutterDecoration(int row, String className) =&gt;
      _proxy.addGutterDecoration(row, className);
  void clearAnnotations() =&gt; _proxy.clearAnnotations();
@@ -113,6 +106,9 @@ class EditSession {
 }
 </pre>
 </div>
+<h3>Extends</h3>
+<p>
+<span class="type-box"><span class="icon-class"></span><a href="../ace/_HasProxy.html">_HasProxy</a></span>&nbsp;&gt;&nbsp;<span class="type-box"><span class="icon-class"></span><strong>EditSession</strong></span></p>
 <div>
 <h3>Properties</h3>
 <div class="field"><h4 id="length">
@@ -335,14 +331,15 @@ void clearBreakpoints() =&gt; _proxy.clearBreakpoints();
 </pre>
 </div>
 </div>
-<div class="method"><h4 id="dispose">
+<div class="method inherited"><h4 id="dispose">
 <button class="show-code">Code</button>
 void <strong>dispose</strong>() <a class="anchor-link" href="#dispose"
               title="Permalink to EditSession.dispose">#</a></h4>
-<div class="doc">
+<div class="inherited-from">inherited from <a href="../ace/_HasProxy.html">_HasProxy</a> </div><div class="doc">
 <pre class="source">
 void dispose() {
  assert(_proxy != null);
+ onDispose();
  js.release(_proxy);
  _proxy = null;
 }
@@ -446,6 +443,16 @@ int moveLinesUp(int firstRow, int lastRow) =&gt;
 </pre>
 </div>
 </div>
+<div class="method inherited"><h4 id="onDispose">
+<button class="show-code">Code</button>
+void <strong>onDispose</strong>() <a class="anchor-link" href="#onDispose"
+              title="Permalink to EditSession.onDispose">#</a></h4>
+<div class="inherited-from">inherited from <a href="../ace/_HasProxy.html">_HasProxy</a> </div><div class="doc">
+<pre class="source">
+void onDispose() {}
+</pre>
+</div>
+</div>
 <div class="method"><h4 id="setMode">
 <button class="show-code">Code</button>
 void <strong>setMode</strong>(String mode) <a class="anchor-link" href="#setMode"
@@ -484,7 +491,7 @@ String toString() =&gt; _proxy.toString();
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2013-08-13 11:23:31.639</div>
+          <div>This page was generated at 2013-08-13 11:56:14.046</div>
         </div>
         <script async src="../client-live-nav.js"></script>
         </body></html>

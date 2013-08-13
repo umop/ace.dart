@@ -33,8 +33,7 @@
 <button id="show-inherited" class="show-inherited">Hide inherited</button>
 <div class="doc">
 <pre class="source">
-class Editor {  
- var _proxy;
+class Editor extends _HasProxy {
  js.Callback _jsOnBlur;
  js.Callback _jsOnChange;
  js.Callback _jsOnCopy;
@@ -119,7 +118,7 @@ class Editor {
  
  String get value =&gt; _proxy.getValue();
    
- Editor._(js.Proxy proxy) : _proxy = js.retain(proxy) {
+ Editor._(js.Proxy proxy) : super(proxy) {
    _jsOnBlur = new js.Callback.many((_,__) =&gt; _onBlur.add(this));
    _jsOnChange = new js.Callback.many((e,__) {
      Delta delta = new Delta._for(e.data);
@@ -135,8 +134,7 @@ class Editor {
    _proxy.on('paste', _jsOnPaste);
  }
  
- void dispose() {
-   assert(_proxy != null);
+ void onDispose() {
    if (_session != null) _session.dispose();
    _onBlur.close();
    _onChange.close();
@@ -149,8 +147,6 @@ class Editor {
    _jsOnFocus.dispose();
    _jsOnPaste.dispose();
    _proxy.destroy();
-   js.release(_proxy);
-   _proxy = null;
  }
  
  void alignCursors() =&gt; _proxy.alignCursors();
@@ -192,6 +188,9 @@ class Editor {
 }
 </pre>
 </div>
+<h3>Extends</h3>
+<p>
+<span class="type-box"><span class="icon-class"></span><a href="../ace/_HasProxy.html">_HasProxy</a></span>&nbsp;&gt;&nbsp;<span class="type-box"><span class="icon-class"></span><strong>Editor</strong></span></p>
 <div>
 <h3>Properties</h3>
 <div class="field"><h4 id="copyText">
@@ -603,26 +602,15 @@ int copyLinesUp() =&gt; _proxy.copyLinesUp();
 </pre>
 </div>
 </div>
-<div class="method"><h4 id="dispose">
+<div class="method inherited"><h4 id="dispose">
 <button class="show-code">Code</button>
 void <strong>dispose</strong>() <a class="anchor-link" href="#dispose"
               title="Permalink to Editor.dispose">#</a></h4>
-<div class="doc">
+<div class="inherited-from">inherited from <a href="../ace/_HasProxy.html">_HasProxy</a> </div><div class="doc">
 <pre class="source">
 void dispose() {
  assert(_proxy != null);
- if (_session != null) _session.dispose();
- _onBlur.close();
- _onChange.close();
- _onCopy.close();
- _onFocus.close();
- _onPaste.close();
- _jsOnBlur.dispose();
- _jsOnChange.dispose();
- _jsOnCopy.dispose();
- _jsOnFocus.dispose();
- _jsOnPaste.dispose();
- _proxy.destroy();
+ onDispose();
  js.release(_proxy);
  _proxy = null;
 }
@@ -809,6 +797,29 @@ void navigateWordRight() =&gt; _proxy.navigateWordRight();
 </pre>
 </div>
 </div>
+<div class="method"><h4 id="onDispose">
+<button class="show-code">Code</button>
+void <strong>onDispose</strong>() <a class="anchor-link" href="#onDispose"
+              title="Permalink to Editor.onDispose">#</a></h4>
+<div class="doc">
+<pre class="source">
+void onDispose() {
+ if (_session != null) _session.dispose();
+ _onBlur.close();
+ _onChange.close();
+ _onCopy.close();
+ _onFocus.close();
+ _onPaste.close();
+ _jsOnBlur.dispose();
+ _jsOnChange.dispose();
+ _jsOnCopy.dispose();
+ _jsOnFocus.dispose();
+ _jsOnPaste.dispose();
+ _proxy.destroy();
+}
+</pre>
+</div>
+</div>
 <div class="method"><h4 id="resize">
 <button class="show-code">Code</button>
 void <strong>resize</strong>(bool force) <a class="anchor-link" href="#resize"
@@ -887,7 +898,7 @@ void updateSelectionMarkers() =&gt; _proxy.updateSelectionMarkers();
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2013-08-13 11:23:31.854</div>
+          <div>This page was generated at 2013-08-13 11:56:14.357</div>
         </div>
         <script async src="../client-live-nav.js"></script>
         </body></html>

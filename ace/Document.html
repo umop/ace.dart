@@ -33,8 +33,7 @@
 <button id="show-inherited" class="show-inherited">Hide inherited</button>
 <div class="doc">
 <pre class="source">
-class Document {
- var _proxy;
+class Document extends _HasProxy {
  
  int get length =&gt; _proxy.getLength();
  
@@ -42,18 +41,15 @@ class Document {
    get value =&gt; _proxy.getValue();
    set value(String text) =&gt; _proxy.setValue(text);
  
- Document._(js.Proxy proxy) : _proxy = js.retain(proxy);
- 
- void dispose() {
-   assert(_proxy != null);
-   js.release(_proxy);
-   _proxy = null;
- }
- 
+ Document._(js.Proxy proxy) : super(proxy);
+   
  String getLine(int row) =&gt; _proxy.getLine(row);
 }
 </pre>
 </div>
+<h3>Extends</h3>
+<p>
+<span class="type-box"><span class="icon-class"></span><a href="../ace/_HasProxy.html">_HasProxy</a></span>&nbsp;&gt;&nbsp;<span class="type-box"><span class="icon-class"></span><strong>Document</strong></span></p>
 <div>
 <h3>Properties</h3>
 <div class="field"><h4 id="length">
@@ -87,14 +83,15 @@ set value(String text) =&gt; _proxy.setValue(text);
 </div>
 <div>
 <h3>Methods</h3>
-<div class="method"><h4 id="dispose">
+<div class="method inherited"><h4 id="dispose">
 <button class="show-code">Code</button>
 void <strong>dispose</strong>() <a class="anchor-link" href="#dispose"
               title="Permalink to Document.dispose">#</a></h4>
-<div class="doc">
+<div class="inherited-from">inherited from <a href="../ace/_HasProxy.html">_HasProxy</a> </div><div class="doc">
 <pre class="source">
 void dispose() {
  assert(_proxy != null);
+ onDispose();
  js.release(_proxy);
  _proxy = null;
 }
@@ -111,12 +108,22 @@ String getLine(int row) =&gt; _proxy.getLine(row);
 </pre>
 </div>
 </div>
+<div class="method inherited"><h4 id="onDispose">
+<button class="show-code">Code</button>
+void <strong>onDispose</strong>() <a class="anchor-link" href="#onDispose"
+              title="Permalink to Document.onDispose">#</a></h4>
+<div class="inherited-from">inherited from <a href="../ace/_HasProxy.html">_HasProxy</a> </div><div class="doc">
+<pre class="source">
+void onDispose() {}
+</pre>
+</div>
+</div>
 </div>
         </div>
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2013-08-13 11:23:31.879</div>
+          <div>This page was generated at 2013-08-13 11:56:14.372</div>
         </div>
         <script async src="../client-live-nav.js"></script>
         </body></html>
