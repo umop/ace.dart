@@ -44,6 +44,24 @@ Editor edit(html.Element element) {
 </pre>
 </div>
 </div>
+<div class="method"><h4 id="createEditSession">
+<button class="show-code">Code</button>
+<a href="ace/Document.html">Document</a> <strong>createEditSession</strong>(String text, String mode) <a class="anchor-link" href="#createEditSession"
+              title="Permalink to createEditSession">#</a></h4>
+<div class="doc">
+<p>Creates a new <a class="crossref" href="ace/EditSession.html">EditSession</a> and returns the associated <a class="crossref" href="ace/Document.html">Document</a>.</p>
+<p>A new <a class="crossref" href="ace/Document.html">Document</a> is created with the given 
+<span class="param">text</span> and language 
+<span class="param">mode</span>.</p>
+<pre class="source">
+Document createEditSession(String text, String mode) {
+ assert(text != null);
+ assert(mode != null);
+ return new Document._( _context.ace.createEditSession(text, mode));
+}
+</pre>
+</div>
+</div>
 </div>
 <div>
 <h3>Abstract Classes</h3>
@@ -139,7 +157,7 @@ Editor edit(html.Element element) {
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2013-08-14 09:35:15.588</div>
+          <div>This page was generated at 2013-08-14 10:21:09.010</div>
         </div>
         <script async src="client-live-nav.js"></script>
         </body></html>
