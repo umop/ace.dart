@@ -93,6 +93,10 @@ class Document extends _HasProxy {
  /// also fires an [onChange] event.
  Point insertNewLine(Point position) =&gt;
      new Point._(_proxy.insertNewLine(position._toProxy()));
+ 
+ /// Returns true if [text] is a newline character.  That is, one of `\r\n`, 
+ /// `\r` or `\n`.
+ bool isNewLine(String text) =&gt; _proxy.isNewLine(text);      
 }
 </pre>
 </div>
@@ -274,12 +278,25 @@ Point insertNewLine(Point position) =&gt;
 </pre>
 </div>
 </div>
+<div class="method"><h4 id="isNewLine">
+<button class="show-code">Code</button>
+bool <strong>isNewLine</strong>(String text) <a class="anchor-link" href="#isNewLine"
+              title="Permalink to Document.isNewLine">#</a></h4>
+<div class="doc">
+<p>Returns true if 
+<span class="param">text</span> is a newline character.  That is, one of <code>\r\n</code>, 
+<code>\r</code> or <code>\n</code>.</p>
+<pre class="source">
+bool isNewLine(String text) =&gt; _proxy.isNewLine(text);
+</pre>
+</div>
+</div>
 </div>
         </div>
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2013-08-14 13:20:53.602</div>
+          <div>This page was generated at 2013-08-14 13:48:55.917</div>
         </div>
         <script async src="../client-live-nav.js"></script>
         </body></html>
