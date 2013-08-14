@@ -40,7 +40,15 @@ instance of <a class="crossref" href="../ace/Document.html">Document</a> may be 
 <pre class="source">
 class EditSession extends _HasProxy {
  
+ Document
+   get document =&gt; new Document._(_proxy.getDocument());
+   set document(Document document) =&gt; throw new UnimplementedError();
+ 
  int get length =&gt; _proxy.getLength();
+ 
+ Mode
+   get mode =&gt; new Mode._(_proxy.getMode());
+   set mode(Mode mode) =&gt; throw new UnimplementedError();
  
  String
    get newLineMode =&gt; _proxy.getNewLineMode();
@@ -116,6 +124,22 @@ class EditSession extends _HasProxy {
 <span class="type-box"><span class="icon-class"></span><a href="../ace/_HasProxy.html">_HasProxy</a></span>&nbsp;&gt;&nbsp;<span class="type-box"><span class="icon-class"></span><strong>EditSession</strong></span></p>
 <div>
 <h3>Properties</h3>
+<div class="field"><h4 id="document">
+<button class="show-code">Code</button>
+<a href="../ace/Document.html">Document</a>         <strong>document</strong> <a class="anchor-link"
+            href="#document"
+            title="Permalink to EditSession.document">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+Document
+ get document =&gt; new Document._(_proxy.getDocument());
+</pre>
+<pre class="source">
+set document(Document document) =&gt; throw new UnimplementedError();
+</pre>
+</div>
+</div>
 <div class="field inherited"><h4 id="isDisposed">
 <button class="show-code">Code</button>
 final bool         <strong>isDisposed</strong> <a class="anchor-link"
@@ -137,6 +161,22 @@ final int         <strong>length</strong> <a class="anchor-link"
         <div class="doc">
 <pre class="source">
 int get length =&gt; _proxy.getLength();
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="mode">
+<button class="show-code">Code</button>
+<a href="../ace/Mode.html">Mode</a>         <strong>mode</strong> <a class="anchor-link"
+            href="#mode"
+            title="Permalink to EditSession.mode">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+Mode
+ get mode =&gt; new Mode._(_proxy.getMode());
+</pre>
+<pre class="source">
+set mode(Mode mode) =&gt; throw new UnimplementedError();
 </pre>
 </div>
 </div>
@@ -498,7 +538,7 @@ String toString() =&gt; _proxy.toString();
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2013-08-14 10:21:09.309</div>
+          <div>This page was generated at 2013-08-14 10:48:52.741</div>
         </div>
         <script async src="../client-live-nav.js"></script>
         </body></html>
