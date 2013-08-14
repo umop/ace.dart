@@ -61,8 +61,9 @@ class Range {
  }  
  int get hashCode =&gt; start.hashCode ^ end.hashCode;
  
- js.Proxy _toProxy() =&gt; new js.Proxy(_context.ace.Range, 
-     start.row, start.column, end.row, end.column);
+ js.Proxy _toProxy() =&gt; 
+     new js.Proxy(_context.ace.define.modules['ace/range'].Range, 
+         start.row, start.column, end.row, end.column);
  
  String toString() =&gt; 
      'Range: [${start.row}/${start.column}] -&gt; [${end.row}/${end.column}]';
@@ -221,7 +222,7 @@ String toString() =&gt;
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2013-08-14 14:48:43.357</div>
+          <div>This page was generated at 2013-08-14 16:01:27.436</div>
         </div>
         <script async src="../client-live-nav.js"></script>
         </body></html>
