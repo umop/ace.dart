@@ -32,6 +32,11 @@
         
 <button id="show-inherited" class="show-inherited">Hide inherited</button>
 <div class="doc">
+<p>The main entry point into the Ace functionality.</p>
+<p>An <a class="crossref" href="../ace/Editor.html">Editor</a> manages an <a class="crossref" href="../ace/EditSession.html">EditSession</a> (which in turn manages a <a class="crossref" href="../ace/Document.html">Document</a>), 
+as well as the <a class="crossref" href="../ace/VirtualRenderer.html">VirtualRenderer</a>, which draws everything to the screen.
+Event sessions dealing with the mouse and keyboard are bubbled up from the
+<a class="crossref" href="../ace/Document.html">Document</a> to the <a class="crossref" href="../ace/Editor.html">Editor</a>, which decides what to do with them.</p>
 <pre class="source">
 class Editor extends _HasProxy {
  js.Callback _jsOnBlur;
@@ -950,7 +955,7 @@ void updateSelectionMarkers() =&gt; _proxy.updateSelectionMarkers();
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2013-08-14 08:13:38.577</div>
+          <div>This page was generated at 2013-08-14 08:22:31.369</div>
         </div>
         <script async src="../client-live-nav.js"></script>
         </body></html>
