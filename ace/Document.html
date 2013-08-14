@@ -72,9 +72,15 @@ class Document extends _HasProxy {
  String getLine(int row) =&gt; _proxy.getLine(row);
  
  /// Inserts a block of [text] at the given [position] and returns a point at
- /// the end of the inserted text.
+ /// the end of the inserted text.  This method also fires an [onChange] event.
  Point insert(Point position, String text) =&gt;
      new Point._(_proxy.insert(position._toProxy(), text));
+ 
+ /// Inserts [text] into the [position] at the current row and returns a point
+ /// at the end of the inserted text.  This method also fires an [onChange]
+ /// event.
+ Point insertInLine(Point position, String text) =&gt;
+     new Point._(_proxy.insertInLine(position._toProxy(), text));
 }
 </pre>
 </div>
@@ -213,10 +219,26 @@ String getLine(int row) =&gt; _proxy.getLine(row);
 <p>Inserts a block of 
 <span class="param">text</span> at the given 
 <span class="param">position</span> and returns a point at
-the end of the inserted text.</p>
+the end of the inserted text.  This method also fires an <a class="crossref" href="../ace/Document.html#onChange">onChange</a> event.</p>
 <pre class="source">
 Point insert(Point position, String text) =&gt;
    new Point._(_proxy.insert(position._toProxy(), text));
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="insertInLine">
+<button class="show-code">Code</button>
+<a href="../ace/Point.html">Point</a> <strong>insertInLine</strong>(<a href="../ace/Point.html">Point</a> position, String text) <a class="anchor-link" href="#insertInLine"
+              title="Permalink to Document.insertInLine">#</a></h4>
+<div class="doc">
+<p>Inserts 
+<span class="param">text</span> into the 
+<span class="param">position</span> at the current row and returns a point
+at the end of the inserted text.  This method also fires an <a class="crossref" href="../ace/Document.html#onChange">onChange</a>
+event.</p>
+<pre class="source">
+Point insertInLine(Point position, String text) =&gt;
+   new Point._(_proxy.insertInLine(position._toProxy(), text));
 </pre>
 </div>
 </div>
@@ -225,7 +247,7 @@ Point insert(Point position, String text) =&gt;
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2013-08-14 12:53:35.465</div>
+          <div>This page was generated at 2013-08-14 13:04:11.806</div>
         </div>
         <script async src="../client-live-nav.js"></script>
         </body></html>
