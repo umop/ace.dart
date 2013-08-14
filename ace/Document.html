@@ -103,10 +103,13 @@ class Document extends _HasProxy {
  /// For example:
  ///     var x = 0; // 10 characters, plus one for newline
  ///     var y = -1;
- /// Here, `y` has an index of `15`; `11` characters for the first row, and 5 
- /// characters until `y` in the second row.    
+ /// Here, `y` has an index of `15`; `10` characters for the first row, a
+ /// newline character, and `5` characters until `y` in the second row.    
  int positionToIndex(Point position, int startRow) =&gt;
      _proxy.positionToIndex(position._toProxy(), startRow);
+ 
+ /// Removes the given [range] from this document.
+ Point remove(Range range) =&gt; new Point._(_proxy.remove(range._toProxy()));
 }
 </pre>
 </div>
@@ -313,11 +316,23 @@ For example:</p>
 <pre><code>var x = 0; // 10 characters, plus one for newline
 var y = -1;
 </code></pre>
-<p>Here, <code>y</code> has an index of <code>15</code>; <code>11</code> characters for the first row, and 5 
-characters until <code>y</code> in the second row.    </p>
+<p>Here, <code>y</code> has an index of <code>15</code>; <code>10</code> characters for the first row, a
+newline character, and <code>5</code> characters until <code>y</code> in the second row.    </p>
 <pre class="source">
 int positionToIndex(Point position, int startRow) =&gt;
    _proxy.positionToIndex(position._toProxy(), startRow);
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="remove">
+<button class="show-code">Code</button>
+<a href="../ace/Point.html">Point</a> <strong>remove</strong>(<a href="../ace/Range.html">Range</a> range) <a class="anchor-link" href="#remove"
+              title="Permalink to Document.remove">#</a></h4>
+<div class="doc">
+<p>Removes the given 
+<span class="param">range</span> from this document.</p>
+<pre class="source">
+Point remove(Range range) =&gt; new Point._(_proxy.remove(range._toProxy()));
 </pre>
 </div>
 </div>
@@ -326,7 +341,7 @@ int positionToIndex(Point position, int startRow) =&gt;
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2013-08-14 13:59:47.957</div>
+          <div>This page was generated at 2013-08-14 14:48:43.463</div>
         </div>
         <script async src="../client-live-nav.js"></script>
         </body></html>
