@@ -41,6 +41,9 @@ class Document extends _HasProxy {
  
  int get length =&gt; _proxy.getLength();
  
+ String get newLineCharacter =&gt; _proxy.getNewLineCharacter();
+ String get newLineMode =&gt; _proxy.getNewLineMode();
+ 
  String
    get value =&gt; _proxy.getValue();
    set value(String text) =&gt; _proxy.setValue(text);
@@ -77,6 +80,30 @@ final int         <strong>length</strong> <a class="anchor-link"
         <div class="doc">
 <pre class="source">
 int get length =&gt; _proxy.getLength();
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="newLineCharacter">
+<button class="show-code">Code</button>
+final String         <strong>newLineCharacter</strong> <a class="anchor-link"
+            href="#newLineCharacter"
+            title="Permalink to Document.newLineCharacter">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+String get newLineCharacter =&gt; _proxy.getNewLineCharacter();
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="newLineMode">
+<button class="show-code">Code</button>
+final String         <strong>newLineMode</strong> <a class="anchor-link"
+            href="#newLineMode"
+            title="Permalink to Document.newLineMode">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+String get newLineMode =&gt; _proxy.getNewLineMode();
 </pre>
 </div>
 </div>
@@ -129,7 +156,7 @@ String getLine(int row) =&gt; _proxy.getLine(row);
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2013-08-14 09:24:50.709</div>
+          <div>This page was generated at 2013-08-14 09:35:15.977</div>
         </div>
         <script async src="../client-live-nav.js"></script>
         </body></html>
