@@ -53,6 +53,8 @@ class Editor extends _HasProxy {
  
  Stream get onBlur =&gt; _onBlur.stream;
  Stream&lt;Delta&gt; get onChange =&gt; _onChange.stream;
+ Stream/*&lt;TODO: SessionChangeEvent&gt;*/ get onChangeSession =&gt; 
+     throw new UnimplementedError();
  Stream&lt;String&gt; get onCopy =&gt; _onCopy.stream;
  Stream get onFocus =&gt; _onFocus.stream;
  Stream&lt;String&gt; get onPaste =&gt; _onPaste.stream;  
@@ -104,7 +106,9 @@ class Editor extends _HasProxy {
  Selection get selection =&gt; new Selection._(_proxy.getSelection());
  Range get selectionRange =&gt; new Range._fromProxy(_proxy.getSelectionRange());
  
- EditSession 
+ /// The current [EditSession] being used; setting a new session emits an 
+ /// [onChangeSession] event.
+ EditSession
    get session =&gt; new EditSession._(_proxy.getSession());
    set session(EditSession session) =&gt; throw new UnimplementedError();
  
@@ -357,6 +361,19 @@ Stream&lt;Delta&gt; get onChange =&gt; _onChange.stream;
 </pre>
 </div>
 </div>
+<div class="field"><h4 id="onChangeSession">
+<button class="show-code">Code</button>
+final Stream         <strong>onChangeSession</strong> <a class="anchor-link"
+            href="#onChangeSession"
+            title="Permalink to Editor.onChangeSession">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+Stream/*&lt;TODO: SessionChangeEvent&gt;*/ get onChangeSession =&gt; 
+   throw new UnimplementedError();
+</pre>
+</div>
+</div>
 <div class="field"><h4 id="onCopy">
 <button class="show-code">Code</button>
 final Stream&lt;String&gt;         <strong>onCopy</strong> <a class="anchor-link"
@@ -489,8 +506,10 @@ Range get selectionRange =&gt; new Range._fromProxy(_proxy.getSelectionRange());
             title="Permalink to Editor.session">#</a>
         </h4>
         <div class="doc">
+<p>The current <a class="crossref" href="../ace/EditSession.html">EditSession</a> being used; setting a new session emits an 
+<a class="crossref" href="../ace/Editor.html#onChangeSession">onChangeSession</a> event.</p>
 <pre class="source">
-EditSession 
+EditSession
  get session =&gt; new EditSession._(_proxy.getSession());
 </pre>
 <pre class="source">
@@ -949,7 +968,7 @@ void updateSelectionMarkers() =&gt; _proxy.updateSelectionMarkers();
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2013-08-14 09:17:09.078</div>
+          <div>This page was generated at 2013-08-14 09:24:50.681</div>
         </div>
         <script async src="../client-live-nav.js"></script>
         </body></html>
