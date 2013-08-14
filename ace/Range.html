@@ -32,12 +32,17 @@
         
 <button id="show-inherited" class="show-inherited">Hide inherited</button>
 <div class="doc">
+<p>A region within an <a class="crossref" href="../ace/Editor.html">Editor</a>.</p>
+<p>A <a class="crossref" href="../ace/Range.html">Range</a> can be thought of as a rectangle from a <a class="crossref" href="../ace/Range.html#start">start</a> point to an <a class="crossref" href="../ace/Range.html#end">end</a>
+point.</p>
 <pre class="source">
 class Range {
  final Point start;
  final Point end;
- 
+
+ /// Returns _true_ if this range's [start] point equals its [end] point.
  bool get isEmpty =&gt; start.row == end.row &amp;&amp; start.column == end.column;
+ /// Returns _true_ if this range spans across multiple lines.
  bool get isMultiLine =&gt; start.row != end.row;
  
  Range(int startRow, int startColumn, int endRow, int endColumn)
@@ -138,6 +143,7 @@ final bool         <strong>isEmpty</strong> <a class="anchor-link"
             title="Permalink to Range.isEmpty">#</a>
         </h4>
         <div class="doc">
+<p>Returns <em>true</em> if this range's <a class="crossref" href="../ace/Range.html#start">start</a> point equals its <a class="crossref" href="../ace/Range.html#end">end</a> point.</p>
 <pre class="source">
 bool get isEmpty =&gt; start.row == end.row &amp;&amp; start.column == end.column;
 </pre>
@@ -150,6 +156,7 @@ final bool         <strong>isMultiLine</strong> <a class="anchor-link"
             title="Permalink to Range.isMultiLine">#</a>
         </h4>
         <div class="doc">
+<p>Returns <em>true</em> if this range spans across multiple lines.</p>
 <pre class="source">
 bool get isMultiLine =&gt; start.row != end.row;
 </pre>
@@ -214,7 +221,7 @@ String toString() =&gt;
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2013-08-14 08:34:11.020</div>
+          <div>This page was generated at 2013-08-14 08:49:38.943</div>
         </div>
         <script async src="../client-live-nav.js"></script>
         </body></html>
