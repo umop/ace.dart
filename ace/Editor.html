@@ -104,13 +104,9 @@ class Editor extends _HasProxy {
  Selection get selection =&gt; new Selection._(_proxy.getSelection());
  Range get selectionRange =&gt; new Range._fromProxy(_proxy.getSelectionRange());
  
- EditSession _session;
- EditSession get session {
-   if (_session == null) {
-     _session = new EditSession._(_proxy.getSession());
-   }
-   return _session;
- }
+ EditSession 
+   get session =&gt; new EditSession._(_proxy.getSession());
+   set session(EditSession session) =&gt; throw new UnimplementedError();
  
  bool
    get showInvisibles =&gt; _proxy.getShowInvisibles();
@@ -140,7 +136,6 @@ class Editor extends _HasProxy {
  }
  
  void _onDispose() {
-   if (_session != null) _session.dispose();
    _onBlur.close();
    _onChange.close();
    _onCopy.close();
@@ -489,18 +484,17 @@ Range get selectionRange =&gt; new Range._fromProxy(_proxy.getSelectionRange());
 </div>
 <div class="field"><h4 id="session">
 <button class="show-code">Code</button>
-final <a href="../ace/EditSession.html">EditSession</a>         <strong>session</strong> <a class="anchor-link"
+<a href="../ace/EditSession.html">EditSession</a>         <strong>session</strong> <a class="anchor-link"
             href="#session"
             title="Permalink to Editor.session">#</a>
         </h4>
         <div class="doc">
 <pre class="source">
-EditSession get session {
- if (_session == null) {
-   _session = new EditSession._(_proxy.getSession());
- }
- return _session;
-}
+EditSession 
+ get session =&gt; new EditSession._(_proxy.getSession());
+</pre>
+<pre class="source">
+set session(EditSession session) =&gt; throw new UnimplementedError();
 </pre>
 </div>
 </div>
@@ -955,7 +949,7 @@ void updateSelectionMarkers() =&gt; _proxy.updateSelectionMarkers();
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2013-08-14 09:08:05.830</div>
+          <div>This page was generated at 2013-08-14 09:17:09.078</div>
         </div>
         <script async src="../client-live-nav.js"></script>
         </body></html>
