@@ -169,13 +169,21 @@ class Editor extends _HasProxy {
  void navigateFileEnd() =&gt; _proxy.navigateFileEnd();
  void navigateFileStart() =&gt; _proxy.navigateFileStart();
  void navigateLeft(int times) =&gt; _proxy.navigateLeft(times);
+ /// Move the [cursorPosition] to the end of the current line.
+ /// Note that this does de-select the current [selection].
  void navigateLineEnd() =&gt; _proxy.navigateLineEnd();
  void navigateLineStart() =&gt; _proxy.navigateLineStart();
  void navigateRight(int times) =&gt; _proxy.navigateRight(times);
  void navigateTo(int row, int column) =&gt; _proxy.navigateTo(row, column);
  void navigateUp(int times) =&gt; _proxy.navigateUp(times);
  void navigateWordLeft() =&gt; _proxy.navigateWordLeft();
- void navigateWordRight() =&gt; _proxy.navigateWordRight();  
+ void navigateWordRight() =&gt; _proxy.navigateWordRight();
+ /// Remove all of the words to the right of the current [selection], until the 
+ /// end of the line.
+ void removeToLineEnd() =&gt; _proxy.removeToLineEnd();
+ /// Removes all of the words to the left of the current [selection], until the 
+ /// start of the line.
+ void removeToLineStart() =&gt; _proxy.removeToLineStart();
  /// Remove the word directly to the left of the current [selection].
  void removeWordLeft() =&gt; _proxy.removeWordLeft();
  /// Remove the word directly to the right of the current [selection].
@@ -751,6 +759,8 @@ void navigateLeft(int times) =&gt; _proxy.navigateLeft(times);
 void <strong>navigateLineEnd</strong>() <a class="anchor-link" href="#navigateLineEnd"
               title="Permalink to Editor.navigateLineEnd">#</a></h4>
 <div class="doc">
+<p>Move the <a class="crossref" href="../ace/Editor.html#cursorPosition">cursorPosition</a> to the end of the current line.
+Note that this does de-select the current <a class="crossref" href="../ace/Editor.html#selection">selection</a>.</p>
 <pre class="source">
 void navigateLineEnd() =&gt; _proxy.navigateLineEnd();
 </pre>
@@ -813,6 +823,30 @@ void <strong>navigateWordRight</strong>() <a class="anchor-link" href="#navigate
 <div class="doc">
 <pre class="source">
 void navigateWordRight() =&gt; _proxy.navigateWordRight();
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="removeToLineEnd">
+<button class="show-code">Code</button>
+void <strong>removeToLineEnd</strong>() <a class="anchor-link" href="#removeToLineEnd"
+              title="Permalink to Editor.removeToLineEnd">#</a></h4>
+<div class="doc">
+<p>Remove all of the words to the right of the current <a class="crossref" href="../ace/Editor.html#selection">selection</a>, until the 
+end of the line.</p>
+<pre class="source">
+void removeToLineEnd() =&gt; _proxy.removeToLineEnd();
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="removeToLineStart">
+<button class="show-code">Code</button>
+void <strong>removeToLineStart</strong>() <a class="anchor-link" href="#removeToLineStart"
+              title="Permalink to Editor.removeToLineStart">#</a></h4>
+<div class="doc">
+<p>Removes all of the words to the left of the current <a class="crossref" href="../ace/Editor.html#selection">selection</a>, until the 
+start of the line.</p>
+<pre class="source">
+void removeToLineStart() =&gt; _proxy.removeToLineStart();
 </pre>
 </div>
 </div>
@@ -916,7 +950,7 @@ void updateSelectionMarkers() =&gt; _proxy.updateSelectionMarkers();
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2013-08-14 07:57:10.689</div>
+          <div>This page was generated at 2013-08-14 08:13:38.577</div>
         </div>
         <script async src="../client-live-nav.js"></script>
         </body></html>
