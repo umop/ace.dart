@@ -50,9 +50,15 @@ class Document extends _HasProxy {
  /// The number of rows in this document.
  int get length =&gt; _proxy.getLength();
  
+ /// The current newline character, based on the current [newLineMode].
  String get newLineCharacter =&gt; _proxy.getNewLineCharacter();
- String get newLineMode =&gt; _proxy.getNewLineMode();
- 
+   
+ // TODO(rms): enum
+ /// The new line mode.  May be one of `windows`, `unix` or `auto`.  
+ String 
+   get newLineMode =&gt; _proxy.getNewLineMode();
+   set newLineMode(String newLineMode) =&gt; _proxy.setNewLineMode(newLineMode);
+   
  String
    get value =&gt; _proxy.getValue();
    set value(String text) =&gt; _proxy.setValue(text);
@@ -141,6 +147,7 @@ final String         <strong>newLineCharacter</strong> <a class="anchor-link"
             title="Permalink to Document.newLineCharacter">#</a>
         </h4>
         <div class="doc">
+<p>The current newline character, based on the current <a class="crossref" href="../ace/Document.html#newLineMode">newLineMode</a>.</p>
 <pre class="source">
 String get newLineCharacter =&gt; _proxy.getNewLineCharacter();
 </pre>
@@ -148,13 +155,18 @@ String get newLineCharacter =&gt; _proxy.getNewLineCharacter();
 </div>
 <div class="field"><h4 id="newLineMode">
 <button class="show-code">Code</button>
-final String         <strong>newLineMode</strong> <a class="anchor-link"
+String         <strong>newLineMode</strong> <a class="anchor-link"
             href="#newLineMode"
             title="Permalink to Document.newLineMode">#</a>
         </h4>
         <div class="doc">
+<p>The new line mode.  May be one of <code>windows</code>, <code>unix</code> or <code>auto</code>.  </p>
 <pre class="source">
-String get newLineMode =&gt; _proxy.getNewLineMode();
+String 
+ get newLineMode =&gt; _proxy.getNewLineMode();
+</pre>
+<pre class="source">
+set newLineMode(String newLineMode) =&gt; _proxy.setNewLineMode(newLineMode);
 </pre>
 </div>
 </div>
@@ -267,7 +279,7 @@ Point insertNewLine(Point position) =&gt;
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2013-08-14 13:09:16.815</div>
+          <div>This page was generated at 2013-08-14 13:20:53.602</div>
         </div>
         <script async src="../client-live-nav.js"></script>
         </body></html>
