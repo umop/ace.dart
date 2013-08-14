@@ -37,7 +37,7 @@ class Point {
  final int row;
  final int column;
  Point(this.row, this.column);
- Point._fromProxy(p) : this(p.row, p.column);  
+ Point._(proxy) : this(proxy.row, proxy.column);  
  bool operator ==(Object other) {
    if(identical(this, other)) return true;
    if(other is! Point) return false; 
@@ -162,7 +162,7 @@ String toString() =&gt; 'Point: [${row}/${column}]';
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2013-08-14 12:32:20.112</div>
+          <div>This page was generated at 2013-08-14 12:53:35.357</div>
         </div>
         <script async src="../client-live-nav.js"></script>
         </body></html>

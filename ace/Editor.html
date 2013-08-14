@@ -61,7 +61,7 @@ class Editor extends _HasProxy {
  
  String get copyText =&gt; _proxy.getCopyText();
  
- Point get cursorPosition =&gt; new Point._fromProxy(_proxy.getCursorPosition());
+ Point get cursorPosition =&gt; new Point._(_proxy.getCursorPosition());
  
  int
    get dragDelay =&gt; _proxy.getDragDelay();
@@ -230,7 +230,7 @@ final <a href="../ace/Point.html">Point</a>         <strong>cursorPosition</stro
         </h4>
         <div class="doc">
 <pre class="source">
-Point get cursorPosition =&gt; new Point._fromProxy(_proxy.getCursorPosition());
+Point get cursorPosition =&gt; new Point._(_proxy.getCursorPosition());
 </pre>
 </div>
 </div>
@@ -968,7 +968,7 @@ void updateSelectionMarkers() =&gt; _proxy.updateSelectionMarkers();
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2013-08-14 12:32:20.188</div>
+          <div>This page was generated at 2013-08-14 12:53:35.434</div>
         </div>
         <script async src="../client-live-nav.js"></script>
         </body></html>

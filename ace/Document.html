@@ -71,10 +71,10 @@ class Document extends _HasProxy {
  /// Returns a verbatim copy of the given line [row] as it is in this document.
  String getLine(int row) =&gt; _proxy.getLine(row);
  
- /// Inserts a block of [text] at the given [position].
- void insert(Point position, String text) {
-   _proxy.insert(position._toProxy(), text);
- }
+ /// Inserts a block of [text] at the given [position] and returns a point at
+ /// the end of the inserted text.
+ Point insert(Point position, String text) =&gt;
+     new Point._(_proxy.insert(position._toProxy(), text));
 }
 </pre>
 </div>
@@ -207,16 +207,16 @@ String getLine(int row) =&gt; _proxy.getLine(row);
 </div>
 <div class="method"><h4 id="insert">
 <button class="show-code">Code</button>
-void <strong>insert</strong>(<a href="../ace/Point.html">Point</a> position, String text) <a class="anchor-link" href="#insert"
+<a href="../ace/Point.html">Point</a> <strong>insert</strong>(<a href="../ace/Point.html">Point</a> position, String text) <a class="anchor-link" href="#insert"
               title="Permalink to Document.insert">#</a></h4>
 <div class="doc">
 <p>Inserts a block of 
 <span class="param">text</span> at the given 
-<span class="param">position</span>.</p>
+<span class="param">position</span> and returns a point at
+the end of the inserted text.</p>
 <pre class="source">
-void insert(Point position, String text) {
- _proxy.insert(position._toProxy(), text);
-}
+Point insert(Point position, String text) =&gt;
+   new Point._(_proxy.insert(position._toProxy(), text));
 </pre>
 </div>
 </div>
@@ -225,7 +225,7 @@ void insert(Point position, String text) {
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2013-08-14 12:32:20.221</div>
+          <div>This page was generated at 2013-08-14 12:53:35.465</div>
         </div>
         <script async src="../client-live-nav.js"></script>
         </body></html>
