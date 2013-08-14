@@ -81,6 +81,12 @@ class Document extends _HasProxy {
  /// event.
  Point insertInLine(Point position, String text) =&gt;
      new Point._(_proxy.insertInLine(position._toProxy(), text));
+ 
+ /// Inserts a [newLineCharacter] into this document at the current row's 
+ /// position and returns a point at the end of the insertion.  This method 
+ /// also fires an [onChange] event.
+ Point insertNewLine(Point position) =&gt;
+     new Point._(_proxy.insertNewLine(position._toProxy()));
 }
 </pre>
 </div>
@@ -242,12 +248,26 @@ Point insertInLine(Point position, String text) =&gt;
 </pre>
 </div>
 </div>
+<div class="method"><h4 id="insertNewLine">
+<button class="show-code">Code</button>
+<a href="../ace/Point.html">Point</a> <strong>insertNewLine</strong>(<a href="../ace/Point.html">Point</a> position) <a class="anchor-link" href="#insertNewLine"
+              title="Permalink to Document.insertNewLine">#</a></h4>
+<div class="doc">
+<p>Inserts a <a class="crossref" href="../ace/Document.html#newLineCharacter">newLineCharacter</a> into this document at the current row's 
+position and returns a point at the end of the insertion.  This method 
+also fires an <a class="crossref" href="../ace/Document.html#onChange">onChange</a> event.</p>
+<pre class="source">
+Point insertNewLine(Point position) =&gt;
+   new Point._(_proxy.insertNewLine(position._toProxy()));
+</pre>
+</div>
+</div>
 </div>
         </div>
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2013-08-14 13:04:11.806</div>
+          <div>This page was generated at 2013-08-14 13:09:16.815</div>
         </div>
         <script async src="../client-live-nav.js"></script>
         </body></html>
