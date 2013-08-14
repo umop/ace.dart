@@ -162,6 +162,7 @@ class Editor extends _HasProxy {
  void gotoPageDown() =&gt; _proxy.gotoPageDown();
  void gotoPageUp() =&gt; _proxy.gotoPageUp();
  void indent() =&gt; _proxy.indent();
+ /// Insert [text] at the current [cursorPosition].
  void insert(String text) =&gt; _proxy.insert(text);
  bool isRowFullyVisible(int row) =&gt; _proxy.isRowFullyVisible(row);
  bool isRowVisible(int row) =&gt; _proxy.isRowVisible(row);
@@ -174,7 +175,11 @@ class Editor extends _HasProxy {
  void navigateTo(int row, int column) =&gt; _proxy.navigateTo(row, column);
  void navigateUp(int times) =&gt; _proxy.navigateUp(times);
  void navigateWordLeft() =&gt; _proxy.navigateWordLeft();
- void navigateWordRight() =&gt; _proxy.navigateWordRight();
+ void navigateWordRight() =&gt; _proxy.navigateWordRight();  
+ /// Remove the word directly to the left of the current [selection].
+ void removeWordLeft() =&gt; _proxy.removeWordLeft();
+ /// Remove the word directly to the right of the current [selection].
+ void removeWordRight() =&gt; _proxy.removeWordRight();  
  void resize(bool force) =&gt; _proxy.resize(force);
  String setValue(String val, int cursorPos) {
    assert(cursorPos &gt;= -1 &amp;&amp; cursorPos &lt;= 1);
@@ -684,6 +689,8 @@ void indent() =&gt; _proxy.indent();
 void <strong>insert</strong>(String text) <a class="anchor-link" href="#insert"
               title="Permalink to Editor.insert">#</a></h4>
 <div class="doc">
+<p>Insert 
+<span class="param">text</span> at the current <a class="crossref" href="../ace/Editor.html#cursorPosition">cursorPosition</a>.</p>
 <pre class="source">
 void insert(String text) =&gt; _proxy.insert(text);
 </pre>
@@ -809,6 +816,28 @@ void navigateWordRight() =&gt; _proxy.navigateWordRight();
 </pre>
 </div>
 </div>
+<div class="method"><h4 id="removeWordLeft">
+<button class="show-code">Code</button>
+void <strong>removeWordLeft</strong>() <a class="anchor-link" href="#removeWordLeft"
+              title="Permalink to Editor.removeWordLeft">#</a></h4>
+<div class="doc">
+<p>Remove the word directly to the left of the current <a class="crossref" href="../ace/Editor.html#selection">selection</a>.</p>
+<pre class="source">
+void removeWordLeft() =&gt; _proxy.removeWordLeft();
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="removeWordRight">
+<button class="show-code">Code</button>
+void <strong>removeWordRight</strong>() <a class="anchor-link" href="#removeWordRight"
+              title="Permalink to Editor.removeWordRight">#</a></h4>
+<div class="doc">
+<p>Remove the word directly to the right of the current <a class="crossref" href="../ace/Editor.html#selection">selection</a>.</p>
+<pre class="source">
+void removeWordRight() =&gt; _proxy.removeWordRight();
+</pre>
+</div>
+</div>
 <div class="method"><h4 id="resize">
 <button class="show-code">Code</button>
 void <strong>resize</strong>(bool force) <a class="anchor-link" href="#resize"
@@ -887,7 +916,7 @@ void updateSelectionMarkers() =&gt; _proxy.updateSelectionMarkers();
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2013-08-14 07:38:38.659</div>
+          <div>This page was generated at 2013-08-14 07:57:10.689</div>
         </div>
         <script async src="../client-live-nav.js"></script>
         </body></html>
