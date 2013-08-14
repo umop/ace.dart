@@ -55,6 +55,7 @@ class Document extends _HasProxy {
  
  Document._(js.Proxy proxy) : super(proxy);
    
+ /// Returns a verbatim copy of the given line [row] as it is in this document.
  String getLine(int row) =&gt; _proxy.getLine(row);
 }
 </pre>
@@ -166,6 +167,8 @@ void dispose() {
 String <strong>getLine</strong>(int row) <a class="anchor-link" href="#getLine"
               title="Permalink to Document.getLine">#</a></h4>
 <div class="doc">
+<p>Returns a verbatim copy of the given line 
+<span class="param">row</span> as it is in this document.</p>
 <pre class="source">
 String getLine(int row) =&gt; _proxy.getLine(row);
 </pre>
@@ -176,7 +179,7 @@ String getLine(int row) =&gt; _proxy.getLine(row);
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2013-08-14 11:15:29.604</div>
+          <div>This page was generated at 2013-08-14 11:22:52.274</div>
         </div>
         <script async src="../client-live-nav.js"></script>
         </body></html>
