@@ -38,6 +38,10 @@ array points to a row in the document.</p>
 <p>An instance of <a class="crossref" href="../ace/Document.html">Document</a> may be attached to more than one <a class="crossref" href="../ace/EditSession.html">EditSession</a>.</p>
 <pre class="source">
 class Document extends _HasProxy {
+ js.Callback _jsOnChange;
+ final _onChange = new StreamController&lt;Delta&gt;.broadcast();
+ /// Fired whenever this document changes.
+ Stream&lt;Delta&gt; get onChange =&gt; _onChange.stream;
  
  /// All lines in this document.
  Iterable&lt;String&gt; get allLines =&gt;
@@ -53,10 +57,24 @@ class Document extends _HasProxy {
    get value =&gt; _proxy.getValue();
    set value(String text) =&gt; _proxy.setValue(text);
  
- Document._(js.Proxy proxy) : super(proxy);
-   
+ Document._(js.Proxy proxy) : super(proxy) {
+   _jsOnChange = new js.Callback.many((e,__) =&gt; 
+       _onChange.add(new Delta._for(e.data)));
+   _proxy.on('change', _jsOnChange);
+ }
+ 
+ void _onDispose() {
+   _onChange.close();
+   _jsOnChange.dispose();
+ }
+ 
  /// Returns a verbatim copy of the given line [row] as it is in this document.
  String getLine(int row) =&gt; _proxy.getLine(row);
+ 
+ /// Inserts a block of [text] at the given [position].
+ void insert(Point position, String text) {
+   _proxy.insert(position._toProxy(), text);
+ }
 }
 </pre>
 </div>
@@ -128,6 +146,19 @@ String get newLineMode =&gt; _proxy.getNewLineMode();
 </pre>
 </div>
 </div>
+<div class="field"><h4 id="onChange">
+<button class="show-code">Code</button>
+final Stream&lt;<a href="../ace/Delta.html">Delta</a>&gt;         <strong>onChange</strong> <a class="anchor-link"
+            href="#onChange"
+            title="Permalink to Document.onChange">#</a>
+        </h4>
+        <div class="doc">
+<p>Fired whenever this document changes.</p>
+<pre class="source">
+Stream&lt;Delta&gt; get onChange =&gt; _onChange.stream;
+</pre>
+</div>
+</div>
 <div class="field"><h4 id="value">
 <button class="show-code">Code</button>
 String         <strong>value</strong> <a class="anchor-link"
@@ -174,12 +205,27 @@ String getLine(int row) =&gt; _proxy.getLine(row);
 </pre>
 </div>
 </div>
+<div class="method"><h4 id="insert">
+<button class="show-code">Code</button>
+void <strong>insert</strong>(<a href="../ace/Point.html">Point</a> position, String text) <a class="anchor-link" href="#insert"
+              title="Permalink to Document.insert">#</a></h4>
+<div class="doc">
+<p>Inserts a block of 
+<span class="param">text</span> at the given 
+<span class="param">position</span>.</p>
+<pre class="source">
+void insert(Point position, String text) {
+ _proxy.insert(position._toProxy(), text);
+}
+</pre>
+</div>
+</div>
 </div>
         </div>
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2013-08-14 12:08:41.586</div>
+          <div>This page was generated at 2013-08-14 12:32:20.221</div>
         </div>
         <script async src="../client-live-nav.js"></script>
         </body></html>
