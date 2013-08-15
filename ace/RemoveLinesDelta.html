@@ -34,11 +34,11 @@
 <div class="doc">
 <pre class="source">
 class RemoveLinesDelta extends Delta {  
- //final Iterable&lt;String&gt; lines;
+ final Iterable&lt;String&gt; lines;
  final String nl;
  RemoveLinesDelta._(data) 
    : super._(data.action, data.range)
-   //, lines = data.lines
+   , lines = json.parse(_context.JSON.stringify(data.lines))
    , nl = data.nl;
 }
 </pre>
@@ -57,6 +57,18 @@ final String         <strong>action</strong> <a class="anchor-link"
         <div class="inherited-from">inherited from <a href="../ace/Delta.html">Delta</a> </div><div class="doc">
 <pre class="source">
 final String action
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="lines">
+<button class="show-code">Code</button>
+final Iterable&lt;String&gt;         <strong>lines</strong> <a class="anchor-link"
+            href="#lines"
+            title="Permalink to RemoveLinesDelta.lines">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+final Iterable&lt;String&gt; lines
 </pre>
 </div>
 </div>
@@ -89,7 +101,7 @@ final Range range
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2013-08-15 07:51:23.388</div>
+          <div>This page was generated at 2013-08-15 07:52:20.790</div>
         </div>
         <script async src="../client-live-nav.js"></script>
         </body></html>

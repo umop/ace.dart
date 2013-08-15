@@ -126,6 +126,11 @@ class Document extends _HasProxy {
  /// [onChange] event.
  Point removeInLine(int row, int startColumn, int endColumn) =&gt;
      new Point._(_proxy.removeInLine(row, startColumn, endColumn));
+ 
+ /// Removes the range of lines from the given [startRow] -&gt; [endRow] and
+ /// returns the removed lines.  This method also fires an [onChange] event.
+ Iterable&lt;String&gt; removeLines(int startRow, int endRow) =&gt;
+     json.parse(_context.JSON.stringify(_proxy.removeLines(startRow, endRow)));
 }
 </pre>
 </div>
@@ -398,12 +403,27 @@ Point removeInLine(int row, int startColumn, int endColumn) =&gt;
 </pre>
 </div>
 </div>
+<div class="method"><h4 id="removeLines">
+<button class="show-code">Code</button>
+Iterable&lt;String&gt; <strong>removeLines</strong>(int startRow, int endRow) <a class="anchor-link" href="#removeLines"
+              title="Permalink to Document.removeLines">#</a></h4>
+<div class="doc">
+<p>Removes the range of lines from the given 
+<span class="param">startRow</span> -> 
+<span class="param">endRow</span> and
+returns the removed lines.  This method also fires an <a class="crossref" href="../ace/Document.html#onChange">onChange</a> event.</p>
+<pre class="source">
+Iterable&lt;String&gt; removeLines(int startRow, int endRow) =&gt;
+   json.parse(_context.JSON.stringify(_proxy.removeLines(startRow, endRow)));
+</pre>
+</div>
+</div>
 </div>
         </div>
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2013-08-15 07:51:23.371</div>
+          <div>This page was generated at 2013-08-15 07:52:20.763</div>
         </div>
         <script async src="../client-live-nav.js"></script>
         </body></html>
