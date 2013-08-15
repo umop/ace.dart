@@ -39,26 +39,31 @@ state, thus providing a means to change editor state dynamically.</p>
 instance of <a class="crossref" href="../ace/Document.html">Document</a> may be attached to more than one <a class="crossref" href="../ace/EditSession.html">EditSession</a>.</p>
 <pre class="source">
 class EditSession extends _HasProxy {
- js.Callback _jsOnChangeTabSize;
+ js.Callback _jsOnChangeOverwrite;
  js.Callback _jsOnChangeScrollLeft;
  js.Callback _jsOnChangeScrollTop;
+ js.Callback _jsOnChangeTabSize;
  js.Callback _jsOnChangeWrapLimit;
  js.Callback _jsOnChangeWrapMode;
- 
- final _onChangeTabSize = new StreamController.broadcast();
+   
+ final _onChangeOverwrite = new StreamController.broadcast();
  final _onChangeScrollLeft = new StreamController&lt;int&gt;.broadcast();
  final _onChangeScrollTop = new StreamController&lt;int&gt;.broadcast();
+ final _onChangeTabSize = new StreamController.broadcast();
  final _onChangeWrapLimit = new StreamController.broadcast();
  final _onChangeWrapMode = new StreamController.broadcast();
- 
- /// Fired whenever the [tabSize] changes.
- Stream get onChangeTabSize =&gt; _onChangeTabSize.stream;
+     
+ /// Fired whenever the [overwrite] changes.
+ Stream get onChangeOverwrite =&gt; _onChangeOverwrite.stream;
  
  /// Fired whenever the [scrollLeft] changes.
  Stream&lt;int&gt; get onChangeScrollLeft =&gt; _onChangeScrollLeft.stream;
  
  /// Fired whenever the [scrollTop] changes.
  Stream&lt;int&gt; get onChangeScrollTop =&gt; _onChangeScrollTop.stream;
+ 
+ /// Fired whenever the [tabSize] changes.
+ Stream get onChangeTabSize =&gt; _onChangeTabSize.stream;
  
  /// Fired whenever the [wrapLimit] changes.
  Stream get onChangeWrapLimit =&gt; _onChangeWrapLimit.stream;
@@ -82,6 +87,11 @@ class EditSession extends _HasProxy {
    get newLineMode =&gt; _proxy.getNewLineMode();
    set newLineMode(String newLineMode) =&gt; _proxy.setNewLineMode(newLineMode);
  
+ /// Whether or not overwrite is enabled in this session.
+ /// 
+ /// A _true_ value means overwrite is enabled.  Any text that is entered will
+ /// write over any text after it.  Setting this to a new value fires an
+ /// [onChangeOverwrite] event.
  bool
    get overwrite =&gt; _proxy.getOverwrite();
    set overwrite(bool overwrite) =&gt; _proxy.setOverwrite(overwrite);
@@ -163,33 +173,38 @@ class EditSession extends _HasProxy {
  EditSession(Document document, String mode) : this._(
      new js.Proxy(_context.ace.EditSession, document._proxy, mode));
  
- EditSession._(js.Proxy proxy) : super(proxy) {
-   _jsOnChangeTabSize = 
-       new js.Callback.many((_,__) =&gt; _onChangeTabSize.add(this));
+ EditSession._(js.Proxy proxy) : super(proxy) {    
+   _jsOnChangeOverwrite = 
+       new js.Callback.many((_,__) =&gt; _onChangeOverwrite.add(this));
    _jsOnChangeScrollLeft = 
        new js.Callback.many((e,__) =&gt; _onChangeScrollLeft.add(e));
    _jsOnChangeScrollTop = 
        new js.Callback.many((e,__) =&gt; _onChangeScrollTop.add(e));
+   _jsOnChangeTabSize = 
+       new js.Callback.many((_,__) =&gt; _onChangeTabSize.add(this));
    _jsOnChangeWrapLimit = 
        new js.Callback.many((_,__) =&gt; _onChangeWrapLimit.add(this));
    _jsOnChangeWrapMode = 
        new js.Callback.many((_,__) =&gt; _onChangeWrapMode.add(this));
-   _proxy.on('changeTabSize', _jsOnChangeTabSize);
+   _proxy.on('changeOverwrite', _jsOnChangeOverwrite);
    _proxy.on('changeScrollLeft', _jsOnChangeScrollLeft);
    _proxy.on('changeScrollTop', _jsOnChangeScrollTop);
+   _proxy.on('changeTabSize', _jsOnChangeTabSize);
    _proxy.on('changeWrapLimit', _jsOnChangeWrapLimit);
    _proxy.on('changeWrapMode', _jsOnChangeWrapMode);
  }
  
  void _onDispose() {
-   _onChangeTabSize.close();
+   _onChangeOverwrite.close();
    _onChangeScrollLeft.close();
    _onChangeScrollTop.close();
+   _onChangeTabSize.close();
    _onChangeWrapLimit.close();
-   _onChangeWrapMode.close();
-   _jsOnChangeTabSize.dispose();
+   _onChangeWrapMode.close();   
+   _jsOnChangeOverwrite.dispose();
    _jsOnChangeScrollLeft.dispose();
    _jsOnChangeScrollTop.dispose();
+   _jsOnChangeTabSize.dispose();
    _jsOnChangeWrapLimit.dispose();
    _jsOnChangeWrapMode.dispose();
  }
@@ -233,7 +248,9 @@ class EditSession extends _HasProxy {
  void setWrapLimitRange({int min, int max}) =&gt; 
      _proxy.setWrapLimitRange(min, max);
  
+ /// Sets the value of [overwrite] to the opposite of its current value.
  void toggleOverwrite() =&gt; _proxy.toggleOverwrite();
+ 
  String toString() =&gt; _proxy.toString();
 }
 </pre>
@@ -335,6 +352,19 @@ set newLineMode(String newLineMode) =&gt; _proxy.setNewLineMode(newLineMode);
 </pre>
 </div>
 </div>
+<div class="field"><h4 id="onChangeOverwrite">
+<button class="show-code">Code</button>
+final Stream         <strong>onChangeOverwrite</strong> <a class="anchor-link"
+            href="#onChangeOverwrite"
+            title="Permalink to EditSession.onChangeOverwrite">#</a>
+        </h4>
+        <div class="doc">
+<p>Fired whenever the <a class="crossref" href="../ace/EditSession.html#overwrite">overwrite</a> changes.</p>
+<pre class="source">
+Stream get onChangeOverwrite =&gt; _onChangeOverwrite.stream;
+</pre>
+</div>
+</div>
 <div class="field"><h4 id="onChangeScrollLeft">
 <button class="show-code">Code</button>
 final Stream&lt;int&gt;         <strong>onChangeScrollLeft</strong> <a class="anchor-link"
@@ -407,6 +437,10 @@ bool         <strong>overwrite</strong> <a class="anchor-link"
             title="Permalink to EditSession.overwrite">#</a>
         </h4>
         <div class="doc">
+<p>Whether or not overwrite is enabled in this session.</p>
+<p>A <em>true</em> value means overwrite is enabled.  Any text that is entered will
+write over any text after it.  Setting this to a new value fires an
+<a class="crossref" href="../ace/EditSession.html#onChangeOverwrite">onChangeOverwrite</a> event.</p>
 <pre class="source">
 bool
  get overwrite =&gt; _proxy.getOverwrite();
@@ -807,6 +841,7 @@ void setWrapLimitRange({int min, int max}) =&gt;
 void <strong>toggleOverwrite</strong>() <a class="anchor-link" href="#toggleOverwrite"
               title="Permalink to EditSession.toggleOverwrite">#</a></h4>
 <div class="doc">
+<p>Sets the value of <a class="crossref" href="../ace/EditSession.html#overwrite">overwrite</a> to the opposite of its current value.</p>
 <pre class="source">
 void toggleOverwrite() =&gt; _proxy.toggleOverwrite();
 </pre>
@@ -830,7 +865,7 @@ String toString() =&gt; _proxy.toString();
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2013-08-15 13:27:38.405</div>
+          <div>This page was generated at 2013-08-15 13:52:29.728</div>
         </div>
         <script async src="../client-live-nav.js"></script>
         </body></html>
