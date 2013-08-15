@@ -144,6 +144,11 @@ class Document extends _HasProxy {
  /// a point at the end of the new text.
  Point replace(Range range, String text) =&gt; 
      new Point._(_proxy.replace(range._toProxy(), text));
+ 
+ /// Reverts all of the given [deltas] to this document in reverse of the 
+ /// order given.
+ void revertDeltas(Iterable&lt;Delta&gt; deltas) =&gt; 
+     _proxy.revertDeltas(js.array(deltas.map((delta) =&gt; delta._toProxy())));
 }
 </pre>
 </div>
@@ -472,12 +477,26 @@ Point replace(Range range, String text) =&gt;
 </pre>
 </div>
 </div>
+<div class="method"><h4 id="revertDeltas">
+<button class="show-code">Code</button>
+void <strong>revertDeltas</strong>(Iterable&lt;<a href="../ace/Delta.html">Delta</a>&gt; deltas) <a class="anchor-link" href="#revertDeltas"
+              title="Permalink to Document.revertDeltas">#</a></h4>
+<div class="doc">
+<p>Reverts all of the given 
+<span class="param">deltas</span> to this document in reverse of the 
+order given.</p>
+<pre class="source">
+void revertDeltas(Iterable&lt;Delta&gt; deltas) =&gt; 
+   _proxy.revertDeltas(js.array(deltas.map((delta) =&gt; delta._toProxy())));
+</pre>
+</div>
+</div>
 </div>
         </div>
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2013-08-15 09:26:28.597</div>
+          <div>This page was generated at 2013-08-15 09:47:39.504</div>
         </div>
         <script async src="../client-live-nav.js"></script>
         </body></html>
