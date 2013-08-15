@@ -40,9 +40,16 @@ instance of <a class="crossref" href="../ace/Document.html">Document</a> may be 
 <pre class="source">
 class EditSession extends _HasProxy {
  js.Callback _jsOnChangeTabSize;
+ js.Callback _jsOnChangeWrapMode;
+ 
  final _onChangeTabSize = new StreamController.broadcast();
+ final _onChangeWrapMode = new StreamController.broadcast();
+ 
  /// Fired whenever the [tabSize] changes.
  Stream get onChangeTabSize =&gt; _onChangeTabSize.stream;
+ 
+ /// Fired whenever the [useWrapMode] changes.
+ Stream get onChangeWrapMode =&gt; _onChangeWrapMode.stream;
  
  Document
    get document =&gt; new Document._(_proxy.getDocument());
@@ -95,9 +102,20 @@ class EditSession extends _HasProxy {
    get useSoftTabs =&gt; _proxy.getUseSoftTabs();
    set useSoftTabs(bool useSoftTabs) =&gt; _proxy.setUseSoftTabs(useSoftTabs);
    
+ /// Whether or not this EditSession uses a worker.
+ /// 
+ /// A _true_ value means to use a worker.
  bool
    get useWorker =&gt; _proxy.getUseWorker();
    set useWorker(bool useWorker) =&gt; _proxy.setUseWorker(useWorker);
+   
+ /// Whether or not line wrapping is enabled. 
+ /// 
+ /// A _true_ value means to line wrap.  Setting a new value fires an 
+ /// [onChangeWrapMode] event.
+ bool
+   get useWrapMode =&gt; _proxy.getUseWrapMode();
+   set useWrapMode(bool useWrapMode) =&gt; _proxy.setUseWrapMode(useWrapMode);
    
  /// The current [document.value].
  String
@@ -114,12 +132,17 @@ class EditSession extends _HasProxy {
  EditSession._(js.Proxy proxy) : super(proxy) {
    _jsOnChangeTabSize = 
        new js.Callback.many((_,__) =&gt; _onChangeTabSize.add(this));
+   _jsOnChangeWrapMode = 
+       new js.Callback.many((_,__) =&gt; _onChangeWrapMode.add(this));
    _proxy.on('changeTabSize', _jsOnChangeTabSize);
+   _proxy.on('changeWrapMode', _jsOnChangeWrapMode);
  }
  
  void _onDispose() {
    _onChangeTabSize.close();
+   _onChangeWrapMode.close();
    _jsOnChangeTabSize.dispose();
+   _jsOnChangeWrapMode.dispose();
  }
      
  void addGutterDecoration(int row, String className) =&gt;
@@ -257,6 +280,19 @@ Stream get onChangeTabSize =&gt; _onChangeTabSize.stream;
 </pre>
 </div>
 </div>
+<div class="field"><h4 id="onChangeWrapMode">
+<button class="show-code">Code</button>
+final Stream         <strong>onChangeWrapMode</strong> <a class="anchor-link"
+            href="#onChangeWrapMode"
+            title="Permalink to EditSession.onChangeWrapMode">#</a>
+        </h4>
+        <div class="doc">
+<p>Fired whenever the <a class="crossref" href="../ace/EditSession.html#useWrapMode">useWrapMode</a> changes.</p>
+<pre class="source">
+Stream get onChangeWrapMode =&gt; _onChangeWrapMode.stream;
+</pre>
+</div>
+</div>
 <div class="field"><h4 id="overwrite">
 <button class="show-code">Code</button>
 bool         <strong>overwrite</strong> <a class="anchor-link"
@@ -378,12 +414,33 @@ bool         <strong>useWorker</strong> <a class="anchor-link"
             title="Permalink to EditSession.useWorker">#</a>
         </h4>
         <div class="doc">
+<p>Whether or not this EditSession uses a worker.</p>
+<p>A <em>true</em> value means to use a worker.</p>
 <pre class="source">
 bool
  get useWorker =&gt; _proxy.getUseWorker();
 </pre>
 <pre class="source">
 set useWorker(bool useWorker) =&gt; _proxy.setUseWorker(useWorker);
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="useWrapMode">
+<button class="show-code">Code</button>
+bool         <strong>useWrapMode</strong> <a class="anchor-link"
+            href="#useWrapMode"
+            title="Permalink to EditSession.useWrapMode">#</a>
+        </h4>
+        <div class="doc">
+<p>Whether or not line wrapping is enabled. </p>
+<p>A <em>true</em> value means to line wrap.  Setting a new value fires an 
+<a class="crossref" href="../ace/EditSession.html#onChangeWrapMode">onChangeWrapMode</a> event.</p>
+<pre class="source">
+bool
+ get useWrapMode =&gt; _proxy.getUseWrapMode();
+</pre>
+<pre class="source">
+set useWrapMode(bool useWrapMode) =&gt; _proxy.setUseWrapMode(useWrapMode);
 </pre>
 </div>
 </div>
@@ -610,7 +667,7 @@ String toString() =&gt; _proxy.toString();
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2013-08-15 11:36:44.531</div>
+          <div>This page was generated at 2013-08-15 12:02:26.861</div>
         </div>
         <script async src="../client-live-nav.js"></script>
         </body></html>
