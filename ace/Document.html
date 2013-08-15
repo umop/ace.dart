@@ -135,6 +135,11 @@ class Document extends _HasProxy {
  /// Removes the [newLineCharacter] between the given [row] and the row 
  /// immediately following it.  This method also fires an [onChange] event.
  void removeNewLine(int row) =&gt; _proxy.removeNewLine(row);
+ 
+ /// Replaces a given [range] in this document with the new [text] and returns
+ /// a point at the end of the new text.
+ Point replace(Range range, String text) =&gt; 
+     new Point._(_proxy.replace(range._toProxy(), text));
 }
 </pre>
 </div>
@@ -435,12 +440,27 @@ void removeNewLine(int row) =&gt; _proxy.removeNewLine(row);
 </pre>
 </div>
 </div>
+<div class="method"><h4 id="replace">
+<button class="show-code">Code</button>
+<a href="../ace/Point.html">Point</a> <strong>replace</strong>(<a href="../ace/Range.html">Range</a> range, String text) <a class="anchor-link" href="#replace"
+              title="Permalink to Document.replace">#</a></h4>
+<div class="doc">
+<p>Replaces a given 
+<span class="param">range</span> in this document with the new 
+<span class="param">text</span> and returns
+a point at the end of the new text.</p>
+<pre class="source">
+Point replace(Range range, String text) =&gt; 
+   new Point._(_proxy.replace(range._toProxy(), text));
+</pre>
+</div>
+</div>
 </div>
         </div>
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2013-08-15 08:01:56.300</div>
+          <div>This page was generated at 2013-08-15 08:13:25.413</div>
         </div>
         <script async src="../client-live-nav.js"></script>
         </body></html>
