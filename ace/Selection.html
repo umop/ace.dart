@@ -38,7 +38,7 @@ class Selection extends _HasProxy {
  bool get isBackwards =&gt; _proxy.isBackwards();
  bool get isEmpty =&gt; _proxy.isEmpty();
  bool get isMultiLine =&gt; _proxy.isMultiLine();  
- Range get range =&gt; new Range._fromProxy(_proxy.getRange());
+ Range get range =&gt; new Range._(_proxy.getRange());
  
  Selection._(js.Proxy proxy) : super(proxy);
    
@@ -145,7 +145,7 @@ final <a href="../ace/Range.html">Range</a>         <strong>range</strong> <a cl
         </h4>
         <div class="doc">
 <pre class="source">
-Range get range =&gt; new Range._fromProxy(_proxy.getRange());
+Range get range =&gt; new Range._(_proxy.getRange());
 </pre>
 </div>
 </div>
@@ -526,7 +526,7 @@ void shiftSelection(int columns) =&gt; _proxy.shiftSelection(columns);
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2013-08-15 14:19:01.145</div>
+          <div>This page was generated at 2013-08-15 14:38:39.170</div>
         </div>
         <script async src="../client-live-nav.js"></script>
         </body></html>

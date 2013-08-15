@@ -104,7 +104,7 @@ class Editor extends _HasProxy {
    set scrollSpeed(int scrollSpeed) =&gt; _proxy.setScrollSpeed(scrollSpeed);
    
  Selection get selection =&gt; new Selection._(_proxy.getSelection());
- Range get selectionRange =&gt; new Range._fromProxy(_proxy.getSelectionRange());
+ Range get selectionRange =&gt; new Range._(_proxy.getSelectionRange());
  
  /// The current [EditSession] being used; setting a new session fires an 
  /// [onChangeSession] event.
@@ -495,7 +495,7 @@ final <a href="../ace/Range.html">Range</a>         <strong>selectionRange</stro
         </h4>
         <div class="doc">
 <pre class="source">
-Range get selectionRange =&gt; new Range._fromProxy(_proxy.getSelectionRange());
+Range get selectionRange =&gt; new Range._(_proxy.getSelectionRange());
 </pre>
 </div>
 </div>
@@ -968,7 +968,7 @@ void updateSelectionMarkers() =&gt; _proxy.updateSelectionMarkers();
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2013-08-15 14:19:01.295</div>
+          <div>This page was generated at 2013-08-15 14:38:39.327</div>
         </div>
         <script async src="../client-live-nav.js"></script>
         </body></html>

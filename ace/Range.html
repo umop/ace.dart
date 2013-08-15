@@ -51,8 +51,8 @@ class Range {
  
  Range.fromPoints(this.start, this.end);
  
- Range._fromProxy(p)
-     : this(p.start.row, p.start.column, p.end.row, p.end.column);
+ Range._(proxy) : this(proxy.start.row, proxy.start.column, 
+                       proxy.end.row, proxy.end.column);
  
  bool operator ==(Object other) {
    if(identical(this, other)) return true;
@@ -222,7 +222,7 @@ String toString() =&gt;
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2013-08-15 14:19:01.176</div>
+          <div>This page was generated at 2013-08-15 14:38:39.200</div>
         </div>
         <script async src="../client-live-nav.js"></script>
         </body></html>

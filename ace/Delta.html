@@ -45,7 +45,7 @@ abstract class Delta {
      default: throw new UnsupportedError('Unknown action: ${data.action}');
    }
  }  
- Delta._(this.action, js.Proxy r): range = new Range._fromProxy(r);
+ Delta._(this.action, js.Proxy r): range = new Range._(r);
  js.Proxy _toProxy() =&gt; js.map({'action': action, 'range': range._toProxy()});
 }
 </pre>
@@ -84,7 +84,7 @@ final Range range
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2013-08-15 14:19:01.348</div>
+          <div>This page was generated at 2013-08-15 14:38:39.383</div>
         </div>
         <script async src="../client-live-nav.js"></script>
         </body></html>
