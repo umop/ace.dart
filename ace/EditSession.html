@@ -241,6 +241,10 @@ class EditSession extends _HasProxy {
      _proxy.documentToScreenRow(docRow, docColumn);
  int duplicateLines(int firstRow, int lastRow) =&gt;
      _proxy.duplicateLines(firstRow, lastRow);
+ 
+ /// Gets the [Range] of a word, including its right whitespace.
+ /// 
+ /// Start from the given [row] and [column].
  Range getAWordRange(int row, int column) =&gt;
      new Range._(_proxy.getAWordRange(row, column));
  
@@ -808,6 +812,10 @@ int duplicateLines(int firstRow, int lastRow) =&gt;
 <a href="../ace/Range.html">Range</a> <strong>getAWordRange</strong>(int row, int column) <a class="anchor-link" href="#getAWordRange"
               title="Permalink to EditSession.getAWordRange">#</a></h4>
 <div class="doc">
+<p>Gets the <a class="crossref" href="../ace/Range.html">Range</a> of a word, including its right whitespace.</p>
+<p>Start from the given 
+<span class="param">row</span> and 
+<span class="param">column</span>.</p>
 <pre class="source">
 Range getAWordRange(int row, int column) =&gt;
    new Range._(_proxy.getAWordRange(row, column));
@@ -930,7 +938,7 @@ String toString() =&gt; _proxy.toString();
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2013-08-15 15:30:32.356</div>
+          <div>This page was generated at 2013-08-15 15:37:42.612</div>
         </div>
         <script async src="../client-live-nav.js"></script>
         </body></html>
