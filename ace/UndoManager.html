@@ -35,15 +35,114 @@
 <p>Manages the undo stack for an <a class="crossref" href="../ace/EditSession.html">EditSession</a>.</p>
 <pre class="source">
 class UndoManager {
- // TODO(rms):
+ 
+ /// Returns `true` if there are [redo] operations left to perform.
+ bool get hasRedo =&gt; throw new UnimplementedError();
+ 
+ /// Returns `true` if there are [undo] operations left to perform.
+ bool get hasUndo =&gt; throw new UnimplementedError();
+ 
+ /// Performs a redo operation on the associated document, reinstating the last 
+ /// change.
+ /// 
+ /// If [dontSelect] is _true_ then the range of the change will not be 
+ /// selected.  Returns the range of the operation that is performed, or `null`
+ /// if [hasRedo] is _false_.
+ Range redo(bool dontSelect) =&gt; throw new UnimplementedError();
+ 
+ /// Destroys the stack of [undo] and [redo] operations.
+ void reset() =&gt; throw new UnimplementedError();
+ 
+ /// Performs an undo operation on the associated document, reverting the last 
+ /// change.
+ /// 
+ /// If [dontSelect] is _true_ then the range of the change will not be 
+ /// selected.  Returns the range of the operation that is performed, or `null`
+ /// if [hasUndo] is _false_.
+ Range undo(bool dontSelect) =&gt; throw new UnimplementedError();
 }
 </pre>
+</div>
+<div>
+<h3>Properties</h3>
+<div class="field"><h4 id="hasRedo">
+<button class="show-code">Code</button>
+final bool         <strong>hasRedo</strong> <a class="anchor-link"
+            href="#hasRedo"
+            title="Permalink to UndoManager.hasRedo">#</a>
+        </h4>
+        <div class="doc">
+<p>Returns <code>true</code> if there are <a class="crossref" href="../ace/UndoManager.html#redo">redo</a> operations left to perform.</p>
+<pre class="source">
+bool get hasRedo =&gt; throw new UnimplementedError();
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="hasUndo">
+<button class="show-code">Code</button>
+final bool         <strong>hasUndo</strong> <a class="anchor-link"
+            href="#hasUndo"
+            title="Permalink to UndoManager.hasUndo">#</a>
+        </h4>
+        <div class="doc">
+<p>Returns <code>true</code> if there are <a class="crossref" href="../ace/UndoManager.html#undo">undo</a> operations left to perform.</p>
+<pre class="source">
+bool get hasUndo =&gt; throw new UnimplementedError();
+</pre>
+</div>
+</div>
+</div>
+<div>
+<h3>Methods</h3>
+<div class="method"><h4 id="redo">
+<button class="show-code">Code</button>
+<a href="../ace/Range.html">Range</a> <strong>redo</strong>(bool dontSelect) <a class="anchor-link" href="#redo"
+              title="Permalink to UndoManager.redo">#</a></h4>
+<div class="doc">
+<p>Performs a redo operation on the associated document, reinstating the last 
+change.</p>
+<p>If 
+<span class="param">dontSelect</span> is <em>true</em> then the range of the change will not be 
+selected.  Returns the range of the operation that is performed, or <code>null</code>
+if <a class="crossref" href="../ace/UndoManager.html#hasRedo">hasRedo</a> is <em>false</em>.</p>
+<pre class="source">
+Range redo(bool dontSelect) =&gt; throw new UnimplementedError();
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="reset">
+<button class="show-code">Code</button>
+void <strong>reset</strong>() <a class="anchor-link" href="#reset"
+              title="Permalink to UndoManager.reset">#</a></h4>
+<div class="doc">
+<p>Destroys the stack of <a class="crossref" href="../ace/UndoManager.html#undo">undo</a> and <a class="crossref" href="../ace/UndoManager.html#redo">redo</a> operations.</p>
+<pre class="source">
+void reset() =&gt; throw new UnimplementedError();
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="undo">
+<button class="show-code">Code</button>
+<a href="../ace/Range.html">Range</a> <strong>undo</strong>(bool dontSelect) <a class="anchor-link" href="#undo"
+              title="Permalink to UndoManager.undo">#</a></h4>
+<div class="doc">
+<p>Performs an undo operation on the associated document, reverting the last 
+change.</p>
+<p>If 
+<span class="param">dontSelect</span> is <em>true</em> then the range of the change will not be 
+selected.  Returns the range of the operation that is performed, or <code>null</code>
+if <a class="crossref" href="../ace/UndoManager.html#hasUndo">hasUndo</a> is <em>false</em>.</p>
+<pre class="source">
+Range undo(bool dontSelect) =&gt; throw new UnimplementedError();
+</pre>
+</div>
+</div>
 </div>
         </div>
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2013-08-15 14:01:13.798</div>
+          <div>This page was generated at 2013-08-15 14:19:01.121</div>
         </div>
         <script async src="../client-live-nav.js"></script>
         </body></html>
