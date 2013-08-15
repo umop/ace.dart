@@ -78,6 +78,10 @@ class Document extends _HasProxy {
    _jsOnChange.dispose();
  }
  
+ /// Applies all of the given [deltas] to this document in the order given.
+ void applyDeltas(Iterable&lt;Delta&gt; deltas) =&gt;
+     _proxy.applyDeltas(js.array(deltas.map((delta) =&gt; delta._toProxy())));
+ 
  /// Returns a verbatim copy of the given line [row] as it is in this document.
  String getLine(int row) =&gt; _proxy.getLine(row);
  
@@ -265,6 +269,19 @@ set value(String text) =&gt; _proxy.setValue(text);
 </div>
 <div>
 <h3>Methods</h3>
+<div class="method"><h4 id="applyDeltas">
+<button class="show-code">Code</button>
+void <strong>applyDeltas</strong>(Iterable&lt;<a href="../ace/Delta.html">Delta</a>&gt; deltas) <a class="anchor-link" href="#applyDeltas"
+              title="Permalink to Document.applyDeltas">#</a></h4>
+<div class="doc">
+<p>Applies all of the given 
+<span class="param">deltas</span> to this document in the order given.</p>
+<pre class="source">
+void applyDeltas(Iterable&lt;Delta&gt; deltas) =&gt;
+   _proxy.applyDeltas(js.array(deltas.map((delta) =&gt; delta._toProxy())));
+</pre>
+</div>
+</div>
 <div class="method inherited"><h4 id="dispose">
 <button class="show-code">Code</button>
 void <strong>dispose</strong>() <a class="anchor-link" href="#dispose"
@@ -460,7 +477,7 @@ Point replace(Range range, String text) =&gt;
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2013-08-15 08:13:25.413</div>
+          <div>This page was generated at 2013-08-15 09:26:28.597</div>
         </div>
         <script async src="../client-live-nav.js"></script>
         </body></html>

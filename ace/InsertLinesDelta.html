@@ -38,6 +38,7 @@ class InsertLinesDelta extends Delta {
  InsertLinesDelta._(data) 
    : super._(data.action, data.range)
    , lines = json.parse(_context.JSON.stringify(data.lines));
+ js.Proxy _toProxy() =&gt; super._toProxy()..['lines'] = js.array(lines);
 }
 </pre>
 </div>
@@ -87,7 +88,7 @@ final Range range
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2013-08-15 08:13:25.443</div>
+          <div>This page was generated at 2013-08-15 09:26:28.631</div>
         </div>
         <script async src="../client-live-nav.js"></script>
         </body></html>

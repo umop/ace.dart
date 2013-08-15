@@ -40,6 +40,8 @@ class RemoveLinesDelta extends Delta {
    : super._(data.action, data.range)
    , lines = json.parse(_context.JSON.stringify(data.lines))
    , nl = data.nl;
+ js.Proxy _toProxy() =&gt; 
+     super._toProxy()..['lines'] = js.array(lines)..['nl'] = nl;
 }
 </pre>
 </div>
@@ -101,7 +103,7 @@ final Range range
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2013-08-15 08:13:25.429</div>
+          <div>This page was generated at 2013-08-15 09:26:28.615</div>
         </div>
         <script async src="../client-live-nav.js"></script>
         </body></html>
