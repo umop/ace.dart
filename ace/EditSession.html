@@ -83,6 +83,8 @@ class EditSession extends _HasProxy {
    get mode =&gt; new Mode._(_proxy.getMode());
    set mode(Mode mode) =&gt; throw new UnimplementedError();
  
+ // TODO(rms): enum
+ /// The new line mode.  May be one of `windows`, `unix` or `auto`.
  String
    get newLineMode =&gt; _proxy.getNewLineMode();
    set newLineMode(String newLineMode) =&gt; _proxy.setNewLineMode(newLineMode);
@@ -352,6 +354,7 @@ String         <strong>newLineMode</strong> <a class="anchor-link"
             title="Permalink to EditSession.newLineMode">#</a>
         </h4>
         <div class="doc">
+<p>The new line mode.  May be one of <code>windows</code>, <code>unix</code> or <code>auto</code>.</p>
 <pre class="source">
 String
  get newLineMode =&gt; _proxy.getNewLineMode();
@@ -902,7 +905,7 @@ String toString() =&gt; _proxy.toString();
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2013-08-15 15:06:41.549</div>
+          <div>This page was generated at 2013-08-15 15:17:32.606</div>
         </div>
         <script async src="../client-live-nav.js"></script>
         </body></html>
