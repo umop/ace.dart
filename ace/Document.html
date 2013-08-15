@@ -43,7 +43,7 @@ class Document extends _HasProxy {
  /// Fired whenever this document changes.
  Stream&lt;Delta&gt; get onChange =&gt; _onChange.stream;
  
- /// All lines in this document.
+ /// All the lines in this document.
  Iterable&lt;String&gt; get allLines =&gt;
      json.parse(_context.JSON.stringify(_proxy.getAllLines()));
  
@@ -59,6 +59,8 @@ class Document extends _HasProxy {
    get newLineMode =&gt; _proxy.getNewLineMode();
    set newLineMode(String newLineMode) =&gt; _proxy.setNewLineMode(newLineMode);
    
+ /// All the lines in this document as a single string, split by the 
+ /// [newLineCharacter].  
  String
    get value =&gt; _proxy.getValue();
    set value(String text) =&gt; _proxy.setValue(text);
@@ -180,7 +182,7 @@ final Iterable&lt;String&gt;         <strong>allLines</strong> <a class="anchor-
             title="Permalink to Document.allLines">#</a>
         </h4>
         <div class="doc">
-<p>All lines in this document.</p>
+<p>All the lines in this document.</p>
 <pre class="source">
 Iterable&lt;String&gt; get allLines =&gt;
    json.parse(_context.JSON.stringify(_proxy.getAllLines()));
@@ -262,6 +264,8 @@ String         <strong>value</strong> <a class="anchor-link"
             title="Permalink to Document.value">#</a>
         </h4>
         <div class="doc">
+<p>All the lines in this document as a single string, split by the 
+<a class="crossref" href="../ace/Document.html#newLineCharacter">newLineCharacter</a>.  </p>
 <pre class="source">
 String
  get value =&gt; _proxy.getValue();
@@ -496,7 +500,7 @@ void revertDeltas(Iterable&lt;Delta&gt; deltas) =&gt;
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2013-08-15 11:02:56.942</div>
+          <div>This page was generated at 2013-08-15 11:12:22.573</div>
         </div>
         <script async src="../client-live-nav.js"></script>
         </body></html>
