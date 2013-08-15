@@ -60,6 +60,7 @@ class EditSession extends _HasProxy {
    get document =&gt; new Document._(_proxy.getDocument());
    set document(Document document) =&gt; throw new UnimplementedError();
  
+ /// Returns the current [document.length].
  int get length =&gt; _proxy.getLength();
  
  Mode
@@ -169,6 +170,8 @@ class EditSession extends _HasProxy {
  void addGutterDecoration(int row, String className) =&gt;
      _proxy.addGutterDecoration(row, className);
  
+ // TODO(rms): undocumented and complex in ace.js, but a key ingredient in the
+ // line wrapping code so we should deduce some documentation...
  bool adjustWrapLimit(int desiredLimit, int printMargin) =&gt;
      _proxy.adjustWrapLimit(desiredLimit, printMargin);
  
@@ -266,6 +269,7 @@ final int         <strong>length</strong> <a class="anchor-link"
             title="Permalink to EditSession.length">#</a>
         </h4>
         <div class="doc">
+<p>Returns the current <code>document.length</code>.</p>
 <pre class="source">
 int get length =&gt; _proxy.getLength();
 </pre>
@@ -766,7 +770,7 @@ String toString() =&gt; _proxy.toString();
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2013-08-15 12:48:22.005</div>
+          <div>This page was generated at 2013-08-15 12:54:50.880</div>
         </div>
         <script async src="../client-live-nav.js"></script>
         </body></html>
