@@ -92,6 +92,12 @@ class Document extends _HasProxy {
  Point insertInLine(Point position, String text) =&gt;
      new Point._(_proxy.insertInLine(position._toProxy(), text));
  
+ /// Inserts the given [lines] into the document, starting at the given [row]
+ /// and returns a point at the end of the inserted lines.  This method also 
+ /// fires an [onChange] event.
+ Point insertLines(int row, Iterable&lt;String&gt; lines) =&gt;
+     new Point._(_proxy.insertLines(row, js.array(lines)));
+ 
  /// Inserts a [newLineCharacter] into this document at the current row's 
  /// position and returns a point at the end of the insertion.  This method 
  /// also fires an [onChange] event.
@@ -114,6 +120,12 @@ class Document extends _HasProxy {
  
  /// Removes the given [range] from this document.
  Point remove(Range range) =&gt; new Point._(_proxy.remove(range._toProxy()));
+ 
+ /// Removes the range specified by [row/startColumn] -&gt; [row/endColumn] and 
+ /// returns the removed [range.start] point.  This method also fires an
+ /// [onChange] event.
+ Point removeInLine(int row, int startColumn, int endColumn) =&gt;
+     new Point._(_proxy.removeInLine(row, startColumn, endColumn));
 }
 </pre>
 </div>
@@ -297,6 +309,22 @@ Point insertInLine(Point position, String text) =&gt;
 </pre>
 </div>
 </div>
+<div class="method"><h4 id="insertLines">
+<button class="show-code">Code</button>
+<a href="../ace/Point.html">Point</a> <strong>insertLines</strong>(int row, Iterable&lt;String&gt; lines) <a class="anchor-link" href="#insertLines"
+              title="Permalink to Document.insertLines">#</a></h4>
+<div class="doc">
+<p>Inserts the given 
+<span class="param">lines</span> into the document, starting at the given 
+<span class="param">row</span>
+and returns a point at the end of the inserted lines.  This method also 
+fires an <a class="crossref" href="../ace/Document.html#onChange">onChange</a> event.</p>
+<pre class="source">
+Point insertLines(int row, Iterable&lt;String&gt; lines) =&gt;
+   new Point._(_proxy.insertLines(row, js.array(lines)));
+</pre>
+</div>
+</div>
 <div class="method"><h4 id="insertNewLine">
 <button class="show-code">Code</button>
 <a href="../ace/Point.html">Point</a> <strong>insertNewLine</strong>(<a href="../ace/Point.html">Point</a> position) <a class="anchor-link" href="#insertNewLine"
@@ -356,12 +384,26 @@ Point remove(Range range) =&gt; new Point._(_proxy.remove(range._toProxy()));
 </pre>
 </div>
 </div>
+<div class="method"><h4 id="removeInLine">
+<button class="show-code">Code</button>
+<a href="../ace/Point.html">Point</a> <strong>removeInLine</strong>(int row, int startColumn, int endColumn) <a class="anchor-link" href="#removeInLine"
+              title="Permalink to Document.removeInLine">#</a></h4>
+<div class="doc">
+<p>Removes the range specified by <code>row/startColumn</code> -> <code>row/endColumn</code> and 
+returns the removed <code>range.start</code> point.  This method also fires an
+<a class="crossref" href="../ace/Document.html#onChange">onChange</a> event.</p>
+<pre class="source">
+Point removeInLine(int row, int startColumn, int endColumn) =&gt;
+   new Point._(_proxy.removeInLine(row, startColumn, endColumn));
+</pre>
+</div>
+</div>
 </div>
         </div>
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2013-08-15 06:55:42.355</div>
+          <div>This page was generated at 2013-08-15 07:51:23.371</div>
         </div>
         <script async src="../client-live-nav.js"></script>
         </body></html>
