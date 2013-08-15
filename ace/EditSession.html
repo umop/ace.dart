@@ -98,6 +98,9 @@ class EditSession extends _HasProxy {
    get overwrite =&gt; _proxy.getOverwrite();
    set overwrite(bool overwrite) =&gt; _proxy.setOverwrite(overwrite);
  
+ /// Returns the length of the screen.
+ int get screenLength =&gt; _proxy.getScreenLength();
+   
  /// Returns the width of the screen.
  int get screenWidth =&gt; _proxy.getScreenWidth();
  
@@ -460,6 +463,19 @@ bool
 </pre>
 <pre class="source">
 set overwrite(bool overwrite) =&gt; _proxy.setOverwrite(overwrite);
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="screenLength">
+<button class="show-code">Code</button>
+final int         <strong>screenLength</strong> <a class="anchor-link"
+            href="#screenLength"
+            title="Permalink to EditSession.screenLength">#</a>
+        </h4>
+        <div class="doc">
+<p>Returns the length of the screen.</p>
+<pre class="source">
+int get screenLength =&gt; _proxy.getScreenLength();
 </pre>
 </div>
 </div>
@@ -907,7 +923,7 @@ String toString() =&gt; _proxy.toString();
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2013-08-15 15:19:19.618</div>
+          <div>This page was generated at 2013-08-15 15:20:44.264</div>
         </div>
         <script async src="../client-live-nav.js"></script>
         </body></html>
