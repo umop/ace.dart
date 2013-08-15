@@ -131,6 +131,10 @@ class Document extends _HasProxy {
  /// returns the removed lines.  This method also fires an [onChange] event.
  Iterable&lt;String&gt; removeLines(int startRow, int endRow) =&gt;
      json.parse(_context.JSON.stringify(_proxy.removeLines(startRow, endRow)));
+ 
+ /// Removes the [newLineCharacter] between the given [row] and the row 
+ /// immediately following it.  This method also fires an [onChange] event.
+ void removeNewLine(int row) =&gt; _proxy.removeNewLine(row);
 }
 </pre>
 </div>
@@ -418,12 +422,25 @@ Iterable&lt;String&gt; removeLines(int startRow, int endRow) =&gt;
 </pre>
 </div>
 </div>
+<div class="method"><h4 id="removeNewLine">
+<button class="show-code">Code</button>
+void <strong>removeNewLine</strong>(int row) <a class="anchor-link" href="#removeNewLine"
+              title="Permalink to Document.removeNewLine">#</a></h4>
+<div class="doc">
+<p>Removes the <a class="crossref" href="../ace/Document.html#newLineCharacter">newLineCharacter</a> between the given 
+<span class="param">row</span> and the row 
+immediately following it.  This method also fires an <a class="crossref" href="../ace/Document.html#onChange">onChange</a> event.</p>
+<pre class="source">
+void removeNewLine(int row) =&gt; _proxy.removeNewLine(row);
+</pre>
+</div>
+</div>
 </div>
         </div>
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2013-08-15 07:52:20.763</div>
+          <div>This page was generated at 2013-08-15 08:01:56.300</div>
         </div>
         <script async src="../client-live-nav.js"></script>
         </body></html>
