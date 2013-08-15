@@ -40,13 +40,18 @@ instance of <a class="crossref" href="../ace/Document.html">Document</a> may be 
 <pre class="source">
 class EditSession extends _HasProxy {
  js.Callback _jsOnChangeTabSize;
+ js.Callback _jsOnChangeWrapLimit;
  js.Callback _jsOnChangeWrapMode;
  
  final _onChangeTabSize = new StreamController.broadcast();
+ final _onChangeWrapLimit = new StreamController.broadcast();
  final _onChangeWrapMode = new StreamController.broadcast();
  
  /// Fired whenever the [tabSize] changes.
  Stream get onChangeTabSize =&gt; _onChangeTabSize.stream;
+ 
+ /// Fired whenever the [wrapLimit] changes.
+ Stream get onChangeWrapLimit =&gt; _onChangeWrapLimit.stream;
  
  /// Fired whenever the [useWrapMode] changes.
  Stream get onChangeWrapMode =&gt; _onChangeWrapMode.stream;
@@ -122,8 +127,19 @@ class EditSession extends _HasProxy {
    get value =&gt; _proxy.getValue();
    set value(String text) =&gt; _proxy.setValue(text);
    
+ /// The current wrap limit.
  int get wrapLimit =&gt; _proxy.getWrapLimit();
-   
+ // TODO(rms): there is a _proxy.setWrapLimit(limit) but it calls through to
+ // `setWrapLimitRange(limit, limit)` which doesn't set the value of wrapLimit?
+ 
+ /// Returns a map that defines the minimum and maximum of the [wrapLimit].
+ /// 
+ /// The map contains the keys `min` and `max`:
+ ///     { min: wrapLimitRange_min, max: wrapLimitRange_max }
+ // TODO(rms): define a class for this data.
+ Map get wrapLimitRange =&gt; 
+     json.parse(_context.JSON.stringify(_proxy.getWrapLimitRange()));
+ 
  /// Creates a new EditSession and associates it with the given [document] and 
  /// text [mode].
  EditSession(Document document, String mode) : this._(
@@ -132,21 +148,30 @@ class EditSession extends _HasProxy {
  EditSession._(js.Proxy proxy) : super(proxy) {
    _jsOnChangeTabSize = 
        new js.Callback.many((_,__) =&gt; _onChangeTabSize.add(this));
+   _jsOnChangeWrapLimit = 
+       new js.Callback.many((_,__) =&gt; _onChangeWrapLimit.add(this));
    _jsOnChangeWrapMode = 
        new js.Callback.many((_,__) =&gt; _onChangeWrapMode.add(this));
    _proxy.on('changeTabSize', _jsOnChangeTabSize);
+   _proxy.on('changeWrapLimit', _jsOnChangeWrapLimit);
    _proxy.on('changeWrapMode', _jsOnChangeWrapMode);
  }
  
  void _onDispose() {
    _onChangeTabSize.close();
+   _onChangeWrapLimit.close();
    _onChangeWrapMode.close();
    _jsOnChangeTabSize.dispose();
+   _jsOnChangeWrapLimit.dispose();
    _jsOnChangeWrapMode.dispose();
  }
      
  void addGutterDecoration(int row, String className) =&gt;
      _proxy.addGutterDecoration(row, className);
+ 
+ bool adjustWrapLimit(int desiredLimit, int printMargin) =&gt;
+     _proxy.adjustWrapLimit(desiredLimit, printMargin);
+ 
  void clearAnnotations() =&gt; _proxy.clearAnnotations();
  void clearBreakpoint(int row) =&gt; _proxy.clearBreakpoint(row);
  void clearBreakpoints() =&gt; _proxy.clearBreakpoints();
@@ -167,6 +192,17 @@ class EditSession extends _HasProxy {
  int moveLinesUp(int firstRow, int lastRow) =&gt;
      _proxy.moveLinesUp(firstRow, lastRow);
  void setMode(String mode) =&gt; _proxy.setMode(mode);
+ 
+ /// Sets the boundaries of line wrap. 
+ /// 
+ /// Either value can be `null` to have an unconstrained wrap, or, they can be 
+ /// the same number to pin the [wrapLimit].  The [min] wrap value specifies
+ /// the left side wrap and the [max] wrap value specifies the right side wrap.
+ /// If a new value for [min] or [max] is set then this method fires an 
+ /// [onChangeWrapMode] event.
+ void setWrapLimitRange({int min, int max}) =&gt; 
+     _proxy.setWrapLimitRange(min, max);
+ 
  void toggleOverwrite() =&gt; _proxy.toggleOverwrite();
  String toString() =&gt; _proxy.toString();
 }
@@ -277,6 +313,19 @@ final Stream         <strong>onChangeTabSize</strong> <a class="anchor-link"
 <p>Fired whenever the <a class="crossref" href="../ace/EditSession.html#tabSize">tabSize</a> changes.</p>
 <pre class="source">
 Stream get onChangeTabSize =&gt; _onChangeTabSize.stream;
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="onChangeWrapLimit">
+<button class="show-code">Code</button>
+final Stream         <strong>onChangeWrapLimit</strong> <a class="anchor-link"
+            href="#onChangeWrapLimit"
+            title="Permalink to EditSession.onChangeWrapLimit">#</a>
+        </h4>
+        <div class="doc">
+<p>Fired whenever the <a class="crossref" href="../ace/EditSession.html#wrapLimit">wrapLimit</a> changes.</p>
+<pre class="source">
+Stream get onChangeWrapLimit =&gt; _onChangeWrapLimit.stream;
 </pre>
 </div>
 </div>
@@ -468,8 +517,26 @@ final int         <strong>wrapLimit</strong> <a class="anchor-link"
             title="Permalink to EditSession.wrapLimit">#</a>
         </h4>
         <div class="doc">
+<p>The current wrap limit.</p>
 <pre class="source">
 int get wrapLimit =&gt; _proxy.getWrapLimit();
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="wrapLimitRange">
+<button class="show-code">Code</button>
+final Map         <strong>wrapLimitRange</strong> <a class="anchor-link"
+            href="#wrapLimitRange"
+            title="Permalink to EditSession.wrapLimitRange">#</a>
+        </h4>
+        <div class="doc">
+<p>Returns a map that defines the minimum and maximum of the <a class="crossref" href="../ace/EditSession.html#wrapLimit">wrapLimit</a>.</p>
+<p>The map contains the keys <code>min</code> and <code>max</code>:</p>
+<pre><code>{ min: wrapLimitRange_min, max: wrapLimitRange_max }
+</code></pre>
+<pre class="source">
+Map get wrapLimitRange =&gt; 
+   json.parse(_context.JSON.stringify(_proxy.getWrapLimitRange()));
 </pre>
 </div>
 </div>
@@ -484,6 +551,17 @@ void <strong>addGutterDecoration</strong>(int row, String className) <a class="a
 <pre class="source">
 void addGutterDecoration(int row, String className) =&gt;
    _proxy.addGutterDecoration(row, className);
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="adjustWrapLimit">
+<button class="show-code">Code</button>
+bool <strong>adjustWrapLimit</strong>(int desiredLimit, int printMargin) <a class="anchor-link" href="#adjustWrapLimit"
+              title="Permalink to EditSession.adjustWrapLimit">#</a></h4>
+<div class="doc">
+<pre class="source">
+bool adjustWrapLimit(int desiredLimit, int printMargin) =&gt;
+   _proxy.adjustWrapLimit(desiredLimit, printMargin);
 </pre>
 </div>
 </div>
@@ -639,6 +717,27 @@ void setMode(String mode) =&gt; _proxy.setMode(mode);
 </pre>
 </div>
 </div>
+<div class="method"><h4 id="setWrapLimitRange">
+<button class="show-code">Code</button>
+void <strong>setWrapLimitRange</strong>({int min, int max}) <a class="anchor-link" href="#setWrapLimitRange"
+              title="Permalink to EditSession.setWrapLimitRange">#</a></h4>
+<div class="doc">
+<p>Sets the boundaries of line wrap. </p>
+<p>Either value can be <code>null</code> to have an unconstrained wrap, or, they can be 
+the same number to pin the <a class="crossref" href="../ace/EditSession.html#wrapLimit">wrapLimit</a>.  The 
+<span class="param">min</span> wrap value specifies
+the left side wrap and the 
+<span class="param">max</span> wrap value specifies the right side wrap.
+If a new value for 
+<span class="param">min</span> or 
+<span class="param">max</span> is set then this method fires an 
+<a class="crossref" href="../ace/EditSession.html#onChangeWrapMode">onChangeWrapMode</a> event.</p>
+<pre class="source">
+void setWrapLimitRange({int min, int max}) =&gt; 
+   _proxy.setWrapLimitRange(min, max);
+</pre>
+</div>
+</div>
 <div class="method"><h4 id="toggleOverwrite">
 <button class="show-code">Code</button>
 void <strong>toggleOverwrite</strong>() <a class="anchor-link" href="#toggleOverwrite"
@@ -667,7 +766,7 @@ String toString() =&gt; _proxy.toString();
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2013-08-15 12:02:26.861</div>
+          <div>This page was generated at 2013-08-15 12:48:22.005</div>
         </div>
         <script async src="../client-live-nav.js"></script>
         </body></html>
