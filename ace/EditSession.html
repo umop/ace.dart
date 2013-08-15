@@ -41,11 +41,13 @@ instance of <a class="crossref" href="../ace/Document.html">Document</a> may be 
 class EditSession extends _HasProxy {
  js.Callback _jsOnChangeTabSize;
  js.Callback _jsOnChangeScrollLeft;
+ js.Callback _jsOnChangeScrollTop;
  js.Callback _jsOnChangeWrapLimit;
  js.Callback _jsOnChangeWrapMode;
  
  final _onChangeTabSize = new StreamController.broadcast();
  final _onChangeScrollLeft = new StreamController&lt;int&gt;.broadcast();
+ final _onChangeScrollTop = new StreamController&lt;int&gt;.broadcast();
  final _onChangeWrapLimit = new StreamController.broadcast();
  final _onChangeWrapMode = new StreamController.broadcast();
  
@@ -54,6 +56,9 @@ class EditSession extends _HasProxy {
  
  /// Fired whenever the [scrollLeft] changes.
  Stream&lt;int&gt; get onChangeScrollLeft =&gt; _onChangeScrollLeft.stream;
+ 
+ /// Fired whenever the [scrollTop] changes.
+ Stream&lt;int&gt; get onChangeScrollTop =&gt; _onChangeScrollTop.stream;
  
  /// Fired whenever the [wrapLimit] changes.
  Stream get onChangeWrapLimit =&gt; _onChangeWrapLimit.stream;
@@ -89,6 +94,9 @@ class EditSession extends _HasProxy {
    get scrollLeft =&gt; _proxy.getScrollLeft();
    set scrollLeft(int scrollLeft) =&gt; _proxy.setScrollLeft(scrollLeft);  
    
+ /// The value of the distance between the top of the editor and the topmost 
+ /// part of the visible content.  Setting this to a new value fires an
+ /// [onChangeScrollTop] event.
  int
    get scrollTop =&gt; _proxy.getScrollTop();
    set scrollTop(int scrollTop) =&gt; _proxy.setScrollTop(scrollTop);
@@ -159,12 +167,15 @@ class EditSession extends _HasProxy {
        new js.Callback.many((_,__) =&gt; _onChangeTabSize.add(this));
    _jsOnChangeScrollLeft = 
        new js.Callback.many((e,__) =&gt; _onChangeScrollLeft.add(e));
+   _jsOnChangeScrollTop = 
+       new js.Callback.many((e,__) =&gt; _onChangeScrollTop.add(e));
    _jsOnChangeWrapLimit = 
        new js.Callback.many((_,__) =&gt; _onChangeWrapLimit.add(this));
    _jsOnChangeWrapMode = 
        new js.Callback.many((_,__) =&gt; _onChangeWrapMode.add(this));
    _proxy.on('changeTabSize', _jsOnChangeTabSize);
    _proxy.on('changeScrollLeft', _jsOnChangeScrollLeft);
+   _proxy.on('changeScrollTop', _jsOnChangeScrollTop);
    _proxy.on('changeWrapLimit', _jsOnChangeWrapLimit);
    _proxy.on('changeWrapMode', _jsOnChangeWrapMode);
  }
@@ -172,10 +183,12 @@ class EditSession extends _HasProxy {
  void _onDispose() {
    _onChangeTabSize.close();
    _onChangeScrollLeft.close();
+   _onChangeScrollTop.close();
    _onChangeWrapLimit.close();
    _onChangeWrapMode.close();
    _jsOnChangeTabSize.dispose();
    _jsOnChangeScrollLeft.dispose();
+   _jsOnChangeScrollTop.dispose();
    _jsOnChangeWrapLimit.dispose();
    _jsOnChangeWrapMode.dispose();
  }
@@ -333,6 +346,19 @@ Stream&lt;int&gt; get onChangeScrollLeft =&gt; _onChangeScrollLeft.stream;
 </pre>
 </div>
 </div>
+<div class="field"><h4 id="onChangeScrollTop">
+<button class="show-code">Code</button>
+final Stream&lt;int&gt;         <strong>onChangeScrollTop</strong> <a class="anchor-link"
+            href="#onChangeScrollTop"
+            title="Permalink to EditSession.onChangeScrollTop">#</a>
+        </h4>
+        <div class="doc">
+<p>Fired whenever the <a class="crossref" href="../ace/EditSession.html#scrollTop">scrollTop</a> changes.</p>
+<pre class="source">
+Stream&lt;int&gt; get onChangeScrollTop =&gt; _onChangeScrollTop.stream;
+</pre>
+</div>
+</div>
 <div class="field"><h4 id="onChangeTabSize">
 <button class="show-code">Code</button>
 final Stream         <strong>onChangeTabSize</strong> <a class="anchor-link"
@@ -426,6 +452,9 @@ int         <strong>scrollTop</strong> <a class="anchor-link"
             title="Permalink to EditSession.scrollTop">#</a>
         </h4>
         <div class="doc">
+<p>The value of the distance between the top of the editor and the topmost 
+part of the visible content.  Setting this to a new value fires an
+<a class="crossref" href="../ace/EditSession.html#onChangeScrollTop">onChangeScrollTop</a> event.</p>
 <pre class="source">
 int
  get scrollTop =&gt; _proxy.getScrollTop();
@@ -799,7 +828,7 @@ String toString() =&gt; _proxy.toString();
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2013-08-15 13:07:47.781</div>
+          <div>This page was generated at 2013-08-15 13:13:34.242</div>
         </div>
         <script async src="../client-live-nav.js"></script>
         </body></html>
