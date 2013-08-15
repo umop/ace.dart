@@ -62,7 +62,11 @@ class Document extends _HasProxy {
  String
    get value =&gt; _proxy.getValue();
    set value(String text) =&gt; _proxy.setValue(text);
- 
+
+ /// Creates a new Document with the given [text], if any, or else it is empty.
+ Document([String text = '']) : this._(
+     new js.Proxy(_context.ace.define.modules['ace/document'].Document, text));
+   
  Document._(js.Proxy proxy) : super(proxy) {
    _jsOnChange = new js.Callback.many((e,__) =&gt; 
        _onChange.add(new Delta._for(e.data)));
@@ -116,6 +120,22 @@ class Document extends _HasProxy {
 <h3>Extends</h3>
 <p>
 <span class="type-box"><span class="icon-class"></span><a href="../ace/_HasProxy.html">_HasProxy</a></span>&nbsp;&gt;&nbsp;<span class="type-box"><span class="icon-class"></span><strong>Document</strong></span></p>
+<div>
+<h3>Constructors</h3>
+<div class="method"><h4 id="">
+<button class="show-code">Code</button>
+new <strong>Document</strong>([String text = '']) <a class="anchor-link" href="#"
+              title="Permalink to Document.Document">#</a></h4>
+<div class="doc">
+<p>Creates a new Document with the given 
+<span class="param">text</span>, if any, or else it is empty.</p>
+<pre class="source">
+Document([String text = '']) : this._(
+   new js.Proxy(_context.ace.define.modules['ace/document'].Document, text));
+</pre>
+</div>
+</div>
+</div>
 <div>
 <h3>Properties</h3>
 <div class="field"><h4 id="allLines">
@@ -341,7 +361,7 @@ Point remove(Range range) =&gt; new Point._(_proxy.remove(range._toProxy()));
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2013-08-15 05:28:41.145</div>
+          <div>This page was generated at 2013-08-15 06:55:42.355</div>
         </div>
         <script async src="../client-live-nav.js"></script>
         </body></html>
