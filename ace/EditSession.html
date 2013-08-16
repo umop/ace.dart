@@ -255,8 +255,11 @@ class EditSession extends _HasProxy {
  /// Returns the number of screen rows in a wrapped line for the given [row].
  int getRowLength(int row) =&gt; _proxy.getRowLength(row);
  
+ /// Indents all of the rows from [startRow] to [endRow] (inclusive) by 
+ /// prefixing each row with the given [indentString].
  void indentRows(int startRow, int endRow, String indentString) =&gt;
      _proxy.indentRows(startRow, endRow, indentString);
+ 
  int moveLinesDown(int firstRow, int lastRow) =&gt;
      _proxy.moveLinesDown(firstRow, lastRow);
  int moveLinesUp(int firstRow, int lastRow) =&gt;
@@ -854,6 +857,10 @@ int getRowLength(int row) =&gt; _proxy.getRowLength(row);
 void <strong>indentRows</strong>(int startRow, int endRow, String indentString) <a class="anchor-link" href="#indentRows"
               title="Permalink to EditSession.indentRows">#</a></h4>
 <div class="doc">
+<p>Indents all of the rows from 
+<span class="param">startRow</span> to <a href="inclusive">endRow</a> by 
+prefixing each row with the given 
+<span class="param">indentString</span>.</p>
 <pre class="source">
 void indentRows(int startRow, int endRow, String indentString) =&gt;
    _proxy.indentRows(startRow, endRow, indentString);
@@ -942,7 +949,7 @@ String toString() =&gt; _proxy.toString();
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2013-08-16 06:35:03.611</div>
+          <div>This page was generated at 2013-08-16 10:06:17.107</div>
         </div>
         <script async src="../client-live-nav.js"></script>
         </body></html>
