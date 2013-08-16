@@ -74,6 +74,7 @@ class Editor extends _HasProxy {
  /// The current position of the cursor.
  Point get cursorPosition =&gt; new Point._(_proxy.getCursorPosition());
  
+ /// The current mouse drag delay, in milliseconds.
  int
    get dragDelay =&gt; _proxy.getDragDelay();
    set dragDelay(int dragDelay) =&gt; _proxy.setDragDelay(dragDelay);
@@ -283,6 +284,7 @@ int         <strong>dragDelay</strong> <a class="anchor-link"
             title="Permalink to Editor.dragDelay">#</a>
         </h4>
         <div class="doc">
+<p>The current mouse drag delay, in milliseconds.</p>
 <pre class="source">
 int
  get dragDelay =&gt; _proxy.getDragDelay();
@@ -1049,7 +1051,7 @@ void updateSelectionMarkers() =&gt; _proxy.updateSelectionMarkers();
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2013-08-16 14:51:21.399</div>
+          <div>This page was generated at 2013-08-16 14:55:34.184</div>
         </div>
         <script async src="../client-live-nav.js"></script>
         </body></html>

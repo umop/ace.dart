@@ -32,9 +32,11 @@
         
 <button id="show-inherited" class="show-inherited">Hide inherited</button>
 <div class="doc">
+<p>The renderer draws to the screen.</p>
 <pre class="source">
 class VirtualRenderer extends _HasProxy {
  
+ /// The index of the first visible row.
  int get firstVisibleRow =&gt; _proxy.getFirstVisibleRow();
  
  VirtualRenderer._(js.Proxy proxy) : super(proxy);
@@ -53,6 +55,7 @@ final int         <strong>firstVisibleRow</strong> <a class="anchor-link"
             title="Permalink to VirtualRenderer.firstVisibleRow">#</a>
         </h4>
         <div class="doc">
+<p>The index of the first visible row.</p>
 <pre class="source">
 int get firstVisibleRow =&gt; _proxy.getFirstVisibleRow();
 </pre>
@@ -93,7 +96,7 @@ void dispose() {
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2013-08-16 14:51:21.203</div>
+          <div>This page was generated at 2013-08-16 14:55:33.973</div>
         </div>
         <script async src="../client-live-nav.js"></script>
         </body></html>
