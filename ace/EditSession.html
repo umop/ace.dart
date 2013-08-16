@@ -236,12 +236,16 @@ class EditSession extends _HasProxy {
  void clearBreakpoint(int row) =&gt; _proxy.clearBreakpoint(row);
  void clearBreakpoints() =&gt; _proxy.clearBreakpoints();
  
- /// Returns the screen column for the given [docRow] and [docColumn].
- int documentToScreenColumn(int docRow, int docColumn) =&gt;
-     _proxy.documentToScreenColumn(docRow, docColumn);
+ /// Returns the screen column for the given [row] and [column] of the current
+ /// [document].
+ int documentToScreenColumn(int row, int column) =&gt;
+     _proxy.documentToScreenColumn(row, column);
  
- int documentToScreenRow(int docRow, int docColumn) =&gt;
-     _proxy.documentToScreenRow(docRow, docColumn);
+ /// Returns the screen row for the given [row] and [column] of the current
+ /// [document].
+ int documentToScreenRow(int row, int column) =&gt; 
+     _proxy.documentToScreenRow(row, column);
+ 
  int duplicateLines(int firstRow, int lastRow) =&gt;
      _proxy.duplicateLines(firstRow, lastRow);
  
@@ -790,26 +794,31 @@ void dispose() {
 </div>
 <div class="method"><h4 id="documentToScreenColumn">
 <button class="show-code">Code</button>
-int <strong>documentToScreenColumn</strong>(int docRow, int docColumn) <a class="anchor-link" href="#documentToScreenColumn"
+int <strong>documentToScreenColumn</strong>(int row, int column) <a class="anchor-link" href="#documentToScreenColumn"
               title="Permalink to EditSession.documentToScreenColumn">#</a></h4>
 <div class="doc">
 <p>Returns the screen column for the given 
-<span class="param">docRow</span> and 
-<span class="param">docColumn</span>.</p>
+<span class="param">row</span> and 
+<span class="param">column</span> of the current
+<a class="crossref" href="../ace/EditSession.html#document">document</a>.</p>
 <pre class="source">
-int documentToScreenColumn(int docRow, int docColumn) =&gt;
-   _proxy.documentToScreenColumn(docRow, docColumn);
+int documentToScreenColumn(int row, int column) =&gt;
+   _proxy.documentToScreenColumn(row, column);
 </pre>
 </div>
 </div>
 <div class="method"><h4 id="documentToScreenRow">
 <button class="show-code">Code</button>
-int <strong>documentToScreenRow</strong>(int docRow, int docColumn) <a class="anchor-link" href="#documentToScreenRow"
+int <strong>documentToScreenRow</strong>(int row, int column) <a class="anchor-link" href="#documentToScreenRow"
               title="Permalink to EditSession.documentToScreenRow">#</a></h4>
 <div class="doc">
+<p>Returns the screen row for the given 
+<span class="param">row</span> and 
+<span class="param">column</span> of the current
+<a class="crossref" href="../ace/EditSession.html#document">document</a>.</p>
 <pre class="source">
-int documentToScreenRow(int docRow, int docColumn) =&gt;
-   _proxy.documentToScreenRow(docRow, docColumn);
+int documentToScreenRow(int row, int column) =&gt; 
+   _proxy.documentToScreenRow(row, column);
 </pre>
 </div>
 </div>
@@ -970,7 +979,7 @@ String toString() =&gt; _proxy.toString();
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2013-08-16 10:44:45.545</div>
+          <div>This page was generated at 2013-08-16 10:52:48.950</div>
         </div>
         <script async src="../client-live-nav.js"></script>
         </body></html>
