@@ -339,6 +339,11 @@ class EditSession extends _HasProxy {
  void removeGutterDecoration(int row, String className) =&gt;
      _proxy.removeGutterDecoration(row, className);
  
+ /// Replaces a given [range] in the [document] with the new [text] and returns
+ /// a point at the end of the new text.
+ Point replace(Range range, String text) =&gt; 
+     new Point._(_proxy.replace(range._toProxy(), text));
+ 
  /// Sets a breakpoint on the given [row] using the optional CSS [className]
  /// and fires an [onChangeBreakPoint] event.
  void setBreakpoint(int row, {String className: 'ace_breakpoint'}) =&gt;
@@ -1118,6 +1123,21 @@ void removeGutterDecoration(int row, String className) =&gt;
 </pre>
 </div>
 </div>
+<div class="method"><h4 id="replace">
+<button class="show-code">Code</button>
+<a href="../ace/Point.html">Point</a> <strong>replace</strong>(<a href="../ace/Range.html">Range</a> range, String text) <a class="anchor-link" href="#replace"
+              title="Permalink to EditSession.replace">#</a></h4>
+<div class="doc">
+<p>Replaces a given 
+<span class="param">range</span> in the <a class="crossref" href="../ace/EditSession.html#document">document</a> with the new 
+<span class="param">text</span> and returns
+a point at the end of the new text.</p>
+<pre class="source">
+Point replace(Range range, String text) =&gt; 
+   new Point._(_proxy.replace(range._toProxy(), text));
+</pre>
+</div>
+</div>
 <div class="method"><h4 id="setBreakpoint">
 <button class="show-code">Code</button>
 void <strong>setBreakpoint</strong>(int row, {String className: 'ace_breakpoint'}) <a class="anchor-link" href="#setBreakpoint"
@@ -1206,7 +1226,7 @@ String toString() =&gt; _proxy.toString();
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2013-08-16 13:05:16.544</div>
+          <div>This page was generated at 2013-08-16 13:11:42.268</div>
         </div>
         <script async src="../client-live-nav.js"></script>
         </body></html>
