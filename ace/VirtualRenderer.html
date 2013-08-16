@@ -33,16 +33,67 @@
 <button id="show-inherited" class="show-inherited">Hide inherited</button>
 <div class="doc">
 <pre class="source">
-class VirtualRenderer {
- // TODO(rms):
+class VirtualRenderer extends _HasProxy {
+ 
+ int get firstVisibleRow =&gt; _proxy.getFirstVisibleRow();
+ 
+ VirtualRenderer._(js.Proxy proxy) : super(proxy);
 }
 </pre>
+</div>
+<h3>Extends</h3>
+<p>
+<span class="type-box"><span class="icon-class"></span><a href="../ace/_HasProxy.html">_HasProxy</a></span>&nbsp;&gt;&nbsp;<span class="type-box"><span class="icon-class"></span><strong>VirtualRenderer</strong></span></p>
+<div>
+<h3>Properties</h3>
+<div class="field"><h4 id="firstVisibleRow">
+<button class="show-code">Code</button>
+final int         <strong>firstVisibleRow</strong> <a class="anchor-link"
+            href="#firstVisibleRow"
+            title="Permalink to VirtualRenderer.firstVisibleRow">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+int get firstVisibleRow =&gt; _proxy.getFirstVisibleRow();
+</pre>
+</div>
+</div>
+<div class="field inherited"><h4 id="isDisposed">
+<button class="show-code">Code</button>
+final bool         <strong>isDisposed</strong> <a class="anchor-link"
+            href="#isDisposed"
+            title="Permalink to VirtualRenderer.isDisposed">#</a>
+        </h4>
+        <div class="inherited-from">inherited from <a href="../ace/_HasProxy.html">_HasProxy</a> </div><div class="doc">
+<pre class="source">
+bool get isDisposed =&gt; _proxy == null;
+</pre>
+</div>
+</div>
+</div>
+<div class="inherited">
+<h3>Methods</h3>
+<div class="method inherited"><h4 id="dispose">
+<button class="show-code">Code</button>
+void <strong>dispose</strong>() <a class="anchor-link" href="#dispose"
+              title="Permalink to VirtualRenderer.dispose">#</a></h4>
+<div class="inherited-from">inherited from <a href="../ace/_HasProxy.html">_HasProxy</a> </div><div class="doc">
+<pre class="source">
+void dispose() {
+ assert(!isDisposed);
+ _onDispose();
+ js.release(_proxy);
+ _proxy = null;
+}
+</pre>
+</div>
+</div>
 </div>
         </div>
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2013-08-16 13:45:21.837</div>
+          <div>This page was generated at 2013-08-16 14:32:12.973</div>
         </div>
         <script async src="../client-live-nav.js"></script>
         </body></html>

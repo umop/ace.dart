@@ -51,12 +51,22 @@ class Editor extends _HasProxy {
  final _onFocus = new StreamController.broadcast();
  final _onPaste = new StreamController&lt;String&gt;.broadcast();
  
+ /// Fired whenever this editor has been blurred.
  Stream get onBlur =&gt; _onBlur.stream;
+ 
+ /// Fired whenever the [session.document] changes.
  Stream&lt;Delta&gt; get onChange =&gt; _onChange.stream;
+ 
  Stream/*&lt;TODO: SessionChangeEvent&gt;*/ get onChangeSession =&gt; 
      throw new UnimplementedError();
+ 
+ /// Fired whenever text is copied.
  Stream&lt;String&gt; get onCopy =&gt; _onCopy.stream;
+ 
+ /// Fired whenever this editor comes into focus.
  Stream get onFocus =&gt; _onFocus.stream;
+ 
+ /// Fired whenever text is pasted.
  Stream&lt;String&gt; get onPaste =&gt; _onPaste.stream;  
  
  String get copyText =&gt; _proxy.getCopyText();
@@ -84,6 +94,7 @@ class Editor extends _HasProxy {
    set highlightSelectedWord(bool highlightSelectedWord) =&gt;
        _proxy.setHighlightSelectedWord(highlightSelectedWord);
    
+ /// Returns _true_ if current [textInput] is in focus.
  bool get isFocused =&gt; _proxy.isFocused();
  
  bool
@@ -98,6 +109,8 @@ class Editor extends _HasProxy {
  bool
    get readOnly =&gt; _proxy.getReadOnly();
    set readOnly(bool readOnly) =&gt; _proxy.setReadOnly(readOnly);
+ 
+ VirtualRenderer get renderer =&gt; new VirtualRenderer._(_proxy.renderer);
  
  int
    get scrollSpeed =&gt; _proxy.getScrollSpeed();
@@ -117,10 +130,13 @@ class Editor extends _HasProxy {
    set showInvisibles(bool showInvisibles) =&gt; 
        _proxy.setShowInvisibles(showInvisibles);
  
+ TextInput get textInput =&gt; new TextInput._(_proxy.textInput);
+   
  String
    get theme =&gt; _proxy.getTheme();
    set theme(String theme) =&gt; _proxy.setTheme(theme);
  
+ /// Returns the current [session.value].
  String get value =&gt; _proxy.getValue();
    
  Editor._(js.Proxy proxy) : super(proxy) {
@@ -161,13 +177,18 @@ class Editor extends _HasProxy {
  /// Outdents the current line by the current [session.tabSize].
  void blockOutdent() =&gt; _proxy.blockOutdent();
  
+ /// Blurs the current [textInput].
  void blur() =&gt; _proxy.blur();
+ 
  void centerSelection() =&gt; _proxy.centerSelection();
  void clearSelection() =&gt; _proxy.clearSelection();
  int copyLinesDown() =&gt; _proxy.copyLinesDown();
  int copyLinesUp() =&gt; _proxy.copyLinesUp();
  void exitMultiSelectMode() =&gt; _proxy.exitMultiSelectMode();
+ 
+ /// Brings the current [textInput] into focus.
  void focus() =&gt; _proxy.focus();
+ 
  void gotoPageDown() =&gt; _proxy.gotoPageDown();
  void gotoPageUp() =&gt; _proxy.gotoPageUp();
  void indent() =&gt; _proxy.indent();
@@ -349,6 +370,7 @@ final bool         <strong>isFocused</strong> <a class="anchor-link"
             title="Permalink to Editor.isFocused">#</a>
         </h4>
         <div class="doc">
+<p>Returns <em>true</em> if current <a class="crossref" href="../ace/Editor.html#textInput">textInput</a> is in focus.</p>
 <pre class="source">
 bool get isFocused =&gt; _proxy.isFocused();
 </pre>
@@ -361,6 +383,7 @@ final Stream         <strong>onBlur</strong> <a class="anchor-link"
             title="Permalink to Editor.onBlur">#</a>
         </h4>
         <div class="doc">
+<p>Fired whenever this editor has been blurred.</p>
 <pre class="source">
 Stream get onBlur =&gt; _onBlur.stream;
 </pre>
@@ -373,6 +396,7 @@ final Stream&lt;<a href="../ace/Delta.html">Delta</a>&gt;         <strong>onChan
             title="Permalink to Editor.onChange">#</a>
         </h4>
         <div class="doc">
+<p>Fired whenever the <code>session.document</code> changes.</p>
 <pre class="source">
 Stream&lt;Delta&gt; get onChange =&gt; _onChange.stream;
 </pre>
@@ -398,6 +422,7 @@ final Stream&lt;String&gt;         <strong>onCopy</strong> <a class="anchor-link
             title="Permalink to Editor.onCopy">#</a>
         </h4>
         <div class="doc">
+<p>Fired whenever text is copied.</p>
 <pre class="source">
 Stream&lt;String&gt; get onCopy =&gt; _onCopy.stream;
 </pre>
@@ -410,6 +435,7 @@ final Stream         <strong>onFocus</strong> <a class="anchor-link"
             title="Permalink to Editor.onFocus">#</a>
         </h4>
         <div class="doc">
+<p>Fired whenever this editor comes into focus.</p>
 <pre class="source">
 Stream get onFocus =&gt; _onFocus.stream;
 </pre>
@@ -422,6 +448,7 @@ final Stream&lt;String&gt;         <strong>onPaste</strong> <a class="anchor-lin
             title="Permalink to Editor.onPaste">#</a>
         </h4>
         <div class="doc">
+<p>Fired whenever text is pasted.</p>
 <pre class="source">
 Stream&lt;String&gt; get onPaste =&gt; _onPaste.stream;
 </pre>
@@ -473,6 +500,18 @@ bool
 </pre>
 <pre class="source">
 set readOnly(bool readOnly) =&gt; _proxy.setReadOnly(readOnly);
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="renderer">
+<button class="show-code">Code</button>
+final <a href="../ace/VirtualRenderer.html">VirtualRenderer</a>         <strong>renderer</strong> <a class="anchor-link"
+            href="#renderer"
+            title="Permalink to Editor.renderer">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+VirtualRenderer get renderer =&gt; new VirtualRenderer._(_proxy.renderer);
 </pre>
 </div>
 </div>
@@ -551,6 +590,18 @@ set showInvisibles(bool showInvisibles) =&gt;
 </pre>
 </div>
 </div>
+<div class="field"><h4 id="textInput">
+<button class="show-code">Code</button>
+final <a href="../ace/TextInput.html">TextInput</a>         <strong>textInput</strong> <a class="anchor-link"
+            href="#textInput"
+            title="Permalink to Editor.textInput">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+TextInput get textInput =&gt; new TextInput._(_proxy.textInput);
+</pre>
+</div>
+</div>
 <div class="field"><h4 id="theme">
 <button class="show-code">Code</button>
 String         <strong>theme</strong> <a class="anchor-link"
@@ -574,6 +625,7 @@ final String         <strong>value</strong> <a class="anchor-link"
             title="Permalink to Editor.value">#</a>
         </h4>
         <div class="doc">
+<p>Returns the current <code>session.value</code>.</p>
 <pre class="source">
 String get value =&gt; _proxy.getValue();
 </pre>
@@ -619,6 +671,7 @@ void blockOutdent() =&gt; _proxy.blockOutdent();
 void <strong>blur</strong>() <a class="anchor-link" href="#blur"
               title="Permalink to Editor.blur">#</a></h4>
 <div class="doc">
+<p>Blurs the current <a class="crossref" href="../ace/Editor.html#textInput">textInput</a>.</p>
 <pre class="source">
 void blur() =&gt; _proxy.blur();
 </pre>
@@ -694,6 +747,7 @@ void exitMultiSelectMode() =&gt; _proxy.exitMultiSelectMode();
 void <strong>focus</strong>() <a class="anchor-link" href="#focus"
               title="Permalink to Editor.focus">#</a></h4>
 <div class="doc">
+<p>Brings the current <a class="crossref" href="../ace/Editor.html#textInput">textInput</a> into focus.</p>
 <pre class="source">
 void focus() =&gt; _proxy.focus();
 </pre>
@@ -989,7 +1043,7 @@ void updateSelectionMarkers() =&gt; _proxy.updateSelectionMarkers();
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2013-08-16 13:45:22.065</div>
+          <div>This page was generated at 2013-08-16 14:32:13.226</div>
         </div>
         <script async src="../client-live-nav.js"></script>
         </body></html>
