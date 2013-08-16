@@ -260,7 +260,7 @@ class EditSession extends _HasProxy {
  /// [onChangeBreakPoint] event.
  void clearBreakpoint(int row) =&gt; _proxy.clearBreakpoint(row);
  
- /// Removes all breakpoints on all rows and fires an [onChangeBreakPoint] 
+ /// Removes all [breakpoints] on all rows and fires an [onChangeBreakPoint] 
  /// event.
  void clearBreakpoints() =&gt; _proxy.clearBreakpoints();
  
@@ -314,7 +314,11 @@ class EditSession extends _HasProxy {
  /// and fires an [onChangeBreakPoint] event.
  void setBreakpoint(int row, {String className: 'ace_breakpoint'}) =&gt;
      _proxy.setBreakpoint(row, className);
-   
+ 
+ /// Sets a breakpoint on all of the given [rows] and fires an 
+ /// [onChangeBreakpoint] event.
+ void setBreakpoints(List&lt;int&gt; rows) =&gt; _proxy.setBreakpoints(js.array(rows));
+ 
  void setMode(String mode) =&gt; _proxy.setMode(mode);
  
  /// Sets the boundaries of line wrap. 
@@ -847,7 +851,7 @@ void clearBreakpoint(int row) =&gt; _proxy.clearBreakpoint(row);
 void <strong>clearBreakpoints</strong>() <a class="anchor-link" href="#clearBreakpoints"
               title="Permalink to EditSession.clearBreakpoints">#</a></h4>
 <div class="doc">
-<p>Removes all breakpoints on all rows and fires an <code>onChangeBreakPoint</code> 
+<p>Removes all <a class="crossref" href="../ace/EditSession.html#breakpoints">breakpoints</a> on all rows and fires an <code>onChangeBreakPoint</code> 
 event.</p>
 <pre class="source">
 void clearBreakpoints() =&gt; _proxy.clearBreakpoints();
@@ -1028,6 +1032,19 @@ void setBreakpoint(int row, {String className: 'ace_breakpoint'}) =&gt;
 </pre>
 </div>
 </div>
+<div class="method"><h4 id="setBreakpoints">
+<button class="show-code">Code</button>
+void <strong>setBreakpoints</strong>(List&lt;int&gt; rows) <a class="anchor-link" href="#setBreakpoints"
+              title="Permalink to EditSession.setBreakpoints">#</a></h4>
+<div class="doc">
+<p>Sets a breakpoint on all of the given 
+<span class="param">rows</span> and fires an 
+<a class="crossref" href="../ace/EditSession.html#onChangeBreakpoint">onChangeBreakpoint</a> event.</p>
+<pre class="source">
+void setBreakpoints(List&lt;int&gt; rows) =&gt; _proxy.setBreakpoints(js.array(rows));
+</pre>
+</div>
+</div>
 <div class="method"><h4 id="setMode">
 <button class="show-code">Code</button>
 void <strong>setMode</strong>(String mode) <a class="anchor-link" href="#setMode"
@@ -1088,7 +1105,7 @@ String toString() =&gt; _proxy.toString();
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2013-08-16 12:06:40.366</div>
+          <div>This page was generated at 2013-08-16 12:12:10.970</div>
         </div>
         <script async src="../client-live-nav.js"></script>
         </body></html>
