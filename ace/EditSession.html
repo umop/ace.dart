@@ -39,6 +39,7 @@ state, thus providing a means to change editor state dynamically.</p>
 instance of <a class="crossref" href="../ace/Document.html">Document</a> may be attached to more than one <a class="crossref" href="../ace/EditSession.html">EditSession</a>.</p>
 <pre class="source">
 class EditSession extends _HasProxy {
+ js.Callback _jsOnChangeBreakpoint;
  js.Callback _jsOnChangeOverwrite;
  js.Callback _jsOnChangeScrollLeft;
  js.Callback _jsOnChangeScrollTop;
@@ -46,13 +47,19 @@ class EditSession extends _HasProxy {
  js.Callback _jsOnChangeWrapLimit;
  js.Callback _jsOnChangeWrapMode;
    
+ final _onChangeBreakpoint = new StreamController.broadcast();
  final _onChangeOverwrite = new StreamController.broadcast();
  final _onChangeScrollLeft = new StreamController&lt;int&gt;.broadcast();
  final _onChangeScrollTop = new StreamController&lt;int&gt;.broadcast();
  final _onChangeTabSize = new StreamController.broadcast();
  final _onChangeWrapLimit = new StreamController.broadcast();
  final _onChangeWrapMode = new StreamController.broadcast();
-     
+ 
+ /// Fired whenever the gutter changes, either by setting or removing
+ /// breakpoints, or when the gutter decorations change.
+ // TODO(rms): why isn't this called onChangeGutter then?
+ Stream get onChangeBreakpoint =&gt; _onChangeBreakpoint.stream;
+ 
  /// Fired whenever the [overwrite] changes.
  Stream get onChangeOverwrite =&gt; _onChangeOverwrite.stream;
  
@@ -190,6 +197,8 @@ class EditSession extends _HasProxy {
      new js.Proxy(_context.ace.EditSession, document._proxy, mode));
  
  EditSession._(js.Proxy proxy) : super(proxy) {    
+   _jsOnChangeBreakpoint =
+       new js.Callback.many((_,__) =&gt; _onChangeBreakpoint.add(this));
    _jsOnChangeOverwrite = 
        new js.Callback.many((_,__) =&gt; _onChangeOverwrite.add(this));
    _jsOnChangeScrollLeft = 
@@ -202,6 +211,7 @@ class EditSession extends _HasProxy {
        new js.Callback.many((_,__) =&gt; _onChangeWrapLimit.add(this));
    _jsOnChangeWrapMode = 
        new js.Callback.many((_,__) =&gt; _onChangeWrapMode.add(this));
+   _proxy.on('changeBreakpoint', _jsOnChangeBreakpoint);
    _proxy.on('changeOverwrite', _jsOnChangeOverwrite);
    _proxy.on('changeScrollLeft', _jsOnChangeScrollLeft);
    _proxy.on('changeScrollTop', _jsOnChangeScrollTop);
@@ -211,12 +221,14 @@ class EditSession extends _HasProxy {
  }
  
  void _onDispose() {
+   _onChangeBreakpoint.close();
    _onChangeOverwrite.close();
    _onChangeScrollLeft.close();
    _onChangeScrollTop.close();
    _onChangeTabSize.close();
    _onChangeWrapLimit.close();
    _onChangeWrapMode.close();   
+   _jsOnChangeBreakpoint.dispose();
    _jsOnChangeOverwrite.dispose();
    _jsOnChangeScrollLeft.dispose();
    _jsOnChangeScrollTop.dispose();
@@ -224,7 +236,8 @@ class EditSession extends _HasProxy {
    _jsOnChangeWrapLimit.dispose();
    _jsOnChangeWrapMode.dispose();
  }
-     
+ 
+ /// Adds the given CSS [className] to the given [row].
  void addGutterDecoration(int row, String className) =&gt;
      _proxy.addGutterDecoration(row, className);
  
@@ -278,6 +291,10 @@ class EditSession extends _HasProxy {
  /// inclusive, up one row.
  int moveLinesUp(int firstRow, int lastRow) =&gt;
      _proxy.moveLinesUp(firstRow, lastRow);
+ 
+ /// Removes the given CSS [className] from the given [row].
+ void removeGutterDecoration(int row, String className) =&gt;
+     _proxy.removeGutterDecoration(row, className);
  
  void setMode(String mode) =&gt; _proxy.setMode(mode);
  
@@ -393,6 +410,20 @@ String
 </pre>
 <pre class="source">
 set newLineMode(String newLineMode) =&gt; _proxy.setNewLineMode(newLineMode);
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="onChangeBreakpoint">
+<button class="show-code">Code</button>
+final Stream         <strong>onChangeBreakpoint</strong> <a class="anchor-link"
+            href="#onChangeBreakpoint"
+            title="Permalink to EditSession.onChangeBreakpoint">#</a>
+        </h4>
+        <div class="doc">
+<p>Fired whenever the gutter changes, either by setting or removing
+breakpoints, or when the gutter decorations change.</p>
+<pre class="source">
+Stream get onChangeBreakpoint =&gt; _onChangeBreakpoint.stream;
 </pre>
 </div>
 </div>
@@ -732,6 +763,9 @@ Map get wrapLimitRange =&gt;
 void <strong>addGutterDecoration</strong>(int row, String className) <a class="anchor-link" href="#addGutterDecoration"
               title="Permalink to EditSession.addGutterDecoration">#</a></h4>
 <div class="doc">
+<p>Adds the given CSS 
+<span class="param">className</span> to the given 
+<span class="param">row</span>.</p>
 <pre class="source">
 void addGutterDecoration(int row, String className) =&gt;
    _proxy.addGutterDecoration(row, className);
@@ -924,6 +958,20 @@ int moveLinesUp(int firstRow, int lastRow) =&gt;
 </pre>
 </div>
 </div>
+<div class="method"><h4 id="removeGutterDecoration">
+<button class="show-code">Code</button>
+void <strong>removeGutterDecoration</strong>(int row, String className) <a class="anchor-link" href="#removeGutterDecoration"
+              title="Permalink to EditSession.removeGutterDecoration">#</a></h4>
+<div class="doc">
+<p>Removes the given CSS 
+<span class="param">className</span> from the given 
+<span class="param">row</span>.</p>
+<pre class="source">
+void removeGutterDecoration(int row, String className) =&gt;
+   _proxy.removeGutterDecoration(row, className);
+</pre>
+</div>
+</div>
 <div class="method"><h4 id="setMode">
 <button class="show-code">Code</button>
 void <strong>setMode</strong>(String mode) <a class="anchor-link" href="#setMode"
@@ -984,7 +1032,7 @@ String toString() =&gt; _proxy.toString();
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2013-08-16 10:58:14.547</div>
+          <div>This page was generated at 2013-08-16 11:16:12.565</div>
         </div>
         <script async src="../client-live-nav.js"></script>
         </body></html>
