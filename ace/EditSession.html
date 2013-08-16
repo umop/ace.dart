@@ -78,6 +78,14 @@ class EditSession extends _HasProxy {
  /// Fired whenever the [useWrapMode] changes.
  Stream get onChangeWrapMode =&gt; _onChangeWrapMode.stream;
  
+ /// A map from row index to CSS class name for all of the breakpoints in the 
+ /// current [document].
+ /// 
+ /// A value of _null_ for any given row index indicates that no breakpoint is
+ /// set for that row.
+ Map&lt;int, String&gt; get breakpoints =&gt;
+     json.parse(_context.JSON.stringify(_proxy.getBreakpoints())).asMap();
+ 
  /// The current [Document] associated with this session.
  Document
    get document =&gt; new Document._(_proxy.getDocument());
@@ -296,6 +304,11 @@ class EditSession extends _HasProxy {
  void removeGutterDecoration(int row, String className) =&gt;
      _proxy.removeGutterDecoration(row, className);
  
+ /// Sets a breakpoint on the given [row] using the optional CSS [className]
+ /// and fires an [onChangeBreakPoint] event.
+ void setBreakpoint(int row, {String className: 'ace_breakpoint'}) =&gt;
+     _proxy.setBreakpoint(row, className);
+   
  void setMode(String mode) =&gt; _proxy.setMode(mode);
  
  /// Sets the boundaries of line wrap. 
@@ -338,6 +351,23 @@ EditSession(Document document, String mode) : this._(
 </div>
 <div>
 <h3>Properties</h3>
+<div class="field"><h4 id="breakpoints">
+<button class="show-code">Code</button>
+final Map&lt;int, String&gt;         <strong>breakpoints</strong> <a class="anchor-link"
+            href="#breakpoints"
+            title="Permalink to EditSession.breakpoints">#</a>
+        </h4>
+        <div class="doc">
+<p>A map from row index to CSS class name for all of the breakpoints in the 
+current <a class="crossref" href="../ace/EditSession.html#document">document</a>.</p>
+<p>A value of <em>null</em> for any given row index indicates that no breakpoint is
+set for that row.</p>
+<pre class="source">
+Map&lt;int, String&gt; get breakpoints =&gt;
+   json.parse(_context.JSON.stringify(_proxy.getBreakpoints())).asMap();
+</pre>
+</div>
+</div>
 <div class="field"><h4 id="document">
 <button class="show-code">Code</button>
 <a href="../ace/Document.html">Document</a>         <strong>document</strong> <a class="anchor-link"
@@ -972,6 +1002,21 @@ void removeGutterDecoration(int row, String className) =&gt;
 </pre>
 </div>
 </div>
+<div class="method"><h4 id="setBreakpoint">
+<button class="show-code">Code</button>
+void <strong>setBreakpoint</strong>(int row, {String className: 'ace_breakpoint'}) <a class="anchor-link" href="#setBreakpoint"
+              title="Permalink to EditSession.setBreakpoint">#</a></h4>
+<div class="doc">
+<p>Sets a breakpoint on the given 
+<span class="param">row</span> using the optional CSS 
+<span class="param">className</span>
+and fires an <code>onChangeBreakPoint</code> event.</p>
+<pre class="source">
+void setBreakpoint(int row, {String className: 'ace_breakpoint'}) =&gt;
+   _proxy.setBreakpoint(row, className);
+</pre>
+</div>
+</div>
 <div class="method"><h4 id="setMode">
 <button class="show-code">Code</button>
 void <strong>setMode</strong>(String mode) <a class="anchor-link" href="#setMode"
@@ -1032,7 +1077,7 @@ String toString() =&gt; _proxy.toString();
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2013-08-16 11:16:12.565</div>
+          <div>This page was generated at 2013-08-16 11:47:40.708</div>
         </div>
         <script async src="../client-live-nav.js"></script>
         </body></html>
