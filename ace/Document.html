@@ -52,9 +52,9 @@ class Document extends _HasProxy {
  
  /// The current newline character, based on the current [newLineMode].
  String get newLineCharacter =&gt; _proxy.getNewLineCharacter();
-   
+     
+ /// The new line mode.  May be one of `windows`, `unix` or `auto`.
  // TODO(rms): enum
- /// The new line mode.  May be one of `windows`, `unix` or `auto`.  
  String 
    get newLineMode =&gt; _proxy.getNewLineMode();
    set newLineMode(String newLineMode) =&gt; _proxy.setNewLineMode(newLineMode);
@@ -234,7 +234,7 @@ String         <strong>newLineMode</strong> <a class="anchor-link"
             title="Permalink to Document.newLineMode">#</a>
         </h4>
         <div class="doc">
-<p>The new line mode.  May be one of <code>windows</code>, <code>unix</code> or <code>auto</code>.  </p>
+<p>The new line mode.  May be one of <code>windows</code>, <code>unix</code> or <code>auto</code>.</p>
 <pre class="source">
 String 
  get newLineMode =&gt; _proxy.getNewLineMode();
@@ -500,7 +500,7 @@ void revertDeltas(Iterable&lt;Delta&gt; deltas) =&gt;
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2013-08-16 10:52:49.099</div>
+          <div>This page was generated at 2013-08-16 10:58:14.658</div>
         </div>
         <script async src="../client-live-nav.js"></script>
         </body></html>

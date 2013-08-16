@@ -83,8 +83,9 @@ class EditSession extends _HasProxy {
    get mode =&gt; new Mode._(_proxy.getMode());
    set mode(Mode mode) =&gt; throw new UnimplementedError();
  
- // TODO(rms): enum
+ 
  /// The new line mode.  May be one of `windows`, `unix` or `auto`.
+ // TODO(rms): enum
  String
    get newLineMode =&gt; _proxy.getNewLineMode();
    set newLineMode(String newLineMode) =&gt; _proxy.setNewLineMode(newLineMode);
@@ -246,6 +247,7 @@ class EditSession extends _HasProxy {
  int documentToScreenRow(int row, int column) =&gt; 
      _proxy.documentToScreenRow(row, column);
  
+ /// Duplicates all of the text from [firstRow] to [lastRow], inclusive.
  int duplicateLines(int firstRow, int lastRow) =&gt;
      _proxy.duplicateLines(firstRow, lastRow);
  
@@ -827,6 +829,9 @@ int documentToScreenRow(int row, int column) =&gt;
 int <strong>duplicateLines</strong>(int firstRow, int lastRow) <a class="anchor-link" href="#duplicateLines"
               title="Permalink to EditSession.duplicateLines">#</a></h4>
 <div class="doc">
+<p>Duplicates all of the text from 
+<span class="param">firstRow</span> to 
+<span class="param">lastRow</span>, inclusive.</p>
 <pre class="source">
 int duplicateLines(int firstRow, int lastRow) =&gt;
    _proxy.duplicateLines(firstRow, lastRow);
@@ -979,7 +984,7 @@ String toString() =&gt; _proxy.toString();
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2013-08-16 10:52:48.950</div>
+          <div>This page was generated at 2013-08-16 10:58:14.547</div>
         </div>
         <script async src="../client-live-nav.js"></script>
         </body></html>
