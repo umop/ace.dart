@@ -260,8 +260,11 @@ class EditSession extends _HasProxy {
  void indentRows(int startRow, int endRow, String indentString) =&gt;
      _proxy.indentRows(startRow, endRow, indentString);
  
+ /// Shifts all of the lines in the [document] from [firstRow] to [lastRow],
+ /// inclusive, down one row.
  int moveLinesDown(int firstRow, int lastRow) =&gt;
      _proxy.moveLinesDown(firstRow, lastRow);
+ 
  int moveLinesUp(int firstRow, int lastRow) =&gt;
      _proxy.moveLinesUp(firstRow, lastRow);
  void setMode(String mode) =&gt; _proxy.setMode(mode);
@@ -873,6 +876,10 @@ void indentRows(int startRow, int endRow, String indentString) =&gt;
 int <strong>moveLinesDown</strong>(int firstRow, int lastRow) <a class="anchor-link" href="#moveLinesDown"
               title="Permalink to EditSession.moveLinesDown">#</a></h4>
 <div class="doc">
+<p>Shifts all of the lines in the <a class="crossref" href="../ace/EditSession.html#document">document</a> from 
+<span class="param">firstRow</span> to 
+<span class="param">lastRow</span>,
+inclusive, down one row.</p>
 <pre class="source">
 int moveLinesDown(int firstRow, int lastRow) =&gt;
    _proxy.moveLinesDown(firstRow, lastRow);
@@ -950,7 +957,7 @@ String toString() =&gt; _proxy.toString();
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2013-08-16 10:14:35.176</div>
+          <div>This page was generated at 2013-08-16 10:21:20.855</div>
         </div>
         <script async src="../client-live-nav.js"></script>
         </body></html>
