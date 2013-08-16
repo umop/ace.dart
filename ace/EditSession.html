@@ -301,6 +301,9 @@ class EditSession extends _HasProxy {
  void indentRows(int startRow, int endRow, String indentString) =&gt;
      _proxy.indentRows(startRow, endRow, indentString);
  
+ /// Returns _true_ if the character at the given [position] is a soft tab.
+ bool isTabStop(Point position) =&gt; _proxy.isTabStop(position._toProxy());
+ 
  /// Shifts all of the lines in the [document] from [firstRow] to [lastRow],
  /// inclusive, down one row.
  int moveLinesDown(int firstRow, int lastRow) =&gt;
@@ -995,6 +998,18 @@ void indentRows(int startRow, int endRow, String indentString) =&gt;
 </pre>
 </div>
 </div>
+<div class="method"><h4 id="isTabStop">
+<button class="show-code">Code</button>
+bool <strong>isTabStop</strong>(<a href="../ace/Point.html">Point</a> position) <a class="anchor-link" href="#isTabStop"
+              title="Permalink to EditSession.isTabStop">#</a></h4>
+<div class="doc">
+<p>Returns <em>true</em> if the character at the given 
+<span class="param">position</span> is a soft tab.</p>
+<pre class="source">
+bool isTabStop(Point position) =&gt; _proxy.isTabStop(position._toProxy());
+</pre>
+</div>
+</div>
 <div class="method"><h4 id="moveLinesDown">
 <button class="show-code">Code</button>
 int <strong>moveLinesDown</strong>(int firstRow, int lastRow) <a class="anchor-link" href="#moveLinesDown"
@@ -1127,7 +1142,7 @@ String toString() =&gt; _proxy.toString();
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2013-08-16 12:34:12.144</div>
+          <div>This page was generated at 2013-08-16 12:48:35.921</div>
         </div>
         <script async src="../client-live-nav.js"></script>
         </body></html>
