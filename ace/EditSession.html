@@ -255,7 +255,13 @@ class EditSession extends _HasProxy {
      _proxy.adjustWrapLimit(desiredLimit, printMargin);
  
  void clearAnnotations() =&gt; _proxy.clearAnnotations();
+ 
+ /// Removes a breakpoint on the given [row] and fires an 
+ /// [onChangeBreakPoint] event.
  void clearBreakpoint(int row) =&gt; _proxy.clearBreakpoint(row);
+ 
+ /// Removes all breakpoints on all rows and fires an [onChangeBreakPoint] 
+ /// event.
  void clearBreakpoints() =&gt; _proxy.clearBreakpoints();
  
  /// Returns the screen column for the given [row] and [column] of the current
@@ -828,6 +834,9 @@ void clearAnnotations() =&gt; _proxy.clearAnnotations();
 void <strong>clearBreakpoint</strong>(int row) <a class="anchor-link" href="#clearBreakpoint"
               title="Permalink to EditSession.clearBreakpoint">#</a></h4>
 <div class="doc">
+<p>Removes a breakpoint on the given 
+<span class="param">row</span> and fires an 
+<code>onChangeBreakPoint</code> event.</p>
 <pre class="source">
 void clearBreakpoint(int row) =&gt; _proxy.clearBreakpoint(row);
 </pre>
@@ -838,6 +847,8 @@ void clearBreakpoint(int row) =&gt; _proxy.clearBreakpoint(row);
 void <strong>clearBreakpoints</strong>() <a class="anchor-link" href="#clearBreakpoints"
               title="Permalink to EditSession.clearBreakpoints">#</a></h4>
 <div class="doc">
+<p>Removes all breakpoints on all rows and fires an <code>onChangeBreakPoint</code> 
+event.</p>
 <pre class="source">
 void clearBreakpoints() =&gt; _proxy.clearBreakpoints();
 </pre>
@@ -1077,7 +1088,7 @@ String toString() =&gt; _proxy.toString();
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2013-08-16 11:47:40.708</div>
+          <div>This page was generated at 2013-08-16 12:06:40.366</div>
         </div>
         <script async src="../client-live-nav.js"></script>
         </body></html>
