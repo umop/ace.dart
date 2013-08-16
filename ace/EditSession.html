@@ -291,6 +291,11 @@ class EditSession extends _HasProxy {
  /// Returns all of the text within the given [range] of the [document].
  String getTextRange(Range range) =&gt; _proxy.getTextRange(range._toProxy());
  
+ /// Returns the [Range] of the first word boundary it finds starting at the
+ /// given [row] and [column].
+ Range getWordRange(int row, int column) =&gt; 
+     new Range._(_proxy.getWordRange(row, column));      
+ 
  /// Indents all of the rows from [startRow] to [endRow], inclusive, by 
  /// prefixing each row with the given [indentString].
  void indentRows(int startRow, int endRow, String indentString) =&gt;
@@ -959,6 +964,21 @@ String getTextRange(Range range) =&gt; _proxy.getTextRange(range._toProxy());
 </pre>
 </div>
 </div>
+<div class="method"><h4 id="getWordRange">
+<button class="show-code">Code</button>
+<a href="../ace/Range.html">Range</a> <strong>getWordRange</strong>(int row, int column) <a class="anchor-link" href="#getWordRange"
+              title="Permalink to EditSession.getWordRange">#</a></h4>
+<div class="doc">
+<p>Returns the <a class="crossref" href="../ace/Range.html">Range</a> of the first word boundary it finds starting at the
+given 
+<span class="param">row</span> and 
+<span class="param">column</span>.</p>
+<pre class="source">
+Range getWordRange(int row, int column) =&gt; 
+   new Range._(_proxy.getWordRange(row, column));
+</pre>
+</div>
+</div>
 <div class="method"><h4 id="indentRows">
 <button class="show-code">Code</button>
 void <strong>indentRows</strong>(int startRow, int endRow, String indentString) <a class="anchor-link" href="#indentRows"
@@ -1107,7 +1127,7 @@ String toString() =&gt; _proxy.toString();
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2013-08-16 12:30:59.036</div>
+          <div>This page was generated at 2013-08-16 12:34:12.144</div>
         </div>
         <script async src="../client-live-nav.js"></script>
         </body></html>
