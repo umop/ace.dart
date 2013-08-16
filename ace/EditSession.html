@@ -332,6 +332,9 @@ class EditSession extends _HasProxy {
  int moveLinesUp(int firstRow, int lastRow) =&gt;
      _proxy.moveLinesUp(firstRow, lastRow);
  
+ /// Removes the given [range] from the current [document].
+ Point remove(Range range) =&gt; new Point._(_proxy.remove(range._toProxy()));
+ 
  /// Removes the given CSS [className] from the given [row].
  void removeGutterDecoration(int row, String className) =&gt;
      _proxy.removeGutterDecoration(row, className);
@@ -1089,6 +1092,18 @@ int moveLinesUp(int firstRow, int lastRow) =&gt;
 </pre>
 </div>
 </div>
+<div class="method"><h4 id="remove">
+<button class="show-code">Code</button>
+<a href="../ace/Point.html">Point</a> <strong>remove</strong>(<a href="../ace/Range.html">Range</a> range) <a class="anchor-link" href="#remove"
+              title="Permalink to EditSession.remove">#</a></h4>
+<div class="doc">
+<p>Removes the given 
+<span class="param">range</span> from the current <a class="crossref" href="../ace/EditSession.html#document">document</a>.</p>
+<pre class="source">
+Point remove(Range range) =&gt; new Point._(_proxy.remove(range._toProxy()));
+</pre>
+</div>
+</div>
 <div class="method"><h4 id="removeGutterDecoration">
 <button class="show-code">Code</button>
 void <strong>removeGutterDecoration</strong>(int row, String className) <a class="anchor-link" href="#removeGutterDecoration"
@@ -1191,7 +1206,7 @@ String toString() =&gt; _proxy.toString();
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2013-08-16 13:02:08.832</div>
+          <div>This page was generated at 2013-08-16 13:05:16.544</div>
         </div>
         <script async src="../client-live-nav.js"></script>
         </body></html>
