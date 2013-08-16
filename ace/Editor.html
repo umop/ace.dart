@@ -154,8 +154,13 @@ class Editor extends _HasProxy {
  }
  
  void alignCursors() =&gt; _proxy.alignCursors();
+ 
+ /// Indents the current line by the current [session.tabSize].
  void blockIndent() =&gt; _proxy.blockIndent();
+ 
+ /// Outdents the current line by the current [session.tabSize].
  void blockOutdent() =&gt; _proxy.blockOutdent();
+ 
  void blur() =&gt; _proxy.blur();
  void centerSelection() =&gt; _proxy.centerSelection();
  void clearSelection() =&gt; _proxy.clearSelection();
@@ -592,6 +597,7 @@ void alignCursors() =&gt; _proxy.alignCursors();
 void <strong>blockIndent</strong>() <a class="anchor-link" href="#blockIndent"
               title="Permalink to Editor.blockIndent">#</a></h4>
 <div class="doc">
+<p>Indents the current line by the current <code>session.tabSize</code>.</p>
 <pre class="source">
 void blockIndent() =&gt; _proxy.blockIndent();
 </pre>
@@ -602,6 +608,7 @@ void blockIndent() =&gt; _proxy.blockIndent();
 void <strong>blockOutdent</strong>() <a class="anchor-link" href="#blockOutdent"
               title="Permalink to Editor.blockOutdent">#</a></h4>
 <div class="doc">
+<p>Outdents the current line by the current <code>session.tabSize</code>.</p>
 <pre class="source">
 void blockOutdent() =&gt; _proxy.blockOutdent();
 </pre>
@@ -982,7 +989,7 @@ void updateSelectionMarkers() =&gt; _proxy.updateSelectionMarkers();
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2013-08-16 13:28:54.569</div>
+          <div>This page was generated at 2013-08-16 13:45:22.065</div>
         </div>
         <script async src="../client-live-nav.js"></script>
         </body></html>
