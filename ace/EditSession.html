@@ -301,7 +301,10 @@ class EditSession extends _HasProxy {
  void indentRows(int startRow, int endRow, String indentString) =&gt;
      _proxy.indentRows(startRow, endRow, indentString);
  
- /// Returns _true_ if the character at the given [position] is a soft tab.
+ /// Returns _true_ if the character at the given [position] is a tab stop.
+ /// 
+ /// The logic to determine a tab stop is equivalent to:
+ ///     [useSoftTabs] &amp;&amp; ([position.column] % [tabSize] == 0)
  bool isTabStop(Point position) =&gt; _proxy.isTabStop(position._toProxy());
  
  /// Shifts all of the lines in the [document] from [firstRow] to [lastRow],
@@ -1004,7 +1007,10 @@ bool <strong>isTabStop</strong>(<a href="../ace/Point.html">Point</a> position) 
               title="Permalink to EditSession.isTabStop">#</a></h4>
 <div class="doc">
 <p>Returns <em>true</em> if the character at the given 
-<span class="param">position</span> is a soft tab.</p>
+<span class="param">position</span> is a tab stop.</p>
+<p>The logic to determine a tab stop is equivalent to:</p>
+<pre><code>[useSoftTabs] &amp;&amp; ([position.column] % [tabSize] == 0)
+</code></pre>
 <pre class="source">
 bool isTabStop(Point position) =&gt; _proxy.isTabStop(position._toProxy());
 </pre>
@@ -1142,7 +1148,7 @@ String toString() =&gt; _proxy.toString();
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2013-08-16 12:48:35.921</div>
+          <div>This page was generated at 2013-08-16 12:52:45.454</div>
         </div>
         <script async src="../client-live-nav.js"></script>
         </body></html>
