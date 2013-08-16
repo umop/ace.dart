@@ -235,8 +235,11 @@ class EditSession extends _HasProxy {
  void clearAnnotations() =&gt; _proxy.clearAnnotations();
  void clearBreakpoint(int row) =&gt; _proxy.clearBreakpoint(row);
  void clearBreakpoints() =&gt; _proxy.clearBreakpoints();
+ 
+ /// Returns the screen column for the given [docRow] and [docColumn].
  int documentToScreenColumn(int docRow, int docColumn) =&gt;
      _proxy.documentToScreenColumn(docRow, docColumn);
+ 
  int documentToScreenRow(int docRow, int docColumn) =&gt;
      _proxy.documentToScreenRow(docRow, docColumn);
  int duplicateLines(int firstRow, int lastRow) =&gt;
@@ -790,6 +793,9 @@ void dispose() {
 int <strong>documentToScreenColumn</strong>(int docRow, int docColumn) <a class="anchor-link" href="#documentToScreenColumn"
               title="Permalink to EditSession.documentToScreenColumn">#</a></h4>
 <div class="doc">
+<p>Returns the screen column for the given 
+<span class="param">docRow</span> and 
+<span class="param">docColumn</span>.</p>
 <pre class="source">
 int documentToScreenColumn(int docRow, int docColumn) =&gt;
    _proxy.documentToScreenColumn(docRow, docColumn);
@@ -964,7 +970,7 @@ String toString() =&gt; _proxy.toString();
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2013-08-16 10:35:34.655</div>
+          <div>This page was generated at 2013-08-16 10:44:45.545</div>
         </div>
         <script async src="../client-live-nav.js"></script>
         </body></html>
