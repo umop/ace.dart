@@ -71,12 +71,14 @@ class Editor extends _HasProxy {
  
  String get copyText =&gt; _proxy.getCopyText();
  
+ /// The current position of the cursor.
  Point get cursorPosition =&gt; new Point._(_proxy.getCursorPosition());
  
  int
    get dragDelay =&gt; _proxy.getDragDelay();
    set dragDelay(int dragDelay) =&gt; _proxy.setDragDelay(dragDelay);
  
+ /// The index of the first visible row.
  int get firstVisibleRow =&gt; _proxy.getFirstVisibleRow();
  
  bool
@@ -101,6 +103,7 @@ class Editor extends _HasProxy {
    get overwrite =&gt; _proxy.getOverwrite();
    set overwrite(bool overwrite) =&gt; _proxy.setOverwrite(overwrite);
  
+ /// The column number of where the print margin is.
  int
    get printMarginColumn =&gt; _proxy.getPrintMarginColumn();
    set printMarginColumn(int printMarginColumn) =&gt; 
@@ -267,6 +270,7 @@ final <a href="../ace/Point.html">Point</a>         <strong>cursorPosition</stro
             title="Permalink to Editor.cursorPosition">#</a>
         </h4>
         <div class="doc">
+<p>The current position of the cursor.</p>
 <pre class="source">
 Point get cursorPosition =&gt; new Point._(_proxy.getCursorPosition());
 </pre>
@@ -295,6 +299,7 @@ final int         <strong>firstVisibleRow</strong> <a class="anchor-link"
             title="Permalink to Editor.firstVisibleRow">#</a>
         </h4>
         <div class="doc">
+<p>The index of the first visible row.</p>
 <pre class="source">
 int get firstVisibleRow =&gt; _proxy.getFirstVisibleRow();
 </pre>
@@ -477,6 +482,7 @@ int         <strong>printMarginColumn</strong> <a class="anchor-link"
             title="Permalink to Editor.printMarginColumn">#</a>
         </h4>
         <div class="doc">
+<p>The column number of where the print margin is.</p>
 <pre class="source">
 int
  get printMarginColumn =&gt; _proxy.getPrintMarginColumn();
@@ -1043,7 +1049,7 @@ void updateSelectionMarkers() =&gt; _proxy.updateSelectionMarkers();
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2013-08-16 14:32:13.226</div>
+          <div>This page was generated at 2013-08-16 14:51:21.399</div>
         </div>
         <script async src="../client-live-nav.js"></script>
         </body></html>
