@@ -216,7 +216,10 @@ class Editor extends _HasProxy {
  /// Note that this does de-select the current [selection].
  void navigateLineStart() =&gt; _proxy.navigateLineStart();
  
+ /// Move the cursor right in the document the specified number of times.
+ /// Note that this does de-select the current [selection].
  void navigateRight(int times) =&gt; _proxy.navigateRight(times);
+ 
  void navigateTo(int row, int column) =&gt; _proxy.navigateTo(row, column);
  void navigateUp(int times) =&gt; _proxy.navigateUp(times);
  void navigateWordLeft() =&gt; _proxy.navigateWordLeft();
@@ -886,6 +889,8 @@ void navigateLineStart() =&gt; _proxy.navigateLineStart();
 void <strong>navigateRight</strong>(int times) <a class="anchor-link" href="#navigateRight"
               title="Permalink to Editor.navigateRight">#</a></h4>
 <div class="doc">
+<p>Move the cursor right in the document the specified number of times.
+Note that this does de-select the current <a class="crossref" href="../ace/Editor.html#selection">selection</a>.</p>
 <pre class="source">
 void navigateRight(int times) =&gt; _proxy.navigateRight(times);
 </pre>
@@ -1055,7 +1060,7 @@ void updateSelectionMarkers() =&gt; _proxy.updateSelectionMarkers();
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2013-08-19 08:40:01.086</div>
+          <div>This page was generated at 2013-08-19 08:48:08.194</div>
         </div>
         <script async src="../client-live-nav.js"></script>
         </body></html>
