@@ -206,6 +206,9 @@ class Editor extends _HasProxy {
  bool isRowVisible(int row) =&gt; _proxy.isRowVisible(row);
  void navigateFileEnd() =&gt; _proxy.navigateFileEnd();
  void navigateFileStart() =&gt; _proxy.navigateFileStart();
+ 
+ /// Move the cursor left in the document the specified number of times.
+ /// Note that this does de-select the current [selection].
  void navigateLeft(int times) =&gt; _proxy.navigateLeft(times);
  
  /// Move the [cursorPosition] to the end of the current line.
@@ -855,6 +858,8 @@ void navigateFileStart() =&gt; _proxy.navigateFileStart();
 void <strong>navigateLeft</strong>(int times) <a class="anchor-link" href="#navigateLeft"
               title="Permalink to Editor.navigateLeft">#</a></h4>
 <div class="doc">
+<p>Move the cursor left in the document the specified number of times.
+Note that this does de-select the current <a class="crossref" href="../ace/Editor.html#selection">selection</a>.</p>
 <pre class="source">
 void navigateLeft(int times) =&gt; _proxy.navigateLeft(times);
 </pre>
@@ -1060,7 +1065,7 @@ void updateSelectionMarkers() =&gt; _proxy.updateSelectionMarkers();
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2013-08-19 08:48:08.194</div>
+          <div>This page was generated at 2013-08-19 08:52:03.882</div>
         </div>
         <script async src="../client-live-nav.js"></script>
         </body></html>
