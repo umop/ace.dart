@@ -43,7 +43,19 @@ class Search extends _HasProxy {
  
  /// Creates a new Search with default [SearchOptions]. 
  Search()
-   : super(new js.Proxy(_context.ace.define.modules['ace/search'].Search));   
+   : super(new js.Proxy(_context.ace.define.modules['ace/search'].Search));
+ 
+ /// Searches for [options.needle] in the given [session]. 
+ /// 
+ /// If the [options.needle] is found, this method returns the [Range] where 
+ /// the text first occurs.  Otherwise, it returns `null`.
+ /// 
+ /// If [options.backwards] is `true`, the search goes backwards in the 
+ /// [session].
+ Range find(EditSession session) {
+   final range = _proxy.find(session._proxy);
+   return range == null ? null : new Range._(range);
+ }
 }
 </pre>
 </div>
@@ -97,7 +109,7 @@ set options(SearchOptions options) =&gt; _proxy.setOptions(options._toProxy());
 </div>
 </div>
 </div>
-<div class="inherited">
+<div>
 <h3>Methods</h3>
 <div class="method inherited"><h4 id="dispose">
 <button class="show-code">Code</button>
@@ -114,12 +126,32 @@ void dispose() {
 </pre>
 </div>
 </div>
+<div class="method"><h4 id="find">
+<button class="show-code">Code</button>
+<a href="../ace/Range.html">Range</a> <strong>find</strong>(<a href="../ace/EditSession.html">EditSession</a> session) <a class="anchor-link" href="#find"
+              title="Permalink to Search.find">#</a></h4>
+<div class="doc">
+<p>Searches for <code>options.needle</code> in the given 
+<span class="param">session</span>. </p>
+<p>If the <code>options.needle</code> is found, this method returns the <a class="crossref" href="../ace/Range.html">Range</a> where 
+the text first occurs.  Otherwise, it returns <code>null</code>.</p>
+<p>If <code>options.backwards</code> is <code>true</code>, the search goes backwards in the 
+
+<span class="param">session</span>.</p>
+<pre class="source">
+Range find(EditSession session) {
+ final range = _proxy.find(session._proxy);
+ return range == null ? null : new Range._(range);
+}
+</pre>
+</div>
+</div>
 </div>
         </div>
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2013-08-19 12:21:34.522</div>
+          <div>This page was generated at 2013-08-19 12:38:36.351</div>
         </div>
         <script async src="../client-live-nav.js"></script>
         </body></html>
