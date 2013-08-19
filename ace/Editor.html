@@ -230,19 +230,24 @@ class Editor extends _HasProxy {
  /// Note that this does de-select the current [selection].
  void navigateLineStart() =&gt; _proxy.navigateLineStart();
  
- /// Move the cursor right in the document the specified number of times.
- /// Note that this does de-select the current [selection].
+ /// Move the [cursorPosition] right in the document the specified number of 
+ /// times.  Note that this does de-select the current [selection].
  void navigateRight(int times) =&gt; _proxy.navigateRight(times);
  
- /// Move the cursor to the specified [row] and [column].
+ /// Move the [cursorPosition] to the specified [row] and [column].
  /// Note that this does de-select the current selection.
  void navigateTo(int row, int column) =&gt; _proxy.navigateTo(row, column);
  
- /// Move the cursor up in the document the specified number of times.
- /// Note that this does de-select the current [selection].
+ /// Move the [cursorPosition] up in the document the specified number of 
+ /// times.  Note that this does de-select the current [selection].
  void navigateUp(int times) =&gt; _proxy.navigateUp(times);
  
+ /// Move the [cursorPosition] to the word immediately to its left. 
+ /// Note that this does de-select the current [selection].
  void navigateWordLeft() =&gt; _proxy.navigateWordLeft();
+ 
+ /// Move the [cursorPosition] to the word immediately to its right. 
+ /// Note that this does de-select the current [selection].
  void navigateWordRight() =&gt; _proxy.navigateWordRight();
  
  /// Remove all of the words to the right of the current [selection], until the 
@@ -931,8 +936,8 @@ void navigateLineStart() =&gt; _proxy.navigateLineStart();
 void <strong>navigateRight</strong>(int times) <a class="anchor-link" href="#navigateRight"
               title="Permalink to Editor.navigateRight">#</a></h4>
 <div class="doc">
-<p>Move the cursor right in the document the specified number of times.
-Note that this does de-select the current <a class="crossref" href="../ace/Editor.html#selection">selection</a>.</p>
+<p>Move the <a class="crossref" href="../ace/Editor.html#cursorPosition">cursorPosition</a> right in the document the specified number of 
+times.  Note that this does de-select the current <a class="crossref" href="../ace/Editor.html#selection">selection</a>.</p>
 <pre class="source">
 void navigateRight(int times) =&gt; _proxy.navigateRight(times);
 </pre>
@@ -943,7 +948,7 @@ void navigateRight(int times) =&gt; _proxy.navigateRight(times);
 void <strong>navigateTo</strong>(int row, int column) <a class="anchor-link" href="#navigateTo"
               title="Permalink to Editor.navigateTo">#</a></h4>
 <div class="doc">
-<p>Move the cursor to the specified 
+<p>Move the <a class="crossref" href="../ace/Editor.html#cursorPosition">cursorPosition</a> to the specified 
 <span class="param">row</span> and 
 <span class="param">column</span>.
 Note that this does de-select the current selection.</p>
@@ -957,8 +962,8 @@ void navigateTo(int row, int column) =&gt; _proxy.navigateTo(row, column);
 void <strong>navigateUp</strong>(int times) <a class="anchor-link" href="#navigateUp"
               title="Permalink to Editor.navigateUp">#</a></h4>
 <div class="doc">
-<p>Move the cursor up in the document the specified number of times.
-Note that this does de-select the current <a class="crossref" href="../ace/Editor.html#selection">selection</a>.</p>
+<p>Move the <a class="crossref" href="../ace/Editor.html#cursorPosition">cursorPosition</a> up in the document the specified number of 
+times.  Note that this does de-select the current <a class="crossref" href="../ace/Editor.html#selection">selection</a>.</p>
 <pre class="source">
 void navigateUp(int times) =&gt; _proxy.navigateUp(times);
 </pre>
@@ -969,6 +974,8 @@ void navigateUp(int times) =&gt; _proxy.navigateUp(times);
 void <strong>navigateWordLeft</strong>() <a class="anchor-link" href="#navigateWordLeft"
               title="Permalink to Editor.navigateWordLeft">#</a></h4>
 <div class="doc">
+<p>Move the <a class="crossref" href="../ace/Editor.html#cursorPosition">cursorPosition</a> to the word immediately to its left. 
+Note that this does de-select the current <a class="crossref" href="../ace/Editor.html#selection">selection</a>.</p>
 <pre class="source">
 void navigateWordLeft() =&gt; _proxy.navigateWordLeft();
 </pre>
@@ -979,6 +986,8 @@ void navigateWordLeft() =&gt; _proxy.navigateWordLeft();
 void <strong>navigateWordRight</strong>() <a class="anchor-link" href="#navigateWordRight"
               title="Permalink to Editor.navigateWordRight">#</a></h4>
 <div class="doc">
+<p>Move the <a class="crossref" href="../ace/Editor.html#cursorPosition">cursorPosition</a> to the word immediately to its right. 
+Note that this does de-select the current <a class="crossref" href="../ace/Editor.html#selection">selection</a>.</p>
 <pre class="source">
 void navigateWordRight() =&gt; _proxy.navigateWordRight();
 </pre>
@@ -1109,7 +1118,7 @@ void updateSelectionMarkers() =&gt; _proxy.updateSelectionMarkers();
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2013-08-19 09:20:22.056</div>
+          <div>This page was generated at 2013-08-19 09:57:33.912</div>
         </div>
         <script async src="../client-live-nav.js"></script>
         </body></html>
