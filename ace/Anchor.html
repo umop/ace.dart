@@ -32,17 +32,113 @@
         
 <button id="show-inherited" class="show-inherited">Hide inherited</button>
 <div class="doc">
+<p>A floating <a class="crossref" href="../ace/Point.html">Point</a> in a <a class="crossref" href="../ace/Document.html">Document</a>.</p>
+<p>Whenever text is inserted or deleted before the <a class="crossref" href="../ace/Anchor.html#document">document</a>'s cursor, the 
+<a class="crossref" href="../ace/Anchor.html#position">position</a> of the anchor is updated.</p>
 <pre class="source">
-class Anchor {
- // TODO(rms):
+class Anchor extends _HasProxy {
+ 
+ /// The document of this anchor.
+ Document get document =&gt; new Document._(_proxy.getDocument());
+ 
+ /// The current position of this anchor.
+ Point get position =&gt; new Point._(_proxy.getPosition());
+ 
+ /// Creates a new Anchor and associates it with the given [document] at the
+ /// given [row] and [column] starting position.
+ Anchor(Document document, int row, int column) 
+   : super(new js.Proxy(_context.ace.define.modules['ace/anchor'].Anchor, 
+       document._proxy, row, column));  
 }
 </pre>
+</div>
+<h3>Extends</h3>
+<p>
+<span class="type-box"><span class="icon-class"></span><a href="../ace/_HasProxy.html">_HasProxy</a></span>&nbsp;&gt;&nbsp;<span class="type-box"><span class="icon-class"></span><strong>Anchor</strong></span></p>
+<div>
+<h3>Constructors</h3>
+<div class="method"><h4 id="">
+<button class="show-code">Code</button>
+new <strong>Anchor</strong>(<a href="../ace/Document.html">Document</a> document, int row, int column) <a class="anchor-link" href="#"
+              title="Permalink to Anchor.Anchor">#</a></h4>
+<div class="doc">
+<p>Creates a new Anchor and associates it with the given 
+<span class="param">document</span> at the
+given 
+<span class="param">row</span> and 
+<span class="param">column</span> starting position.</p>
+<pre class="source">
+Anchor(Document document, int row, int column) 
+ : super(new js.Proxy(_context.ace.define.modules['ace/anchor'].Anchor, 
+     document._proxy, row, column));
+</pre>
+</div>
+</div>
+</div>
+<div>
+<h3>Properties</h3>
+<div class="field"><h4 id="document">
+<button class="show-code">Code</button>
+final <a href="../ace/Document.html">Document</a>         <strong>document</strong> <a class="anchor-link"
+            href="#document"
+            title="Permalink to Anchor.document">#</a>
+        </h4>
+        <div class="doc">
+<p>The document of this anchor.</p>
+<pre class="source">
+Document get document =&gt; new Document._(_proxy.getDocument());
+</pre>
+</div>
+</div>
+<div class="field inherited"><h4 id="isDisposed">
+<button class="show-code">Code</button>
+final bool         <strong>isDisposed</strong> <a class="anchor-link"
+            href="#isDisposed"
+            title="Permalink to Anchor.isDisposed">#</a>
+        </h4>
+        <div class="inherited-from">inherited from <a href="../ace/_HasProxy.html">_HasProxy</a> </div><div class="doc">
+<pre class="source">
+bool get isDisposed =&gt; _proxy == null;
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="position">
+<button class="show-code">Code</button>
+final <a href="../ace/Point.html">Point</a>         <strong>position</strong> <a class="anchor-link"
+            href="#position"
+            title="Permalink to Anchor.position">#</a>
+        </h4>
+        <div class="doc">
+<p>The current position of this anchor.</p>
+<pre class="source">
+Point get position =&gt; new Point._(_proxy.getPosition());
+</pre>
+</div>
+</div>
+</div>
+<div class="inherited">
+<h3>Methods</h3>
+<div class="method inherited"><h4 id="dispose">
+<button class="show-code">Code</button>
+void <strong>dispose</strong>() <a class="anchor-link" href="#dispose"
+              title="Permalink to Anchor.dispose">#</a></h4>
+<div class="inherited-from">inherited from <a href="../ace/_HasProxy.html">_HasProxy</a> </div><div class="doc">
+<pre class="source">
+void dispose() {
+ assert(!isDisposed);
+ _onDispose();
+ js.release(_proxy);
+ _proxy = null;
+}
+</pre>
+</div>
+</div>
 </div>
         </div>
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2013-08-19 13:17:39.325</div>
+          <div>This page was generated at 2013-08-19 13:38:40.394</div>
         </div>
         <script async src="../client-live-nav.js"></script>
         </body></html>
