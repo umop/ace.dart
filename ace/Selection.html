@@ -41,7 +41,7 @@ before applying soft wrap and folding.</p>
 class Selection extends _HasProxy {
  
  /// The current position of the cursor.
- Point get cursor =&gt; _proxy.getCursor();
+ Point get cursor =&gt; new Point._(_proxy.getCursor());
  
  bool get isBackwards =&gt; _proxy.isBackwards();
  bool get isEmpty =&gt; _proxy.isEmpty();
@@ -130,7 +130,7 @@ final <a href="../ace/Point.html">Point</a>         <strong>cursor</strong> <a c
         <div class="doc">
 <p>The current position of the cursor.</p>
 <pre class="source">
-Point get cursor =&gt; _proxy.getCursor();
+Point get cursor =&gt; new Point._(_proxy.getCursor());
 </pre>
 </div>
 </div>
@@ -571,7 +571,7 @@ void shiftSelection(int columns) =&gt; _proxy.shiftSelection(columns);
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2013-08-19 14:49:32.676</div>
+          <div>This page was generated at 2013-08-19 14:58:27.753</div>
         </div>
         <script async src="../client-live-nav.js"></script>
         </body></html>
