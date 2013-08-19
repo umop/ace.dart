@@ -39,6 +39,11 @@ coordinates representing the coordinates as they appear in the document
 before applying soft wrap and folding.</p>
 <pre class="source">
 class Selection extends _HasProxy {
+ js.Callback _jsOnChangeCursor;
+ js.Callback _jsOnChangeSelection;
+ 
+ final _onChangeCursor = new StreamController.broadcast();
+ final _onChangeSelection = new StreamController.broadcast();
  
  /// The current position of the cursor.
  Point get cursor =&gt; new Point._(_proxy.getCursor());
@@ -46,6 +51,13 @@ class Selection extends _HasProxy {
  bool get isBackwards =&gt; _proxy.isBackwards();
  bool get isEmpty =&gt; _proxy.isEmpty();
  bool get isMultiLine =&gt; _proxy.isMultiLine();  
+ 
+ /// Fired whenever the [cursor] position changes.
+ Stream get onChangeCursor =&gt; _onChangeCursor.stream;
+ 
+ /// Fired whenever the cursor selection changes.
+ Stream get onChangeSelection =&gt; _onChangeSelection.stream;
+ 
  Range get range =&gt; new Range._(_proxy.getRange());
  
  /// Creates a new [Selection] for the given [session].
@@ -54,7 +66,21 @@ class Selection extends _HasProxy {
        _context.ace.define.modules['ace/selection'].Selection, 
        session._proxy));
  
- Selection._(js.Proxy proxy) : super(proxy);
+ Selection._(js.Proxy proxy) : super(proxy) {
+   _jsOnChangeCursor =
+       new js.Callback.many((_,__) =&gt; _onChangeCursor.add(this));
+   _jsOnChangeSelection =
+       new js.Callback.many((_,__) =&gt; _onChangeSelection.add(this));
+   _proxy.on('changeCursor', _jsOnChangeCursor);
+   _proxy.on('changeSelection', _jsOnChangeSelection);
+ }
+ 
+ void _onDispose() {
+   _onChangeCursor.close();
+   _onChangeSelection.close();
+   _jsOnChangeCursor.dispose();
+   _jsOnChangeSelection.dispose();
+ }
    
  void mergeOverlappingRanges() =&gt; _proxy.mergeOverlappingRanges();
  void moveCursorBy(int rows, int columns) =&gt; 
@@ -179,6 +205,32 @@ final bool         <strong>isMultiLine</strong> <a class="anchor-link"
         <div class="doc">
 <pre class="source">
 bool get isMultiLine =&gt; _proxy.isMultiLine();
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="onChangeCursor">
+<button class="show-code">Code</button>
+final Stream         <strong>onChangeCursor</strong> <a class="anchor-link"
+            href="#onChangeCursor"
+            title="Permalink to Selection.onChangeCursor">#</a>
+        </h4>
+        <div class="doc">
+<p>Fired whenever the <a class="crossref" href="../ace/Selection.html#cursor">cursor</a> position changes.</p>
+<pre class="source">
+Stream get onChangeCursor =&gt; _onChangeCursor.stream;
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="onChangeSelection">
+<button class="show-code">Code</button>
+final Stream         <strong>onChangeSelection</strong> <a class="anchor-link"
+            href="#onChangeSelection"
+            title="Permalink to Selection.onChangeSelection">#</a>
+        </h4>
+        <div class="doc">
+<p>Fired whenever the cursor selection changes.</p>
+<pre class="source">
+Stream get onChangeSelection =&gt; _onChangeSelection.stream;
 </pre>
 </div>
 </div>
@@ -571,7 +623,7 @@ void shiftSelection(int columns) =&gt; _proxy.shiftSelection(columns);
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2013-08-19 14:58:27.753</div>
+          <div>This page was generated at 2013-08-19 15:15:12.532</div>
         </div>
         <script async src="../client-live-nav.js"></script>
         </body></html>
