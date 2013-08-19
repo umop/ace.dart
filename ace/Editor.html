@@ -204,7 +204,13 @@ class Editor extends _HasProxy {
  
  bool isRowFullyVisible(int row) =&gt; _proxy.isRowFullyVisible(row);
  bool isRowVisible(int row) =&gt; _proxy.isRowVisible(row);
+ 
+ /// Move the cursor to the end of the current document.
+ /// Note that this does de-select the current [selection].
  void navigateFileEnd() =&gt; _proxy.navigateFileEnd();
+ 
+ /// Move the cursor to the start of the current document.
+ /// Note that this does de-select the current [selection].
  void navigateFileStart() =&gt; _proxy.navigateFileStart();
  
  /// Move the cursor left in the document the specified number of times.
@@ -838,6 +844,8 @@ bool isRowVisible(int row) =&gt; _proxy.isRowVisible(row);
 void <strong>navigateFileEnd</strong>() <a class="anchor-link" href="#navigateFileEnd"
               title="Permalink to Editor.navigateFileEnd">#</a></h4>
 <div class="doc">
+<p>Move the cursor to the end of the current document.
+Note that this does de-select the current <a class="crossref" href="../ace/Editor.html#selection">selection</a>.</p>
 <pre class="source">
 void navigateFileEnd() =&gt; _proxy.navigateFileEnd();
 </pre>
@@ -848,6 +856,8 @@ void navigateFileEnd() =&gt; _proxy.navigateFileEnd();
 void <strong>navigateFileStart</strong>() <a class="anchor-link" href="#navigateFileStart"
               title="Permalink to Editor.navigateFileStart">#</a></h4>
 <div class="doc">
+<p>Move the cursor to the start of the current document.
+Note that this does de-select the current <a class="crossref" href="../ace/Editor.html#selection">selection</a>.</p>
 <pre class="source">
 void navigateFileStart() =&gt; _proxy.navigateFileStart();
 </pre>
@@ -1065,7 +1075,7 @@ void updateSelectionMarkers() =&gt; _proxy.updateSelectionMarkers();
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2013-08-19 08:52:03.882</div>
+          <div>This page was generated at 2013-08-19 09:00:36.312</div>
         </div>
         <script async src="../client-live-nav.js"></script>
         </body></html>
