@@ -52,8 +52,10 @@ class Anchor extends _HasProxy {
  /// Creates a new Anchor and associates it with the given [document] at the
  /// given [row] and [column] starting position.
  Anchor(Document document, int row, int column) 
-   : super(new js.Proxy(_context.ace.define.modules['ace/anchor'].Anchor, 
-       document._proxy, row, column)) {
+   : this._(new js.Proxy(_context.ace.define.modules['ace/anchor'].Anchor, 
+       document._proxy, row, column));
+ 
+ Anchor._(proxy) : super(proxy) {
    _jsOnChange = new js.Callback.many((e,__) =&gt;
        _onChange.add(new AnchorChangeEvent._(
            new Point._(e.old), new Point._(e.value))));
@@ -92,13 +94,8 @@ given
 <span class="param">column</span> starting position.</p>
 <pre class="source">
 Anchor(Document document, int row, int column) 
- : super(new js.Proxy(_context.ace.define.modules['ace/anchor'].Anchor, 
-     document._proxy, row, column)) {
- _jsOnChange = new js.Callback.many((e,__) =&gt;
-     _onChange.add(new AnchorChangeEvent._(
-         new Point._(e.old), new Point._(e.value))));
- _proxy.on('change', _jsOnChange);
-}
+ : this._(new js.Proxy(_context.ace.define.modules['ace/anchor'].Anchor, 
+     document._proxy, row, column));
 </pre>
 </div>
 </div>
@@ -195,7 +192,7 @@ void setPosition(int row, int column, bool noClip) =&gt;
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2013-08-19 14:17:27.006</div>
+          <div>This page was generated at 2013-08-19 14:30:11.651</div>
         </div>
         <script async src="../client-live-nav.js"></script>
         </body></html>

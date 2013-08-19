@@ -84,6 +84,10 @@ class Document extends _HasProxy {
  void applyDeltas(Iterable&lt;Delta&gt; deltas) =&gt;
      _proxy.applyDeltas(js.array(deltas.map((delta) =&gt; delta._toProxy())));
  
+ /// Creates a new [Anchor] to define a floating point in this document.
+ Anchor createAnchor(int row, int column) =&gt;
+     new Anchor._(_proxy.createAnchor(row, column));
+ 
  /// Returns a verbatim copy of the given line [row] as it is in this document.
  String getLine(int row) =&gt; _proxy.getLine(row);
  
@@ -288,6 +292,18 @@ void <strong>applyDeltas</strong>(Iterable&lt;<a href="../ace/Delta.html">Delta<
 <pre class="source">
 void applyDeltas(Iterable&lt;Delta&gt; deltas) =&gt;
    _proxy.applyDeltas(js.array(deltas.map((delta) =&gt; delta._toProxy())));
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="createAnchor">
+<button class="show-code">Code</button>
+<a href="../ace/Anchor.html">Anchor</a> <strong>createAnchor</strong>(int row, int column) <a class="anchor-link" href="#createAnchor"
+              title="Permalink to Document.createAnchor">#</a></h4>
+<div class="doc">
+<p>Creates a new <a class="crossref" href="../ace/Anchor.html">Anchor</a> to define a floating point in this document.</p>
+<pre class="source">
+Anchor createAnchor(int row, int column) =&gt;
+   new Anchor._(_proxy.createAnchor(row, column));
 </pre>
 </div>
 </div>
@@ -500,7 +516,7 @@ void revertDeltas(Iterable&lt;Delta&gt; deltas) =&gt;
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2013-08-19 14:17:26.984</div>
+          <div>This page was generated at 2013-08-19 14:30:11.608</div>
         </div>
         <script async src="../client-live-nav.js"></script>
         </body></html>
