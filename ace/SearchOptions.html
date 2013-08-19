@@ -1,0 +1,252 @@
+        <!DOCTYPE html>
+        <html>
+        <head>
+                <meta charset="utf-8">
+        <title>SearchOptions class / ace Library / Dart Documentation</title>
+        <link rel="stylesheet" type="text/css"
+            href="../styles.css">
+        <link href="//fonts.googleapis.com/css?family=Open+Sans:400,600,700,800" rel="stylesheet" type="text/css">
+        <link rel="shortcut icon" href="../favicon.ico">
+        
+        </head>
+        <body data-library="ace" data-type="SearchOptions">
+        <div class="page">
+        <div class="header">
+          <a href="../index.html"><div class="logo"></div></a>
+          <a href="../index.html">Dart Documentation</a>
+         &rsaquo; <a href="../ace.html">ace</a> &rsaquo; <a href="../ace/SearchOptions.html">SearchOptions</a>        <div id="search-box">
+          <input type="search" name="q" id="q" autocomplete="off"
+              class="search-input" placeholder="Search API">
+        </div>
+        
+      </div>
+      <div class="drop-down" id="drop-down"></div>
+      
+        <div class="nav">
+        
+</div>
+<div class="content">
+        <h2><strong>SearchOptions</strong>
+          class
+        </h2>
+        
+<button id="show-inherited" class="show-inherited">Hide inherited</button>
+<div class="doc">
+<pre class="source">
+class SearchOptions {
+ /// The string or regular expression you are looking for.
+ final String needle;
+ 
+ /// Whether to search backwards from where the cursor currently is; defaults 
+ /// to `false`.
+ final bool backwards;
+ 
+ /// Whether the search is case-sensitive; defaults to `false`.
+ final bool caseSensitive;
+ 
+ /// The [Range] to search within. Set this to `null` for the whole document.
+ final Range range;
+ 
+ /// Whether the search is a regular expression or not; defaults to `false`.
+ final bool regExp;
+ 
+ /// Whether or not to include the current line in the search; defaults to 
+ /// `false`.
+ final bool skipCurrent;
+ 
+ /// The starting [Range] or cursor position to begin the search.
+ final Range start;
+ 
+ /// Whether the search matches only on whole words; defaults to `false`.
+ final bool wholeWord;
+ 
+ /// Whether to wrap the search back to the beginning when it hits the end; 
+ /// defaults to `false`.
+ final bool wrap;
+ 
+ const SearchOptions({this.backwards: false,
+                      this.caseSensitive: false,
+                      this.needle: '',
+                      this.range,
+                      this.regExp: false,
+                      this.skipCurrent: false,
+                      this.start,
+                      this.wholeWord: false,
+                      this.wrap: false});  
+ 
+ SearchOptions._(proxy) : this.__(json.parse(_context.JSON.stringify(proxy)));    
+ 
+ SearchOptions.__(Map m) : this(
+     backwards: m['backwards'] == null ? false : m['backwards'],
+     caseSensitive: m['caseSensitive'] == null ? false : m['caseSensitive'],
+     needle: m['needle'] == null ? '' : m['needle'],
+     range: m['range'] == null ? null : new Range._(m['range']),
+     regExp: m['regExp'] == null ? false : m['regExp'],
+     skipCurrent: m['skipCurrent'] == null ? false : m['skipCurrent'],
+     start: m['start'] == null ? null : new Range._(m['start']),
+     wholeWord: m['wholeWord'] == null ? false : m['wholeWord'],
+     wrap: m['wrap'] == null ? false : m['wrap']);
+ 
+ js.Proxy _toProxy() =&gt; throw new UnimplementedError();
+}
+</pre>
+</div>
+<div>
+<h3>Constructors</h3>
+<div class="method"><h4 id="">
+<button class="show-code">Code</button>
+const <strong>SearchOptions</strong>({bool backwards: false, bool caseSensitive: false, String needle: '', <a href="../ace/Range.html">Range</a> range, bool regExp: false, bool skipCurrent: false, <a href="../ace/Range.html">Range</a> start, bool wholeWord: false, bool wrap: false}) <a class="anchor-link" href="#"
+              title="Permalink to SearchOptions.SearchOptions">#</a></h4>
+<div class="doc">
+<div class="inherited">
+<p>Creates a new <a class="crossref" href="../dart_core/Object.html">Object</a> instance.</p>
+<p><a class="crossref" href="../dart_core/Object.html">Object</a> instances have no meaningful state, and are only useful
+through their identity. An <a class="crossref" href="../dart_core/Object.html">Object</a> instance is equal to itself
+only.</p>
+<div class="docs-inherited-from">docs inherited from Object </div></div>
+<pre class="source">
+const SearchOptions({this.backwards: false,
+                    this.caseSensitive: false,
+                    this.needle: '',
+                    this.range,
+                    this.regExp: false,
+                    this.skipCurrent: false,
+                    this.start,
+                    this.wholeWord: false,
+                    this.wrap: false});
+</pre>
+</div>
+</div>
+</div>
+<div>
+<h3>Properties</h3>
+<div class="field"><h4 id="backwards">
+<button class="show-code">Code</button>
+final bool         <strong>backwards</strong> <a class="anchor-link"
+            href="#backwards"
+            title="Permalink to SearchOptions.backwards">#</a>
+        </h4>
+        <div class="doc">
+<p>Whether to search backwards from where the cursor currently is; defaults 
+to <code>false</code>.</p>
+<pre class="source">
+final bool backwards
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="caseSensitive">
+<button class="show-code">Code</button>
+final bool         <strong>caseSensitive</strong> <a class="anchor-link"
+            href="#caseSensitive"
+            title="Permalink to SearchOptions.caseSensitive">#</a>
+        </h4>
+        <div class="doc">
+<p>Whether the search is case-sensitive; defaults to <code>false</code>.</p>
+<pre class="source">
+final bool caseSensitive
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="needle">
+<button class="show-code">Code</button>
+final String         <strong>needle</strong> <a class="anchor-link"
+            href="#needle"
+            title="Permalink to SearchOptions.needle">#</a>
+        </h4>
+        <div class="doc">
+<p>The string or regular expression you are looking for.</p>
+<pre class="source">
+final String needle
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="range">
+<button class="show-code">Code</button>
+final <a href="../ace/Range.html">Range</a>         <strong>range</strong> <a class="anchor-link"
+            href="#range"
+            title="Permalink to SearchOptions.range">#</a>
+        </h4>
+        <div class="doc">
+<p>The <a class="crossref" href="../ace/Range.html">Range</a> to search within. Set this to <code>null</code> for the whole document.</p>
+<pre class="source">
+final Range range
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="regExp">
+<button class="show-code">Code</button>
+final bool         <strong>regExp</strong> <a class="anchor-link"
+            href="#regExp"
+            title="Permalink to SearchOptions.regExp">#</a>
+        </h4>
+        <div class="doc">
+<p>Whether the search is a regular expression or not; defaults to <code>false</code>.</p>
+<pre class="source">
+final bool regExp
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="skipCurrent">
+<button class="show-code">Code</button>
+final bool         <strong>skipCurrent</strong> <a class="anchor-link"
+            href="#skipCurrent"
+            title="Permalink to SearchOptions.skipCurrent">#</a>
+        </h4>
+        <div class="doc">
+<p>Whether or not to include the current line in the search; defaults to 
+<code>false</code>.</p>
+<pre class="source">
+final bool skipCurrent
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="start">
+<button class="show-code">Code</button>
+final <a href="../ace/Range.html">Range</a>         <strong>start</strong> <a class="anchor-link"
+            href="#start"
+            title="Permalink to SearchOptions.start">#</a>
+        </h4>
+        <div class="doc">
+<p>The starting <a class="crossref" href="../ace/Range.html">Range</a> or cursor position to begin the search.</p>
+<pre class="source">
+final Range start
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="wholeWord">
+<button class="show-code">Code</button>
+final bool         <strong>wholeWord</strong> <a class="anchor-link"
+            href="#wholeWord"
+            title="Permalink to SearchOptions.wholeWord">#</a>
+        </h4>
+        <div class="doc">
+<p>Whether the search matches only on whole words; defaults to <code>false</code>.</p>
+<pre class="source">
+final bool wholeWord
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="wrap">
+<button class="show-code">Code</button>
+final bool         <strong>wrap</strong> <a class="anchor-link"
+            href="#wrap"
+            title="Permalink to SearchOptions.wrap">#</a>
+        </h4>
+        <div class="doc">
+<p>Whether to wrap the search back to the beginning when it hits the end; 
+defaults to <code>false</code>.</p>
+<pre class="source">
+final bool wrap
+</pre>
+</div>
+</div>
+</div>
+        </div>
+        <div class="clear"></div>
+        </div>
+        <div class="footer">
+          <div>This page was generated at 2013-08-19 10:50:38.704</div>
+        </div>
+        <script async src="../client-live-nav.js"></script>
+        </body></html>
+        

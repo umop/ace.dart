@@ -33,16 +33,96 @@
 <button id="show-inherited" class="show-inherited">Hide inherited</button>
 <div class="doc">
 <pre class="source">
-class Search {
- // TODO(rms):
+class Search extends _HasProxy {
+ 
+ /// The current [SearchOptions].
+ SearchOptions
+   get options =&gt; new SearchOptions._(_proxy.getOptions());
+   set options(SearchOptions options) =&gt; throw new UnimplementedError();
+ 
+ Search() 
+   : super(new js.Proxy(_context.ace.define.modules['ace/search'].Search));   
 }
 </pre>
+</div>
+<h3>Extends</h3>
+<p>
+<span class="type-box"><span class="icon-class"></span><a href="../ace/_HasProxy.html">_HasProxy</a></span>&nbsp;&gt;&nbsp;<span class="type-box"><span class="icon-class"></span><strong>Search</strong></span></p>
+<div>
+<h3>Constructors</h3>
+<div class="method"><h4 id="">
+<button class="show-code">Code</button>
+new <strong>Search</strong>() <a class="anchor-link" href="#"
+              title="Permalink to Search.Search">#</a></h4>
+<div class="doc">
+<div class="inherited">
+<p>Creates a new <a class="crossref" href="../dart_core/Object.html">Object</a> instance.</p>
+<p><a class="crossref" href="../dart_core/Object.html">Object</a> instances have no meaningful state, and are only useful
+through their identity. An <a class="crossref" href="../dart_core/Object.html">Object</a> instance is equal to itself
+only.</p>
+<div class="docs-inherited-from">docs inherited from Object </div></div>
+<pre class="source">
+Search() 
+ : super(new js.Proxy(_context.ace.define.modules['ace/search'].Search));
+</pre>
+</div>
+</div>
+</div>
+<div>
+<h3>Properties</h3>
+<div class="field inherited"><h4 id="isDisposed">
+<button class="show-code">Code</button>
+final bool         <strong>isDisposed</strong> <a class="anchor-link"
+            href="#isDisposed"
+            title="Permalink to Search.isDisposed">#</a>
+        </h4>
+        <div class="inherited-from">inherited from <a href="../ace/_HasProxy.html">_HasProxy</a> </div><div class="doc">
+<pre class="source">
+bool get isDisposed =&gt; _proxy == null;
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="options">
+<button class="show-code">Code</button>
+<a href="../ace/SearchOptions.html">SearchOptions</a>         <strong>options</strong> <a class="anchor-link"
+            href="#options"
+            title="Permalink to Search.options">#</a>
+        </h4>
+        <div class="doc">
+<p>The current <a class="crossref" href="../ace/SearchOptions.html">SearchOptions</a>.</p>
+<pre class="source">
+SearchOptions
+ get options =&gt; new SearchOptions._(_proxy.getOptions());
+</pre>
+<pre class="source">
+set options(SearchOptions options) =&gt; throw new UnimplementedError();
+</pre>
+</div>
+</div>
+</div>
+<div class="inherited">
+<h3>Methods</h3>
+<div class="method inherited"><h4 id="dispose">
+<button class="show-code">Code</button>
+void <strong>dispose</strong>() <a class="anchor-link" href="#dispose"
+              title="Permalink to Search.dispose">#</a></h4>
+<div class="inherited-from">inherited from <a href="../ace/_HasProxy.html">_HasProxy</a> </div><div class="doc">
+<pre class="source">
+void dispose() {
+ assert(!isDisposed);
+ _onDispose();
+ js.release(_proxy);
+ _proxy = null;
+}
+</pre>
+</div>
+</div>
 </div>
         </div>
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2013-08-19 09:57:33.769</div>
+          <div>This page was generated at 2013-08-19 10:50:38.681</div>
         </div>
         <script async src="../client-live-nav.js"></script>
         </body></html>
