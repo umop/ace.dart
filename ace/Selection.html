@@ -32,8 +32,16 @@
         
 <button id="show-inherited" class="show-inherited">Hide inherited</button>
 <div class="doc">
+<p>Encapsulates the current <a class="crossref" href="../ace/Selection.html#cursor">cursor</a> position and the text selection of an 
+<a class="crossref" href="../ace/EditSession.html">EditSession</a>.</p>
+<p>The positions (row and column) used in a selection are in <a class="crossref" href="../ace/Document.html">Document</a> 
+coordinates representing the coordinates as they appear in the document 
+before applying soft wrap and folding.</p>
 <pre class="source">
 class Selection extends _HasProxy {
+ 
+ /// The current position of the cursor.
+ Point get cursor =&gt; _proxy.getCursor();
  
  bool get isBackwards =&gt; _proxy.isBackwards();
  bool get isEmpty =&gt; _proxy.isEmpty();
@@ -113,6 +121,19 @@ Selection(EditSession session)
 </div>
 <div>
 <h3>Properties</h3>
+<div class="field"><h4 id="cursor">
+<button class="show-code">Code</button>
+final <a href="../ace/Point.html">Point</a>         <strong>cursor</strong> <a class="anchor-link"
+            href="#cursor"
+            title="Permalink to Selection.cursor">#</a>
+        </h4>
+        <div class="doc">
+<p>The current position of the cursor.</p>
+<pre class="source">
+Point get cursor =&gt; _proxy.getCursor();
+</pre>
+</div>
+</div>
 <div class="field"><h4 id="isBackwards">
 <button class="show-code">Code</button>
 final bool         <strong>isBackwards</strong> <a class="anchor-link"
@@ -550,7 +571,7 @@ void shiftSelection(int columns) =&gt; _proxy.shiftSelection(columns);
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2013-08-19 14:39:08.232</div>
+          <div>This page was generated at 2013-08-19 14:49:32.676</div>
         </div>
         <script async src="../client-live-nav.js"></script>
         </body></html>
