@@ -205,6 +205,10 @@ class Editor extends _HasProxy {
  bool isRowFullyVisible(int row) =&gt; _proxy.isRowFullyVisible(row);
  bool isRowVisible(int row) =&gt; _proxy.isRowVisible(row);
  
+ /// Move the cursor down in the document the specified number of times.
+ /// Note that this does de-select the current [selection].
+ void navigateDown(int times) =&gt; _proxy.navigateDown(times);
+ 
  /// Move the cursor to the end of the current document.
  /// Note that this does de-select the current [selection].
  void navigateFileEnd() =&gt; _proxy.navigateFileEnd();
@@ -233,7 +237,10 @@ class Editor extends _HasProxy {
  /// Note that this does de-select the current selection.
  void navigateTo(int row, int column) =&gt; _proxy.navigateTo(row, column);
  
+ /// Move the cursor up in the document the specified number of times.
+ /// Note that this does de-select the current [selection].
  void navigateUp(int times) =&gt; _proxy.navigateUp(times);
+ 
  void navigateWordLeft() =&gt; _proxy.navigateWordLeft();
  void navigateWordRight() =&gt; _proxy.navigateWordRight();
  
@@ -842,6 +849,18 @@ bool isRowVisible(int row) =&gt; _proxy.isRowVisible(row);
 </pre>
 </div>
 </div>
+<div class="method"><h4 id="navigateDown">
+<button class="show-code">Code</button>
+void <strong>navigateDown</strong>(int times) <a class="anchor-link" href="#navigateDown"
+              title="Permalink to Editor.navigateDown">#</a></h4>
+<div class="doc">
+<p>Move the cursor down in the document the specified number of times.
+Note that this does de-select the current <a class="crossref" href="../ace/Editor.html#selection">selection</a>.</p>
+<pre class="source">
+void navigateDown(int times) =&gt; _proxy.navigateDown(times);
+</pre>
+</div>
+</div>
 <div class="method"><h4 id="navigateFileEnd">
 <button class="show-code">Code</button>
 void <strong>navigateFileEnd</strong>() <a class="anchor-link" href="#navigateFileEnd"
@@ -933,6 +952,8 @@ void navigateTo(int row, int column) =&gt; _proxy.navigateTo(row, column);
 void <strong>navigateUp</strong>(int times) <a class="anchor-link" href="#navigateUp"
               title="Permalink to Editor.navigateUp">#</a></h4>
 <div class="doc">
+<p>Move the cursor up in the document the specified number of times.
+Note that this does de-select the current <a class="crossref" href="../ace/Editor.html#selection">selection</a>.</p>
 <pre class="source">
 void navigateUp(int times) =&gt; _proxy.navigateUp(times);
 </pre>
@@ -1082,7 +1103,7 @@ void updateSelectionMarkers() =&gt; _proxy.updateSelectionMarkers();
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2013-08-19 09:05:18.225</div>
+          <div>This page was generated at 2013-08-19 09:13:22.360</div>
         </div>
         <script async src="../client-live-nav.js"></script>
         </body></html>
