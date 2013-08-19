@@ -229,7 +229,10 @@ class Editor extends _HasProxy {
  /// Note that this does de-select the current [selection].
  void navigateRight(int times) =&gt; _proxy.navigateRight(times);
  
+ /// Move the cursor to the specified [row] and [column].
+ /// Note that this does de-select the current selection.
  void navigateTo(int row, int column) =&gt; _proxy.navigateTo(row, column);
+ 
  void navigateUp(int times) =&gt; _proxy.navigateUp(times);
  void navigateWordLeft() =&gt; _proxy.navigateWordLeft();
  void navigateWordRight() =&gt; _proxy.navigateWordRight();
@@ -916,6 +919,10 @@ void navigateRight(int times) =&gt; _proxy.navigateRight(times);
 void <strong>navigateTo</strong>(int row, int column) <a class="anchor-link" href="#navigateTo"
               title="Permalink to Editor.navigateTo">#</a></h4>
 <div class="doc">
+<p>Move the cursor to the specified 
+<span class="param">row</span> and 
+<span class="param">column</span>.
+Note that this does de-select the current selection.</p>
 <pre class="source">
 void navigateTo(int row, int column) =&gt; _proxy.navigateTo(row, column);
 </pre>
@@ -1075,7 +1082,7 @@ void updateSelectionMarkers() =&gt; _proxy.updateSelectionMarkers();
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2013-08-19 09:00:36.312</div>
+          <div>This page was generated at 2013-08-19 09:05:18.225</div>
         </div>
         <script async src="../client-live-nav.js"></script>
         </body></html>
