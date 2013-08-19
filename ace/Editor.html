@@ -101,6 +101,7 @@ class Editor extends _HasProxy {
  /// Returns _true_ if current [textInput] is in focus.
  bool get isFocused =&gt; _proxy.isFocused();
  
+ /// The current [session.overwrite].
  bool
    get overwrite =&gt; _proxy.getOverwrite();
    set overwrite(bool overwrite) =&gt; _proxy.setOverwrite(overwrite);
@@ -263,7 +264,10 @@ class Editor extends _HasProxy {
    assert(cursorPos &gt;= -1 &amp;&amp; cursorPos &lt;= 1);
    return _proxy.setValue(val, cursorPos);
  }
+ 
+ /// Sets the value of [overwrite] to the opposite of its current value.
  void toggleOverwrite() =&gt; _proxy.toggleOverwrite();
+ 
  void toLowerCase() =&gt; _proxy.toLowerCase();
  void toUpperCase() =&gt; _proxy.toUpperCase();
  void transposeLetters() =&gt; _proxy.transposeLetters();
@@ -493,6 +497,7 @@ bool         <strong>overwrite</strong> <a class="anchor-link"
             title="Permalink to Editor.overwrite">#</a>
         </h4>
         <div class="doc">
+<p>The current <code>session.overwrite</code>.</p>
 <pre class="source">
 bool
  get overwrite =&gt; _proxy.getOverwrite();
@@ -1053,6 +1058,7 @@ String setValue(String val, int cursorPos) {
 void <strong>toggleOverwrite</strong>() <a class="anchor-link" href="#toggleOverwrite"
               title="Permalink to Editor.toggleOverwrite">#</a></h4>
 <div class="doc">
+<p>Sets the value of <a class="crossref" href="../ace/Editor.html#overwrite">overwrite</a> to the opposite of its current value.</p>
 <pre class="source">
 void toggleOverwrite() =&gt; _proxy.toggleOverwrite();
 </pre>
@@ -1103,7 +1109,7 @@ void updateSelectionMarkers() =&gt; _proxy.updateSelectionMarkers();
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2013-08-19 09:13:22.360</div>
+          <div>This page was generated at 2013-08-19 09:20:22.056</div>
         </div>
         <script async src="../client-live-nav.js"></script>
         </body></html>
