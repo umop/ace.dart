@@ -56,6 +56,18 @@ class Search extends _HasProxy {
    final range = _proxy.find(session._proxy);
    return range == null ? null : new Range._(range);
  }
+ 
+ /// Searches for all occurances of [options.needle] in the given [session]. 
+ /// 
+ /// This method returns a [Range] iterable of all the text occurrences that
+ /// match the [options].  If the [options.needle] is not found, the iterable
+ /// will be empty.
+ /// 
+ /// If [options.backwards] is `true`, the search goes backwards in the 
+ /// [session].
+ Iterable&lt;Range&gt; findAll(EditSession session) =&gt; 
+     json.parse(_context.JSON.stringify(_proxy.findAll(session._proxy)))
+       .map((range) =&gt; new Range._(js.map(range)));
 }
 </pre>
 </div>
@@ -146,12 +158,32 @@ Range find(EditSession session) {
 </pre>
 </div>
 </div>
+<div class="method"><h4 id="findAll">
+<button class="show-code">Code</button>
+Iterable&lt;<a href="../ace/Range.html">Range</a>&gt; <strong>findAll</strong>(<a href="../ace/EditSession.html">EditSession</a> session) <a class="anchor-link" href="#findAll"
+              title="Permalink to Search.findAll">#</a></h4>
+<div class="doc">
+<p>Searches for all occurances of <code>options.needle</code> in the given 
+<span class="param">session</span>. </p>
+<p>This method returns a <a class="crossref" href="../ace/Range.html">Range</a> iterable of all the text occurrences that
+match the <a class="crossref" href="../ace/Search.html#options">options</a>.  If the <code>options.needle</code> is not found, the iterable
+will be empty.</p>
+<p>If <code>options.backwards</code> is <code>true</code>, the search goes backwards in the 
+
+<span class="param">session</span>.</p>
+<pre class="source">
+Iterable&lt;Range&gt; findAll(EditSession session) =&gt; 
+   json.parse(_context.JSON.stringify(_proxy.findAll(session._proxy)))
+     .map((range) =&gt; new Range._(js.map(range)));
+</pre>
+</div>
+</div>
 </div>
         </div>
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2013-08-19 12:47:02.790</div>
+          <div>This page was generated at 2013-08-19 13:15:45.954</div>
         </div>
         <script async src="../client-live-nav.js"></script>
         </body></html>
