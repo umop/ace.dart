@@ -64,7 +64,7 @@ class SearchOptions {
  /// defaults to `false`.
  final bool wrap;
  
- const SearchOptions({this.backwards: false,
+ SearchOptions({this.backwards: false,
                       this.caseSensitive: false,
                       this.needle: '',
                       this.range,
@@ -80,14 +80,23 @@ class SearchOptions {
      backwards: m['backwards'] == null ? false : m['backwards'],
      caseSensitive: m['caseSensitive'] == null ? false : m['caseSensitive'],
      needle: m['needle'] == null ? '' : m['needle'],
-     range: m['range'] == null ? null : new Range._(m['range']),
+     range: m['range'] == null ? null : new Range._(js.map(m['range'])),
      regExp: m['regExp'] == null ? false : m['regExp'],
      skipCurrent: m['skipCurrent'] == null ? false : m['skipCurrent'],
-     start: m['start'] == null ? null : new Range._(m['start']),
+     start: m['start'] == null ? null : new Range._(js.map(m['start'])),
      wholeWord: m['wholeWord'] == null ? false : m['wholeWord'],
      wrap: m['wrap'] == null ? false : m['wrap']);
  
- js.Proxy _toProxy() =&gt; throw new UnimplementedError();
+ js.Proxy _toProxy() =&gt;
+     js.map({ 'backwards': backwards,
+              'caseSensitive': caseSensitive,
+              'needle': needle,
+              'range': range == null ? null : range._toProxy(),
+              'regExp': regExp,
+              'skipCurrent': skipCurrent,
+              'start': start == null ? null : start._toProxy(),
+              'wholeWord': wholeWord,
+              'wrap': wrap });
 }
 </pre>
 </div>
@@ -95,7 +104,7 @@ class SearchOptions {
 <h3>Constructors</h3>
 <div class="method"><h4 id="">
 <button class="show-code">Code</button>
-const <strong>SearchOptions</strong>({bool backwards: false, bool caseSensitive: false, String needle: '', <a href="../ace/Range.html">Range</a> range, bool regExp: false, bool skipCurrent: false, <a href="../ace/Range.html">Range</a> start, bool wholeWord: false, bool wrap: false}) <a class="anchor-link" href="#"
+new <strong>SearchOptions</strong>({bool backwards: false, bool caseSensitive: false, String needle: '', <a href="../ace/Range.html">Range</a> range, bool regExp: false, bool skipCurrent: false, <a href="../ace/Range.html">Range</a> start, bool wholeWord: false, bool wrap: false}) <a class="anchor-link" href="#"
               title="Permalink to SearchOptions.SearchOptions">#</a></h4>
 <div class="doc">
 <div class="inherited">
@@ -105,7 +114,7 @@ through their identity. An <a class="crossref" href="../dart_core/Object.html">O
 only.</p>
 <div class="docs-inherited-from">docs inherited from Object </div></div>
 <pre class="source">
-const SearchOptions({this.backwards: false,
+SearchOptions({this.backwards: false,
                     this.caseSensitive: false,
                     this.needle: '',
                     this.range,
@@ -245,7 +254,7 @@ final bool wrap
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2013-08-19 10:54:41.197</div>
+          <div>This page was generated at 2013-08-19 12:21:34.547</div>
         </div>
         <script async src="../client-live-nav.js"></script>
         </body></html>

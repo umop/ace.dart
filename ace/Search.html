@@ -39,9 +39,10 @@ class Search extends _HasProxy {
  /// The current [SearchOptions].
  SearchOptions
    get options =&gt; new SearchOptions._(_proxy.getOptions());
-   set options(SearchOptions options) =&gt; throw new UnimplementedError();
+   set options(SearchOptions options) =&gt; _proxy.setOptions(options._toProxy());
  
- Search() 
+ /// Creates a new Search with default [SearchOptions]. 
+ Search()
    : super(new js.Proxy(_context.ace.define.modules['ace/search'].Search));   
 }
 </pre>
@@ -56,14 +57,9 @@ class Search extends _HasProxy {
 new <strong>Search</strong>() <a class="anchor-link" href="#"
               title="Permalink to Search.Search">#</a></h4>
 <div class="doc">
-<div class="inherited">
-<p>Creates a new <a class="crossref" href="../dart_core/Object.html">Object</a> instance.</p>
-<p><a class="crossref" href="../dart_core/Object.html">Object</a> instances have no meaningful state, and are only useful
-through their identity. An <a class="crossref" href="../dart_core/Object.html">Object</a> instance is equal to itself
-only.</p>
-<div class="docs-inherited-from">docs inherited from Object </div></div>
+<p>Creates a new Search with default <a class="crossref" href="../ace/SearchOptions.html">SearchOptions</a>. </p>
 <pre class="source">
-Search() 
+Search()
  : super(new js.Proxy(_context.ace.define.modules['ace/search'].Search));
 </pre>
 </div>
@@ -96,7 +92,7 @@ SearchOptions
  get options =&gt; new SearchOptions._(_proxy.getOptions());
 </pre>
 <pre class="source">
-set options(SearchOptions options) =&gt; throw new UnimplementedError();
+set options(SearchOptions options) =&gt; _proxy.setOptions(options._toProxy());
 </pre>
 </div>
 </div>
@@ -123,7 +119,7 @@ void dispose() {
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2013-08-19 10:54:41.154</div>
+          <div>This page was generated at 2013-08-19 12:21:34.522</div>
         </div>
         <script async src="../client-live-nav.js"></script>
         </body></html>
