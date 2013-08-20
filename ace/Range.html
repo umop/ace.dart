@@ -57,7 +57,8 @@ class Range {
  bool operator ==(Object other) {
    if(identical(this, other)) return true;
    if(other is! Range) return false; 
-   return start == other.start &amp;&amp; end == other.end;
+   final o = other;
+   return start == o.start &amp;&amp; end == o.end;
  }  
  int get hashCode =&gt; start.hashCode ^ end.hashCode;
  
@@ -208,7 +209,8 @@ the <a class="crossref" href="../ace/Range.html#hashCode">hashCode</a> method as
 bool operator ==(Object other) {
  if(identical(this, other)) return true;
  if(other is! Range) return false; 
- return start == other.start &amp;&amp; end == other.end;
+ final o = other;
+ return start == o.start &amp;&amp; end == o.end;
 }
 </pre>
 </div>
@@ -235,7 +237,7 @@ String toString() =&gt;
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2013-08-20 10:12:54.444</div>
+          <div>This page was generated at 2013-08-20 15:58:12.037</div>
         </div>
         <script async src="../client-live-nav.js"></script>
         </body></html>
