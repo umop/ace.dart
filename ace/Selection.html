@@ -124,7 +124,9 @@ class Selection extends _HasProxy {
  /// Selects all the text in the document.
  void selectAll() =&gt; _proxy.selectAll();
  
+ /// Selects a word, including its right whitespace.
  void selectAWord() =&gt; _proxy.selectAWord();
+ 
  void selectDown() =&gt; _proxy.selectDown();
  void selectFileEnd() =&gt; _proxy.selectFileEnd();
  void selectFileStart() =&gt; _proxy.selectFileStart();
@@ -499,6 +501,7 @@ void selectAll() =&gt; _proxy.selectAll();
 void <strong>selectAWord</strong>() <a class="anchor-link" href="#selectAWord"
               title="Permalink to Selection.selectAWord">#</a></h4>
 <div class="doc">
+<p>Selects a word, including its right whitespace.</p>
 <pre class="source">
 void selectAWord() =&gt; _proxy.selectAWord();
 </pre>
@@ -660,7 +663,7 @@ void shiftSelection(int columns) =&gt; _proxy.shiftSelection(columns);
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2013-08-20 10:07:18.188</div>
+          <div>This page was generated at 2013-08-20 10:12:54.371</div>
         </div>
         <script async src="../client-live-nav.js"></script>
         </body></html>
