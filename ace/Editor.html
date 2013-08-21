@@ -41,12 +41,15 @@ Event sessions dealing with the mouse and keyboard are bubbled up from the
 class Editor extends _HasProxy {
  js.Callback _jsOnBlur;
  js.Callback _jsOnChange;
+ js.Callback _jsOnChangeSession;
  js.Callback _jsOnCopy;
  js.Callback _jsOnFocus;
  js.Callback _jsOnPaste;
  
  final _onBlur = new StreamController.broadcast();
  final _onChange = new StreamController&lt;Delta&gt;.broadcast();
+ final _onChangeSession = 
+     new StreamController/*&lt;EditSessionChangeEvent&gt;*/.broadcast();
  final _onCopy = new StreamController&lt;String&gt;.broadcast();
  final _onFocus = new StreamController.broadcast();
  final _onPaste = new StreamController&lt;String&gt;.broadcast();
@@ -57,8 +60,9 @@ class Editor extends _HasProxy {
  /// Fired whenever the [session.document] changes.
  Stream&lt;Delta&gt; get onChange =&gt; _onChange.stream;
  
- Stream/*&lt;TODO: SessionChangeEvent&gt;*/ get onChangeSession =&gt; 
-     throw new UnimplementedError();
+ /// Fired whenever the [session] changes.
+ Stream/*&lt;EditSessionChangeEvent&gt;*/ get onChangeSession =&gt; 
+     _onChangeSession.stream;
  
  /// Fired whenever text is copied.
  Stream&lt;String&gt; get onCopy =&gt; _onCopy.stream;
@@ -130,7 +134,7 @@ class Editor extends _HasProxy {
  /// [onChangeSession] event.
  EditSession
    get session =&gt; new EditSession._(_proxy.getSession());
-   set session(EditSession session) =&gt; throw new UnimplementedError();
+   set session(EditSession session) =&gt; _proxy.setSession(session._proxy);
  
  bool
    get showInvisibles =&gt; _proxy.getShowInvisibles();
@@ -148,15 +152,20 @@ class Editor extends _HasProxy {
    
  Editor._(js.Proxy proxy) : super(proxy) {
    _jsOnBlur = new js.Callback.many((_,__) =&gt; _onBlur.add(this));
-   _jsOnChange = new js.Callback.many((e,__) {
-     Delta delta = new Delta._for(e.data);
-     _onChange.add(delta); 
+   _jsOnChange = new js.Callback.many((e,__) =&gt;
+       _onChange.add(new Delta._for(e.data)));
+   _jsOnChangeSession = new js.Callback.many((e,__) {
+     _onChangeSession.add(null);
+//      _onChangeSession.add(new EditSessionChangeEvent._(
+//          new EditSession._(e.oldSession),
+//          new EditSession._(e.session))); 
    });
    _jsOnCopy = new js.Callback.many((e,__) =&gt; _onCopy.add(e));
    _jsOnFocus = new js.Callback.many((_,__) =&gt; _onFocus.add(this));
    _jsOnPaste = new js.Callback.many((e,__) =&gt; _onPaste.add(e));
    _proxy.on('blur', _jsOnBlur);
    _proxy.on('change', _jsOnChange);
+   _proxy.on('changeSession', _jsOnChangeSession);
    _proxy.on('copy', _jsOnCopy);
    _proxy.on('focus', _jsOnFocus);
    _proxy.on('paste', _jsOnPaste);
@@ -165,11 +174,13 @@ class Editor extends _HasProxy {
  void _onDispose() {
    _onBlur.close();
    _onChange.close();
+   _onChangeSession.close();
    _onCopy.close();
    _onFocus.close();
    _onPaste.close();
    _jsOnBlur.dispose();
    _jsOnChange.dispose();
+   _jsOnChangeSession.dispose();
    _jsOnCopy.dispose();
    _jsOnFocus.dispose();
    _jsOnPaste.dispose();
@@ -450,9 +461,10 @@ final Stream         <strong>onChangeSession</strong> <a class="anchor-link"
             title="Permalink to Editor.onChangeSession">#</a>
         </h4>
         <div class="doc">
+<p>Fired whenever the <a class="crossref" href="../ace/Editor.html#session">session</a> changes.</p>
 <pre class="source">
-Stream/*&lt;TODO: SessionChangeEvent&gt;*/ get onChangeSession =&gt; 
-   throw new UnimplementedError();
+Stream/*&lt;EditSessionChangeEvent&gt;*/ get onChangeSession =&gt; 
+   _onChangeSession.stream;
 </pre>
 </div>
 </div>
@@ -613,7 +625,7 @@ EditSession
  get session =&gt; new EditSession._(_proxy.getSession());
 </pre>
 <pre class="source">
-set session(EditSession session) =&gt; throw new UnimplementedError();
+set session(EditSession session) =&gt; _proxy.setSession(session._proxy);
 </pre>
 </div>
 </div>
@@ -1118,7 +1130,7 @@ void updateSelectionMarkers() =&gt; _proxy.updateSelectionMarkers();
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2013-08-20 15:58:12.132</div>
+          <div>This page was generated at 2013-08-21 15:03:48.141</div>
         </div>
         <script async src="../client-live-nav.js"></script>
         </body></html>
