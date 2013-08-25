@@ -153,6 +153,19 @@ void reset() =&gt; _proxy.reset();
 </pre>
 </div>
 </div>
+<div class="method inherited"><h4 id="toString">
+<button class="show-code">Code</button>
+String <strong>toString</strong>() <a class="anchor-link" href="#toString"
+              title="Permalink to UndoManager.toString">#</a></h4>
+<div class="inherited-from">inherited from <a href="../ace/_HasProxy.html">_HasProxy</a> </div><div class="doc">
+<div class="inherited">
+<p>Returns a string representation of this object.</p>
+<div class="docs-inherited-from">docs inherited from Object </div></div>
+<pre class="source">
+String toString() =&gt; _context.JSON.stringify(_proxy);
+</pre>
+</div>
+</div>
 <div class="method"><h4 id="undo">
 <button class="show-code">Code</button>
 <a href="../ace/Range.html">Range</a> <strong>undo</strong>(bool dontSelect) <a class="anchor-link" href="#undo"
@@ -174,7 +187,7 @@ Range undo(bool dontSelect) =&gt; new Range._(_proxy.undo(dontSelect));
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2013-08-21 15:03:47.936</div>
+          <div>This page was generated at 2013-08-25 10:52:53.979</div>
         </div>
         <script async src="../client-live-nav.js"></script>
         </body></html>
