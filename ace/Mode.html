@@ -33,25 +33,102 @@
 <button id="show-inherited" class="show-inherited">Hide inherited</button>
 <div class="doc">
 <pre class="source">
-class Mode extends _HasProxy {
- Mode._(js.Proxy proxy) : super(proxy);
+class Mode extends _HasProxy {  
+ final String _modePath;
+ 
+ get _mode =&gt; _proxy != null ? _proxy : _modePath;
+ 
+ /// Creates a mode for the given [filePath], based on its resolved mime type.
+ factory Mode.forFile(String filePath) {
+   final mimeType = lookupMimeType(filePath);
+   var mode = _mimeTypeToMode[mimeType];
+   if (mode == null) mode = 'text';
+   return new Mode('ace/mode/$mode');
+ }
+ 
+ /// Creates a mode for the given [modePath].
+ /// 
+ /// The [modePath] is a path such as `ace/mode/text`.
+ Mode(String modePath) : super.async(new Future&lt;js.Proxy&gt;(() {
+   final completer = new Completer&lt;js.Proxy&gt;();
+   _context.ace.config.loadModule(js.array(['mode', modePath]), 
+       new js.Callback.once((module) {
+           completer.complete(js.retain(new js.Proxy(module.Mode)));
+       }));
+   return completer.future;
+ })), _modePath = modePath ;
+ 
+ Mode._(js.Proxy proxy) : super(proxy), _modePath = null;
 }
 </pre>
 </div>
 <h3>Extends</h3>
 <p>
 <span class="type-box"><span class="icon-class"></span><a href="../ace/_HasProxy.html">_HasProxy</a></span>&nbsp;&gt;&nbsp;<span class="type-box"><span class="icon-class"></span><strong>Mode</strong></span></p>
+<div>
+<h3>Constructors</h3>
+<div class="method"><h4 id="">
+<button class="show-code">Code</button>
+new <strong>Mode</strong>(String modePath) <a class="anchor-link" href="#"
+              title="Permalink to Mode.Mode">#</a></h4>
+<div class="doc">
+<p>Creates a mode for the given 
+<span class="param">modePath</span>.</p>
+<p>The 
+<span class="param">modePath</span> is a path such as <code>ace/mode/text</code>.</p>
+<pre class="source">
+Mode(String modePath) : super.async(new Future&lt;js.Proxy&gt;(() {
+ final completer = new Completer&lt;js.Proxy&gt;();
+ _context.ace.config.loadModule(js.array(['mode', modePath]), 
+     new js.Callback.once((module) {
+         completer.complete(js.retain(new js.Proxy(module.Mode)));
+     }));
+ return completer.future;
+})), _modePath = modePath ;
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="forFile">
+<button class="show-code">Code</button>
+factory <strong>Mode.forFile</strong>(String filePath) <a class="anchor-link" href="#forFile"
+              title="Permalink to Mode.Mode.forFile">#</a></h4>
+<div class="doc">
+<p>Creates a mode for the given 
+<span class="param">filePath</span>, based on its resolved mime type.</p>
+<pre class="source">
+factory Mode.forFile(String filePath) {
+ final mimeType = lookupMimeType(filePath);
+ var mode = _mimeTypeToMode[mimeType];
+ if (mode == null) mode = 'text';
+ return new Mode('ace/mode/$mode');
+}
+</pre>
+</div>
+</div>
+</div>
 <div class="inherited">
 <h3>Properties</h3>
-<div class="field inherited"><h4 id="isDisposed">
+<div class="field inherited"><h4 id="hasProxy">
 <button class="show-code">Code</button>
-final bool         <strong>isDisposed</strong> <a class="anchor-link"
-            href="#isDisposed"
-            title="Permalink to Mode.isDisposed">#</a>
+final bool         <strong>hasProxy</strong> <a class="anchor-link"
+            href="#hasProxy"
+            title="Permalink to Mode.hasProxy">#</a>
         </h4>
         <div class="inherited-from">inherited from <a href="../ace/_HasProxy.html">_HasProxy</a> </div><div class="doc">
 <pre class="source">
-bool get isDisposed =&gt; _proxy == null;
+bool get hasProxy =&gt; _proxy != null;
+</pre>
+</div>
+</div>
+<div class="field inherited"><h4 id="onHasProxy">
+<button class="show-code">Code</button>
+final Future         <strong>onHasProxy</strong> <a class="anchor-link"
+            href="#onHasProxy"
+            title="Permalink to Mode.onHasProxy">#</a>
+        </h4>
+        <div class="inherited-from">inherited from <a href="../ace/_HasProxy.html">_HasProxy</a> </div><div class="doc">
+<pre class="source">
+final Future onHasProxy
 </pre>
 </div>
 </div>
@@ -65,7 +142,7 @@ void <strong>dispose</strong>() <a class="anchor-link" href="#dispose"
 <div class="inherited-from">inherited from <a href="../ace/_HasProxy.html">_HasProxy</a> </div><div class="doc">
 <pre class="source">
 void dispose() {
- assert(!isDisposed);
+ assert(hasProxy);
  _onDispose();
  js.release(_proxy);
  _proxy = null;
@@ -91,7 +168,7 @@ String toString() =&gt; _context.JSON.stringify(_proxy);
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2013-08-25 10:52:54.098</div>
+          <div>This page was generated at 2013-08-26 09:03:53.111</div>
         </div>
         <script async src="../client-live-nav.js"></script>
         </body></html>

@@ -351,6 +351,18 @@ int get firstVisibleRow =&gt; _proxy.getFirstVisibleRow();
 </pre>
 </div>
 </div>
+<div class="field inherited"><h4 id="hasProxy">
+<button class="show-code">Code</button>
+final bool         <strong>hasProxy</strong> <a class="anchor-link"
+            href="#hasProxy"
+            title="Permalink to Editor.hasProxy">#</a>
+        </h4>
+        <div class="inherited-from">inherited from <a href="../ace/_HasProxy.html">_HasProxy</a> </div><div class="doc">
+<pre class="source">
+bool get hasProxy =&gt; _proxy != null;
+</pre>
+</div>
+</div>
 <div class="field"><h4 id="highlightActiveLine">
 <button class="show-code">Code</button>
 bool         <strong>highlightActiveLine</strong> <a class="anchor-link"
@@ -400,18 +412,6 @@ bool
 <pre class="source">
 set highlightSelectedWord(bool highlightSelectedWord) =&gt;
    _proxy.setHighlightSelectedWord(highlightSelectedWord);
-</pre>
-</div>
-</div>
-<div class="field inherited"><h4 id="isDisposed">
-<button class="show-code">Code</button>
-final bool         <strong>isDisposed</strong> <a class="anchor-link"
-            href="#isDisposed"
-            title="Permalink to Editor.isDisposed">#</a>
-        </h4>
-        <div class="inherited-from">inherited from <a href="../ace/_HasProxy.html">_HasProxy</a> </div><div class="doc">
-<pre class="source">
-bool get isDisposed =&gt; _proxy == null;
 </pre>
 </div>
 </div>
@@ -491,6 +491,18 @@ final Stream         <strong>onFocus</strong> <a class="anchor-link"
 <p>Fired whenever this editor comes into focus.</p>
 <pre class="source">
 Stream get onFocus =&gt; _onFocus.stream;
+</pre>
+</div>
+</div>
+<div class="field inherited"><h4 id="onHasProxy">
+<button class="show-code">Code</button>
+final Future         <strong>onHasProxy</strong> <a class="anchor-link"
+            href="#onHasProxy"
+            title="Permalink to Editor.onHasProxy">#</a>
+        </h4>
+        <div class="inherited-from">inherited from <a href="../ace/_HasProxy.html">_HasProxy</a> </div><div class="doc">
+<pre class="source">
+final Future onHasProxy
 </pre>
 </div>
 </div>
@@ -780,7 +792,7 @@ void <strong>dispose</strong>() <a class="anchor-link" href="#dispose"
 <div class="inherited-from">inherited from <a href="../ace/_HasProxy.html">_HasProxy</a> </div><div class="doc">
 <pre class="source">
 void dispose() {
- assert(!isDisposed);
+ assert(hasProxy);
  _onDispose();
  js.release(_proxy);
  _proxy = null;
@@ -1143,7 +1155,7 @@ void updateSelectionMarkers() =&gt; _proxy.updateSelectionMarkers();
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2013-08-25 10:52:54.179</div>
+          <div>This page was generated at 2013-08-26 09:03:53.212</div>
         </div>
         <script async src="../client-live-nav.js"></script>
         </body></html>

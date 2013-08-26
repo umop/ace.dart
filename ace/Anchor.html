@@ -115,15 +115,15 @@ Document get document =&gt; new Document._(_proxy.getDocument());
 </pre>
 </div>
 </div>
-<div class="field inherited"><h4 id="isDisposed">
+<div class="field inherited"><h4 id="hasProxy">
 <button class="show-code">Code</button>
-final bool         <strong>isDisposed</strong> <a class="anchor-link"
-            href="#isDisposed"
-            title="Permalink to Anchor.isDisposed">#</a>
+final bool         <strong>hasProxy</strong> <a class="anchor-link"
+            href="#hasProxy"
+            title="Permalink to Anchor.hasProxy">#</a>
         </h4>
         <div class="inherited-from">inherited from <a href="../ace/_HasProxy.html">_HasProxy</a> </div><div class="doc">
 <pre class="source">
-bool get isDisposed =&gt; _proxy == null;
+bool get hasProxy =&gt; _proxy != null;
 </pre>
 </div>
 </div>
@@ -137,6 +137,18 @@ final Stream&lt;<a href="../ace/AnchorChangeEvent.html">AnchorChangeEvent</a>&gt
 <p>Fired whenever the <a class="crossref" href="../ace/Anchor.html#position">position</a> changes.</p>
 <pre class="source">
 Stream&lt;AnchorChangeEvent&gt; get onChange =&gt; _onChange.stream;
+</pre>
+</div>
+</div>
+<div class="field inherited"><h4 id="onHasProxy">
+<button class="show-code">Code</button>
+final Future         <strong>onHasProxy</strong> <a class="anchor-link"
+            href="#onHasProxy"
+            title="Permalink to Anchor.onHasProxy">#</a>
+        </h4>
+        <div class="inherited-from">inherited from <a href="../ace/_HasProxy.html">_HasProxy</a> </div><div class="doc">
+<pre class="source">
+final Future onHasProxy
 </pre>
 </div>
 </div>
@@ -163,7 +175,7 @@ void <strong>dispose</strong>() <a class="anchor-link" href="#dispose"
 <div class="inherited-from">inherited from <a href="../ace/_HasProxy.html">_HasProxy</a> </div><div class="doc">
 <pre class="source">
 void dispose() {
- assert(!isDisposed);
+ assert(hasProxy);
  _onDispose();
  js.release(_proxy);
  _proxy = null;
@@ -205,7 +217,7 @@ String toString() =&gt; _context.JSON.stringify(_proxy);
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2013-08-25 10:52:54.227</div>
+          <div>This page was generated at 2013-08-26 09:03:53.266</div>
         </div>
         <script async src="../client-live-nav.js"></script>
         </body></html>

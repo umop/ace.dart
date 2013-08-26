@@ -193,15 +193,15 @@ Iterable&lt;String&gt; get allLines =&gt;
 </pre>
 </div>
 </div>
-<div class="field inherited"><h4 id="isDisposed">
+<div class="field inherited"><h4 id="hasProxy">
 <button class="show-code">Code</button>
-final bool         <strong>isDisposed</strong> <a class="anchor-link"
-            href="#isDisposed"
-            title="Permalink to Document.isDisposed">#</a>
+final bool         <strong>hasProxy</strong> <a class="anchor-link"
+            href="#hasProxy"
+            title="Permalink to Document.hasProxy">#</a>
         </h4>
         <div class="inherited-from">inherited from <a href="../ace/_HasProxy.html">_HasProxy</a> </div><div class="doc">
 <pre class="source">
-bool get isDisposed =&gt; _proxy == null;
+bool get hasProxy =&gt; _proxy != null;
 </pre>
 </div>
 </div>
@@ -261,6 +261,18 @@ Stream&lt;Delta&gt; get onChange =&gt; _onChange.stream;
 </pre>
 </div>
 </div>
+<div class="field inherited"><h4 id="onHasProxy">
+<button class="show-code">Code</button>
+final Future         <strong>onHasProxy</strong> <a class="anchor-link"
+            href="#onHasProxy"
+            title="Permalink to Document.onHasProxy">#</a>
+        </h4>
+        <div class="inherited-from">inherited from <a href="../ace/_HasProxy.html">_HasProxy</a> </div><div class="doc">
+<pre class="source">
+final Future onHasProxy
+</pre>
+</div>
+</div>
 <div class="field"><h4 id="value">
 <button class="show-code">Code</button>
 String         <strong>value</strong> <a class="anchor-link"
@@ -314,7 +326,7 @@ void <strong>dispose</strong>() <a class="anchor-link" href="#dispose"
 <div class="inherited-from">inherited from <a href="../ace/_HasProxy.html">_HasProxy</a> </div><div class="doc">
 <pre class="source">
 void dispose() {
- assert(!isDisposed);
+ assert(hasProxy);
  _onDispose();
  js.release(_proxy);
  _proxy = null;
@@ -529,7 +541,7 @@ String toString() =&gt; _context.JSON.stringify(_proxy);
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2013-08-25 10:52:54.208</div>
+          <div>This page was generated at 2013-08-26 09:03:53.241</div>
         </div>
         <script async src="../client-live-nav.js"></script>
         </body></html>

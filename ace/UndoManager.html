@@ -70,6 +70,18 @@ class UndoManager extends _HasProxy {
 <span class="type-box"><span class="icon-class"></span><a href="../ace/_HasProxy.html">_HasProxy</a></span>&nbsp;&gt;&nbsp;<span class="type-box"><span class="icon-class"></span><strong>UndoManager</strong></span></p>
 <div>
 <h3>Properties</h3>
+<div class="field inherited"><h4 id="hasProxy">
+<button class="show-code">Code</button>
+final bool         <strong>hasProxy</strong> <a class="anchor-link"
+            href="#hasProxy"
+            title="Permalink to UndoManager.hasProxy">#</a>
+        </h4>
+        <div class="inherited-from">inherited from <a href="../ace/_HasProxy.html">_HasProxy</a> </div><div class="doc">
+<pre class="source">
+bool get hasProxy =&gt; _proxy != null;
+</pre>
+</div>
+</div>
 <div class="field"><h4 id="hasRedo">
 <button class="show-code">Code</button>
 final bool         <strong>hasRedo</strong> <a class="anchor-link"
@@ -96,15 +108,15 @@ bool get hasUndo =&gt; _proxy.hasUndo();
 </pre>
 </div>
 </div>
-<div class="field inherited"><h4 id="isDisposed">
+<div class="field inherited"><h4 id="onHasProxy">
 <button class="show-code">Code</button>
-final bool         <strong>isDisposed</strong> <a class="anchor-link"
-            href="#isDisposed"
-            title="Permalink to UndoManager.isDisposed">#</a>
+final Future         <strong>onHasProxy</strong> <a class="anchor-link"
+            href="#onHasProxy"
+            title="Permalink to UndoManager.onHasProxy">#</a>
         </h4>
         <div class="inherited-from">inherited from <a href="../ace/_HasProxy.html">_HasProxy</a> </div><div class="doc">
 <pre class="source">
-bool get isDisposed =&gt; _proxy == null;
+final Future onHasProxy
 </pre>
 </div>
 </div>
@@ -118,7 +130,7 @@ void <strong>dispose</strong>() <a class="anchor-link" href="#dispose"
 <div class="inherited-from">inherited from <a href="../ace/_HasProxy.html">_HasProxy</a> </div><div class="doc">
 <pre class="source">
 void dispose() {
- assert(!isDisposed);
+ assert(hasProxy);
  _onDispose();
  js.release(_proxy);
  _proxy = null;
@@ -187,7 +199,7 @@ Range undo(bool dontSelect) =&gt; new Range._(_proxy.undo(dontSelect));
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2013-08-25 10:52:53.979</div>
+          <div>This page was generated at 2013-08-26 09:03:52.991</div>
         </div>
         <script async src="../client-live-nav.js"></script>
         </body></html>

@@ -99,9 +99,10 @@ class EditSession extends _HasProxy {
  /// Returns the current [document.length].
  int get length =&gt; _proxy.getLength();
  
+ /// The current [Mode] of this session.
  Mode
    get mode =&gt; new Mode._(_proxy.getMode());
-   set mode(Mode mode) =&gt; throw new UnimplementedError();
+   set mode(Mode mode) =&gt; _proxy.setMode(mode._mode);
    
  /// The new line mode.  May be one of `windows`, `unix` or `auto`.
  // TODO(rms): enum
@@ -205,8 +206,8 @@ class EditSession extends _HasProxy {
  
  /// Creates a new EditSession and associates it with the given [document] and 
  /// text [mode].
- EditSession(Document document, String mode) : this._(
-     new js.Proxy(_context.ace.EditSession, document._proxy, mode));
+ EditSession(Document document, Mode mode) : this._(
+     new js.Proxy(_context.ace.EditSession, document._proxy, mode._mode));
  
  EditSession._(js.Proxy proxy) : super(proxy) {    
    _jsOnChange = new js.Callback.many((e,__) =&gt; 
@@ -353,8 +354,6 @@ class EditSession extends _HasProxy {
  /// [onChangeBreakpoint] event.
  void setBreakpoints(List&lt;int&gt; rows) =&gt; _proxy.setBreakpoints(js.array(rows));
  
- void setMode(String mode) =&gt; _proxy.setMode(mode);
- 
  /// Sets the boundaries of line wrap. 
  /// 
  /// Either value can be `null` to have an unconstrained wrap, or, they can be 
@@ -379,7 +378,7 @@ class EditSession extends _HasProxy {
 <h3>Constructors</h3>
 <div class="method"><h4 id="">
 <button class="show-code">Code</button>
-new <strong>EditSession</strong>(<a href="../ace/Document.html">Document</a> document, String mode) <a class="anchor-link" href="#"
+new <strong>EditSession</strong>(<a href="../ace/Document.html">Document</a> document, <a href="../ace/Mode.html">Mode</a> mode) <a class="anchor-link" href="#"
               title="Permalink to EditSession.EditSession">#</a></h4>
 <div class="doc">
 <p>Creates a new EditSession and associates it with the given 
@@ -387,8 +386,8 @@ new <strong>EditSession</strong>(<a href="../ace/Document.html">Document</a> doc
 text 
 <span class="param">mode</span>.</p>
 <pre class="source">
-EditSession(Document document, String mode) : this._(
-   new js.Proxy(_context.ace.EditSession, document._proxy, mode));
+EditSession(Document document, Mode mode) : this._(
+   new js.Proxy(_context.ace.EditSession, document._proxy, mode._mode));
 </pre>
 </div>
 </div>
@@ -429,15 +428,15 @@ set document(Document document) =&gt; _proxy.setDocument(document._proxy);
 </pre>
 </div>
 </div>
-<div class="field inherited"><h4 id="isDisposed">
+<div class="field inherited"><h4 id="hasProxy">
 <button class="show-code">Code</button>
-final bool         <strong>isDisposed</strong> <a class="anchor-link"
-            href="#isDisposed"
-            title="Permalink to EditSession.isDisposed">#</a>
+final bool         <strong>hasProxy</strong> <a class="anchor-link"
+            href="#hasProxy"
+            title="Permalink to EditSession.hasProxy">#</a>
         </h4>
         <div class="inherited-from">inherited from <a href="../ace/_HasProxy.html">_HasProxy</a> </div><div class="doc">
 <pre class="source">
-bool get isDisposed =&gt; _proxy == null;
+bool get hasProxy =&gt; _proxy != null;
 </pre>
 </div>
 </div>
@@ -461,12 +460,13 @@ int get length =&gt; _proxy.getLength();
             title="Permalink to EditSession.mode">#</a>
         </h4>
         <div class="doc">
+<p>The current <a class="crossref" href="../ace/Mode.html">Mode</a> of this session.</p>
 <pre class="source">
 Mode
  get mode =&gt; new Mode._(_proxy.getMode());
 </pre>
 <pre class="source">
-set mode(Mode mode) =&gt; throw new UnimplementedError();
+set mode(Mode mode) =&gt; _proxy.setMode(mode._mode);
 </pre>
 </div>
 </div>
@@ -589,6 +589,18 @@ final Stream         <strong>onChangeWrapMode</strong> <a class="anchor-link"
 <p>Fired whenever the <a class="crossref" href="../ace/EditSession.html#useWrapMode">useWrapMode</a> changes.</p>
 <pre class="source">
 Stream get onChangeWrapMode =&gt; _onChangeWrapMode.stream;
+</pre>
+</div>
+</div>
+<div class="field inherited"><h4 id="onHasProxy">
+<button class="show-code">Code</button>
+final Future         <strong>onHasProxy</strong> <a class="anchor-link"
+            href="#onHasProxy"
+            title="Permalink to EditSession.onHasProxy">#</a>
+        </h4>
+        <div class="inherited-from">inherited from <a href="../ace/_HasProxy.html">_HasProxy</a> </div><div class="doc">
+<pre class="source">
+final Future onHasProxy
 </pre>
 </div>
 </div>
@@ -902,7 +914,7 @@ void <strong>dispose</strong>() <a class="anchor-link" href="#dispose"
 <div class="inherited-from">inherited from <a href="../ace/_HasProxy.html">_HasProxy</a> </div><div class="doc">
 <pre class="source">
 void dispose() {
- assert(!isDisposed);
+ assert(hasProxy);
  _onDispose();
  js.release(_proxy);
  _proxy = null;
@@ -1166,16 +1178,6 @@ void setBreakpoints(List&lt;int&gt; rows) =&gt; _proxy.setBreakpoints(js.array(r
 </pre>
 </div>
 </div>
-<div class="method"><h4 id="setMode">
-<button class="show-code">Code</button>
-void <strong>setMode</strong>(String mode) <a class="anchor-link" href="#setMode"
-              title="Permalink to EditSession.setMode">#</a></h4>
-<div class="doc">
-<pre class="source">
-void setMode(String mode) =&gt; _proxy.setMode(mode);
-</pre>
-</div>
-</div>
 <div class="method"><h4 id="setWrapLimitRange">
 <button class="show-code">Code</button>
 void <strong>setWrapLimitRange</strong>({int min, int max}) <a class="anchor-link" href="#setWrapLimitRange"
@@ -1226,7 +1228,7 @@ String toString() =&gt; _proxy.toString();
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2013-08-25 10:52:54.147</div>
+          <div>This page was generated at 2013-08-26 09:03:53.175</div>
         </div>
         <script async src="../client-live-nav.js"></script>
         </body></html>

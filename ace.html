@@ -46,17 +46,17 @@ Editor edit(html.Element element) {
 </div>
 <div class="method"><h4 id="createEditSession">
 <button class="show-code">Code</button>
-<a href="ace/EditSession.html">EditSession</a> <strong>createEditSession</strong>(String text, String mode) <a class="anchor-link" href="#createEditSession"
+<a href="ace/EditSession.html">EditSession</a> <strong>createEditSession</strong>(String text, <a href="ace/Mode.html">Mode</a> mode) <a class="anchor-link" href="#createEditSession"
               title="Permalink to createEditSession">#</a></h4>
 <div class="doc">
 <p>Creates a new <a class="crossref" href="ace/EditSession.html">EditSession</a> with the given 
 <span class="param">text</span> and language 
 <span class="param">mode</span>.</p>
 <pre class="source">
-EditSession createEditSession(String text, String mode) {
+EditSession createEditSession(String text, Mode mode) {
  assert(text != null);
  assert(mode != null);
- return new EditSession._( _context.ace.createEditSession(text, mode));
+ return new EditSession._( _context.ace.createEditSession(text, mode._mode));
 }
 </pre>
 </div>
@@ -186,7 +186,7 @@ EditSession createEditSession(String text, String mode) {
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2013-08-25 10:52:53.936</div>
+          <div>This page was generated at 2013-08-26 09:03:52.769</div>
         </div>
         <script async src="client-live-nav.js"></script>
         </body></html>
