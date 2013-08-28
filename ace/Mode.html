@@ -39,7 +39,7 @@ class Mode extends _HasProxy {
  
  get _mode =&gt; _proxy != null ? _proxy : _modePath;
  
- /// Creates a mode for the given [filePath], based on its resolved mime type.
+ /// Creates a mode for the given [filePath], based on its file extension.
  factory Mode.forFile(String filePath) {
    final ext = _ext(filePath);
    var mode = _extensionMap[ext];
@@ -95,7 +95,7 @@ factory <strong>Mode.forFile</strong>(String filePath) <a class="anchor-link" hr
               title="Permalink to Mode.Mode.forFile">#</a></h4>
 <div class="doc">
 <p>Creates a mode for the given 
-<span class="param">filePath</span>, based on its resolved mime type.</p>
+<span class="param">filePath</span>, based on its file extension.</p>
 <pre class="source">
 factory Mode.forFile(String filePath) {
  final ext = _ext(filePath);
@@ -169,7 +169,7 @@ String toString() =&gt; _context.JSON.stringify(_proxy);
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2013-08-28 15:18:26.170</div>
+          <div>This page was generated at 2013-08-28 15:33:05.005</div>
         </div>
         <script async src="../client-live-nav.js"></script>
         </body></html>
