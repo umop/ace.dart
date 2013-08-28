@@ -2465,10 +2465,9 @@ y=v
 x=new $.XO(w,null)
 b.Rw($.qK(y,x))
 return}b.Dx(z)}},wY:{"":"YR;HD,dU",
-uB:function(a,b){var z,y
-z=this.HD
-y=$.Wx(z)
-if(y.D(z,0)){this.HD=y.W(z,1)
+uB:function(a,b){var z=this.HD
+if(typeof z!=="number")throw z.D()
+if(z>0){this.HD=z-1
 return}return b.Dx(a)}},n7:{"":"a;dF,qr,UZ,BV",
 gZK:function(){return this.dF.gZK()},
 ai:function(a){this.dF.ai(a)},
@@ -4681,7 +4680,7 @@ if(z<0)$.vh(new $.bJ("value "+z))
 if(z>=y.length)$.vh(new $.bJ("value "+z))
 this.eR=y.charCodeAt(z)
 return!0}},Ul:{"":"mz;lh?,P,qa,yO,aw"},iT:{"":"a;P>,r0,fY>",
-bu:function(a){return"PrecedenceInfo("+$.d(this.P)+", "+this.r0+", "+$.d(this.fY)+")"},
+bu:function(a){return"PrecedenceInfo("+$.d(this.P)+", "+this.r0+", "+this.fY+")"},
 giO:function(a){return $.mK(this.P,this.r0,this.fY,null)}}}],["scanner_implementation","file:///home/ubuntu/dart/dart-sdk/lib/_internal/compiler/implementation/scanner/scanner_implementation.dart",,{XA:{"":"SS;m5<,qX<",
 gyO:function(){return this.qX+this.Je},
 lf:function(){return this.iH()},

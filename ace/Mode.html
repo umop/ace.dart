@@ -33,15 +33,16 @@
 <button id="show-inherited" class="show-inherited">Hide inherited</button>
 <div class="doc">
 <pre class="source">
-class Mode extends _HasProxy {  
+class Mode extends _HasProxy {
+ 
  final String _modePath;
  
  get _mode =&gt; _proxy != null ? _proxy : _modePath;
  
  /// Creates a mode for the given [filePath], based on its resolved mime type.
  factory Mode.forFile(String filePath) {
-   final mimeType = lookupMimeType(filePath);
-   var mode = _mimeTypeToMode[mimeType];
+   final ext = _ext(filePath);
+   var mode = _extensionMap[ext];
    if (mode == null) mode = 'text';
    return new Mode('ace/mode/$mode');
  }
@@ -97,8 +98,8 @@ factory <strong>Mode.forFile</strong>(String filePath) <a class="anchor-link" hr
 <span class="param">filePath</span>, based on its resolved mime type.</p>
 <pre class="source">
 factory Mode.forFile(String filePath) {
- final mimeType = lookupMimeType(filePath);
- var mode = _mimeTypeToMode[mimeType];
+ final ext = _ext(filePath);
+ var mode = _extensionMap[ext];
  if (mode == null) mode = 'text';
  return new Mode('ace/mode/$mode');
 }
@@ -168,7 +169,7 @@ String toString() =&gt; _context.JSON.stringify(_proxy);
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2013-08-28 14:55:02.894</div>
+          <div>This page was generated at 2013-08-28 15:18:26.170</div>
         </div>
         <script async src="../client-live-nav.js"></script>
         </body></html>
