@@ -36,7 +36,7 @@
 <p>A <a class="crossref" href="../ace/Range.html">Range</a> can be thought of as a rectangle from a <a class="crossref" href="../ace/Range.html#start">start</a> point to an <a class="crossref" href="../ace/Range.html#end">end</a>
 point.</p>
 <pre class="source">
-class Range {
+class Range implements Comparable&lt;Range&gt; {
  final Point start;
  final Point end;
 
@@ -62,6 +62,75 @@ class Range {
  }  
  int get hashCode =&gt; start.hashCode ^ end.hashCode;
  
+ /// Compares the given [row] and [column] with this range.
+ /// 
+ /// This algorithm will return the following values:
+ /// 
+ ///     -1  if the point comes before this range
+ ///     0   if the point comes within this range
+ ///     1   if the point comes after this range   
+ int compare(int row, int column) {
+   if (!isMultiLine) {
+     if (row == start.row) {        
+       return column &lt; start.column ? -1 : (column &gt; end.column ? 1 : 0);
+     };
+   }
+   if (row &lt; start.row)  return -1;
+   if (row &gt; end.row)    return 1;
+   if (start.row == row) return column &gt;= start.column ? 0 : -1;
+   if (end.row == row)   return column &lt;= end.column ? 0 : 1;
+   return 0;
+ }
+ 
+ int compareEnd(int row, int column) {
+   if (end.row == row &amp;&amp; end.column == column) return 1;
+   else return compare(row, column);
+ }
+ 
+ int compareInside(int row, int column) {
+   if (end.row == row &amp;&amp; end.column == column)           return 1;
+   else if (start.row == row &amp;&amp; start.column == column)  return -1;
+   else return compare(row, column);
+ }
+ 
+ int comparePoint(Point point) =&gt; compare(point.row, point.column);
+ 
+ int compareRange(Range range) {
+   var cmp,
+       end = range.end,
+       start = range.start;
+
+   cmp = compare(end.row, end.column);
+   if (cmp == 1) {
+     cmp = compare(start.row, start.column);
+     if (cmp == 1) {
+       return 2;
+     } else if (cmp == 0) {
+       return 1;
+     } else {
+       return 0;
+     }
+   } else if (cmp == -1) {
+     return -2;
+   } else {
+     cmp = compare(start.row, start.column);
+     if (cmp == -1) {
+       return -1;
+     } else if (cmp == 1) {
+       return 42;
+     } else {
+       return 0;
+     }
+   }
+ }
+ 
+ int compareStart(int row, int column) {
+   if (start.row == row &amp;&amp; start.column == column) return -1;
+   else return compare(row, column);
+ }
+ 
+ int compareTo(Range other) =&gt; compareRange(other);
+ 
  js.Proxy _toProxy() =&gt; 
      new js.Proxy(_context.ace.define.modules['ace/range'].Range, 
          start.row, start.column, end.row, end.column);
@@ -71,6 +140,9 @@ class Range {
 }
 </pre>
 </div>
+<h3>Implements</h3>
+<p>
+<span class="type-box"><span class="icon-class"></span><a href="../dart_core/Comparable.html">Comparable&lt;Range&gt;</a></span></p>
 <div>
 <h3>Constructors</h3>
 <div class="method"><h4 id="">
@@ -218,6 +290,140 @@ bool operator ==(Object other) {
 </div>
 <div>
 <h3>Methods</h3>
+<div class="method"><h4 id="compare">
+<button class="show-code">Code</button>
+int <strong>compare</strong>(int row, int column) <a class="anchor-link" href="#compare"
+              title="Permalink to Range.compare">#</a></h4>
+<div class="doc">
+<p>Compares the given 
+<span class="param">row</span> and 
+<span class="param">column</span> with this range.</p>
+<p>This algorithm will return the following values:</p>
+<pre><code>-1  if the point comes before this range
+0   if the point comes within this range
+1   if the point comes after this range   
+</code></pre>
+<pre class="source">
+int compare(int row, int column) {
+ if (!isMultiLine) {
+   if (row == start.row) {        
+     return column &lt; start.column ? -1 : (column &gt; end.column ? 1 : 0);
+   };
+ }
+ if (row &lt; start.row)  return -1;
+ if (row &gt; end.row)    return 1;
+ if (start.row == row) return column &gt;= start.column ? 0 : -1;
+ if (end.row == row)   return column &lt;= end.column ? 0 : 1;
+ return 0;
+}
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="compareEnd">
+<button class="show-code">Code</button>
+int <strong>compareEnd</strong>(int row, int column) <a class="anchor-link" href="#compareEnd"
+              title="Permalink to Range.compareEnd">#</a></h4>
+<div class="doc">
+<pre class="source">
+int compareEnd(int row, int column) {
+ if (end.row == row &amp;&amp; end.column == column) return 1;
+ else return compare(row, column);
+}
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="compareInside">
+<button class="show-code">Code</button>
+int <strong>compareInside</strong>(int row, int column) <a class="anchor-link" href="#compareInside"
+              title="Permalink to Range.compareInside">#</a></h4>
+<div class="doc">
+<pre class="source">
+int compareInside(int row, int column) {
+ if (end.row == row &amp;&amp; end.column == column)           return 1;
+ else if (start.row == row &amp;&amp; start.column == column)  return -1;
+ else return compare(row, column);
+}
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="comparePoint">
+<button class="show-code">Code</button>
+int <strong>comparePoint</strong>(<a href="../ace/Point.html">Point</a> point) <a class="anchor-link" href="#comparePoint"
+              title="Permalink to Range.comparePoint">#</a></h4>
+<div class="doc">
+<pre class="source">
+int comparePoint(Point point) =&gt; compare(point.row, point.column);
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="compareRange">
+<button class="show-code">Code</button>
+int <strong>compareRange</strong>(<a href="../ace/Range.html">Range</a> range) <a class="anchor-link" href="#compareRange"
+              title="Permalink to Range.compareRange">#</a></h4>
+<div class="doc">
+<pre class="source">
+int compareRange(Range range) {
+ var cmp,
+     end = range.end,
+     start = range.start;
+
+ cmp = compare(end.row, end.column);
+ if (cmp == 1) {
+   cmp = compare(start.row, start.column);
+   if (cmp == 1) {
+     return 2;
+   } else if (cmp == 0) {
+     return 1;
+   } else {
+     return 0;
+   }
+ } else if (cmp == -1) {
+   return -2;
+ } else {
+   cmp = compare(start.row, start.column);
+   if (cmp == -1) {
+     return -1;
+   } else if (cmp == 1) {
+     return 42;
+   } else {
+     return 0;
+   }
+ }
+}
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="compareStart">
+<button class="show-code">Code</button>
+int <strong>compareStart</strong>(int row, int column) <a class="anchor-link" href="#compareStart"
+              title="Permalink to Range.compareStart">#</a></h4>
+<div class="doc">
+<pre class="source">
+int compareStart(int row, int column) {
+ if (start.row == row &amp;&amp; start.column == column) return -1;
+ else return compare(row, column);
+}
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="compareTo">
+<button class="show-code">Code</button>
+int <strong>compareTo</strong>(<a href="../ace/Range.html">Range</a> other) <a class="anchor-link" href="#compareTo"
+              title="Permalink to Range.compareTo">#</a></h4>
+<div class="doc">
+<div class="inherited">
+<p>Compares this object to another <a class="crossref" href="../dart_core/Comparable.html">Comparable</a></p>
+<p>Returns a value like a <a class="crossref" href="../dart_core/Comparator.html">Comparator</a> when comparing <code>this</code> to 
+<span class="param">other</span>.</p>
+<p>May throw an <a class="crossref" href="../dart_core/ArgumentError.html">ArgumentError</a> if 
+<span class="param">other</span> is of a type that
+is not comparable to <code>this</code>.</p>
+<div class="docs-inherited-from">docs inherited from Comparable&lt;<a href="../ace/Range.html">Range</a>&gt; </div></div>
+<pre class="source">
+int compareTo(Range other) =&gt; compareRange(other);
+</pre>
+</div>
+</div>
 <div class="method"><h4 id="toString">
 <button class="show-code">Code</button>
 String <strong>toString</strong>() <a class="anchor-link" href="#toString"
@@ -237,7 +443,7 @@ String toString() =&gt;
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2013-08-29 14:56:57.490</div>
+          <div>This page was generated at 2013-08-29 15:42:48.384</div>
         </div>
         <script async src="../client-live-nav.js"></script>
         </body></html>
