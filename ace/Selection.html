@@ -32,8 +32,8 @@
         
 <button id="show-inherited" class="show-inherited">Hide inherited</button>
 <div class="doc">
-<p>Encapsulates the current <a class="crossref" href="../ace/Selection.html#cursor">cursor</a> position and the text selection of an 
-<a class="crossref" href="../ace/EditSession.html">EditSession</a>.</p>
+<p>Encapsulates the current <a class="crossref" href="../ace/Selection.html#cursor">cursor</a> position and the current text selection 
+<a class="crossref" href="../ace/Selection.html#range">range</a> of an <a class="crossref" href="../ace/EditSession.html">EditSession</a>.</p>
 <p>The positions (row and column) used in a selection are in <a class="crossref" href="../ace/Document.html">Document</a> 
 coordinates representing the coordinates as they appear in the document 
 before applying soft wrap and folding.</p>
@@ -62,6 +62,7 @@ class Selection extends _HasProxy {
  /// Fired whenever the cursor selection changes.
  Stream get onChangeSelection =&gt; _onChangeSelection.stream;
  
+ /// The current [Range] of the selected text.
  Range get range =&gt; new Range._(_proxy.getRange());
  
  /// Creates a new [Selection] for the given [session].
@@ -289,6 +290,7 @@ final <a href="../ace/Range.html">Range</a>         <strong>range</strong> <a cl
             title="Permalink to Selection.range">#</a>
         </h4>
         <div class="doc">
+<p>The current <a class="crossref" href="../ace/Range.html">Range</a> of the selected text.</p>
 <pre class="source">
 Range get range =&gt; new Range._(_proxy.getRange());
 </pre>
@@ -705,7 +707,7 @@ String toString() =&gt; _context.JSON.stringify(_proxy);
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2013-08-29 10:57:55.476</div>
+          <div>This page was generated at 2013-08-29 11:07:47.120</div>
         </div>
         <script async src="../client-live-nav.js"></script>
         </body></html>
