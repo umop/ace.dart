@@ -132,6 +132,9 @@ class Range implements Comparable&lt;Range&gt; {
    else return compare(row, column);
  }
  
+ /// Compares the given [other] with this range.
+ /// 
+ /// This method forwards the call to the [compareRange] method.
  int compareTo(Range other) =&gt; compareRange(other);
  
  js.Proxy _toProxy() =&gt; 
@@ -414,14 +417,9 @@ int compareStart(int row, int column) {
 int <strong>compareTo</strong>(<a href="../ace/Range.html">Range</a> other) <a class="anchor-link" href="#compareTo"
               title="Permalink to Range.compareTo">#</a></h4>
 <div class="doc">
-<div class="inherited">
-<p>Compares this object to another <a class="crossref" href="../dart_core/Comparable.html">Comparable</a></p>
-<p>Returns a value like a <a class="crossref" href="../dart_core/Comparator.html">Comparator</a> when comparing <code>this</code> to 
-<span class="param">other</span>.</p>
-<p>May throw an <a class="crossref" href="../dart_core/ArgumentError.html">ArgumentError</a> if 
-<span class="param">other</span> is of a type that
-is not comparable to <code>this</code>.</p>
-<div class="docs-inherited-from">docs inherited from Comparable&lt;<a href="../ace/Range.html">Range</a>&gt; </div></div>
+<p>Compares the given 
+<span class="param">other</span> with this range.</p>
+<p>This method forwards the call to the <a class="crossref" href="../ace/Range.html#compareRange">compareRange</a> method.</p>
 <pre class="source">
 int compareTo(Range other) =&gt; compareRange(other);
 </pre>
@@ -446,7 +444,7 @@ String toString() =&gt;
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2013-08-29 15:56:50.206</div>
+          <div>This page was generated at 2013-08-29 15:59:50.864</div>
         </div>
         <script async src="../client-live-nav.js"></script>
         </body></html>
