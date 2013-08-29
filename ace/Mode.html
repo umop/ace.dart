@@ -51,10 +51,6 @@ class Mode extends _HasProxy {
  /// 
  /// The [modePath] is a path such as `ace/mode/text`.
  Mode(String modePath) : super.async(new Future&lt;js.Proxy&gt;(() {
-   // TODO(rms): throw ArgumentError if modePath is not a value in our
-   // _extensionMap?  would be able to give the user a much better error that
-   // way I believe.. otherwise ace.js will try to load a resource that does
-   // not exist.
    final completer = new Completer&lt;js.Proxy&gt;();
    _context.ace.config.loadModule(js.array(['mode', modePath]), 
        new js.Callback.once((module) {
@@ -83,10 +79,6 @@ new <strong>Mode</strong>(String modePath) <a class="anchor-link" href="#"
 <span class="param">modePath</span> is a path such as <code>ace/mode/text</code>.</p>
 <pre class="source">
 Mode(String modePath) : super.async(new Future&lt;js.Proxy&gt;(() {
- // TODO(rms): throw ArgumentError if modePath is not a value in our
- // _extensionMap?  would be able to give the user a much better error that
- // way I believe.. otherwise ace.js will try to load a resource that does
- // not exist.
  final completer = new Completer&lt;js.Proxy&gt;();
  _context.ace.config.loadModule(js.array(['mode', modePath]), 
      new js.Callback.once((module) {
@@ -177,7 +169,7 @@ String toString() =&gt; _context.JSON.stringify(_proxy);
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2013-08-29 05:45:44.843</div>
+          <div>This page was generated at 2013-08-29 06:04:41.261</div>
         </div>
         <script async src="../client-live-nav.js"></script>
         </body></html>
