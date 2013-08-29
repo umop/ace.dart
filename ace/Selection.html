@@ -152,6 +152,7 @@ class Selection extends _HasProxy {
  /// Selects to the right one column.
  void selectRight() =&gt; _proxy.selectRight();
  
+ /// Selects to the given [row] and [column].
  void selectTo(int row, int column) =&gt; _proxy.selectTo(row, column);
  
  /// Selects up one row.
@@ -633,6 +634,9 @@ void selectRight() =&gt; _proxy.selectRight();
 void <strong>selectTo</strong>(int row, int column) <a class="anchor-link" href="#selectTo"
               title="Permalink to Selection.selectTo">#</a></h4>
 <div class="doc">
+<p>Selects to the given 
+<span class="param">row</span> and 
+<span class="param">column</span>.</p>
 <pre class="source">
 void selectTo(int row, int column) =&gt; _proxy.selectTo(row, column);
 </pre>
@@ -718,7 +722,7 @@ String toString() =&gt; _context.JSON.stringify(_proxy);
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2013-08-29 11:22:42.918</div>
+          <div>This page was generated at 2013-08-29 11:50:52.663</div>
         </div>
         <script async src="../client-live-nav.js"></script>
         </body></html>
