@@ -129,13 +129,15 @@ class Selection extends _HasProxy {
  
  void selectDown() =&gt; _proxy.selectDown();
  void selectFileEnd() =&gt; _proxy.selectFileEnd();
- void selectFileStart() =&gt; _proxy.selectFileStart();
+ void selectFileStart() =&gt; _proxy.selectFileStart();  
  void selectLeft() =&gt; _proxy.selectLeft();
  
- /// Selects the entire line.
+ /// Selects the entire current line.
  void selectLine() =&gt; _proxy.selectLine();
  
+ /// Selects until the end of the current line.
  void selectLineEnd() =&gt; _proxy.selectLineEnd();
+ 
  void selectLineStart() =&gt; _proxy.selectLineStart();
  void selectRight() =&gt; _proxy.selectRight();
  void selectTo(int row, int column) =&gt; _proxy.selectTo(row, column);
@@ -567,7 +569,7 @@ void selectLeft() =&gt; _proxy.selectLeft();
 void <strong>selectLine</strong>() <a class="anchor-link" href="#selectLine"
               title="Permalink to Selection.selectLine">#</a></h4>
 <div class="doc">
-<p>Selects the entire line.</p>
+<p>Selects the entire current line.</p>
 <pre class="source">
 void selectLine() =&gt; _proxy.selectLine();
 </pre>
@@ -578,6 +580,7 @@ void selectLine() =&gt; _proxy.selectLine();
 void <strong>selectLineEnd</strong>() <a class="anchor-link" href="#selectLineEnd"
               title="Permalink to Selection.selectLineEnd">#</a></h4>
 <div class="doc">
+<p>Selects until the end of the current line.</p>
 <pre class="source">
 void selectLineEnd() =&gt; _proxy.selectLineEnd();
 </pre>
@@ -692,7 +695,7 @@ String toString() =&gt; _context.JSON.stringify(_proxy);
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2013-08-29 09:43:52.951</div>
+          <div>This page was generated at 2013-08-29 09:51:08.623</div>
         </div>
         <script async src="../client-live-nav.js"></script>
         </body></html>
