@@ -135,10 +135,12 @@ class Selection extends _HasProxy {
  /// Selects the entire current line.
  void selectLine() =&gt; _proxy.selectLine();
  
- /// Selects until the end of the current line.
+ /// Selects to the end of the current line.
  void selectLineEnd() =&gt; _proxy.selectLineEnd();
  
+ /// Selects to the beginning of the current line.
  void selectLineStart() =&gt; _proxy.selectLineStart();
+ 
  void selectRight() =&gt; _proxy.selectRight();
  void selectTo(int row, int column) =&gt; _proxy.selectTo(row, column);
  void selectUp() =&gt; _proxy.selectUp();
@@ -580,7 +582,7 @@ void selectLine() =&gt; _proxy.selectLine();
 void <strong>selectLineEnd</strong>() <a class="anchor-link" href="#selectLineEnd"
               title="Permalink to Selection.selectLineEnd">#</a></h4>
 <div class="doc">
-<p>Selects until the end of the current line.</p>
+<p>Selects to the end of the current line.</p>
 <pre class="source">
 void selectLineEnd() =&gt; _proxy.selectLineEnd();
 </pre>
@@ -591,6 +593,7 @@ void selectLineEnd() =&gt; _proxy.selectLineEnd();
 void <strong>selectLineStart</strong>() <a class="anchor-link" href="#selectLineStart"
               title="Permalink to Selection.selectLineStart">#</a></h4>
 <div class="doc">
+<p>Selects to the beginning of the current line.</p>
 <pre class="source">
 void selectLineStart() =&gt; _proxy.selectLineStart();
 </pre>
@@ -695,7 +698,7 @@ String toString() =&gt; _context.JSON.stringify(_proxy);
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2013-08-29 10:25:16.420</div>
+          <div>This page was generated at 2013-08-29 10:36:28.859</div>
         </div>
         <script async src="../client-live-nav.js"></script>
         </body></html>
