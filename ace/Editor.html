@@ -73,6 +73,7 @@ class Editor extends _HasProxy {
  /// Fired whenever text is pasted.
  Stream&lt;String&gt; get onPaste =&gt; _onPaste.stream;  
  
+ /// The string of text in the current [selectionRange].
  String get copyText =&gt; _proxy.getCopyText();
  
  /// The current position of the cursor.
@@ -303,6 +304,7 @@ final String         <strong>copyText</strong> <a class="anchor-link"
             title="Permalink to Editor.copyText">#</a>
         </h4>
         <div class="doc">
+<p>The string of text in the current <a class="crossref" href="../ace/Editor.html#selectionRange">selectionRange</a>.</p>
 <pre class="source">
 String get copyText =&gt; _proxy.getCopyText();
 </pre>
@@ -1155,7 +1157,7 @@ void updateSelectionMarkers() =&gt; _proxy.updateSelectionMarkers();
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2013-08-29 09:22:01.620</div>
+          <div>This page was generated at 2013-08-29 09:43:53.176</div>
         </div>
         <script async src="../client-live-nav.js"></script>
         </body></html>
