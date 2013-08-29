@@ -42,6 +42,7 @@ class Range implements Comparable&lt;Range&gt; {
 
  /// Returns _true_ if this range's [start] point equals its [end] point.
  bool get isEmpty =&gt; start.row == end.row &amp;&amp; start.column == end.column;
+ 
  /// Returns _true_ if this range spans across multiple lines.
  bool get isMultiLine =&gt; start.row != end.row;
  
@@ -59,7 +60,8 @@ class Range implements Comparable&lt;Range&gt; {
    if(other is! Range) return false; 
    final o = other;
    return start == o.start &amp;&amp; end == o.end;
- }  
+ }
+ 
  int get hashCode =&gt; start.hashCode ^ end.hashCode;
  
  /// Compares the given [row] and [column] with this range.
@@ -443,7 +445,7 @@ String toString() =&gt;
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2013-08-29 15:42:48.384</div>
+          <div>This page was generated at 2013-08-29 15:44:35.695</div>
         </div>
         <script async src="../client-live-nav.js"></script>
         </body></html>
