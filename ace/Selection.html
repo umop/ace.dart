@@ -128,6 +128,7 @@ class Selection extends _HasProxy {
  /// Selects a word, including its right whitespace.
  void selectAWord() =&gt; _proxy.selectAWord();
  
+ /// Selects down one row.
  void selectDown() =&gt; _proxy.selectDown();
  
  /// Selects to the end of the document.
@@ -152,7 +153,10 @@ class Selection extends _HasProxy {
  void selectRight() =&gt; _proxy.selectRight();
  
  void selectTo(int row, int column) =&gt; _proxy.selectTo(row, column);
+ 
+ /// Selects up one row.
  void selectUp() =&gt; _proxy.selectUp();
+ 
  void selectWord() =&gt; _proxy.selectWord();
  void selectWordLeft() =&gt; _proxy.selectWordLeft();
  void selectWordRight() =&gt; _proxy.selectWordRight();
@@ -541,6 +545,7 @@ void selectAWord() =&gt; _proxy.selectAWord();
 void <strong>selectDown</strong>() <a class="anchor-link" href="#selectDown"
               title="Permalink to Selection.selectDown">#</a></h4>
 <div class="doc">
+<p>Selects down one row.</p>
 <pre class="source">
 void selectDown() =&gt; _proxy.selectDown();
 </pre>
@@ -638,6 +643,7 @@ void selectTo(int row, int column) =&gt; _proxy.selectTo(row, column);
 void <strong>selectUp</strong>() <a class="anchor-link" href="#selectUp"
               title="Permalink to Selection.selectUp">#</a></h4>
 <div class="doc">
+<p>Selects up one row.</p>
 <pre class="source">
 void selectUp() =&gt; _proxy.selectUp();
 </pre>
@@ -712,7 +718,7 @@ String toString() =&gt; _context.JSON.stringify(_proxy);
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2013-08-29 11:17:33.034</div>
+          <div>This page was generated at 2013-08-29 11:22:42.918</div>
         </div>
         <script async src="../client-live-nav.js"></script>
         </body></html>
