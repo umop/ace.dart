@@ -3332,9 +3332,7 @@ bu:function(a){var z=this.G1
 return z!=null?"UnimplementedError: "+z:"UnimplementedError"},
 $isGe:true},lj:{"":"Ge;G1",
 bu:function(a){return"Bad state: "+this.G1}},UV:{"":"Ge;YA",
-bu:function(a){var z=this.YA
-if(z==null)return"Concurrent modification during iteration."
-return"Concurrent modification during iteration: "+$.hl(z)+"."}},VS:{"":"a;",
+bu:function(a){return"Concurrent modification during iteration: "+$.hl(this.YA)+"."}},VS:{"":"a;",
 bu:function(a){return"Stack Overflow"},
 $isGe:true},t7:{"":"Ge;Wo",
 bu:function(a){return"Reading static variable '"+this.Wo+"' during its initialization"}},HG:{"":"a;G1",
