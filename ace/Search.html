@@ -66,7 +66,7 @@ class Search extends _HasProxy {
  /// If [options.backwards] is `true`, the search goes backwards in the 
  /// [session].
  Iterable&lt;Range&gt; findAll(EditSession session) =&gt; 
-     json.parse(_context.JSON.stringify(_proxy.findAll(session._proxy)))
+     JSON.decode(_context.JSON.stringify(_proxy.findAll(session._proxy)))
        .map((range) =&gt; new Range._(js.map(range)));
 }
 </pre>
@@ -185,7 +185,7 @@ will be empty.</p>
 <span class="param">session</span>.</p>
 <pre class="source">
 Iterable&lt;Range&gt; findAll(EditSession session) =&gt; 
-   json.parse(_context.JSON.stringify(_proxy.findAll(session._proxy)))
+   JSON.decode(_context.JSON.stringify(_proxy.findAll(session._proxy)))
      .map((range) =&gt; new Range._(js.map(range)));
 </pre>
 </div>
@@ -208,7 +208,7 @@ String toString() =&gt; _context.JSON.stringify(_proxy);
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2013-08-29 15:59:50.826</div>
+          <div>This page was generated at 2013-09-06 13:04:10.503</div>
         </div>
         <script async src="../client-live-nav.js"></script>
         </body></html>

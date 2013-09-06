@@ -45,7 +45,7 @@ class Document extends _HasProxy {
  
  /// All the lines in this document.
  Iterable&lt;String&gt; get allLines =&gt;
-     json.parse(_context.JSON.stringify(_proxy.getAllLines()));
+     JSON.decode(_context.JSON.stringify(_proxy.getAllLines()));
  
  /// The number of rows in this document.
  int get length =&gt; _proxy.getLength();
@@ -140,7 +140,8 @@ class Document extends _HasProxy {
  /// Removes the range of lines from the given [startRow] -&gt; [endRow] and
  /// returns the removed lines.  This method also fires an [onChange] event.
  Iterable&lt;String&gt; removeLines(int startRow, int endRow) =&gt;
-     json.parse(_context.JSON.stringify(_proxy.removeLines(startRow, endRow)));
+     JSON.decode(
+         _context.JSON.stringify(_proxy.removeLines(startRow, endRow)));
  
  /// Removes the [newLineCharacter] between the given [row] and the row 
  /// immediately following it.  This method also fires an [onChange] event.
@@ -189,7 +190,7 @@ final Iterable&lt;String&gt;         <strong>allLines</strong> <a class="anchor-
 <p>All the lines in this document.</p>
 <pre class="source">
 Iterable&lt;String&gt; get allLines =&gt;
-   json.parse(_context.JSON.stringify(_proxy.getAllLines()));
+   JSON.decode(_context.JSON.stringify(_proxy.getAllLines()));
 </pre>
 </div>
 </div>
@@ -477,7 +478,8 @@ Iterable&lt;String&gt; <strong>removeLines</strong>(int startRow, int endRow) <a
 returns the removed lines.  This method also fires an <a class="crossref" href="../ace/Document.html#onChange">onChange</a> event.</p>
 <pre class="source">
 Iterable&lt;String&gt; removeLines(int startRow, int endRow) =&gt;
-   json.parse(_context.JSON.stringify(_proxy.removeLines(startRow, endRow)));
+   JSON.decode(
+       _context.JSON.stringify(_proxy.removeLines(startRow, endRow)));
 </pre>
 </div>
 </div>
@@ -541,7 +543,7 @@ String toString() =&gt; _context.JSON.stringify(_proxy);
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2013-08-29 15:59:51.035</div>
+          <div>This page was generated at 2013-09-06 13:04:10.888</div>
         </div>
         <script async src="../client-live-nav.js"></script>
         </body></html>

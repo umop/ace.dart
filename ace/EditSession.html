@@ -89,7 +89,7 @@ class EditSession extends _HasProxy {
  /// A value of _null_ for any given row index indicates that no breakpoint is
  /// set for that row.
  Map&lt;int, String&gt; get breakpoints =&gt;
-     json.parse(_context.JSON.stringify(_proxy.getBreakpoints())).asMap();
+     JSON.decode(_context.JSON.stringify(_proxy.getBreakpoints())).asMap();
  
  /// The current [Document] associated with this session.
  Document
@@ -180,8 +180,8 @@ class EditSession extends _HasProxy {
    
  /// Whether or not line wrapping is enabled. 
  /// 
- /// A _true_ value means to line wrap.  Setting a new value fires an 
- /// [onChangeWrapMode] event.
+ /// A _true_ value means to line wrap.  The default value is _false_ for no
+ /// line wrapping.  Setting a new value fires an [onChangeWrapMode] event.
  bool
    get useWrapMode =&gt; _proxy.getUseWrapMode();
    set useWrapMode(bool useWrapMode) =&gt; _proxy.setUseWrapMode(useWrapMode);
@@ -202,7 +202,7 @@ class EditSession extends _HasProxy {
  ///     { min: wrapLimitRange_min, max: wrapLimitRange_max }
  // TODO(rms): define a class for this data.
  Map get wrapLimitRange =&gt; 
-     json.parse(_context.JSON.stringify(_proxy.getWrapLimitRange()));
+     JSON.decode(_context.JSON.stringify(_proxy.getWrapLimitRange()));
  
  /// Creates a new EditSession and associates it with the given [document] and 
  /// text [mode].
@@ -407,7 +407,7 @@ current <a class="crossref" href="../ace/EditSession.html#document">document</a>
 set for that row.</p>
 <pre class="source">
 Map&lt;int, String&gt; get breakpoints =&gt;
-   json.parse(_context.JSON.stringify(_proxy.getBreakpoints())).asMap();
+   JSON.decode(_context.JSON.stringify(_proxy.getBreakpoints())).asMap();
 </pre>
 </div>
 </div>
@@ -796,8 +796,8 @@ bool         <strong>useWrapMode</strong> <a class="anchor-link"
         </h4>
         <div class="doc">
 <p>Whether or not line wrapping is enabled. </p>
-<p>A <em>true</em> value means to line wrap.  Setting a new value fires an 
-<a class="crossref" href="../ace/EditSession.html#onChangeWrapMode">onChangeWrapMode</a> event.</p>
+<p>A <em>true</em> value means to line wrap.  The default value is <em>false</em> for no
+line wrapping.  Setting a new value fires an <a class="crossref" href="../ace/EditSession.html#onChangeWrapMode">onChangeWrapMode</a> event.</p>
 <pre class="source">
 bool
  get useWrapMode =&gt; _proxy.getUseWrapMode();
@@ -850,7 +850,7 @@ final Map         <strong>wrapLimitRange</strong> <a class="anchor-link"
 </code></pre>
 <pre class="source">
 Map get wrapLimitRange =&gt; 
-   json.parse(_context.JSON.stringify(_proxy.getWrapLimitRange()));
+   JSON.decode(_context.JSON.stringify(_proxy.getWrapLimitRange()));
 </pre>
 </div>
 </div>
@@ -1228,7 +1228,7 @@ String toString() =&gt; _proxy.toString();
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2013-08-29 15:59:50.966</div>
+          <div>This page was generated at 2013-09-06 13:04:10.721</div>
         </div>
         <script async src="../client-live-nav.js"></script>
         </body></html>
