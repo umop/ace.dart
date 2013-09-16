@@ -37,7 +37,7 @@ class Mode extends _HasProxy {
  
  final String _modePath;
  
- get _mode =&gt; _proxy != null ? _proxy : _modePath;
+ get _mode =&gt; hasProxy ? _proxy : _modePath;
  
  /// Creates a mode for the given [filePath], based on its file extension.
  factory Mode.forFile(String filePath) {
@@ -169,7 +169,7 @@ String toString() =&gt; _context.JSON.stringify(_proxy);
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2013-09-15 12:06:31.933</div>
+          <div>This page was generated at 2013-09-16 10:35:27.010</div>
         </div>
         <script async src="../client-live-nav.js"></script>
         </body></html>
