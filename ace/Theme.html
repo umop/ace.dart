@@ -1,0 +1,623 @@
+        <!DOCTYPE html>
+        <html>
+        <head>
+                <meta charset="utf-8">
+        <title>Theme class / ace Library / Dart Documentation</title>
+        <link rel="stylesheet" type="text/css"
+            href="../styles.css">
+        <link href="//fonts.googleapis.com/css?family=Open+Sans:400,600,700,800" rel="stylesheet" type="text/css">
+        <link rel="shortcut icon" href="../favicon.ico">
+        
+        </head>
+        <body data-library="ace" data-type="Theme">
+        <div class="page">
+        <div class="header">
+          <a href="../index.html"><div class="logo"></div></a>
+          <a href="../index.html">Dart Documentation</a>
+         &rsaquo; <a href="../ace.html">ace</a> &rsaquo; <a href="../ace/Theme.html">Theme</a>        <div id="search-box">
+          <input type="search" name="q" id="q" autocomplete="off"
+              class="search-input" placeholder="Search API">
+        </div>
+        
+      </div>
+      <div class="drop-down" id="drop-down"></div>
+      
+        <div class="nav">
+        
+</div>
+<div class="content">
+        <h2><strong>Theme</strong>
+          class
+        </h2>
+        
+<button id="show-inherited" class="show-inherited">Hide inherited</button>
+<div class="doc">
+<pre class="source">
+class Theme extends _HasProxy {
+ static const AMBIANCE                 = 'ambiance';
+ static const CHAOS                    = 'chaos';
+ static const CHROME                   = 'chrome';
+ static const CLOUDS                   = 'clouds';
+ static const CLOUNDS_MIDNIGHT         = 'clouds_midnight';
+ static const COBALT                   = 'cobalt';
+ static const CRIMSON_EDITOR           = 'crimson_editor';
+ static const DAWN                     = 'dawn';
+ static const DREAMWEAVER              = 'dreamweaver';
+ static const ECLIPSE                  = 'eclipse';
+ static const GITHUB                   = 'github';
+ static const IDLE_FINGERS             = 'idle_fingers';
+ static const KR                       = 'kr';
+ static const MERBIVORE                = 'merbivore';
+ static const MERBIVORE_SOFT           = 'merbivore_soft';
+ static const MONO_INDUSTRIAL          = 'mono_industrial';
+ static const MONOKAI                  = 'monokai';
+ static const PASTEL_ON_DARK           = 'pastel_on_dark';
+ static const SOLARIZED_DARK           = 'solarized_dark';
+ static const SOLARIZED_LIGHT          = 'solarized_light';
+ static const TERMINAL                 = 'terminal';
+ static const TEXTMATE                 = 'textmate';
+ static const TOMORROW                 = 'tomorrow';
+ static const TOMORROW_NIGHT           = 'tomorrow_night';
+ static const TOMORROW_NIGHT_BLUE      = 'tomorrow_night_blue';
+ static const TOMORROW_NIGHT_BRIGHT    = 'tomorrow_night_bright';
+ static const TOMORROW_NIGHT_EIGHTIES  = 'tomorrow_night_eighties';
+ static const TWILIGHT                 = 'twilight';
+ static const VIBRANT_INK              = 'vibrant_ink';
+ static const XCODE                    = 'xcode';
+ 
+ final String _themePath;
+ 
+ get _theme =&gt; hasProxy ? _proxy : _themePath;
+ 
+ bool get isDark {
+   if (!hasProxy) throw new StateError('$_themePath is not yet loaded.');
+   return _proxy.isDark;
+ }
+ 
+ String get cssClass {
+   if (!hasProxy) throw new StateError('$_themePath is not yet loaded.');
+   return _proxy.cssClass;
+ }
+ 
+ String get cssText {
+   if (!hasProxy) throw new StateError('$_themePath is not yet loaded.');
+   return _proxy.cssText;
+ }
+ 
+ /// Creates a theme for the given [name].
+ /// 
+ /// The [name] must be a constant defined in this class such as [MONOKAI].
+ Theme.named(String name) : this('ace/theme/$name');
+ 
+ /// Creates a theme for the given [themePath].
+ /// 
+ /// The [themePath] is a path such as `ace/theme/monokai`.
+ Theme(String themePath) : super.async(new Future&lt;js.Proxy&gt;(() {
+   final completer = new Completer&lt;js.Proxy&gt;();
+   _context.ace.config.loadModule(js.array(['theme', themePath]), 
+       new js.Callback.once((module) {
+           completer.complete(js.retain(module));
+       }));
+   return completer.future;
+ })), _themePath = themePath;
+ 
+ Theme._(js.Proxy proxy) : super(proxy), _themePath = null;
+}
+</pre>
+</div>
+<h3>Extends</h3>
+<p>
+<span class="type-box"><span class="icon-class"></span><a href="../ace/_HasProxy.html">_HasProxy</a></span>&nbsp;&gt;&nbsp;<span class="type-box"><span class="icon-class"></span><strong>Theme</strong></span></p>
+<div>
+<h3>Static Properties</h3>
+<div class="field"><h4 id="AMBIANCE">
+<button class="show-code">Code</button>
+const         <strong>AMBIANCE</strong> <a class="anchor-link"
+            href="#AMBIANCE"
+            title="Permalink to Theme.AMBIANCE">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+static const AMBIANCE                 = 'ambiance'
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="CHAOS">
+<button class="show-code">Code</button>
+const         <strong>CHAOS</strong> <a class="anchor-link"
+            href="#CHAOS"
+            title="Permalink to Theme.CHAOS">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+static const CHAOS                    = 'chaos'
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="CHROME">
+<button class="show-code">Code</button>
+const         <strong>CHROME</strong> <a class="anchor-link"
+            href="#CHROME"
+            title="Permalink to Theme.CHROME">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+static const CHROME                   = 'chrome'
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="CLOUDS">
+<button class="show-code">Code</button>
+const         <strong>CLOUDS</strong> <a class="anchor-link"
+            href="#CLOUDS"
+            title="Permalink to Theme.CLOUDS">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+static const CLOUDS                   = 'clouds'
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="CLOUNDS_MIDNIGHT">
+<button class="show-code">Code</button>
+const         <strong>CLOUNDS_MIDNIGHT</strong> <a class="anchor-link"
+            href="#CLOUNDS_MIDNIGHT"
+            title="Permalink to Theme.CLOUNDS_MIDNIGHT">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+static const CLOUNDS_MIDNIGHT         = 'clouds_midnight'
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="COBALT">
+<button class="show-code">Code</button>
+const         <strong>COBALT</strong> <a class="anchor-link"
+            href="#COBALT"
+            title="Permalink to Theme.COBALT">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+static const COBALT                   = 'cobalt'
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="CRIMSON_EDITOR">
+<button class="show-code">Code</button>
+const         <strong>CRIMSON_EDITOR</strong> <a class="anchor-link"
+            href="#CRIMSON_EDITOR"
+            title="Permalink to Theme.CRIMSON_EDITOR">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+static const CRIMSON_EDITOR           = 'crimson_editor'
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="DAWN">
+<button class="show-code">Code</button>
+const         <strong>DAWN</strong> <a class="anchor-link"
+            href="#DAWN"
+            title="Permalink to Theme.DAWN">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+static const DAWN                     = 'dawn'
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="DREAMWEAVER">
+<button class="show-code">Code</button>
+const         <strong>DREAMWEAVER</strong> <a class="anchor-link"
+            href="#DREAMWEAVER"
+            title="Permalink to Theme.DREAMWEAVER">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+static const DREAMWEAVER              = 'dreamweaver'
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="ECLIPSE">
+<button class="show-code">Code</button>
+const         <strong>ECLIPSE</strong> <a class="anchor-link"
+            href="#ECLIPSE"
+            title="Permalink to Theme.ECLIPSE">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+static const ECLIPSE                  = 'eclipse'
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="GITHUB">
+<button class="show-code">Code</button>
+const         <strong>GITHUB</strong> <a class="anchor-link"
+            href="#GITHUB"
+            title="Permalink to Theme.GITHUB">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+static const GITHUB                   = 'github'
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="IDLE_FINGERS">
+<button class="show-code">Code</button>
+const         <strong>IDLE_FINGERS</strong> <a class="anchor-link"
+            href="#IDLE_FINGERS"
+            title="Permalink to Theme.IDLE_FINGERS">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+static const IDLE_FINGERS             = 'idle_fingers'
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="KR">
+<button class="show-code">Code</button>
+const         <strong>KR</strong> <a class="anchor-link"
+            href="#KR"
+            title="Permalink to Theme.KR">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+static const KR                       = 'kr'
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="MERBIVORE">
+<button class="show-code">Code</button>
+const         <strong>MERBIVORE</strong> <a class="anchor-link"
+            href="#MERBIVORE"
+            title="Permalink to Theme.MERBIVORE">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+static const MERBIVORE                = 'merbivore'
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="MERBIVORE_SOFT">
+<button class="show-code">Code</button>
+const         <strong>MERBIVORE_SOFT</strong> <a class="anchor-link"
+            href="#MERBIVORE_SOFT"
+            title="Permalink to Theme.MERBIVORE_SOFT">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+static const MERBIVORE_SOFT           = 'merbivore_soft'
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="MONO_INDUSTRIAL">
+<button class="show-code">Code</button>
+const         <strong>MONO_INDUSTRIAL</strong> <a class="anchor-link"
+            href="#MONO_INDUSTRIAL"
+            title="Permalink to Theme.MONO_INDUSTRIAL">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+static const MONO_INDUSTRIAL          = 'mono_industrial'
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="MONOKAI">
+<button class="show-code">Code</button>
+const         <strong>MONOKAI</strong> <a class="anchor-link"
+            href="#MONOKAI"
+            title="Permalink to Theme.MONOKAI">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+static const MONOKAI                  = 'monokai'
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="PASTEL_ON_DARK">
+<button class="show-code">Code</button>
+const         <strong>PASTEL_ON_DARK</strong> <a class="anchor-link"
+            href="#PASTEL_ON_DARK"
+            title="Permalink to Theme.PASTEL_ON_DARK">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+static const PASTEL_ON_DARK           = 'pastel_on_dark'
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="SOLARIZED_DARK">
+<button class="show-code">Code</button>
+const         <strong>SOLARIZED_DARK</strong> <a class="anchor-link"
+            href="#SOLARIZED_DARK"
+            title="Permalink to Theme.SOLARIZED_DARK">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+static const SOLARIZED_DARK           = 'solarized_dark'
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="SOLARIZED_LIGHT">
+<button class="show-code">Code</button>
+const         <strong>SOLARIZED_LIGHT</strong> <a class="anchor-link"
+            href="#SOLARIZED_LIGHT"
+            title="Permalink to Theme.SOLARIZED_LIGHT">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+static const SOLARIZED_LIGHT          = 'solarized_light'
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="TERMINAL">
+<button class="show-code">Code</button>
+const         <strong>TERMINAL</strong> <a class="anchor-link"
+            href="#TERMINAL"
+            title="Permalink to Theme.TERMINAL">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+static const TERMINAL                 = 'terminal'
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="TEXTMATE">
+<button class="show-code">Code</button>
+const         <strong>TEXTMATE</strong> <a class="anchor-link"
+            href="#TEXTMATE"
+            title="Permalink to Theme.TEXTMATE">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+static const TEXTMATE                 = 'textmate'
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="TOMORROW">
+<button class="show-code">Code</button>
+const         <strong>TOMORROW</strong> <a class="anchor-link"
+            href="#TOMORROW"
+            title="Permalink to Theme.TOMORROW">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+static const TOMORROW                 = 'tomorrow'
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="TOMORROW_NIGHT">
+<button class="show-code">Code</button>
+const         <strong>TOMORROW_NIGHT</strong> <a class="anchor-link"
+            href="#TOMORROW_NIGHT"
+            title="Permalink to Theme.TOMORROW_NIGHT">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+static const TOMORROW_NIGHT           = 'tomorrow_night'
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="TOMORROW_NIGHT_BLUE">
+<button class="show-code">Code</button>
+const         <strong>TOMORROW_NIGHT_BLUE</strong> <a class="anchor-link"
+            href="#TOMORROW_NIGHT_BLUE"
+            title="Permalink to Theme.TOMORROW_NIGHT_BLUE">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+static const TOMORROW_NIGHT_BLUE      = 'tomorrow_night_blue'
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="TOMORROW_NIGHT_BRIGHT">
+<button class="show-code">Code</button>
+const         <strong>TOMORROW_NIGHT_BRIGHT</strong> <a class="anchor-link"
+            href="#TOMORROW_NIGHT_BRIGHT"
+            title="Permalink to Theme.TOMORROW_NIGHT_BRIGHT">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+static const TOMORROW_NIGHT_BRIGHT    = 'tomorrow_night_bright'
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="TOMORROW_NIGHT_EIGHTIES">
+<button class="show-code">Code</button>
+const         <strong>TOMORROW_NIGHT_EIGHTIES</strong> <a class="anchor-link"
+            href="#TOMORROW_NIGHT_EIGHTIES"
+            title="Permalink to Theme.TOMORROW_NIGHT_EIGHTIES">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+static const TOMORROW_NIGHT_EIGHTIES  = 'tomorrow_night_eighties'
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="TWILIGHT">
+<button class="show-code">Code</button>
+const         <strong>TWILIGHT</strong> <a class="anchor-link"
+            href="#TWILIGHT"
+            title="Permalink to Theme.TWILIGHT">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+static const TWILIGHT                 = 'twilight'
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="VIBRANT_INK">
+<button class="show-code">Code</button>
+const         <strong>VIBRANT_INK</strong> <a class="anchor-link"
+            href="#VIBRANT_INK"
+            title="Permalink to Theme.VIBRANT_INK">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+static const VIBRANT_INK              = 'vibrant_ink'
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="XCODE">
+<button class="show-code">Code</button>
+const         <strong>XCODE</strong> <a class="anchor-link"
+            href="#XCODE"
+            title="Permalink to Theme.XCODE">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+static const XCODE                    = 'xcode'
+</pre>
+</div>
+</div>
+</div>
+<div>
+<h3>Constructors</h3>
+<div class="method"><h4 id="">
+<button class="show-code">Code</button>
+new <strong>Theme</strong>(String themePath) <a class="anchor-link" href="#"
+              title="Permalink to Theme.Theme">#</a></h4>
+<div class="doc">
+<p>Creates a theme for the given 
+<span class="param">themePath</span>.</p>
+<p>The 
+<span class="param">themePath</span> is a path such as <code>ace/theme/monokai</code>.</p>
+<pre class="source">
+Theme(String themePath) : super.async(new Future&lt;js.Proxy&gt;(() {
+ final completer = new Completer&lt;js.Proxy&gt;();
+ _context.ace.config.loadModule(js.array(['theme', themePath]), 
+     new js.Callback.once((module) {
+         completer.complete(js.retain(module));
+     }));
+ return completer.future;
+})), _themePath = themePath;
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="named">
+<button class="show-code">Code</button>
+new <strong>Theme.named</strong>(String name) <a class="anchor-link" href="#named"
+              title="Permalink to Theme.Theme.named">#</a></h4>
+<div class="doc">
+<p>Creates a theme for the given 
+<span class="param">name</span>.</p>
+<p>The 
+<span class="param">name</span> must be a constant defined in this class such as <a class="crossref" href="../ace/Theme.html#MONOKAI">MONOKAI</a>.</p>
+<pre class="source">
+Theme.named(String name) : this('ace/theme/$name');
+</pre>
+</div>
+</div>
+</div>
+<div>
+<h3>Properties</h3>
+<div class="field"><h4 id="cssClass">
+<button class="show-code">Code</button>
+final String         <strong>cssClass</strong> <a class="anchor-link"
+            href="#cssClass"
+            title="Permalink to Theme.cssClass">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+String get cssClass {
+ if (!hasProxy) throw new StateError('$_themePath is not yet loaded.');
+ return _proxy.cssClass;
+}
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="cssText">
+<button class="show-code">Code</button>
+final String         <strong>cssText</strong> <a class="anchor-link"
+            href="#cssText"
+            title="Permalink to Theme.cssText">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+String get cssText {
+ if (!hasProxy) throw new StateError('$_themePath is not yet loaded.');
+ return _proxy.cssText;
+}
+</pre>
+</div>
+</div>
+<div class="field inherited"><h4 id="hasProxy">
+<button class="show-code">Code</button>
+final bool         <strong>hasProxy</strong> <a class="anchor-link"
+            href="#hasProxy"
+            title="Permalink to Theme.hasProxy">#</a>
+        </h4>
+        <div class="inherited-from">inherited from <a href="../ace/_HasProxy.html">_HasProxy</a> </div><div class="doc">
+<pre class="source">
+bool get hasProxy =&gt; _proxy != null;
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="isDark">
+<button class="show-code">Code</button>
+final bool         <strong>isDark</strong> <a class="anchor-link"
+            href="#isDark"
+            title="Permalink to Theme.isDark">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+bool get isDark {
+ if (!hasProxy) throw new StateError('$_themePath is not yet loaded.');
+ return _proxy.isDark;
+}
+</pre>
+</div>
+</div>
+<div class="field inherited"><h4 id="onHasProxy">
+<button class="show-code">Code</button>
+final Future         <strong>onHasProxy</strong> <a class="anchor-link"
+            href="#onHasProxy"
+            title="Permalink to Theme.onHasProxy">#</a>
+        </h4>
+        <div class="inherited-from">inherited from <a href="../ace/_HasProxy.html">_HasProxy</a> </div><div class="doc">
+<pre class="source">
+final Future onHasProxy
+</pre>
+</div>
+</div>
+</div>
+<div class="inherited">
+<h3>Methods</h3>
+<div class="method inherited"><h4 id="dispose">
+<button class="show-code">Code</button>
+void <strong>dispose</strong>() <a class="anchor-link" href="#dispose"
+              title="Permalink to Theme.dispose">#</a></h4>
+<div class="inherited-from">inherited from <a href="../ace/_HasProxy.html">_HasProxy</a> </div><div class="doc">
+<pre class="source">
+void dispose() {
+ assert(hasProxy);
+ _onDispose();
+ js.release(_proxy);
+ _proxy = null;
+}
+</pre>
+</div>
+</div>
+<div class="method inherited"><h4 id="toString">
+<button class="show-code">Code</button>
+String <strong>toString</strong>() <a class="anchor-link" href="#toString"
+              title="Permalink to Theme.toString">#</a></h4>
+<div class="inherited-from">inherited from <a href="../ace/_HasProxy.html">_HasProxy</a> </div><div class="doc">
+<div class="inherited">
+<p>Returns a string representation of this object.</p>
+<div class="docs-inherited-from">docs inherited from Object </div></div>
+<pre class="source">
+String toString() =&gt; _context.JSON.stringify(_proxy);
+</pre>
+</div>
+</div>
+</div>
+        </div>
+        <div class="clear"></div>
+        </div>
+        <div class="footer">
+          <div>This page was generated at 2013-09-16 10:49:10.730</div>
+        </div>
+        <script async src="../client-live-nav.js"></script>
+        </body></html>
+        

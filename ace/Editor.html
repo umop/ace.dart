@@ -144,9 +144,9 @@ class Editor extends _HasProxy {
  
  TextInput get textInput =&gt; new TextInput._(_proxy.textInput);
    
- String
-   get theme =&gt; _proxy.getTheme();
-   set theme(String theme) =&gt; _proxy.setTheme(theme);
+ Theme
+   get theme =&gt; new Theme._(_proxy.getTheme());
+   set theme(Theme theme) =&gt; _proxy.setTheme(theme._theme);
  
  /// Returns the current [session.value].
  String get value =&gt; _proxy.getValue();
@@ -674,17 +674,17 @@ TextInput get textInput =&gt; new TextInput._(_proxy.textInput);
 </div>
 <div class="field"><h4 id="theme">
 <button class="show-code">Code</button>
-String         <strong>theme</strong> <a class="anchor-link"
+<a href="../ace/Theme.html">Theme</a>         <strong>theme</strong> <a class="anchor-link"
             href="#theme"
             title="Permalink to Editor.theme">#</a>
         </h4>
         <div class="doc">
 <pre class="source">
-String
- get theme =&gt; _proxy.getTheme();
+Theme
+ get theme =&gt; new Theme._(_proxy.getTheme());
 </pre>
 <pre class="source">
-set theme(String theme) =&gt; _proxy.setTheme(theme);
+set theme(Theme theme) =&gt; _proxy.setTheme(theme._theme);
 </pre>
 </div>
 </div>
@@ -1157,7 +1157,7 @@ void updateSelectionMarkers() =&gt; _proxy.updateSelectionMarkers();
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2013-09-16 10:35:27.120</div>
+          <div>This page was generated at 2013-09-16 10:49:10.974</div>
         </div>
         <script async src="../client-live-nav.js"></script>
         </body></html>
