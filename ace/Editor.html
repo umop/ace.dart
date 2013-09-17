@@ -137,11 +137,19 @@ class Editor extends _HasProxy {
    get session =&gt; new EditSession._(_proxy.getSession());
    set session(EditSession session) =&gt; _proxy.setSession(session._proxy);
  
+ /// Whether or not invisible characters such as the space character and new 
+ /// line character are shown in this editor.
  bool
    get showInvisibles =&gt; _proxy.getShowInvisibles();
    set showInvisibles(bool showInvisibles) =&gt; 
        _proxy.setShowInvisibles(showInvisibles);
  
+ /// Whether or not the [printMarginColumn] is shown in this editor.
+ bool
+   get showPrintMargin =&gt; _proxy.getShowPrintMargin();
+   set showPrintMargin(bool showPrintMargin) =&gt; 
+       _proxy.setShowPrintMargin(showPrintMargin);
+   
  TextInput get textInput =&gt; new TextInput._(_proxy.textInput);
    
  Theme
@@ -650,6 +658,8 @@ bool         <strong>showInvisibles</strong> <a class="anchor-link"
             title="Permalink to Editor.showInvisibles">#</a>
         </h4>
         <div class="doc">
+<p>Whether or not invisible characters such as the space character and new 
+line character are shown in this editor.</p>
 <pre class="source">
 bool
  get showInvisibles =&gt; _proxy.getShowInvisibles();
@@ -657,6 +667,24 @@ bool
 <pre class="source">
 set showInvisibles(bool showInvisibles) =&gt; 
    _proxy.setShowInvisibles(showInvisibles);
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="showPrintMargin">
+<button class="show-code">Code</button>
+bool         <strong>showPrintMargin</strong> <a class="anchor-link"
+            href="#showPrintMargin"
+            title="Permalink to Editor.showPrintMargin">#</a>
+        </h4>
+        <div class="doc">
+<p>Whether or not the <a class="crossref" href="../ace/Editor.html#printMarginColumn">printMarginColumn</a> is shown in this editor.</p>
+<pre class="source">
+bool
+ get showPrintMargin =&gt; _proxy.getShowPrintMargin();
+</pre>
+<pre class="source">
+set showPrintMargin(bool showPrintMargin) =&gt; 
+   _proxy.setShowPrintMargin(showPrintMargin);
 </pre>
 </div>
 </div>
@@ -1157,7 +1185,7 @@ void updateSelectionMarkers() =&gt; _proxy.updateSelectionMarkers();
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2013-09-17 11:17:43.748</div>
+          <div>This page was generated at 2013-09-17 12:05:36.654</div>
         </div>
         <script async src="../client-live-nav.js"></script>
         </body></html>
