@@ -38,7 +38,7 @@ class Theme extends _HasProxy {
  static const CHAOS                    = 'chaos';
  static const CHROME                   = 'chrome';
  static const CLOUDS                   = 'clouds';
- static const CLOUNDS_MIDNIGHT         = 'clouds_midnight';
+ static const CLOUDS_MIDNIGHT          = 'clouds_midnight';
  static const COBALT                   = 'cobalt';
  static const CRIMSON_EDITOR           = 'crimson_editor';
  static const DAWN                     = 'dawn';
@@ -65,6 +65,15 @@ class Theme extends _HasProxy {
  static const VIBRANT_INK              = 'vibrant_ink';
  static const XCODE                    = 'xcode';
  
+ static const List&lt;String&gt; THEMES = 
+     const [ AMBIANCE, CHAOS, CHROME, CLOUDS, CLOUDS_MIDNIGHT, COBALT,
+             CRIMSON_EDITOR, DAWN, DREAMWEAVER, ECLIPSE, GITHUB, IDLE_FINGERS,
+             KR, MERBIVORE, MERBIVORE_SOFT, MONO_INDUSTRIAL, MONOKAI, 
+             PASTEL_ON_DARK, SOLARIZED_DARK, SOLARIZED_LIGHT, TERMINAL, 
+             TEXTMATE, TOMORROW, TOMORROW_NIGHT, TOMORROW_NIGHT_BLUE, 
+             TOMORROW_NIGHT_BRIGHT, TOMORROW_NIGHT_EIGHTIES, TWILIGHT, 
+             VIBRANT_INK, XCODE ];
+ 
  final String _themePath;
  
  get _theme =&gt; hasProxy ? _proxy : _themePath;
@@ -86,7 +95,7 @@ class Theme extends _HasProxy {
  
  /// Creates a theme for the given [name].
  /// 
- /// The [name] must be a constant defined in this class such as [MONOKAI].
+ /// The [name] must be one of the values in [THEMES].
  Theme.named(String name) : this('ace/theme/$name');
  
  /// Creates a theme for the given [themePath].
@@ -158,15 +167,15 @@ static const CLOUDS                   = 'clouds'
 </pre>
 </div>
 </div>
-<div class="field"><h4 id="CLOUNDS_MIDNIGHT">
+<div class="field"><h4 id="CLOUDS_MIDNIGHT">
 <button class="show-code">Code</button>
-const         <strong>CLOUNDS_MIDNIGHT</strong> <a class="anchor-link"
-            href="#CLOUNDS_MIDNIGHT"
-            title="Permalink to Theme.CLOUNDS_MIDNIGHT">#</a>
+const         <strong>CLOUDS_MIDNIGHT</strong> <a class="anchor-link"
+            href="#CLOUDS_MIDNIGHT"
+            title="Permalink to Theme.CLOUDS_MIDNIGHT">#</a>
         </h4>
         <div class="doc">
 <pre class="source">
-static const CLOUNDS_MIDNIGHT         = 'clouds_midnight'
+static const CLOUDS_MIDNIGHT          = 'clouds_midnight'
 </pre>
 </div>
 </div>
@@ -374,6 +383,25 @@ static const TEXTMATE                 = 'textmate'
 </pre>
 </div>
 </div>
+<div class="field"><h4 id="THEMES">
+<button class="show-code">Code</button>
+const List&lt;String&gt;         <strong>THEMES</strong> <a class="anchor-link"
+            href="#THEMES"
+            title="Permalink to Theme.THEMES">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+static const List&lt;String&gt; THEMES = 
+   const [ AMBIANCE, CHAOS, CHROME, CLOUDS, CLOUDS_MIDNIGHT, COBALT,
+           CRIMSON_EDITOR, DAWN, DREAMWEAVER, ECLIPSE, GITHUB, IDLE_FINGERS,
+           KR, MERBIVORE, MERBIVORE_SOFT, MONO_INDUSTRIAL, MONOKAI, 
+           PASTEL_ON_DARK, SOLARIZED_DARK, SOLARIZED_LIGHT, TERMINAL, 
+           TEXTMATE, TOMORROW, TOMORROW_NIGHT, TOMORROW_NIGHT_BLUE, 
+           TOMORROW_NIGHT_BRIGHT, TOMORROW_NIGHT_EIGHTIES, TWILIGHT, 
+           VIBRANT_INK, XCODE ]
+</pre>
+</div>
+</div>
 <div class="field"><h4 id="TOMORROW">
 <button class="show-code">Code</button>
 const         <strong>TOMORROW</strong> <a class="anchor-link"
@@ -502,7 +530,7 @@ new <strong>Theme.named</strong>(String name) <a class="anchor-link" href="#name
 <p>Creates a theme for the given 
 <span class="param">name</span>.</p>
 <p>The 
-<span class="param">name</span> must be a constant defined in this class such as <a class="crossref" href="../ace/Theme.html#MONOKAI">MONOKAI</a>.</p>
+<span class="param">name</span> must be one of the values in <a class="crossref" href="../ace/Theme.html#THEMES">THEMES</a>.</p>
 <pre class="source">
 Theme.named(String name) : this('ace/theme/$name');
 </pre>
@@ -616,7 +644,7 @@ String toString() =&gt; _context.JSON.stringify(_proxy);
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2013-09-17 12:05:36.380</div>
+          <div>This page was generated at 2013-09-19 14:33:00.007</div>
         </div>
         <script async src="../client-live-nav.js"></script>
         </body></html>
