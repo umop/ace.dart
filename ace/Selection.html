@@ -106,8 +106,12 @@ class Selection extends _HasProxy {
  /// Moves the [cursor] left one column.
  void moveCursorLeft() =&gt; _proxy.moveCursorLeft();
  
+ /// Moves the [cursor] to the end of the current line.
  void moveCursorLineEnd() =&gt; _proxy.moveCursorLineEnd();
+ 
+ /// Moves the [cursor] to the start of the current line.
  void moveCursorLineStart() =&gt; _proxy.moveCursorLineStart();
+ 
  void moveCursorLongWordLeft() =&gt; _proxy.moveCursorLongWordLeft();
  void moveCursorLongWordRight() =&gt; _proxy.moveCursorLongWordRight();
  
@@ -418,6 +422,7 @@ void moveCursorLeft() =&gt; _proxy.moveCursorLeft();
 void <strong>moveCursorLineEnd</strong>() <a class="anchor-link" href="#moveCursorLineEnd"
               title="Permalink to Selection.moveCursorLineEnd">#</a></h4>
 <div class="doc">
+<p>Moves the <a class="crossref" href="../ace/Selection.html#cursor">cursor</a> to the end of the current line.</p>
 <pre class="source">
 void moveCursorLineEnd() =&gt; _proxy.moveCursorLineEnd();
 </pre>
@@ -428,6 +433,7 @@ void moveCursorLineEnd() =&gt; _proxy.moveCursorLineEnd();
 void <strong>moveCursorLineStart</strong>() <a class="anchor-link" href="#moveCursorLineStart"
               title="Permalink to Selection.moveCursorLineStart">#</a></h4>
 <div class="doc">
+<p>Moves the <a class="crossref" href="../ace/Selection.html#cursor">cursor</a> to the start of the current line.</p>
 <pre class="source">
 void moveCursorLineStart() =&gt; _proxy.moveCursorLineStart();
 </pre>
@@ -752,7 +758,7 @@ String toString() =&gt; _context.JSON.stringify(_proxy);
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2013-09-20 11:59:48.991</div>
+          <div>This page was generated at 2013-09-20 12:07:19.452</div>
         </div>
         <script async src="../client-live-nav.js"></script>
         </body></html>
