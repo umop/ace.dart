@@ -163,8 +163,14 @@ class Selection extends _HasProxy {
  /// Selects an entire word boundary.
  void selectWord() =&gt; _proxy.selectWord();
  
+ /// Selects the first word to the left and moves the [cursor] to the start of 
+ /// the word.
  void selectWordLeft() =&gt; _proxy.selectWordLeft();
+ 
+ /// Selects the first word to the right and moves the [cursor] to the end of
+ /// the word.
  void selectWordRight() =&gt; _proxy.selectWordRight();
+ 
  void setSelectionAnchor(int row, int column) =&gt;
      _proxy.setSelectionAnchor(row, column);
  void shiftSelection(int columns) =&gt; _proxy.shiftSelection(columns);
@@ -674,6 +680,8 @@ void selectWord() =&gt; _proxy.selectWord();
 void <strong>selectWordLeft</strong>() <a class="anchor-link" href="#selectWordLeft"
               title="Permalink to Selection.selectWordLeft">#</a></h4>
 <div class="doc">
+<p>Selects the first word to the left and moves the <a class="crossref" href="../ace/Selection.html#cursor">cursor</a> to the start of 
+the word.</p>
 <pre class="source">
 void selectWordLeft() =&gt; _proxy.selectWordLeft();
 </pre>
@@ -684,6 +692,8 @@ void selectWordLeft() =&gt; _proxy.selectWordLeft();
 void <strong>selectWordRight</strong>() <a class="anchor-link" href="#selectWordRight"
               title="Permalink to Selection.selectWordRight">#</a></h4>
 <div class="doc">
+<p>Selects the first word to the right and moves the <a class="crossref" href="../ace/Selection.html#cursor">cursor</a> to the end of
+the word.</p>
 <pre class="source">
 void selectWordRight() =&gt; _proxy.selectWordRight();
 </pre>
@@ -728,7 +738,7 @@ String toString() =&gt; _context.JSON.stringify(_proxy);
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2013-09-20 08:54:56.100</div>
+          <div>This page was generated at 2013-09-20 10:13:59.620</div>
         </div>
         <script async src="../client-live-nav.js"></script>
         </body></html>
