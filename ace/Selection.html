@@ -102,12 +102,18 @@ class Selection extends _HasProxy {
  
  void moveCursorFileEnd() =&gt; _proxy.moveCursorFileEnd();
  void moveCursorFileStart() =&gt; _proxy.moveCursorFileStart();
+ 
+ /// Moves the [cursor] left one column.
  void moveCursorLeft() =&gt; _proxy.moveCursorLeft();
+ 
  void moveCursorLineEnd() =&gt; _proxy.moveCursorLineEnd();
  void moveCursorLineStart() =&gt; _proxy.moveCursorLineStart();
  void moveCursorLongWordLeft() =&gt; _proxy.moveCursorLongWordLeft();
  void moveCursorLongWordRight() =&gt; _proxy.moveCursorLongWordRight();
+ 
+ /// Moves the [cursor] right one column.
  void moveCursorRight() =&gt; _proxy.moveCursorRight();
+ 
  void moveCursorShortWordLeft() =&gt; _proxy.moveCursorShortWordLeft();
  void moveCursorShortWordRight() =&gt; _proxy.moveCursorShortWordRight();
  
@@ -401,6 +407,7 @@ void moveCursorFileStart() =&gt; _proxy.moveCursorFileStart();
 void <strong>moveCursorLeft</strong>() <a class="anchor-link" href="#moveCursorLeft"
               title="Permalink to Selection.moveCursorLeft">#</a></h4>
 <div class="doc">
+<p>Moves the <a class="crossref" href="../ace/Selection.html#cursor">cursor</a> left one column.</p>
 <pre class="source">
 void moveCursorLeft() =&gt; _proxy.moveCursorLeft();
 </pre>
@@ -451,6 +458,7 @@ void moveCursorLongWordRight() =&gt; _proxy.moveCursorLongWordRight();
 void <strong>moveCursorRight</strong>() <a class="anchor-link" href="#moveCursorRight"
               title="Permalink to Selection.moveCursorRight">#</a></h4>
 <div class="doc">
+<p>Moves the <a class="crossref" href="../ace/Selection.html#cursor">cursor</a> right one column.</p>
 <pre class="source">
 void moveCursorRight() =&gt; _proxy.moveCursorRight();
 </pre>
@@ -744,7 +752,7 @@ String toString() =&gt; _context.JSON.stringify(_proxy);
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2013-09-20 11:52:48.675</div>
+          <div>This page was generated at 2013-09-20 11:59:48.991</div>
         </div>
         <script async src="../client-live-nav.js"></script>
         </body></html>
