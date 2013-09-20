@@ -118,13 +118,21 @@ class Selection extends _HasProxy {
  /// Moves the [cursor] right one column.
  void moveCursorRight() =&gt; _proxy.moveCursorRight();
  
- /// Moves the cursor to the given [row] and [column].
+ /// Moves the [cursor] to the given [row] and [column].
  /// 
  /// If [keepDesiredColumn] is `true`, the cursor move does not respect the
  /// previous column.
  void moveCursorTo(int row, int column, {bool keepDesiredColumn: false}) =&gt;
      _proxy.moveCursorTo(row, column, keepDesiredColumn);
  
+ /// Moves the [cursor] to the the given [row] and [column] in screen 
+ /// coordinates.
+ /// 
+ /// If [keepDesiredColumn] is `true`, the cursor move does not respect the
+ /// previous column.
+ /// 
+ /// The given screen [row] and [column] are converted to document coordinates
+ /// with [EditSession.screenToDocumentPosition] before the [cursor] is moved.
  void moveCursorToScreen(int row, int column, 
                          {bool keepDesiredColumn: false}) =&gt;
      _proxy.moveCursorToScreen(row, column, keepDesiredColumn);
@@ -457,7 +465,7 @@ void moveCursorRight() =&gt; _proxy.moveCursorRight();
 void <strong>moveCursorTo</strong>(int row, int column, {bool keepDesiredColumn: false}) <a class="anchor-link" href="#moveCursorTo"
               title="Permalink to Selection.moveCursorTo">#</a></h4>
 <div class="doc">
-<p>Moves the cursor to the given 
+<p>Moves the <a class="crossref" href="../ace/Selection.html#cursor">cursor</a> to the given 
 <span class="param">row</span> and 
 <span class="param">column</span>.</p>
 <p>If 
@@ -474,6 +482,17 @@ void moveCursorTo(int row, int column, {bool keepDesiredColumn: false}) =&gt;
 void <strong>moveCursorToScreen</strong>(int row, int column, {bool keepDesiredColumn: false}) <a class="anchor-link" href="#moveCursorToScreen"
               title="Permalink to Selection.moveCursorToScreen">#</a></h4>
 <div class="doc">
+<p>Moves the <a class="crossref" href="../ace/Selection.html#cursor">cursor</a> to the the given 
+<span class="param">row</span> and 
+<span class="param">column</span> in screen 
+coordinates.</p>
+<p>If 
+<span class="param">keepDesiredColumn</span> is <code>true</code>, the cursor move does not respect the
+previous column.</p>
+<p>The given screen 
+<span class="param">row</span> and 
+<span class="param">column</span> are converted to document coordinates
+with <a class="crossref" href="../ace/EditSession.html#screenToDocumentPosition">EditSession.screenToDocumentPosition</a> before the <a class="crossref" href="../ace/Selection.html#cursor">cursor</a> is moved.</p>
 <pre class="source">
 void moveCursorToScreen(int row, int column, 
                        {bool keepDesiredColumn: false}) =&gt;
@@ -722,7 +741,7 @@ String toString() =&gt; _context.JSON.stringify(_proxy);
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2013-09-20 12:55:12.730</div>
+          <div>This page was generated at 2013-09-20 13:02:25.675</div>
         </div>
         <script async src="../client-live-nav.js"></script>
         </body></html>
