@@ -97,7 +97,9 @@ class Selection extends _HasProxy {
  void moveCursorBy(int rows, int columns) =&gt; 
      _proxy.moveCursorBy(rows, columns);
  
+ /// Moves the [cursor] down one row.
  void moveCursorDown() =&gt; _proxy.moveCursorDown();
+ 
  void moveCursorFileEnd() =&gt; _proxy.moveCursorFileEnd();
  void moveCursorFileStart() =&gt; _proxy.moveCursorFileStart();
  void moveCursorLeft() =&gt; _proxy.moveCursorLeft();
@@ -366,6 +368,7 @@ void moveCursorBy(int rows, int columns) =&gt;
 void <strong>moveCursorDown</strong>() <a class="anchor-link" href="#moveCursorDown"
               title="Permalink to Selection.moveCursorDown">#</a></h4>
 <div class="doc">
+<p>Moves the <a class="crossref" href="../ace/Selection.html#cursor">cursor</a> down one row.</p>
 <pre class="source">
 void moveCursorDown() =&gt; _proxy.moveCursorDown();
 </pre>
@@ -738,7 +741,7 @@ String toString() =&gt; _context.JSON.stringify(_proxy);
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2013-09-20 10:13:59.620</div>
+          <div>This page was generated at 2013-09-20 11:45:39.158</div>
         </div>
         <script async src="../client-live-nav.js"></script>
         </body></html>
