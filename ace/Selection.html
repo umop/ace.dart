@@ -122,7 +122,9 @@ class Selection extends _HasProxy {
                          {bool keepDesiredColumn: false}) =&gt;
      _proxy.moveCursorToScreen(row, column, keepDesiredColumn);
  
+ /// Moves the [cursor] up one row.
  void moveCursorUp() =&gt; _proxy.moveCursorUp();
+ 
  void moveCursorWordLeft() =&gt; _proxy.moveCursorWordLeft();
  void moveCursorWordRight() =&gt; _proxy.moveCursorWordRight();
  
@@ -508,6 +510,7 @@ void moveCursorToScreen(int row, int column,
 void <strong>moveCursorUp</strong>() <a class="anchor-link" href="#moveCursorUp"
               title="Permalink to Selection.moveCursorUp">#</a></h4>
 <div class="doc">
+<p>Moves the <a class="crossref" href="../ace/Selection.html#cursor">cursor</a> up one row.</p>
 <pre class="source">
 void moveCursorUp() =&gt; _proxy.moveCursorUp();
 </pre>
@@ -741,7 +744,7 @@ String toString() =&gt; _context.JSON.stringify(_proxy);
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2013-09-20 11:45:39.158</div>
+          <div>This page was generated at 2013-09-20 11:52:48.675</div>
         </div>
         <script async src="../client-live-nav.js"></script>
         </body></html>
