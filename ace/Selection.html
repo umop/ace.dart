@@ -100,7 +100,10 @@ class Selection extends _HasProxy {
  /// Moves the [cursor] down one row.
  void moveCursorDown() =&gt; _proxy.moveCursorDown();
  
+ /// Moves the [cursor] to the end of the document.
  void moveCursorFileEnd() =&gt; _proxy.moveCursorFileEnd();
+ 
+ /// Moves the [cursor] to the start of the document.
  void moveCursorFileStart() =&gt; _proxy.moveCursorFileStart();
  
  /// Moves the [cursor] left one column.
@@ -391,6 +394,7 @@ void moveCursorDown() =&gt; _proxy.moveCursorDown();
 void <strong>moveCursorFileEnd</strong>() <a class="anchor-link" href="#moveCursorFileEnd"
               title="Permalink to Selection.moveCursorFileEnd">#</a></h4>
 <div class="doc">
+<p>Moves the <a class="crossref" href="../ace/Selection.html#cursor">cursor</a> to the end of the document.</p>
 <pre class="source">
 void moveCursorFileEnd() =&gt; _proxy.moveCursorFileEnd();
 </pre>
@@ -401,6 +405,7 @@ void moveCursorFileEnd() =&gt; _proxy.moveCursorFileEnd();
 void <strong>moveCursorFileStart</strong>() <a class="anchor-link" href="#moveCursorFileStart"
               title="Permalink to Selection.moveCursorFileStart">#</a></h4>
 <div class="doc">
+<p>Moves the <a class="crossref" href="../ace/Selection.html#cursor">cursor</a> to the start of the document.</p>
 <pre class="source">
 void moveCursorFileStart() =&gt; _proxy.moveCursorFileStart();
 </pre>
@@ -758,7 +763,7 @@ String toString() =&gt; _context.JSON.stringify(_proxy);
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2013-09-20 12:07:19.452</div>
+          <div>This page was generated at 2013-09-20 12:19:46.473</div>
         </div>
         <script async src="../client-live-nav.js"></script>
         </body></html>
