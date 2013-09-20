@@ -345,6 +345,13 @@ class EditSession extends _HasProxy {
  Point replace(Range range, String text) =&gt; 
      new Point._(_proxy.replace(range._toProxy(), text));
  
+ /// Converts screen coordinates to [document] coordinates. 
+ /// 
+ /// This takes into account code folding, word wrap, [tabSize], and any other 
+ /// visual modifications.
+ Point screenToDocumentPosition(int row, int column) =&gt;
+     new Point._(_proxy.screenToDocumentPosition(row, column));
+ 
  /// Sets a breakpoint on the given [row] using the optional CSS [className]
  /// and fires an [onChangeBreakPoint] event.
  void setBreakpoint(int row, {String className: 'ace_breakpoint'}) =&gt;
@@ -1150,6 +1157,20 @@ Point replace(Range range, String text) =&gt;
 </pre>
 </div>
 </div>
+<div class="method"><h4 id="screenToDocumentPosition">
+<button class="show-code">Code</button>
+<a href="../ace/Point.html">Point</a> <strong>screenToDocumentPosition</strong>(int row, int column) <a class="anchor-link" href="#screenToDocumentPosition"
+              title="Permalink to EditSession.screenToDocumentPosition">#</a></h4>
+<div class="doc">
+<p>Converts screen coordinates to <a class="crossref" href="../ace/EditSession.html#document">document</a> coordinates. </p>
+<p>This takes into account code folding, word wrap, <a class="crossref" href="../ace/EditSession.html#tabSize">tabSize</a>, and any other 
+visual modifications.</p>
+<pre class="source">
+Point screenToDocumentPosition(int row, int column) =&gt;
+   new Point._(_proxy.screenToDocumentPosition(row, column));
+</pre>
+</div>
+</div>
 <div class="method"><h4 id="setBreakpoint">
 <button class="show-code">Code</button>
 void <strong>setBreakpoint</strong>(int row, {String className: 'ace_breakpoint'}) <a class="anchor-link" href="#setBreakpoint"
@@ -1228,7 +1249,7 @@ String toString() =&gt; _proxy.toString();
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2013-09-20 12:31:36.372</div>
+          <div>This page was generated at 2013-09-20 12:55:12.887</div>
         </div>
         <script async src="../client-live-nav.js"></script>
         </body></html>
