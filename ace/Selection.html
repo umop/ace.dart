@@ -113,11 +113,13 @@ class Selection extends _HasProxy {
  /// 
  /// If [keepDesiredColumn] is `true`, the cursor move does not respect the
  /// previous column.
- void moveCursorTo(int row, int column, bool keepDesiredColumn) =&gt;
+ void moveCursorTo(int row, int column, {bool keepDesiredColumn: false}) =&gt;
      _proxy.moveCursorTo(row, column, keepDesiredColumn);
  
- void moveCursorToScreen(int row, int column, bool keepDesiredColumn) =&gt;
+ void moveCursorToScreen(int row, int column, 
+                         {bool keepDesiredColumn: false}) =&gt;
      _proxy.moveCursorToScreen(row, column, keepDesiredColumn);
+ 
  void moveCursorUp() =&gt; _proxy.moveCursorUp();
  void moveCursorWordLeft() =&gt; _proxy.moveCursorWordLeft();
  void moveCursorWordRight() =&gt; _proxy.moveCursorWordRight();
@@ -158,7 +160,9 @@ class Selection extends _HasProxy {
  /// Selects up one row.
  void selectUp() =&gt; _proxy.selectUp();
  
+ /// Selects an entire word boundary.
  void selectWord() =&gt; _proxy.selectWord();
+ 
  void selectWordLeft() =&gt; _proxy.selectWordLeft();
  void selectWordRight() =&gt; _proxy.selectWordRight();
  void setSelectionAnchor(int row, int column) =&gt;
@@ -463,7 +467,7 @@ void moveCursorShortWordRight() =&gt; _proxy.moveCursorShortWordRight();
 </div>
 <div class="method"><h4 id="moveCursorTo">
 <button class="show-code">Code</button>
-void <strong>moveCursorTo</strong>(int row, int column, bool keepDesiredColumn) <a class="anchor-link" href="#moveCursorTo"
+void <strong>moveCursorTo</strong>(int row, int column, {bool keepDesiredColumn: false}) <a class="anchor-link" href="#moveCursorTo"
               title="Permalink to Selection.moveCursorTo">#</a></h4>
 <div class="doc">
 <p>Moves the cursor to the given 
@@ -473,18 +477,19 @@ void <strong>moveCursorTo</strong>(int row, int column, bool keepDesiredColumn) 
 <span class="param">keepDesiredColumn</span> is <code>true</code>, the cursor move does not respect the
 previous column.</p>
 <pre class="source">
-void moveCursorTo(int row, int column, bool keepDesiredColumn) =&gt;
+void moveCursorTo(int row, int column, {bool keepDesiredColumn: false}) =&gt;
    _proxy.moveCursorTo(row, column, keepDesiredColumn);
 </pre>
 </div>
 </div>
 <div class="method"><h4 id="moveCursorToScreen">
 <button class="show-code">Code</button>
-void <strong>moveCursorToScreen</strong>(int row, int column, bool keepDesiredColumn) <a class="anchor-link" href="#moveCursorToScreen"
+void <strong>moveCursorToScreen</strong>(int row, int column, {bool keepDesiredColumn: false}) <a class="anchor-link" href="#moveCursorToScreen"
               title="Permalink to Selection.moveCursorToScreen">#</a></h4>
 <div class="doc">
 <pre class="source">
-void moveCursorToScreen(int row, int column, bool keepDesiredColumn) =&gt;
+void moveCursorToScreen(int row, int column, 
+                       {bool keepDesiredColumn: false}) =&gt;
    _proxy.moveCursorToScreen(row, column, keepDesiredColumn);
 </pre>
 </div>
@@ -658,6 +663,7 @@ void selectUp() =&gt; _proxy.selectUp();
 void <strong>selectWord</strong>() <a class="anchor-link" href="#selectWord"
               title="Permalink to Selection.selectWord">#</a></h4>
 <div class="doc">
+<p>Selects an entire word boundary.</p>
 <pre class="source">
 void selectWord() =&gt; _proxy.selectWord();
 </pre>
@@ -722,7 +728,7 @@ String toString() =&gt; _context.JSON.stringify(_proxy);
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2013-09-20 08:03:47.543</div>
+          <div>This page was generated at 2013-09-20 08:54:56.100</div>
         </div>
         <script async src="../client-live-nav.js"></script>
         </body></html>
