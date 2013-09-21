@@ -40,6 +40,12 @@ class VirtualRenderer extends _HasProxy {
  int get firstVisibleRow =&gt; _proxy.getFirstVisibleRow();
  
  VirtualRenderer._(js.Proxy proxy) : super(proxy);
+ 
+ /// Updates all of the layers, for all the rows.
+ /// 
+ /// By default this schedules an asynchronous update.  If [force] is `true`
+ /// then the update is performed immediately.
+ void updateFull({bool force: false}) =&gt; _proxy.updateFull(force);
 }
 </pre>
 </div>
@@ -86,7 +92,7 @@ final Future onHasProxy
 </div>
 </div>
 </div>
-<div class="inherited">
+<div>
 <h3>Methods</h3>
 <div class="method inherited"><h4 id="dispose">
 <button class="show-code">Code</button>
@@ -116,12 +122,26 @@ String toString() =&gt; _context.JSON.stringify(_proxy);
 </pre>
 </div>
 </div>
+<div class="method"><h4 id="updateFull">
+<button class="show-code">Code</button>
+void <strong>updateFull</strong>({bool force: false}) <a class="anchor-link" href="#updateFull"
+              title="Permalink to VirtualRenderer.updateFull">#</a></h4>
+<div class="doc">
+<p>Updates all of the layers, for all the rows.</p>
+<p>By default this schedules an asynchronous update.  If 
+<span class="param">force</span> is <code>true</code>
+then the update is performed immediately.</p>
+<pre class="source">
+void updateFull({bool force: false}) =&gt; _proxy.updateFull(force);
+</pre>
+</div>
+</div>
 </div>
         </div>
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2013-09-20 13:36:46.786</div>
+          <div>This page was generated at 2013-09-21 15:12:05.696</div>
         </div>
         <script async src="../client-live-nav.js"></script>
         </body></html>
