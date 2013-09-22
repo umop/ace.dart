@@ -194,19 +194,6 @@ Iterable&lt;String&gt; get allLines =&gt;
 </pre>
 </div>
 </div>
-<div class="field inherited"><h4 id="hasProxy">
-<button class="show-code">Code</button>
-final bool         <strong>hasProxy</strong> <a class="anchor-link"
-            href="#hasProxy"
-            title="Permalink to Document.hasProxy">#</a>
-        </h4>
-        <div class="inherited-from">inherited from <a href="../ace/_HasProxy.html">_HasProxy</a> </div><div class="doc">
-<p>Returns <code>true</code> if this object has an underlying javascript proxy object.</p>
-<pre class="source">
-bool get hasProxy =&gt; _proxy != null;
-</pre>
-</div>
-</div>
 <div class="field"><h4 id="length">
 <button class="show-code">Code</button>
 final int         <strong>length</strong> <a class="anchor-link"
@@ -260,23 +247,6 @@ final Stream&lt;<a href="../ace/Delta.html">Delta</a>&gt;         <strong>onChan
 <p>Fired whenever this document changes.</p>
 <pre class="source">
 Stream&lt;Delta&gt; get onChange =&gt; _onChange.stream;
-</pre>
-</div>
-</div>
-<div class="field inherited"><h4 id="onHasProxy">
-<button class="show-code">Code</button>
-final Future         <strong>onHasProxy</strong> <a class="anchor-link"
-            href="#onHasProxy"
-            title="Permalink to Document.onHasProxy">#</a>
-        </h4>
-        <div class="inherited-from">inherited from <a href="../ace/_HasProxy.html">_HasProxy</a> </div><div class="doc">
-<p>A future that completes when this object first obtains an underlying
-javascript proxy object.</p>
-<p>Some of the objects in Ace require an asynchronous computation to fully
-initialize the underlying proxy.  This future provides a way to observe
-when that computation has completed.</p>
-<pre class="source">
-final Future onHasProxy
 </pre>
 </div>
 </div>
@@ -334,7 +304,7 @@ void <strong>dispose</strong>() <a class="anchor-link" href="#dispose"
 <p>Dispose of and release the underlying javascript proxy object, if any.</p>
 <pre class="source">
 void dispose() {
- if (hasProxy) {
+ if (_hasProxy) {
    _onDispose();
    js.release(_proxy);
    _proxy = null;
@@ -551,7 +521,7 @@ String toString() =&gt; _context.JSON.stringify(_proxy);
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2013-09-22 12:48:24.960</div>
+          <div>This page was generated at 2013-09-22 17:00:15.680</div>
         </div>
         <script async src="../client-live-nav.js"></script>
         </body></html>
