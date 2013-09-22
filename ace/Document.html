@@ -201,6 +201,7 @@ final bool         <strong>hasProxy</strong> <a class="anchor-link"
             title="Permalink to Document.hasProxy">#</a>
         </h4>
         <div class="inherited-from">inherited from <a href="../ace/_HasProxy.html">_HasProxy</a> </div><div class="doc">
+<p>Returns <code>true</code> if this object has an underlying javascript proxy object.</p>
 <pre class="source">
 bool get hasProxy =&gt; _proxy != null;
 </pre>
@@ -269,6 +270,11 @@ final Future         <strong>onHasProxy</strong> <a class="anchor-link"
             title="Permalink to Document.onHasProxy">#</a>
         </h4>
         <div class="inherited-from">inherited from <a href="../ace/_HasProxy.html">_HasProxy</a> </div><div class="doc">
+<p>A future that completes when this object first obtains an underlying
+javascript proxy object.</p>
+<p>Some of the objects in Ace require an asynchronous computation to fully
+initialize the underlying proxy.  This future provides a way to observe
+when that computations has completed.</p>
 <pre class="source">
 final Future onHasProxy
 </pre>
@@ -325,12 +331,14 @@ Anchor createAnchor(int row, int column) =&gt;
 void <strong>dispose</strong>() <a class="anchor-link" href="#dispose"
               title="Permalink to Document.dispose">#</a></h4>
 <div class="inherited-from">inherited from <a href="../ace/_HasProxy.html">_HasProxy</a> </div><div class="doc">
+<p>Dispose of and release the underlying javascript proxy object, if any.</p>
 <pre class="source">
 void dispose() {
- assert(hasProxy);
- _onDispose();
- js.release(_proxy);
- _proxy = null;
+ if (hasProxy) {
+   _onDispose();
+   js.release(_proxy);
+   _proxy = null;
+ }
 }
 </pre>
 </div>
@@ -543,7 +551,7 @@ String toString() =&gt; _context.JSON.stringify(_proxy);
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2013-09-22 11:45:03.961</div>
+          <div>This page was generated at 2013-09-22 12:47:16.792</div>
         </div>
         <script async src="../client-live-nav.js"></script>
         </body></html>
