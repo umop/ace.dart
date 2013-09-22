@@ -592,7 +592,11 @@ bool get isDark {
 void <strong>dispose</strong>() <a class="anchor-link" href="#dispose"
               title="Permalink to Theme.dispose">#</a></h4>
 <div class="inherited-from">inherited from <a href="../ace/_HasProxy.html">_HasProxy</a> </div><div class="doc">
-<p>Dispose of and release the underlying javascript proxy object, if any.</p>
+<p>Dispose of any resources held by this object.</p>
+<p>This method will release any javascript proxy objects help by this 
+object.  It will also close any streams exposed by the object.  It is an
+error to call any methods or access any fields of this object after this
+method has been called.</p>
 <pre class="source">
 void dispose() {
  if (_hasProxy) {
@@ -622,7 +626,7 @@ String toString() =&gt; _context.JSON.stringify(_proxy);
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2013-09-22 17:02:32.297</div>
+          <div>This page was generated at 2013-09-22 17:07:35.055</div>
         </div>
         <script async src="../client-live-nav.js"></script>
         </body></html>
