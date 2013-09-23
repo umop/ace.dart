@@ -32,10 +32,16 @@
         
 <button id="show-inherited" class="show-inherited">Hide inherited</button>
 <div class="doc">
+<p>A change in a <a class="crossref" href="../ace/Document.html">Document</a>.</p>
 <pre class="source">
 abstract class Delta {
+ 
+ /// The action that triggered this change.
  final String action;
+ 
+ /// The [Range] of this change within the document.
  final Range range;  
+ 
  factory Delta._for(data) {
    switch(data.action) {
      case 'insertLines': return new InsertLinesDelta._(data);
@@ -44,8 +50,10 @@ abstract class Delta {
      case 'removeText': return new RemoveTextDelta._(data);
      default: throw new UnsupportedError('Unknown action: ${data.action}');
    }
- }  
+ }
+ 
  Delta._(this.action, js.Proxy r): range = new Range._(r);
+ 
  js.Proxy _toProxy() =&gt; js.map({'action': action, 'range': range._toProxy()});
 }
 </pre>
@@ -62,6 +70,7 @@ final String         <strong>action</strong> <a class="anchor-link"
             title="Permalink to Delta.action">#</a>
         </h4>
         <div class="doc">
+<p>The action that triggered this change.</p>
 <pre class="source">
 final String action
 </pre>
@@ -74,6 +83,7 @@ final <a href="../ace/Range.html">Range</a>         <strong>range</strong> <a cl
             title="Permalink to Delta.range">#</a>
         </h4>
         <div class="doc">
+<p>The <a class="crossref" href="../ace/Range.html">Range</a> of this change within the document.</p>
 <pre class="source">
 final Range range
 </pre>
@@ -84,7 +94,7 @@ final Range range
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2013-09-22 17:07:35.339</div>
+          <div>This page was generated at 2013-09-23 06:43:02.227</div>
         </div>
         <script async src="../client-live-nav.js"></script>
         </body></html>

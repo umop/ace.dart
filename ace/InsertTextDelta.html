@@ -34,10 +34,14 @@
 <div class="doc">
 <pre class="source">
 class InsertTextDelta extends Delta {
- final String text;  
+ 
+ /// The text inserted in the document by this change.
+ final String text;
+ 
  InsertTextDelta._(data) 
    : super._(data.action, data.range)
    , text = data.text;
+ 
  js.Proxy _toProxy() =&gt; super._toProxy()..['text'] = text;
 }
 </pre>
@@ -54,6 +58,7 @@ final String         <strong>action</strong> <a class="anchor-link"
             title="Permalink to InsertTextDelta.action">#</a>
         </h4>
         <div class="inherited-from">inherited from <a href="../ace/Delta.html">Delta</a> </div><div class="doc">
+<p>The action that triggered this change.</p>
 <pre class="source">
 final String action
 </pre>
@@ -66,6 +71,7 @@ final <a href="../ace/Range.html">Range</a>         <strong>range</strong> <a cl
             title="Permalink to InsertTextDelta.range">#</a>
         </h4>
         <div class="inherited-from">inherited from <a href="../ace/Delta.html">Delta</a> </div><div class="doc">
+<p>The <a class="crossref" href="../ace/Range.html">Range</a> of this change within the document.</p>
 <pre class="source">
 final Range range
 </pre>
@@ -78,6 +84,7 @@ final String         <strong>text</strong> <a class="anchor-link"
             title="Permalink to InsertTextDelta.text">#</a>
         </h4>
         <div class="doc">
+<p>The text inserted in the document by this change.</p>
 <pre class="source">
 final String text
 </pre>
@@ -88,7 +95,7 @@ final String text
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2013-09-22 17:07:35.331</div>
+          <div>This page was generated at 2013-09-23 06:43:02.217</div>
         </div>
         <script async src="../client-live-nav.js"></script>
         </body></html>

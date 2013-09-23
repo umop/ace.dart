@@ -33,13 +33,20 @@
 <button id="show-inherited" class="show-inherited">Hide inherited</button>
 <div class="doc">
 <pre class="source">
-class RemoveLinesDelta extends Delta {  
+class RemoveLinesDelta extends Delta {
+ 
+ /// The lines removed from the document by this change.
  final Iterable&lt;String&gt; lines;
+ 
+ /// The value of the document's newline character during this change as 
+ /// defined by [Document.newLineCharacter].
  final String nl;
+ 
  RemoveLinesDelta._(data) 
    : super._(data.action, data.range)
    , lines = JSON.decode(_context.JSON.stringify(data.lines))
    , nl = data.nl;
+ 
  js.Proxy _toProxy() =&gt; 
      super._toProxy()..['lines'] = js.array(lines)..['nl'] = nl;
 }
@@ -57,6 +64,7 @@ final String         <strong>action</strong> <a class="anchor-link"
             title="Permalink to RemoveLinesDelta.action">#</a>
         </h4>
         <div class="inherited-from">inherited from <a href="../ace/Delta.html">Delta</a> </div><div class="doc">
+<p>The action that triggered this change.</p>
 <pre class="source">
 final String action
 </pre>
@@ -69,6 +77,7 @@ final Iterable&lt;String&gt;         <strong>lines</strong> <a class="anchor-lin
             title="Permalink to RemoveLinesDelta.lines">#</a>
         </h4>
         <div class="doc">
+<p>The lines removed from the document by this change.</p>
 <pre class="source">
 final Iterable&lt;String&gt; lines
 </pre>
@@ -81,6 +90,8 @@ final String         <strong>nl</strong> <a class="anchor-link"
             title="Permalink to RemoveLinesDelta.nl">#</a>
         </h4>
         <div class="doc">
+<p>The value of the document's newline character during this change as 
+defined by <a class="crossref" href="../ace/Document.html#newLineCharacter">Document.newLineCharacter</a>.</p>
 <pre class="source">
 final String nl
 </pre>
@@ -93,6 +104,7 @@ final <a href="../ace/Range.html">Range</a>         <strong>range</strong> <a cl
             title="Permalink to RemoveLinesDelta.range">#</a>
         </h4>
         <div class="inherited-from">inherited from <a href="../ace/Delta.html">Delta</a> </div><div class="doc">
+<p>The <a class="crossref" href="../ace/Range.html">Range</a> of this change within the document.</p>
 <pre class="source">
 final Range range
 </pre>
@@ -103,7 +115,7 @@ final Range range
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2013-09-22 17:07:35.328</div>
+          <div>This page was generated at 2013-09-23 06:43:02.213</div>
         </div>
         <script async src="../client-live-nav.js"></script>
         </body></html>
