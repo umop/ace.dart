@@ -87,6 +87,11 @@ class Editor extends _HasProxy {
  /// The index of the first visible row.
  int get firstVisibleRow =&gt; _proxy.getFirstVisibleRow();
  
+ /// The font size in pixels for this editor's text.
+ int
+   get fontSize =&gt; _proxy.getFontSize();
+   set fontSize(int fontSize) =&gt; _proxy.setFontSize(fontSize);
+ 
  /// Whether or not the current line should be highlighted.
  bool
    get highlightActiveLine =&gt; _proxy.getHighlightActiveLine();
@@ -358,6 +363,23 @@ final int         <strong>firstVisibleRow</strong> <a class="anchor-link"
 <p>The index of the first visible row.</p>
 <pre class="source">
 int get firstVisibleRow =&gt; _proxy.getFirstVisibleRow();
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="fontSize">
+<button class="show-code">Code</button>
+int         <strong>fontSize</strong> <a class="anchor-link"
+            href="#fontSize"
+            title="Permalink to Editor.fontSize">#</a>
+        </h4>
+        <div class="doc">
+<p>The font size in pixels for this editor's text.</p>
+<pre class="source">
+int
+ get fontSize =&gt; _proxy.getFontSize();
+</pre>
+<pre class="source">
+set fontSize(int fontSize) =&gt; _proxy.setFontSize(fontSize);
 </pre>
 </div>
 </div>
@@ -1167,7 +1189,7 @@ void updateSelectionMarkers() =&gt; _proxy.updateSelectionMarkers();
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2013-09-23 11:46:27.113</div>
+          <div>This page was generated at 2013-09-24 09:31:08.599</div>
         </div>
         <script async src="../client-live-nav.js"></script>
         </body></html>
