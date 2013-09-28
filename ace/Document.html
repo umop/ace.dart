@@ -43,10 +43,6 @@ class Document extends _HasProxy {
  /// Fired whenever this document changes.
  Stream&lt;Delta&gt; get onChange =&gt; _onChange.stream;
  
- /// All the lines in this document.
- Iterable&lt;String&gt; get allLines =&gt;
-     JSON.decode(_context.JSON.stringify(_proxy.getAllLines()));
- 
  /// The number of rows in this document.
  int get length =&gt; _proxy.getLength();
  
@@ -87,6 +83,10 @@ class Document extends _HasProxy {
  /// Creates a new [Anchor] to define a floating point in this document.
  Anchor createAnchor(int row, int column) =&gt;
      new Anchor._(_proxy.createAnchor(row, column));
+ 
+ /// Returns a copy of all the lines in this document.
+ List&lt;String&gt; getAllLines() =&gt;
+     JSON.decode(_context.JSON.stringify(_proxy.getAllLines()));
  
  /// Returns a verbatim copy of the given line [row] as it is in this document.
  String getLine(int row) =&gt; _proxy.getLine(row);
@@ -139,7 +139,7 @@ class Document extends _HasProxy {
  
  /// Removes the range of lines from the given [startRow] -&gt; [endRow] and
  /// returns the removed lines.  This method also fires an [onChange] event.
- Iterable&lt;String&gt; removeLines(int startRow, int endRow) =&gt;
+ List&lt;String&gt; removeLines(int startRow, int endRow) =&gt;
      JSON.decode(
          _context.JSON.stringify(_proxy.removeLines(startRow, endRow)));
  
@@ -180,20 +180,6 @@ Document([String text = '']) : this._(
 </div>
 <div>
 <h3>Properties</h3>
-<div class="field"><h4 id="allLines">
-<button class="show-code">Code</button>
-final Iterable&lt;String&gt;         <strong>allLines</strong> <a class="anchor-link"
-            href="#allLines"
-            title="Permalink to Document.allLines">#</a>
-        </h4>
-        <div class="doc">
-<p>All the lines in this document.</p>
-<pre class="source">
-Iterable&lt;String&gt; get allLines =&gt;
-   JSON.decode(_context.JSON.stringify(_proxy.getAllLines()));
-</pre>
-</div>
-</div>
 <div class="field"><h4 id="length">
 <button class="show-code">Code</button>
 final int         <strong>length</strong> <a class="anchor-link"
@@ -314,6 +300,18 @@ void dispose() {
    _proxy = null;
  }
 }
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="getAllLines">
+<button class="show-code">Code</button>
+List&lt;String&gt; <strong>getAllLines</strong>() <a class="anchor-link" href="#getAllLines"
+              title="Permalink to Document.getAllLines">#</a></h4>
+<div class="doc">
+<p>Returns a copy of all the lines in this document.</p>
+<pre class="source">
+List&lt;String&gt; getAllLines() =&gt;
+   JSON.decode(_context.JSON.stringify(_proxy.getAllLines()));
 </pre>
 </div>
 </div>
@@ -451,7 +449,7 @@ Point removeInLine(int row, int startColumn, int endColumn) =&gt;
 </div>
 <div class="method"><h4 id="removeLines">
 <button class="show-code">Code</button>
-Iterable&lt;String&gt; <strong>removeLines</strong>(int startRow, int endRow) <a class="anchor-link" href="#removeLines"
+List&lt;String&gt; <strong>removeLines</strong>(int startRow, int endRow) <a class="anchor-link" href="#removeLines"
               title="Permalink to Document.removeLines">#</a></h4>
 <div class="doc">
 <p>Removes the range of lines from the given 
@@ -459,7 +457,7 @@ Iterable&lt;String&gt; <strong>removeLines</strong>(int startRow, int endRow) <a
 <span class="param">endRow</span> and
 returns the removed lines.  This method also fires an <a class="crossref" href="../ace/Document.html#onChange">onChange</a> event.</p>
 <pre class="source">
-Iterable&lt;String&gt; removeLines(int startRow, int endRow) =&gt;
+List&lt;String&gt; removeLines(int startRow, int endRow) =&gt;
    JSON.decode(
        _context.JSON.stringify(_proxy.removeLines(startRow, endRow)));
 </pre>
@@ -525,7 +523,7 @@ String toString() =&gt; _context.JSON.stringify(_proxy);
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2013-09-28 17:04:38.313</div>
+          <div>This page was generated at 2013-09-28 21:08:56.167</div>
         </div>
         <script async src="../client-live-nav.js"></script>
         </body></html>
