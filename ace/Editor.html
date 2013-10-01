@@ -298,8 +298,12 @@ class Editor extends _HasProxy {
  /// Sets the value of [overwrite] to the opposite of its current value.
  void toggleOverwrite() =&gt; _proxy.toggleOverwrite();
  
+ /// Converts the current [selection] entirely into lowercase characters.
  void toLowerCase() =&gt; _proxy.toLowerCase();
+ 
+ /// Converts the current [selection] entirely into uppercase characters.
  void toUpperCase() =&gt; _proxy.toUpperCase();
+ 
  void transposeLetters() =&gt; _proxy.transposeLetters();
  void updateSelectionMarkers() =&gt; _proxy.updateSelectionMarkers();
 }
@@ -1136,6 +1140,7 @@ void toggleOverwrite() =&gt; _proxy.toggleOverwrite();
 void <strong>toLowerCase</strong>() <a class="anchor-link" href="#toLowerCase"
               title="Permalink to Editor.toLowerCase">#</a></h4>
 <div class="doc">
+<p>Converts the current <a class="crossref" href="../ace/Editor.html#selection">selection</a> entirely into lowercase characters.</p>
 <pre class="source">
 void toLowerCase() =&gt; _proxy.toLowerCase();
 </pre>
@@ -1159,6 +1164,7 @@ String toString() =&gt; _context.JSON.stringify(_proxy);
 void <strong>toUpperCase</strong>() <a class="anchor-link" href="#toUpperCase"
               title="Permalink to Editor.toUpperCase">#</a></h4>
 <div class="doc">
+<p>Converts the current <a class="crossref" href="../ace/Editor.html#selection">selection</a> entirely into uppercase characters.</p>
 <pre class="source">
 void toUpperCase() =&gt; _proxy.toUpperCase();
 </pre>
@@ -1189,7 +1195,7 @@ void updateSelectionMarkers() =&gt; _proxy.updateSelectionMarkers();
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2013-10-01 12:54:37.086</div>
+          <div>This page was generated at 2013-10-01 13:21:00.315</div>
         </div>
         <script async src="../client-live-nav.js"></script>
         </body></html>
