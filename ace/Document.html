@@ -85,8 +85,11 @@ class Document extends _HasProxy {
      new Anchor._(_proxy.createAnchor(row, column));
  
  /// Returns a copy of all the lines in this document.
- List&lt;String&gt; getAllLines() =&gt;
-     JSON.decode(_context.JSON.stringify(_proxy.getAllLines()));
+ List&lt;String&gt; getAllLines() =&gt; _list(_proxy.getAllLines());
+ 
+ /// Returns a copy of the lines between [firstRow] and [lastRow] (inclusive).
+ List&lt;String&gt; getLines(int firstRow, int lastRow) =&gt; 
+     _list(_proxy.getLines(firstRow, lastRow));
  
  /// Returns a verbatim copy of the given line [row] as it is in this document.
  String getLine(int row) =&gt; _proxy.getLine(row);
@@ -139,9 +142,8 @@ class Document extends _HasProxy {
  
  /// Removes the range of lines from the given [startRow] -&gt; [endRow] and
  /// returns the removed lines.  This method also fires an [onChange] event.
- List&lt;String&gt; removeLines(int startRow, int endRow) =&gt;
-     JSON.decode(
-         _context.JSON.stringify(_proxy.removeLines(startRow, endRow)));
+ List&lt;String&gt; removeLines(int startRow, int endRow) =&gt; 
+     _list(_proxy.removeLines(startRow, endRow));
  
  /// Removes the [newLineCharacter] between the given [row] and the row 
  /// immediately following it.  This method also fires an [onChange] event.
@@ -310,8 +312,7 @@ List&lt;String&gt; <strong>getAllLines</strong>() <a class="anchor-link" href="#
 <div class="doc">
 <p>Returns a copy of all the lines in this document.</p>
 <pre class="source">
-List&lt;String&gt; getAllLines() =&gt;
-   JSON.decode(_context.JSON.stringify(_proxy.getAllLines()));
+List&lt;String&gt; getAllLines() =&gt; _list(_proxy.getAllLines());
 </pre>
 </div>
 </div>
@@ -324,6 +325,19 @@ String <strong>getLine</strong>(int row) <a class="anchor-link" href="#getLine"
 <span class="param">row</span> as it is in this document.</p>
 <pre class="source">
 String getLine(int row) =&gt; _proxy.getLine(row);
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="getLines">
+<button class="show-code">Code</button>
+List&lt;String&gt; <strong>getLines</strong>(int firstRow, int lastRow) <a class="anchor-link" href="#getLines"
+              title="Permalink to Document.getLines">#</a></h4>
+<div class="doc">
+<p>Returns a copy of the lines between 
+<span class="param">firstRow</span> and <a href="inclusive">lastRow</a>.</p>
+<pre class="source">
+List&lt;String&gt; getLines(int firstRow, int lastRow) =&gt; 
+   _list(_proxy.getLines(firstRow, lastRow));
 </pre>
 </div>
 </div>
@@ -457,9 +471,8 @@ List&lt;String&gt; <strong>removeLines</strong>(int startRow, int endRow) <a cla
 <span class="param">endRow</span> and
 returns the removed lines.  This method also fires an <a class="crossref" href="../ace/Document.html#onChange">onChange</a> event.</p>
 <pre class="source">
-List&lt;String&gt; removeLines(int startRow, int endRow) =&gt;
-   JSON.decode(
-       _context.JSON.stringify(_proxy.removeLines(startRow, endRow)));
+List&lt;String&gt; removeLines(int startRow, int endRow) =&gt; 
+   _list(_proxy.removeLines(startRow, endRow));
 </pre>
 </div>
 </div>
@@ -523,7 +536,7 @@ String toString() =&gt; _context.JSON.stringify(_proxy);
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2013-09-29 07:50:46.581</div>
+          <div>This page was generated at 2013-10-01 11:56:40.911</div>
         </div>
         <script async src="../client-live-nav.js"></script>
         </body></html>
