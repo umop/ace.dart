@@ -87,7 +87,7 @@ class Document extends _HasProxy {
  /// Returns a copy of all the lines in this document.
  List&lt;String&gt; getAllLines() =&gt; _list(_proxy.getAllLines());
  
- /// Returns a copy of the lines between [firstRow] and [lastRow] (inclusive).
+ /// Returns a copy of the lines between [firstRow] and [lastRow], inclusive.
  List&lt;String&gt; getLines(int firstRow, int lastRow) =&gt; 
      _list(_proxy.getLines(firstRow, lastRow));
  
@@ -334,7 +334,8 @@ List&lt;String&gt; <strong>getLines</strong>(int firstRow, int lastRow) <a class
               title="Permalink to Document.getLines">#</a></h4>
 <div class="doc">
 <p>Returns a copy of the lines between 
-<span class="param">firstRow</span> and <a href="inclusive">lastRow</a>.</p>
+<span class="param">firstRow</span> and 
+<span class="param">lastRow</span>, inclusive.</p>
 <pre class="source">
 List&lt;String&gt; getLines(int firstRow, int lastRow) =&gt; 
    _list(_proxy.getLines(firstRow, lastRow));
@@ -536,7 +537,7 @@ String toString() =&gt; _context.JSON.stringify(_proxy);
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2013-10-01 11:56:40.911</div>
+          <div>This page was generated at 2013-10-01 12:07:48.001</div>
         </div>
         <script async src="../client-live-nav.js"></script>
         </body></html>

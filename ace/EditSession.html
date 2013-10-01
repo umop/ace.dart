@@ -88,8 +88,7 @@ class EditSession extends _HasProxy {
  /// 
  /// A value of _null_ for any given row index indicates that no breakpoint is
  /// set for that row.
- Map&lt;int, String&gt; get breakpoints =&gt;
-     JSON.decode(_context.JSON.stringify(_proxy.getBreakpoints())).asMap();
+ Map&lt;int, String&gt; get breakpoints =&gt; _list(_proxy.getBreakpoints()).asMap();
  
  /// The current [Document] associated with this session.
  Document
@@ -201,8 +200,7 @@ class EditSession extends _HasProxy {
  /// The map contains the keys `min` and `max`:
  ///     { min: wrapLimitRange_min, max: wrapLimitRange_max }
  // TODO(rms): define a class for this data.
- Map get wrapLimitRange =&gt; 
-     JSON.decode(_context.JSON.stringify(_proxy.getWrapLimitRange()));
+ Map get wrapLimitRange =&gt; _map(_proxy.getWrapLimitRange());
  
  /// Creates a new EditSession and associates it with the given [document] and 
  /// text [mode].
@@ -413,8 +411,7 @@ current <a class="crossref" href="../ace/EditSession.html#document">document</a>
 <p>A value of <em>null</em> for any given row index indicates that no breakpoint is
 set for that row.</p>
 <pre class="source">
-Map&lt;int, String&gt; get breakpoints =&gt;
-   JSON.decode(_context.JSON.stringify(_proxy.getBreakpoints())).asMap();
+Map&lt;int, String&gt; get breakpoints =&gt; _list(_proxy.getBreakpoints()).asMap();
 </pre>
 </div>
 </div>
@@ -832,8 +829,7 @@ final Map         <strong>wrapLimitRange</strong> <a class="anchor-link"
 <pre><code>{ min: wrapLimitRange_min, max: wrapLimitRange_max }
 </code></pre>
 <pre class="source">
-Map get wrapLimitRange =&gt; 
-   JSON.decode(_context.JSON.stringify(_proxy.getWrapLimitRange()));
+Map get wrapLimitRange =&gt; _map(_proxy.getWrapLimitRange());
 </pre>
 </div>
 </div>
@@ -1231,7 +1227,7 @@ String toString() =&gt; _proxy.toString();
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2013-10-01 11:56:40.842</div>
+          <div>This page was generated at 2013-10-01 12:07:47.915</div>
         </div>
         <script async src="../client-live-nav.js"></script>
         </body></html>

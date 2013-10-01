@@ -74,7 +74,7 @@ class SearchOptions {
                 this.wholeWord: false,
                 this.wrap: false});  
  
- SearchOptions._(proxy) : this.__(JSON.decode(_context.JSON.stringify(proxy)));    
+ SearchOptions._(proxy) : this.__(_map(proxy));    
  
  SearchOptions.__(Map m) : this(
      backwards: m['backwards'] == null ? false : m['backwards'],
@@ -254,7 +254,7 @@ final bool wrap
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2013-10-01 11:56:40.735</div>
+          <div>This page was generated at 2013-10-01 12:07:47.788</div>
         </div>
         <script async src="../client-live-nav.js"></script>
         </body></html>
