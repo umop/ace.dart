@@ -122,6 +122,9 @@ class Editor extends _HasProxy {
    set printMarginColumn(int printMarginColumn) =&gt; 
        _proxy.setPrintMarginColumn(printMarginColumn);
    
+ /// Whether or not this editor is set to read-only mode.
+ /// 
+ /// If `true` then this editor can not be modified.
  bool
    get readOnly =&gt; _proxy.getReadOnly();
    set readOnly(bool readOnly) =&gt; _proxy.setReadOnly(readOnly);
@@ -573,6 +576,8 @@ bool         <strong>readOnly</strong> <a class="anchor-link"
             title="Permalink to Editor.readOnly">#</a>
         </h4>
         <div class="doc">
+<p>Whether or not this editor is set to read-only mode.</p>
+<p>If <code>true</code> then this editor can not be modified.</p>
 <pre class="source">
 bool
  get readOnly =&gt; _proxy.getReadOnly();
@@ -1195,7 +1200,7 @@ void updateSelectionMarkers() =&gt; _proxy.updateSelectionMarkers();
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2013-10-01 14:22:14.736</div>
+          <div>This page was generated at 2013-10-02 13:41:43.999</div>
         </div>
         <script async src="../client-live-nav.js"></script>
         </body></html>
