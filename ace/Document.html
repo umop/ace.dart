@@ -122,13 +122,17 @@ class Document extends _HasProxy {
  bool isNewLine(String text) =&gt; _proxy.isNewLine(text);      
  
  /// Converts the given [position] in this document to the character's index.
+ /// 
  /// Index refers to the "absolute position" of a character in this document.
  /// For example:
  ///     var x = 0; // 10 characters, plus one for newline
  ///     var y = -1;
  /// Here, `y` has an index of `15`; `10` characters for the first row, a
- /// newline character, and `5` characters until `y` in the second row.    
- int positionToIndex(Point position, int startRow) =&gt;
+ /// newline character, and `5` characters until `y` in the second row. 
+ /// 
+ /// The optional [startRow] defaults to `0` and represents the row from which 
+ /// to start the conversion.
+ int positionToIndex(Point position, {int startRow: 0}) =&gt;
      _proxy.positionToIndex(position._toProxy(), startRow);
  
  /// Removes the given [range] from this document.
@@ -418,20 +422,23 @@ bool isNewLine(String text) =&gt; _proxy.isNewLine(text);
 </div>
 <div class="method"><h4 id="positionToIndex">
 <button class="show-code">Code</button>
-int <strong>positionToIndex</strong>(<a href="../ace/Point.html">Point</a> position, int startRow) <a class="anchor-link" href="#positionToIndex"
+int <strong>positionToIndex</strong>(<a href="../ace/Point.html">Point</a> position, {int startRow: 0}) <a class="anchor-link" href="#positionToIndex"
               title="Permalink to Document.positionToIndex">#</a></h4>
 <div class="doc">
 <p>Converts the given 
-<span class="param">position</span> in this document to the character's index.
-Index refers to the "absolute position" of a character in this document.
+<span class="param">position</span> in this document to the character's index.</p>
+<p>Index refers to the "absolute position" of a character in this document.
 For example:</p>
 <pre><code>var x = 0; // 10 characters, plus one for newline
 var y = -1;
 </code></pre>
 <p>Here, <code>y</code> has an index of <code>15</code>; <code>10</code> characters for the first row, a
-newline character, and <code>5</code> characters until <code>y</code> in the second row.    </p>
+newline character, and <code>5</code> characters until <code>y</code> in the second row. </p>
+<p>The optional 
+<span class="param">startRow</span> defaults to <code>0</code> and represents the row from which 
+to start the conversion.</p>
 <pre class="source">
-int positionToIndex(Point position, int startRow) =&gt;
+int positionToIndex(Point position, {int startRow: 0}) =&gt;
    _proxy.positionToIndex(position._toProxy(), startRow);
 </pre>
 </div>
@@ -537,7 +544,7 @@ String toString() =&gt; _context.JSON.stringify(_proxy);
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2013-10-03 05:32:59.689</div>
+          <div>This page was generated at 2013-10-03 09:00:42.683</div>
         </div>
         <script async src="../client-live-nav.js"></script>
         </body></html>
