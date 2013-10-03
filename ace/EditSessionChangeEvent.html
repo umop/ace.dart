@@ -2,19 +2,19 @@
         <html>
         <head>
                 <meta charset="utf-8">
-        <title>AnchorChangeEvent class / ace Library / Dart Documentation</title>
+        <title>EditSessionChangeEvent class / ace Library / Dart Documentation</title>
         <link rel="stylesheet" type="text/css"
             href="../styles.css">
         <link href="//fonts.googleapis.com/css?family=Open+Sans:400,600,700,800" rel="stylesheet" type="text/css">
         <link rel="shortcut icon" href="../favicon.ico">
         
         </head>
-        <body data-library="ace" data-type="AnchorChangeEvent">
+        <body data-library="ace" data-type="EditSessionChangeEvent">
         <div class="page">
         <div class="header">
           <a href="../index.html"><div class="logo"></div></a>
           <a href="../index.html">Dart Documentation</a>
-         &rsaquo; <a href="../ace.html">ace</a> &rsaquo; <a href="../ace/AnchorChangeEvent.html">AnchorChangeEvent</a>        <div id="search-box">
+         &rsaquo; <a href="../ace.html">ace</a> &rsaquo; <a href="../ace/EditSessionChangeEvent.html">EditSessionChangeEvent</a>        <div id="search-box">
           <input type="search" name="q" id="q" autocomplete="off"
               class="search-input" placeholder="Search API">
         </div>
@@ -26,48 +26,50 @@
         
 </div>
 <div class="content">
-        <h2><strong>AnchorChangeEvent</strong>
+        <h2><strong>EditSessionChangeEvent</strong>
           class
         </h2>
         
 <button id="show-inherited" class="show-inherited">Hide inherited</button>
 <div class="doc">
-<p>Fired by an <a class="crossref" href="../ace/Anchor.html">Anchor</a> whenever its position changes.</p>
 <pre class="source">
-class AnchorChangeEvent {
- /// The old position of the anchor.
- final Point oldPosition;  
- /// The new position of the anchor.
- final Point newPosition;  
- AnchorChangeEvent._(this.oldPosition, this.newPosition);
+class EditSessionChangeEvent {
+ 
+ /// The old [EditSession].
+ final EditSession oldSession;  
+ 
+ /// The new [EditSession].
+ final EditSession newSession;  
+ 
+ EditSessionChangeEvent._(this.oldSession, this.newSession);
 }
 </pre>
 </div>
 <div>
 <h3>Properties</h3>
-<div class="field"><h4 id="newPosition">
+<div class="field"><h4 id="newSession">
 <button class="show-code">Code</button>
-final <a href="../ace/Point.html">Point</a>         <strong>newPosition</strong> <a class="anchor-link"
-            href="#newPosition"
-            title="Permalink to AnchorChangeEvent.newPosition">#</a>
+final <a href="../ace/EditSession.html">EditSession</a>         <strong>newSession</strong> <a class="anchor-link"
+            href="#newSession"
+            title="Permalink to EditSessionChangeEvent.newSession">#</a>
         </h4>
         <div class="doc">
-<p>The new position of the anchor.</p>
+<p>The new <a class="crossref" href="../ace/EditSession.html">EditSession</a>.</p>
 <pre class="source">
-final Point newPosition
+final EditSession newSession
 </pre>
 </div>
 </div>
-<div class="field"><h4 id="oldPosition">
+<div class="field"><h4 id="oldSession">
 <button class="show-code">Code</button>
-final <a href="../ace/Point.html">Point</a>         <strong>oldPosition</strong> <a class="anchor-link"
-            href="#oldPosition"
-            title="Permalink to AnchorChangeEvent.oldPosition">#</a>
+final <a href="../ace/EditSession.html">EditSession</a>         <strong>oldSession</strong> <a class="anchor-link"
+            href="#oldSession"
+            title="Permalink to EditSessionChangeEvent.oldSession">#</a>
         </h4>
         <div class="doc">
-<p>The old position of the anchor.</p>
+<p>The old <a class="crossref" href="../ace/EditSession.html">EditSession</a>.</p>
 <pre class="source">
-final Point oldPosition
+final EditSession oldSession
 </pre>
 </div>
 </div>
@@ -76,7 +78,7 @@ final Point oldPosition
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2013-10-03 05:23:56.980</div>
+          <div>This page was generated at 2013-10-03 05:23:56.843</div>
         </div>
         <script async src="../client-live-nav.js"></script>
         </body></html>

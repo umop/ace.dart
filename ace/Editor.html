@@ -49,7 +49,7 @@ class Editor extends _HasProxy {
  final _onBlur = new StreamController.broadcast();
  final _onChange = new StreamController&lt;Delta&gt;.broadcast();
  final _onChangeSession = 
-     new StreamController/*&lt;EditSessionChangeEvent&gt;*/.broadcast();
+     new StreamController&lt;EditSessionChangeEvent&gt;.broadcast();
  final _onCopy = new StreamController&lt;String&gt;.broadcast();
  final _onFocus = new StreamController.broadcast();
  final _onPaste = new StreamController&lt;String&gt;.broadcast();
@@ -61,7 +61,7 @@ class Editor extends _HasProxy {
  Stream&lt;Delta&gt; get onChange =&gt; _onChange.stream;
  
  /// Fired whenever the [session] changes.
- Stream/*&lt;EditSessionChangeEvent&gt;*/ get onChangeSession =&gt; 
+ Stream&lt;EditSessionChangeEvent&gt; get onChangeSession =&gt; 
      _onChangeSession.stream;
  
  /// Fired whenever text is copied.
@@ -172,10 +172,9 @@ class Editor extends _HasProxy {
    _jsOnChange = new js.Callback.many((e,__) =&gt;
        _onChange.add(new Delta._for(e.data)));
    _jsOnChangeSession = new js.Callback.many((e,__) {
-     _onChangeSession.add(null);
-//      _onChangeSession.add(new EditSessionChangeEvent._(
-//          new EditSession._(e.oldSession),
-//          new EditSession._(e.session))); 
+     _onChangeSession.add(new EditSessionChangeEvent._(
+         new EditSession._(e.oldSession),
+         new EditSession._(e.session))); 
    });
    _jsOnCopy = new js.Callback.many((e,__) =&gt; _onCopy.add(e));
    _jsOnFocus = new js.Callback.many((_,__) =&gt; _onFocus.add(this));
@@ -483,14 +482,14 @@ Stream&lt;Delta&gt; get onChange =&gt; _onChange.stream;
 </div>
 <div class="field"><h4 id="onChangeSession">
 <button class="show-code">Code</button>
-final Stream         <strong>onChangeSession</strong> <a class="anchor-link"
+final Stream&lt;<a href="../ace/EditSessionChangeEvent.html">EditSessionChangeEvent</a>&gt;         <strong>onChangeSession</strong> <a class="anchor-link"
             href="#onChangeSession"
             title="Permalink to Editor.onChangeSession">#</a>
         </h4>
         <div class="doc">
 <p>Fired whenever the <a class="crossref" href="../ace/Editor.html#session">session</a> changes.</p>
 <pre class="source">
-Stream/*&lt;EditSessionChangeEvent&gt;*/ get onChangeSession =&gt; 
+Stream&lt;EditSessionChangeEvent&gt; get onChangeSession =&gt; 
    _onChangeSession.stream;
 </pre>
 </div>
@@ -1200,7 +1199,7 @@ void updateSelectionMarkers() =&gt; _proxy.updateSelectionMarkers();
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2013-10-03 05:08:34.483</div>
+          <div>This page was generated at 2013-10-03 05:23:56.894</div>
         </div>
         <script async src="../client-live-nav.js"></script>
         </body></html>
