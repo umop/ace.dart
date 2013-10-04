@@ -44,7 +44,7 @@ class Anchor extends _HasProxy {
  Stream&lt;AnchorChangeEvent&gt; get onChange =&gt; _onChange.stream;
  
  /// The document of this anchor.
- Document get document =&gt; new Document._(_proxy.getDocument());
+ Document get document =&gt; new _DocumentProxy._(_proxy.getDocument());
  
  /// The current position of this anchor.
  Point get position =&gt; new Point._(_proxy.getPosition());
@@ -52,8 +52,9 @@ class Anchor extends _HasProxy {
  /// Creates a new Anchor and associates it with the given [document] at the
  /// given [row] and [column] starting position.
  Anchor(Document document, int row, int column) 
-   : this._(new js.Proxy(_context.ace.define.modules['ace/anchor'].Anchor, 
-       document._proxy, row, column));
+   : this._(
+       new js.Proxy(_context.ace.define.modules['ace/anchor'].Anchor, 
+       (document as _DocumentProxy)._proxy, row, column));
  
  Anchor._(proxy) : super(proxy) {
    _jsOnChange = new js.Callback.many((e,__) =&gt;
@@ -79,7 +80,7 @@ class Anchor extends _HasProxy {
 </div>
 <h3>Extends</h3>
 <p>
-<span class="type-box"><span class="icon-class"></span><a href="../ace/_HasProxy.html">_HasProxy</a></span>&nbsp;&gt;&nbsp;<span class="type-box"><span class="icon-class"></span><strong>Anchor</strong></span></p>
+<span class="type-box"><span class="icon-class"></span><a href="../ace/_Disposable.html">_Disposable</a></span>&nbsp;&gt;&nbsp;<span class="type-box"><span class="icon-class"></span><a href="../ace/_HasProxy.html">_HasProxy</a></span>&nbsp;&gt;&nbsp;<span class="type-box"><span class="icon-class"></span><strong>Anchor</strong></span></p>
 <div>
 <h3>Constructors</h3>
 <div class="method"><h4 id="">
@@ -94,8 +95,9 @@ given
 <span class="param">column</span> starting position.</p>
 <pre class="source">
 Anchor(Document document, int row, int column) 
- : this._(new js.Proxy(_context.ace.define.modules['ace/anchor'].Anchor, 
-     document._proxy, row, column));
+ : this._(
+     new js.Proxy(_context.ace.define.modules['ace/anchor'].Anchor, 
+     (document as _DocumentProxy)._proxy, row, column));
 </pre>
 </div>
 </div>
@@ -111,7 +113,7 @@ final <a href="../ace/Document.html">Document</a>         <strong>document</stro
         <div class="doc">
 <p>The document of this anchor.</p>
 <pre class="source">
-Document get document =&gt; new Document._(_proxy.getDocument());
+Document get document =&gt; new _DocumentProxy._(_proxy.getDocument());
 </pre>
 </div>
 </div>
@@ -149,11 +151,13 @@ Point get position =&gt; new Point._(_proxy.getPosition());
 void <strong>dispose</strong>() <a class="anchor-link" href="#dispose"
               title="Permalink to Anchor.dispose">#</a></h4>
 <div class="inherited-from">inherited from <a href="../ace/_HasProxy.html">_HasProxy</a> </div><div class="doc">
+<div class="inherited">
 <p>Dispose of any resources held by this object.</p>
 <p>This method will release any javascript proxy objects help by this 
 object.  It will also close any streams exposed by the object.  It is an
 error to call any methods or access any fields of this object after this
 method has been called.</p>
+<div class="docs-inherited-from">docs inherited from <a href="../ace/_Disposable.html">_Disposable</a> </div></div>
 <pre class="source">
 void dispose() {
  if (_hasProxy) {
@@ -199,7 +203,7 @@ String toString() =&gt; _context.JSON.stringify(_proxy);
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2013-10-03 17:56:17.385</div>
+          <div>This page was generated at 2013-10-04 13:28:10.363</div>
         </div>
         <script async src="../client-live-nav.js"></script>
         </body></html>

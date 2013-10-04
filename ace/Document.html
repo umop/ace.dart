@@ -2,7 +2,7 @@
         <html>
         <head>
                 <meta charset="utf-8">
-        <title>Document class / ace Library / Dart Documentation</title>
+        <title>Document abstract class / ace Library / Dart Documentation</title>
         <link rel="stylesheet" type="text/css"
             href="../styles.css">
         <link href="//fonts.googleapis.com/css?family=Open+Sans:400,600,700,800" rel="stylesheet" type="text/css">
@@ -27,7 +27,7 @@
 </div>
 <div class="content">
         <h2><strong>Document</strong>
-          class
+          abstract class
         </h2>
         
 <button id="show-inherited" class="show-inherited">Hide inherited</button>
@@ -37,89 +37,65 @@
 array points to a row in the document.</p>
 <p>An instance of <a class="crossref" href="../ace/Document.html">Document</a> may be attached to more than one <a class="crossref" href="../ace/EditSession.html">EditSession</a>.</p>
 <pre class="source">
-class Document extends _HasProxy {
- js.Callback _jsOnChange;
- final _onChange = new StreamController&lt;Delta&gt;.broadcast();
+abstract class Document extends _Disposable {
+
  /// Fired whenever this document changes.
- Stream&lt;Delta&gt; get onChange =&gt; _onChange.stream;
+ Stream&lt;Delta&gt; get onChange;
  
  /// The number of rows in this document.
- int get length =&gt; _proxy.getLength();
+ int get length;
  
  /// The current newline character, based on the current [newLineMode].
- String get newLineCharacter =&gt; _proxy.getNewLineCharacter();
+ String get newLineCharacter;
      
  /// The new line mode.  May be one of `windows`, `unix` or `auto`.
  // TODO(rms): enum
- String 
-   get newLineMode =&gt; _proxy.getNewLineMode();
-   set newLineMode(String newLineMode) =&gt; _proxy.setNewLineMode(newLineMode);
+ String newLineMode;
    
  /// All the lines in this document as a single string, split by the 
  /// [newLineCharacter].  
- String
-   get value =&gt; _proxy.getValue();
-   set value(String text) =&gt; _proxy.setValue(text);
+ String value;
 
  /// Creates a new Document with the given [text], if any, or else it is empty.
- Document([String text = '']) : this._(
-     new js.Proxy(_context.ace.define.modules['ace/document'].Document, text));
-   
- Document._(js.Proxy proxy) : super(proxy) {
-   _jsOnChange = new js.Callback.many((e,__) =&gt; 
-       _onChange.add(new Delta._for(e.data)));
-   _proxy.on('change', _jsOnChange);
- }
- 
- void _onDispose() {
-   _onChange.close();
-   _jsOnChange.dispose();
- }
+ factory Document([String text = '']) =&gt; new _DocumentProxy(text);
  
  /// Applies all of the given [deltas] to this document in the order given.
- void applyDeltas(Iterable&lt;Delta&gt; deltas) =&gt;
-     _proxy.applyDeltas(js.array(deltas.map((delta) =&gt; delta._toProxy())));
+ void applyDeltas(Iterable&lt;Delta&gt; deltas);
  
  /// Creates a new [Anchor] to define a floating point in this document.
- Anchor createAnchor(int row, int column) =&gt;
-     new Anchor._(_proxy.createAnchor(row, column));
+ Anchor createAnchor(int row, int column);
  
  /// Returns a copy of all the lines in this document.
- List&lt;String&gt; getAllLines() =&gt; _list(_proxy.getAllLines());
+ List&lt;String&gt; getAllLines();
  
  /// Returns a copy of the lines between [firstRow] and [lastRow], inclusive.
- List&lt;String&gt; getLines(int firstRow, int lastRow) =&gt; 
-     _list(_proxy.getLines(firstRow, lastRow));
+ List&lt;String&gt; getLines(int firstRow, int lastRow);
  
  /// Returns a verbatim copy of the given line [row] as it is in this document.
- String getLine(int row) =&gt; _proxy.getLine(row);
+ String getLine(int row);
  
  /// Inserts a block of [text] at the given [position] and returns a point at
  /// the end of the inserted text.  This method also fires an [onChange] event.
- Point insert(Point position, String text) =&gt;
-     new Point._(_proxy.insert(position._toProxy(), text));
+ Point insert(Point position, String text);
  
  /// Inserts [text] into the [position] at the current row and returns a point
  /// at the end of the inserted text.  This method also fires an [onChange]
  /// event.
- Point insertInLine(Point position, String text) =&gt;
-     new Point._(_proxy.insertInLine(position._toProxy(), text));
+ Point insertInLine(Point position, String text);
  
  /// Inserts the given [lines] into the document, starting at the given [row]
  /// and returns a point at the end of the inserted lines.  This method also 
  /// fires an [onChange] event.
- Point insertLines(int row, Iterable&lt;String&gt; lines) =&gt;
-     new Point._(_proxy.insertLines(row, js.array(lines)));
+ Point insertLines(int row, Iterable&lt;String&gt; lines);
  
  /// Inserts a [newLineCharacter] into this document at the current row's 
  /// position and returns a point at the end of the insertion.  This method 
  /// also fires an [onChange] event.
- Point insertNewLine(Point position) =&gt;
-     new Point._(_proxy.insertNewLine(position._toProxy()));
+ Point insertNewLine(Point position);
  
  /// Returns `true` if [text] is a newline character.  That is, one of `\r\n`, 
  /// `\r` or `\n`.
- bool isNewLine(String text) =&gt; _proxy.isNewLine(text);      
+ bool isNewLine(String text);
  
  /// Converts the given [position] in this document to the character's index.
  /// 
@@ -132,54 +108,48 @@ class Document extends _HasProxy {
  /// 
  /// The optional [startRow] defaults to `0` and represents the row from which 
  /// to start the conversion.
- int positionToIndex(Point position, {int startRow: 0}) =&gt;
-     _proxy.positionToIndex(position._toProxy(), startRow);
+ int positionToIndex(Point position, {int startRow: 0});
  
  /// Removes the given [range] from this document.
- Point remove(Range range) =&gt; new Point._(_proxy.remove(range._toProxy()));
+ Point remove(Range range);
  
  /// Removes the range specified by [row/startColumn] -&gt; [row/endColumn] and 
  /// returns the removed [range.start] point.  This method also fires an
  /// [onChange] event.
- Point removeInLine(int row, int startColumn, int endColumn) =&gt;
-     new Point._(_proxy.removeInLine(row, startColumn, endColumn));
+ Point removeInLine(int row, int startColumn, int endColumn);
  
  /// Removes the range of lines from the given [startRow] -&gt; [endRow] and
  /// returns the removed lines.  This method also fires an [onChange] event.
- List&lt;String&gt; removeLines(int startRow, int endRow) =&gt; 
-     _list(_proxy.removeLines(startRow, endRow));
+ List&lt;String&gt; removeLines(int startRow, int endRow);
  
  /// Removes the [newLineCharacter] between the given [row] and the row 
  /// immediately following it.  This method also fires an [onChange] event.
- void removeNewLine(int row) =&gt; _proxy.removeNewLine(row);
+ void removeNewLine(int row);
  
  /// Replaces a given [range] in this document with the new [text] and returns
  /// a point at the end of the new text.
- Point replace(Range range, String text) =&gt; 
-     new Point._(_proxy.replace(range._toProxy(), text));
+ Point replace(Range range, String text);
  
  /// Reverts all of the given [deltas] to this document in reverse of the 
  /// order given.
- void revertDeltas(Iterable&lt;Delta&gt; deltas) =&gt; 
-     _proxy.revertDeltas(js.array(deltas.map((delta) =&gt; delta._toProxy())));
+ void revertDeltas(Iterable&lt;Delta&gt; deltas);
 }
 </pre>
 </div>
 <h3>Extends</h3>
 <p>
-<span class="type-box"><span class="icon-class"></span><a href="../ace/_HasProxy.html">_HasProxy</a></span>&nbsp;&gt;&nbsp;<span class="type-box"><span class="icon-class"></span><strong>Document</strong></span></p>
+<span class="type-box"><span class="icon-class"></span><a href="../ace/_Disposable.html">_Disposable</a></span>&nbsp;&gt;&nbsp;<span class="type-box"><span class="icon-class"></span><strong>Document</strong></span></p>
 <div>
 <h3>Constructors</h3>
 <div class="method"><h4 id="">
 <button class="show-code">Code</button>
-new <strong>Document</strong>([String text = '']) <a class="anchor-link" href="#"
+factory <strong>Document</strong>([String text = '']) <a class="anchor-link" href="#"
               title="Permalink to Document.Document">#</a></h4>
 <div class="doc">
 <p>Creates a new Document with the given 
 <span class="param">text</span>, if any, or else it is empty.</p>
 <pre class="source">
-Document([String text = '']) : this._(
-   new js.Proxy(_context.ace.define.modules['ace/document'].Document, text));
+factory Document([String text = '']) =&gt; new _DocumentProxy(text);
 </pre>
 </div>
 </div>
@@ -195,7 +165,7 @@ final int         <strong>length</strong> <a class="anchor-link"
         <div class="doc">
 <p>The number of rows in this document.</p>
 <pre class="source">
-int get length =&gt; _proxy.getLength();
+int get length;
 </pre>
 </div>
 </div>
@@ -208,7 +178,7 @@ final String         <strong>newLineCharacter</strong> <a class="anchor-link"
         <div class="doc">
 <p>The current newline character, based on the current <a class="crossref" href="../ace/Document.html#newLineMode">newLineMode</a>.</p>
 <pre class="source">
-String get newLineCharacter =&gt; _proxy.getNewLineCharacter();
+String get newLineCharacter;
 </pre>
 </div>
 </div>
@@ -221,11 +191,7 @@ String         <strong>newLineMode</strong> <a class="anchor-link"
         <div class="doc">
 <p>The new line mode.  May be one of <code>windows</code>, <code>unix</code> or <code>auto</code>.</p>
 <pre class="source">
-String 
- get newLineMode =&gt; _proxy.getNewLineMode();
-</pre>
-<pre class="source">
-set newLineMode(String newLineMode) =&gt; _proxy.setNewLineMode(newLineMode);
+String newLineMode
 </pre>
 </div>
 </div>
@@ -238,7 +204,7 @@ final Stream&lt;<a href="../ace/Delta.html">Delta</a>&gt;         <strong>onChan
         <div class="doc">
 <p>Fired whenever this document changes.</p>
 <pre class="source">
-Stream&lt;Delta&gt; get onChange =&gt; _onChange.stream;
+Stream&lt;Delta&gt; get onChange;
 </pre>
 </div>
 </div>
@@ -252,11 +218,7 @@ String         <strong>value</strong> <a class="anchor-link"
 <p>All the lines in this document as a single string, split by the 
 <a class="crossref" href="../ace/Document.html#newLineCharacter">newLineCharacter</a>.  </p>
 <pre class="source">
-String
- get value =&gt; _proxy.getValue();
-</pre>
-<pre class="source">
-set value(String text) =&gt; _proxy.setValue(text);
+String value
 </pre>
 </div>
 </div>
@@ -264,106 +226,67 @@ set value(String text) =&gt; _proxy.setValue(text);
 <div>
 <h3>Methods</h3>
 <div class="method"><h4 id="applyDeltas">
-<button class="show-code">Code</button>
-void <strong>applyDeltas</strong>(Iterable&lt;<a href="../ace/Delta.html">Delta</a>&gt; deltas) <a class="anchor-link" href="#applyDeltas"
+abstract void <strong>applyDeltas</strong>(Iterable&lt;<a href="../ace/Delta.html">Delta</a>&gt; deltas) <a class="anchor-link" href="#applyDeltas"
               title="Permalink to Document.applyDeltas">#</a></h4>
 <div class="doc">
 <p>Applies all of the given 
 <span class="param">deltas</span> to this document in the order given.</p>
-<pre class="source">
-void applyDeltas(Iterable&lt;Delta&gt; deltas) =&gt;
-   _proxy.applyDeltas(js.array(deltas.map((delta) =&gt; delta._toProxy())));
-</pre>
 </div>
 </div>
 <div class="method"><h4 id="createAnchor">
-<button class="show-code">Code</button>
-<a href="../ace/Anchor.html">Anchor</a> <strong>createAnchor</strong>(int row, int column) <a class="anchor-link" href="#createAnchor"
+abstract <a href="../ace/Anchor.html">Anchor</a> <strong>createAnchor</strong>(int row, int column) <a class="anchor-link" href="#createAnchor"
               title="Permalink to Document.createAnchor">#</a></h4>
 <div class="doc">
 <p>Creates a new <a class="crossref" href="../ace/Anchor.html">Anchor</a> to define a floating point in this document.</p>
-<pre class="source">
-Anchor createAnchor(int row, int column) =&gt;
-   new Anchor._(_proxy.createAnchor(row, column));
-</pre>
 </div>
 </div>
 <div class="method inherited"><h4 id="dispose">
-<button class="show-code">Code</button>
-void <strong>dispose</strong>() <a class="anchor-link" href="#dispose"
+abstract void <strong>dispose</strong>() <a class="anchor-link" href="#dispose"
               title="Permalink to Document.dispose">#</a></h4>
-<div class="inherited-from">inherited from <a href="../ace/_HasProxy.html">_HasProxy</a> </div><div class="doc">
+<div class="inherited-from">inherited from <a href="../ace/_Disposable.html">_Disposable</a> </div><div class="doc">
 <p>Dispose of any resources held by this object.</p>
 <p>This method will release any javascript proxy objects help by this 
 object.  It will also close any streams exposed by the object.  It is an
 error to call any methods or access any fields of this object after this
 method has been called.</p>
-<pre class="source">
-void dispose() {
- if (_hasProxy) {
-   _onDispose();
-   js.release(_proxy);
-   _proxy = null;
- }
-}
-</pre>
 </div>
 </div>
 <div class="method"><h4 id="getAllLines">
-<button class="show-code">Code</button>
-List&lt;String&gt; <strong>getAllLines</strong>() <a class="anchor-link" href="#getAllLines"
+abstract List&lt;String&gt; <strong>getAllLines</strong>() <a class="anchor-link" href="#getAllLines"
               title="Permalink to Document.getAllLines">#</a></h4>
 <div class="doc">
 <p>Returns a copy of all the lines in this document.</p>
-<pre class="source">
-List&lt;String&gt; getAllLines() =&gt; _list(_proxy.getAllLines());
-</pre>
 </div>
 </div>
 <div class="method"><h4 id="getLine">
-<button class="show-code">Code</button>
-String <strong>getLine</strong>(int row) <a class="anchor-link" href="#getLine"
+abstract String <strong>getLine</strong>(int row) <a class="anchor-link" href="#getLine"
               title="Permalink to Document.getLine">#</a></h4>
 <div class="doc">
 <p>Returns a verbatim copy of the given line 
 <span class="param">row</span> as it is in this document.</p>
-<pre class="source">
-String getLine(int row) =&gt; _proxy.getLine(row);
-</pre>
 </div>
 </div>
 <div class="method"><h4 id="getLines">
-<button class="show-code">Code</button>
-List&lt;String&gt; <strong>getLines</strong>(int firstRow, int lastRow) <a class="anchor-link" href="#getLines"
+abstract List&lt;String&gt; <strong>getLines</strong>(int firstRow, int lastRow) <a class="anchor-link" href="#getLines"
               title="Permalink to Document.getLines">#</a></h4>
 <div class="doc">
 <p>Returns a copy of the lines between 
 <span class="param">firstRow</span> and 
 <span class="param">lastRow</span>, inclusive.</p>
-<pre class="source">
-List&lt;String&gt; getLines(int firstRow, int lastRow) =&gt; 
-   _list(_proxy.getLines(firstRow, lastRow));
-</pre>
 </div>
 </div>
 <div class="method"><h4 id="insert">
-<button class="show-code">Code</button>
-<a href="../ace/Point.html">Point</a> <strong>insert</strong>(<a href="../ace/Point.html">Point</a> position, String text) <a class="anchor-link" href="#insert"
+abstract <a href="../ace/Point.html">Point</a> <strong>insert</strong>(<a href="../ace/Point.html">Point</a> position, String text) <a class="anchor-link" href="#insert"
               title="Permalink to Document.insert">#</a></h4>
 <div class="doc">
 <p>Inserts a block of 
 <span class="param">text</span> at the given 
 <span class="param">position</span> and returns a point at
 the end of the inserted text.  This method also fires an <a class="crossref" href="../ace/Document.html#onChange">onChange</a> event.</p>
-<pre class="source">
-Point insert(Point position, String text) =&gt;
-   new Point._(_proxy.insert(position._toProxy(), text));
-</pre>
 </div>
 </div>
 <div class="method"><h4 id="insertInLine">
-<button class="show-code">Code</button>
-<a href="../ace/Point.html">Point</a> <strong>insertInLine</strong>(<a href="../ace/Point.html">Point</a> position, String text) <a class="anchor-link" href="#insertInLine"
+abstract <a href="../ace/Point.html">Point</a> <strong>insertInLine</strong>(<a href="../ace/Point.html">Point</a> position, String text) <a class="anchor-link" href="#insertInLine"
               title="Permalink to Document.insertInLine">#</a></h4>
 <div class="doc">
 <p>Inserts 
@@ -371,15 +294,10 @@ Point insert(Point position, String text) =&gt;
 <span class="param">position</span> at the current row and returns a point
 at the end of the inserted text.  This method also fires an <a class="crossref" href="../ace/Document.html#onChange">onChange</a>
 event.</p>
-<pre class="source">
-Point insertInLine(Point position, String text) =&gt;
-   new Point._(_proxy.insertInLine(position._toProxy(), text));
-</pre>
 </div>
 </div>
 <div class="method"><h4 id="insertLines">
-<button class="show-code">Code</button>
-<a href="../ace/Point.html">Point</a> <strong>insertLines</strong>(int row, Iterable&lt;String&gt; lines) <a class="anchor-link" href="#insertLines"
+abstract <a href="../ace/Point.html">Point</a> <strong>insertLines</strong>(int row, Iterable&lt;String&gt; lines) <a class="anchor-link" href="#insertLines"
               title="Permalink to Document.insertLines">#</a></h4>
 <div class="doc">
 <p>Inserts the given 
@@ -387,42 +305,28 @@ Point insertInLine(Point position, String text) =&gt;
 <span class="param">row</span>
 and returns a point at the end of the inserted lines.  This method also 
 fires an <a class="crossref" href="../ace/Document.html#onChange">onChange</a> event.</p>
-<pre class="source">
-Point insertLines(int row, Iterable&lt;String&gt; lines) =&gt;
-   new Point._(_proxy.insertLines(row, js.array(lines)));
-</pre>
 </div>
 </div>
 <div class="method"><h4 id="insertNewLine">
-<button class="show-code">Code</button>
-<a href="../ace/Point.html">Point</a> <strong>insertNewLine</strong>(<a href="../ace/Point.html">Point</a> position) <a class="anchor-link" href="#insertNewLine"
+abstract <a href="../ace/Point.html">Point</a> <strong>insertNewLine</strong>(<a href="../ace/Point.html">Point</a> position) <a class="anchor-link" href="#insertNewLine"
               title="Permalink to Document.insertNewLine">#</a></h4>
 <div class="doc">
 <p>Inserts a <a class="crossref" href="../ace/Document.html#newLineCharacter">newLineCharacter</a> into this document at the current row's 
 position and returns a point at the end of the insertion.  This method 
 also fires an <a class="crossref" href="../ace/Document.html#onChange">onChange</a> event.</p>
-<pre class="source">
-Point insertNewLine(Point position) =&gt;
-   new Point._(_proxy.insertNewLine(position._toProxy()));
-</pre>
 </div>
 </div>
 <div class="method"><h4 id="isNewLine">
-<button class="show-code">Code</button>
-bool <strong>isNewLine</strong>(String text) <a class="anchor-link" href="#isNewLine"
+abstract bool <strong>isNewLine</strong>(String text) <a class="anchor-link" href="#isNewLine"
               title="Permalink to Document.isNewLine">#</a></h4>
 <div class="doc">
 <p>Returns <code>true</code> if 
 <span class="param">text</span> is a newline character.  That is, one of <code>\r\n</code>, 
 <code>\r</code> or <code>\n</code>.</p>
-<pre class="source">
-bool isNewLine(String text) =&gt; _proxy.isNewLine(text);
-</pre>
 </div>
 </div>
 <div class="method"><h4 id="positionToIndex">
-<button class="show-code">Code</button>
-int <strong>positionToIndex</strong>(<a href="../ace/Point.html">Point</a> position, {int startRow: 0}) <a class="anchor-link" href="#positionToIndex"
+abstract int <strong>positionToIndex</strong>(<a href="../ace/Point.html">Point</a> position, {int startRow: 0}) <a class="anchor-link" href="#positionToIndex"
               title="Permalink to Document.positionToIndex">#</a></h4>
 <div class="doc">
 <p>Converts the given 
@@ -437,106 +341,61 @@ newline character, and <code>5</code> characters until <code>y</code> in the sec
 <p>The optional 
 <span class="param">startRow</span> defaults to <code>0</code> and represents the row from which 
 to start the conversion.</p>
-<pre class="source">
-int positionToIndex(Point position, {int startRow: 0}) =&gt;
-   _proxy.positionToIndex(position._toProxy(), startRow);
-</pre>
 </div>
 </div>
 <div class="method"><h4 id="remove">
-<button class="show-code">Code</button>
-<a href="../ace/Point.html">Point</a> <strong>remove</strong>(<a href="../ace/Range.html">Range</a> range) <a class="anchor-link" href="#remove"
+abstract <a href="../ace/Point.html">Point</a> <strong>remove</strong>(<a href="../ace/Range.html">Range</a> range) <a class="anchor-link" href="#remove"
               title="Permalink to Document.remove">#</a></h4>
 <div class="doc">
 <p>Removes the given 
 <span class="param">range</span> from this document.</p>
-<pre class="source">
-Point remove(Range range) =&gt; new Point._(_proxy.remove(range._toProxy()));
-</pre>
 </div>
 </div>
 <div class="method"><h4 id="removeInLine">
-<button class="show-code">Code</button>
-<a href="../ace/Point.html">Point</a> <strong>removeInLine</strong>(int row, int startColumn, int endColumn) <a class="anchor-link" href="#removeInLine"
+abstract <a href="../ace/Point.html">Point</a> <strong>removeInLine</strong>(int row, int startColumn, int endColumn) <a class="anchor-link" href="#removeInLine"
               title="Permalink to Document.removeInLine">#</a></h4>
 <div class="doc">
 <p>Removes the range specified by <code>row/startColumn</code> -> <code>row/endColumn</code> and 
 returns the removed <code>range.start</code> point.  This method also fires an
 <a class="crossref" href="../ace/Document.html#onChange">onChange</a> event.</p>
-<pre class="source">
-Point removeInLine(int row, int startColumn, int endColumn) =&gt;
-   new Point._(_proxy.removeInLine(row, startColumn, endColumn));
-</pre>
 </div>
 </div>
 <div class="method"><h4 id="removeLines">
-<button class="show-code">Code</button>
-List&lt;String&gt; <strong>removeLines</strong>(int startRow, int endRow) <a class="anchor-link" href="#removeLines"
+abstract List&lt;String&gt; <strong>removeLines</strong>(int startRow, int endRow) <a class="anchor-link" href="#removeLines"
               title="Permalink to Document.removeLines">#</a></h4>
 <div class="doc">
 <p>Removes the range of lines from the given 
 <span class="param">startRow</span> -> 
 <span class="param">endRow</span> and
 returns the removed lines.  This method also fires an <a class="crossref" href="../ace/Document.html#onChange">onChange</a> event.</p>
-<pre class="source">
-List&lt;String&gt; removeLines(int startRow, int endRow) =&gt; 
-   _list(_proxy.removeLines(startRow, endRow));
-</pre>
 </div>
 </div>
 <div class="method"><h4 id="removeNewLine">
-<button class="show-code">Code</button>
-void <strong>removeNewLine</strong>(int row) <a class="anchor-link" href="#removeNewLine"
+abstract void <strong>removeNewLine</strong>(int row) <a class="anchor-link" href="#removeNewLine"
               title="Permalink to Document.removeNewLine">#</a></h4>
 <div class="doc">
 <p>Removes the <a class="crossref" href="../ace/Document.html#newLineCharacter">newLineCharacter</a> between the given 
 <span class="param">row</span> and the row 
 immediately following it.  This method also fires an <a class="crossref" href="../ace/Document.html#onChange">onChange</a> event.</p>
-<pre class="source">
-void removeNewLine(int row) =&gt; _proxy.removeNewLine(row);
-</pre>
 </div>
 </div>
 <div class="method"><h4 id="replace">
-<button class="show-code">Code</button>
-<a href="../ace/Point.html">Point</a> <strong>replace</strong>(<a href="../ace/Range.html">Range</a> range, String text) <a class="anchor-link" href="#replace"
+abstract <a href="../ace/Point.html">Point</a> <strong>replace</strong>(<a href="../ace/Range.html">Range</a> range, String text) <a class="anchor-link" href="#replace"
               title="Permalink to Document.replace">#</a></h4>
 <div class="doc">
 <p>Replaces a given 
 <span class="param">range</span> in this document with the new 
 <span class="param">text</span> and returns
 a point at the end of the new text.</p>
-<pre class="source">
-Point replace(Range range, String text) =&gt; 
-   new Point._(_proxy.replace(range._toProxy(), text));
-</pre>
 </div>
 </div>
 <div class="method"><h4 id="revertDeltas">
-<button class="show-code">Code</button>
-void <strong>revertDeltas</strong>(Iterable&lt;<a href="../ace/Delta.html">Delta</a>&gt; deltas) <a class="anchor-link" href="#revertDeltas"
+abstract void <strong>revertDeltas</strong>(Iterable&lt;<a href="../ace/Delta.html">Delta</a>&gt; deltas) <a class="anchor-link" href="#revertDeltas"
               title="Permalink to Document.revertDeltas">#</a></h4>
 <div class="doc">
 <p>Reverts all of the given 
 <span class="param">deltas</span> to this document in reverse of the 
 order given.</p>
-<pre class="source">
-void revertDeltas(Iterable&lt;Delta&gt; deltas) =&gt; 
-   _proxy.revertDeltas(js.array(deltas.map((delta) =&gt; delta._toProxy())));
-</pre>
-</div>
-</div>
-<div class="method inherited"><h4 id="toString">
-<button class="show-code">Code</button>
-String <strong>toString</strong>() <a class="anchor-link" href="#toString"
-              title="Permalink to Document.toString">#</a></h4>
-<div class="inherited-from">inherited from <a href="../ace/_HasProxy.html">_HasProxy</a> </div><div class="doc">
-<div class="inherited">
-<p>Returns a string representation of this object.</p>
-<div class="docs-inherited-from">docs inherited from Object </div></div>
-<pre class="source">
-String toString() =&gt; _context.JSON.stringify(_proxy);
-</pre>
 </div>
 </div>
 </div>
@@ -544,7 +403,7 @@ String toString() =&gt; _context.JSON.stringify(_proxy);
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2013-10-03 17:56:17.345</div>
+          <div>This page was generated at 2013-10-04 13:28:10.262</div>
         </div>
         <script async src="../client-live-nav.js"></script>
         </body></html>
