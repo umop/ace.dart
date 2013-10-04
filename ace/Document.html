@@ -114,12 +114,15 @@ abstract class Document extends _Disposable {
  Point remove(Range range);
  
  /// Removes the range specified by [row/startColumn] -&gt; [row/endColumn] and 
- /// returns the removed [range.start] point.  This method also fires an
- /// [onChange] event.
+ /// returns the removed [range.start] point.  
+ /// 
+ /// This method also fires an [onChange] event.
  Point removeInLine(int row, int startColumn, int endColumn);
  
- /// Removes the range of lines from the given [startRow] -&gt; [endRow] and
- /// returns the removed lines.  This method also fires an [onChange] event.
+ /// Removes the range of lines from the given [startRow] -&gt; [endRow], 
+ /// inclusive, and returns the removed lines.  
+ /// 
+ /// This method also fires an [onChange] event.
  List&lt;String&gt; removeLines(int startRow, int endRow);
  
  /// Removes the [newLineCharacter] between the given [row] and the row 
@@ -356,8 +359,8 @@ abstract <a href="../ace/Point.html">Point</a> <strong>removeInLine</strong>(int
               title="Permalink to Document.removeInLine">#</a></h4>
 <div class="doc">
 <p>Removes the range specified by <code>row/startColumn</code> -> <code>row/endColumn</code> and 
-returns the removed <code>range.start</code> point.  This method also fires an
-<a class="crossref" href="../ace/Document.html#onChange">onChange</a> event.</p>
+returns the removed <code>range.start</code> point.  </p>
+<p>This method also fires an <a class="crossref" href="../ace/Document.html#onChange">onChange</a> event.</p>
 </div>
 </div>
 <div class="method"><h4 id="removeLines">
@@ -366,8 +369,9 @@ abstract List&lt;String&gt; <strong>removeLines</strong>(int startRow, int endRo
 <div class="doc">
 <p>Removes the range of lines from the given 
 <span class="param">startRow</span> -> 
-<span class="param">endRow</span> and
-returns the removed lines.  This method also fires an <a class="crossref" href="../ace/Document.html#onChange">onChange</a> event.</p>
+<span class="param">endRow</span>, 
+inclusive, and returns the removed lines.  </p>
+<p>This method also fires an <a class="crossref" href="../ace/Document.html#onChange">onChange</a> event.</p>
 </div>
 </div>
 <div class="method"><h4 id="removeNewLine">
@@ -403,7 +407,7 @@ order given.</p>
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2013-10-04 15:14:48.820</div>
+          <div>This page was generated at 2013-10-04 15:46:10.136</div>
         </div>
         <script async src="../client-live-nav.js"></script>
         </body></html>
