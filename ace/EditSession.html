@@ -214,7 +214,7 @@ class EditSession extends _HasProxy {
  
  EditSession._(js.Proxy proxy) : super(proxy) {    
    _jsOnChange = new js.Callback.many((e,__) =&gt; 
-       _onChange.add(new Delta._for(e.data)));
+       _onChange.add(new Delta._forProxy(e.data)));
    _jsOnChangeBreakpoint =
        new js.Callback.many((_,__) =&gt; _onChangeBreakpoint.add(this));
    _jsOnChangeOverwrite = 
@@ -1239,7 +1239,7 @@ String toString() =&gt; _proxy.toString();
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2013-10-04 13:28:10.091</div>
+          <div>This page was generated at 2013-10-04 14:14:23.883</div>
         </div>
         <script async src="../client-live-nav.js"></script>
         </body></html>

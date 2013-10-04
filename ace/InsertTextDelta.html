@@ -34,13 +34,16 @@
 <div class="doc">
 <pre class="source">
 class InsertTextDelta extends Delta {
- 
+   
  /// The text inserted in the document by this change.
  final String text;
  
- InsertTextDelta._(data) 
-   : super._(data.action, data.range)
-   , text = data.text;
+ InsertTextDelta._(Range range, this.text)
+ : super._('insertText', range);
+ 
+ InsertTextDelta._fromProxy(proxy)
+ : super._fromProxy(proxy)
+ , text = proxy.text;
  
  js.Proxy _toProxy() =&gt; super._toProxy()..['text'] = text;
 }
@@ -95,7 +98,7 @@ final String text
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2013-10-04 13:28:10.295</div>
+          <div>This page was generated at 2013-10-04 14:14:23.969</div>
         </div>
         <script async src="../client-live-nav.js"></script>
         </body></html>

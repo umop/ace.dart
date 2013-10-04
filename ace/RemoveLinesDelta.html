@@ -42,10 +42,13 @@ class RemoveLinesDelta extends Delta {
  /// defined by [Document.newLineCharacter].
  final String nl;
  
- RemoveLinesDelta._(data) 
-   : super._(data.action, data.range)
-   , lines = _list(data.lines)
-   , nl = data.nl;
+ RemoveLinesDelta._(Range range, this.lines, this.nl)
+   : super._('removeLines', range);
+ 
+ RemoveLinesDelta._fromProxy(proxy) 
+   : super._fromProxy(proxy)
+   , lines = _list(proxy.lines)
+   , nl = proxy.nl;
  
  js.Proxy _toProxy() =&gt; 
      super._toProxy()..['lines'] = js.array(lines)..['nl'] = nl;
@@ -115,7 +118,7 @@ final Range range
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2013-10-04 13:28:10.285</div>
+          <div>This page was generated at 2013-10-04 14:14:23.965</div>
         </div>
         <script async src="../client-live-nav.js"></script>
         </body></html>
