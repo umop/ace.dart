@@ -158,7 +158,7 @@ class EditSession extends _HasProxy {
  
  /// The current [UndoManager].
  UndoManager
-   get undoManager =&gt; new UndoManager._(_proxy.getUndoManager());
+   get undoManager =&gt; new _UndoManagerProxy._(_proxy.getUndoManager());
    set undoManager(UndoManager undoManager) =&gt; throw new UnimplementedError();
  
  /// Whether or not the range of an undo or redo operation is selected.
@@ -723,7 +723,7 @@ String get tabString =&gt; _proxy.getTabString();
 <p>The current <a class="crossref" href="../ace/UndoManager.html">UndoManager</a>.</p>
 <pre class="source">
 UndoManager
- get undoManager =&gt; new UndoManager._(_proxy.getUndoManager());
+ get undoManager =&gt; new _UndoManagerProxy._(_proxy.getUndoManager());
 </pre>
 <pre class="source">
 set undoManager(UndoManager undoManager) =&gt; throw new UnimplementedError();
@@ -1239,7 +1239,7 @@ String toString() =&gt; _proxy.toString();
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2013-10-05 09:07:37.829</div>
+          <div>This page was generated at 2013-10-05 09:18:08.049</div>
         </div>
         <script async src="../client-live-nav.js"></script>
         </body></html>

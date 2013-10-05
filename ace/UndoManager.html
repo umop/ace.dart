@@ -2,7 +2,7 @@
         <html>
         <head>
                 <meta charset="utf-8">
-        <title>UndoManager class / ace Library / Dart Documentation</title>
+        <title>UndoManager abstract class / ace Library / Dart Documentation</title>
         <link rel="stylesheet" type="text/css"
             href="../styles.css">
         <link href="//fonts.googleapis.com/css?family=Open+Sans:400,600,700,800" rel="stylesheet" type="text/css">
@@ -27,22 +27,20 @@
 </div>
 <div class="content">
         <h2><strong>UndoManager</strong>
-          class
+          abstract class
         </h2>
         
 <button id="show-inherited" class="show-inherited">Hide inherited</button>
 <div class="doc">
 <p>Manages the undo stack for an <a class="crossref" href="../ace/EditSession.html">EditSession</a>.</p>
 <pre class="source">
-class UndoManager extends _HasProxy {
+abstract class UndoManager extends _Disposable {
  
  /// Returns `true` if there are [redo] operations left to perform.
- bool get hasRedo =&gt; _proxy.hasRedo();
+ bool get hasRedo;
  
  /// Returns `true` if there are [undo] operations left to perform.
- bool get hasUndo =&gt; _proxy.hasUndo();
- 
- UndoManager._(js.Proxy proxy) : super(proxy);
+ bool get hasUndo;
  
  /// Performs a redo operation on the associated document, reinstating the last 
  /// change.
@@ -50,10 +48,10 @@ class UndoManager extends _HasProxy {
  /// If [dontSelect] is _true_ then the range of the change will not be 
  /// selected.  Returns the range of the operation that is performed, or `null`
  /// if [hasRedo] is _false_.
- Range redo(bool dontSelect) =&gt; new Range._(_proxy.redo(dontSelect));
+ Range redo(bool dontSelect);
  
  /// Destroys the stack of [undo] and [redo] operations.
- void reset() =&gt; _proxy.reset();
+ void reset();
  
  /// Performs an undo operation on the associated document, reverting the last 
  /// change.
@@ -61,13 +59,13 @@ class UndoManager extends _HasProxy {
  /// If [dontSelect] is _true_ then the range of the change will not be 
  /// selected.  Returns the range of the operation that is performed, or `null`
  /// if [hasUndo] is _false_.
- Range undo(bool dontSelect) =&gt; new Range._(_proxy.undo(dontSelect));
+ Range undo(bool dontSelect);
 }
 </pre>
 </div>
 <h3>Extends</h3>
 <p>
-<span class="type-box"><span class="icon-class"></span><a href="../ace/_Disposable.html">_Disposable</a></span>&nbsp;&gt;&nbsp;<span class="type-box"><span class="icon-class"></span><a href="../ace/_HasProxy.html">_HasProxy</a></span>&nbsp;&gt;&nbsp;<span class="type-box"><span class="icon-class"></span><strong>UndoManager</strong></span></p>
+<span class="type-box"><span class="icon-class"></span><a href="../ace/_Disposable.html">_Disposable</a></span>&nbsp;&gt;&nbsp;<span class="type-box"><span class="icon-class"></span><strong>UndoManager</strong></span></p>
 <div>
 <h3>Properties</h3>
 <div class="field"><h4 id="hasRedo">
@@ -79,7 +77,7 @@ final bool         <strong>hasRedo</strong> <a class="anchor-link"
         <div class="doc">
 <p>Returns <code>true</code> if there are <a class="crossref" href="../ace/UndoManager.html#redo">redo</a> operations left to perform.</p>
 <pre class="source">
-bool get hasRedo =&gt; _proxy.hasRedo();
+bool get hasRedo;
 </pre>
 </div>
 </div>
@@ -92,7 +90,7 @@ final bool         <strong>hasUndo</strong> <a class="anchor-link"
         <div class="doc">
 <p>Returns <code>true</code> if there are <a class="crossref" href="../ace/UndoManager.html#undo">undo</a> operations left to perform.</p>
 <pre class="source">
-bool get hasUndo =&gt; _proxy.hasUndo();
+bool get hasUndo;
 </pre>
 </div>
 </div>
@@ -100,31 +98,18 @@ bool get hasUndo =&gt; _proxy.hasUndo();
 <div>
 <h3>Methods</h3>
 <div class="method inherited"><h4 id="dispose">
-<button class="show-code">Code</button>
-void <strong>dispose</strong>() <a class="anchor-link" href="#dispose"
+abstract void <strong>dispose</strong>() <a class="anchor-link" href="#dispose"
               title="Permalink to UndoManager.dispose">#</a></h4>
-<div class="inherited-from">inherited from <a href="../ace/_HasProxy.html">_HasProxy</a> </div><div class="doc">
-<div class="inherited">
+<div class="inherited-from">inherited from <a href="../ace/_Disposable.html">_Disposable</a> </div><div class="doc">
 <p>Dispose of any resources held by this object.</p>
 <p>This method will release any javascript proxy objects help by this 
 object.  It will also close any streams exposed by the object.  It is an
 error to call any methods or access any fields of this object after this
 method has been called.</p>
-<div class="docs-inherited-from">docs inherited from <a href="../ace/_Disposable.html">_Disposable</a> </div></div>
-<pre class="source">
-void dispose() {
- if (_hasProxy) {
-   _onDispose();
-   js.release(_proxy);
-   _proxy = null;
- }
-}
-</pre>
 </div>
 </div>
 <div class="method"><h4 id="redo">
-<button class="show-code">Code</button>
-<a href="../ace/Range.html">Range</a> <strong>redo</strong>(bool dontSelect) <a class="anchor-link" href="#redo"
+abstract <a href="../ace/Range.html">Range</a> <strong>redo</strong>(bool dontSelect) <a class="anchor-link" href="#redo"
               title="Permalink to UndoManager.redo">#</a></h4>
 <div class="doc">
 <p>Performs a redo operation on the associated document, reinstating the last 
@@ -133,38 +118,17 @@ change.</p>
 <span class="param">dontSelect</span> is <em>true</em> then the range of the change will not be 
 selected.  Returns the range of the operation that is performed, or <code>null</code>
 if <a class="crossref" href="../ace/UndoManager.html#hasRedo">hasRedo</a> is <em>false</em>.</p>
-<pre class="source">
-Range redo(bool dontSelect) =&gt; new Range._(_proxy.redo(dontSelect));
-</pre>
 </div>
 </div>
 <div class="method"><h4 id="reset">
-<button class="show-code">Code</button>
-void <strong>reset</strong>() <a class="anchor-link" href="#reset"
+abstract void <strong>reset</strong>() <a class="anchor-link" href="#reset"
               title="Permalink to UndoManager.reset">#</a></h4>
 <div class="doc">
 <p>Destroys the stack of <a class="crossref" href="../ace/UndoManager.html#undo">undo</a> and <a class="crossref" href="../ace/UndoManager.html#redo">redo</a> operations.</p>
-<pre class="source">
-void reset() =&gt; _proxy.reset();
-</pre>
-</div>
-</div>
-<div class="method inherited"><h4 id="toString">
-<button class="show-code">Code</button>
-String <strong>toString</strong>() <a class="anchor-link" href="#toString"
-              title="Permalink to UndoManager.toString">#</a></h4>
-<div class="inherited-from">inherited from <a href="../ace/_HasProxy.html">_HasProxy</a> </div><div class="doc">
-<div class="inherited">
-<p>Returns a string representation of this object.</p>
-<div class="docs-inherited-from">docs inherited from Object </div></div>
-<pre class="source">
-String toString() =&gt; _context.JSON.stringify(_proxy);
-</pre>
 </div>
 </div>
 <div class="method"><h4 id="undo">
-<button class="show-code">Code</button>
-<a href="../ace/Range.html">Range</a> <strong>undo</strong>(bool dontSelect) <a class="anchor-link" href="#undo"
+abstract <a href="../ace/Range.html">Range</a> <strong>undo</strong>(bool dontSelect) <a class="anchor-link" href="#undo"
               title="Permalink to UndoManager.undo">#</a></h4>
 <div class="doc">
 <p>Performs an undo operation on the associated document, reverting the last 
@@ -173,9 +137,6 @@ change.</p>
 <span class="param">dontSelect</span> is <em>true</em> then the range of the change will not be 
 selected.  Returns the range of the operation that is performed, or <code>null</code>
 if <a class="crossref" href="../ace/UndoManager.html#hasUndo">hasUndo</a> is <em>false</em>.</p>
-<pre class="source">
-Range undo(bool dontSelect) =&gt; new Range._(_proxy.undo(dontSelect));
-</pre>
 </div>
 </div>
 </div>
@@ -183,7 +144,7 @@ Range undo(bool dontSelect) =&gt; new Range._(_proxy.undo(dontSelect));
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2013-10-05 09:07:37.400</div>
+          <div>This page was generated at 2013-10-05 09:18:07.691</div>
         </div>
         <script async src="../client-live-nav.js"></script>
         </body></html>
