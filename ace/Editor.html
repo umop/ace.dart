@@ -136,7 +136,7 @@ class Editor extends _HasProxy {
    get scrollSpeed =&gt; _proxy.getScrollSpeed();
    set scrollSpeed(int scrollSpeed) =&gt; _proxy.setScrollSpeed(scrollSpeed);
    
- Selection get selection =&gt; new Selection._(_proxy.getSelection());
+ Selection get selection =&gt; new _SelectionProxy._(_proxy.getSelection());
  Range get selectionRange =&gt; new Range._(_proxy.getSelectionRange());
  
  /// The current [EditSession] being used; setting a new session fires an 
@@ -623,7 +623,7 @@ final <a href="../ace/Selection.html">Selection</a>         <strong>selection</s
         </h4>
         <div class="doc">
 <pre class="source">
-Selection get selection =&gt; new Selection._(_proxy.getSelection());
+Selection get selection =&gt; new _SelectionProxy._(_proxy.getSelection());
 </pre>
 </div>
 </div>
@@ -1201,7 +1201,7 @@ void updateSelectionMarkers() =&gt; _proxy.updateSelectionMarkers();
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2013-10-05 09:18:08.094</div>
+          <div>This page was generated at 2013-10-05 09:34:34.419</div>
         </div>
         <script async src="../client-live-nav.js"></script>
         </body></html>

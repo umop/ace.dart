@@ -2,7 +2,7 @@
         <html>
         <head>
                 <meta charset="utf-8">
-        <title>Selection class / ace Library / Dart Documentation</title>
+        <title>Selection abstract class / ace Library / Dart Documentation</title>
         <link rel="stylesheet" type="text/css"
             href="../styles.css">
         <link href="//fonts.googleapis.com/css?family=Open+Sans:400,600,700,800" rel="stylesheet" type="text/css">
@@ -27,7 +27,7 @@
 </div>
 <div class="content">
         <h2><strong>Selection</strong>
-          class
+          abstract class
         </h2>
         
 <button id="show-inherited" class="show-inherited">Hide inherited</button>
@@ -38,92 +38,66 @@
 coordinates representing the coordinates as they appear in the document 
 before applying soft wrap and folding.</p>
 <pre class="source">
-class Selection extends _HasProxy {
- js.Callback _jsOnChangeCursor;
- js.Callback _jsOnChangeSelection;
- 
- final _onChangeCursor = new StreamController.broadcast();
- final _onChangeSelection = new StreamController.broadcast();
+abstract class Selection extends _Disposable {
  
  /// The current position of the cursor.
- Point get cursor =&gt; new Point._(_proxy.getCursor());
+ Point get cursor;
  
- bool get isBackwards =&gt; _proxy.isBackwards();
+ bool get isBackwards;
  
  /// Returns `true` if this selection is empty.
- bool get isEmpty =&gt; _proxy.isEmpty();
+ bool get isEmpty;
  
  /// Returns `true` if this selection is multi-line.
- bool get isMultiLine =&gt; _proxy.isMultiLine();  
+ bool get isMultiLine;  
  
  /// Fired whenever the [cursor] position changes.
- Stream get onChangeCursor =&gt; _onChangeCursor.stream;
+ Stream get onChangeCursor;
  
  /// Fired whenever the cursor selection changes.
- Stream get onChangeSelection =&gt; _onChangeSelection.stream;
+ Stream get onChangeSelection;
  
  /// The current [Range] of the selected text.
- Range get range =&gt; new Range._(_proxy.getRange());
+ Range get range;
  
  /// Creates a new [Selection] for the given [session].
- Selection(EditSession session) 
-   : this._(new js.Proxy(
-       _context.ace.define.modules['ace/selection'].Selection, 
-       session._proxy));
- 
- Selection._(js.Proxy proxy) : super(proxy) {
-   _jsOnChangeCursor =
-       new js.Callback.many((_,__) =&gt; _onChangeCursor.add(this));
-   _jsOnChangeSelection =
-       new js.Callback.many((_,__) =&gt; _onChangeSelection.add(this));
-   _proxy.on('changeCursor', _jsOnChangeCursor);
-   _proxy.on('changeSelection', _jsOnChangeSelection);
- }
- 
- void _onDispose() {
-   _onChangeCursor.close();
-   _onChangeSelection.close();
-   _jsOnChangeCursor.dispose();
-   _jsOnChangeSelection.dispose();
- }
-   
- void mergeOverlappingRanges() =&gt; _proxy.mergeOverlappingRanges();
+ factory Selection(EditSession session) =&gt; new _SelectionProxy(session);
+     
+ void mergeOverlappingRanges();
  
  /// Moves the [cursor] position by the given number of [rows] and [columns]
  /// relative to its current position.
  /// 
  /// Negative values for [rows] or [columns] move the [cursor] backwards in the
  /// document.
- void moveCursorBy(int rows, int columns) =&gt; 
-     _proxy.moveCursorBy(rows, columns);
+ void moveCursorBy(int rows, int columns);
  
  /// Moves the [cursor] down one row.
- void moveCursorDown() =&gt; _proxy.moveCursorDown();
+ void moveCursorDown();
  
  /// Moves the [cursor] to the end of the document.
- void moveCursorFileEnd() =&gt; _proxy.moveCursorFileEnd();
+ void moveCursorFileEnd();
  
  /// Moves the [cursor] to the start of the document.
- void moveCursorFileStart() =&gt; _proxy.moveCursorFileStart();
+ void moveCursorFileStart();
  
  /// Moves the [cursor] left one column.
- void moveCursorLeft() =&gt; _proxy.moveCursorLeft();
+ void moveCursorLeft();
  
  /// Moves the [cursor] to the end of the current line.
- void moveCursorLineEnd() =&gt; _proxy.moveCursorLineEnd();
+ void moveCursorLineEnd();
  
  /// Moves the [cursor] to the start of the current line.
- void moveCursorLineStart() =&gt; _proxy.moveCursorLineStart();
+ void moveCursorLineStart();
  
  /// Moves the [cursor] right one column.
- void moveCursorRight() =&gt; _proxy.moveCursorRight();
+ void moveCursorRight();
  
  /// Moves the [cursor] to the given [row] and [column].
  /// 
  /// If [keepDesiredColumn] is `true`, the cursor move does not respect the
  /// previous column.
- void moveCursorTo(int row, int column, {bool keepDesiredColumn: false}) =&gt;
-     _proxy.moveCursorTo(row, column, keepDesiredColumn);
+ void moveCursorTo(int row, int column, {bool keepDesiredColumn: false});
  
  /// Moves the [cursor] to the the given [row] and [column] in screen 
  /// coordinates.
@@ -133,89 +107,84 @@ class Selection extends _HasProxy {
  /// 
  /// The given screen [row] and [column] are converted to document coordinates
  /// with [EditSession.screenToDocumentPosition] before the [cursor] is moved.
- void moveCursorToScreen(int row, int column, 
-                         {bool keepDesiredColumn: false}) =&gt;
-     _proxy.moveCursorToScreen(row, column, keepDesiredColumn);
+ void moveCursorToScreen(int row, int column, {bool keepDesiredColumn: false});
  
  /// Moves the [cursor] up one row.
- void moveCursorUp() =&gt; _proxy.moveCursorUp();
+ void moveCursorUp();
  
  /// Moves the [cursor] to the start of the first word on the left.
- void moveCursorWordLeft() =&gt; _proxy.moveCursorWordLeft();
+ void moveCursorWordLeft();
  
  /// Moves the [cursor] to the start of the first word on the right.
- void moveCursorWordRight() =&gt; _proxy.moveCursorWordRight();
+ void moveCursorWordRight();
  
  /// Selects all the text in the document.
- void selectAll() =&gt; _proxy.selectAll();
+ void selectAll();
  
  /// Selects a word, including its right whitespace.
- void selectAWord() =&gt; _proxy.selectAWord();
+ void selectAWord();
  
  /// Selects down one row.
- void selectDown() =&gt; _proxy.selectDown();
+ void selectDown();
  
  /// Selects to the end of the document.
- void selectFileEnd() =&gt; _proxy.selectFileEnd();
+ void selectFileEnd();
  
  /// Selects to the start of the document.
- void selectFileStart() =&gt; _proxy.selectFileStart();
+ void selectFileStart();
  
  /// Selects to the left one column.
- void selectLeft() =&gt; _proxy.selectLeft();
+ void selectLeft();
  
  /// Selects the entire current line.
- void selectLine() =&gt; _proxy.selectLine();
+ void selectLine();
  
  /// Selects to the end of the current line.
- void selectLineEnd() =&gt; _proxy.selectLineEnd();
+ void selectLineEnd();
  
  /// Selects to the start of the current line.
- void selectLineStart() =&gt; _proxy.selectLineStart();
+ void selectLineStart();
  
  /// Selects to the right one column.
- void selectRight() =&gt; _proxy.selectRight();
+ void selectRight();
  
  /// Selects to the given [row] and [column].
- void selectTo(int row, int column) =&gt; _proxy.selectTo(row, column);
+ void selectTo(int row, int column);
  
  /// Selects up one row.
- void selectUp() =&gt; _proxy.selectUp();
+ void selectUp();
  
  /// Selects an entire word boundary.
- void selectWord() =&gt; _proxy.selectWord();
+ void selectWord();
  
  /// Selects the first word to the left and moves the [cursor] to the start of 
  /// the word.
- void selectWordLeft() =&gt; _proxy.selectWordLeft();
+ void selectWordLeft();
  
  /// Selects the first word to the right and moves the [cursor] to the end of
  /// the word.
- void selectWordRight() =&gt; _proxy.selectWordRight();
+ void selectWordRight();
  
- void setSelectionAnchor(int row, int column) =&gt;
-     _proxy.setSelectionAnchor(row, column);
- void shiftSelection(int columns) =&gt; _proxy.shiftSelection(columns);
+ void setSelectionAnchor(int row, int column);
+ 
+ void shiftSelection(int columns);
 }
 </pre>
 </div>
 <h3>Extends</h3>
 <p>
-<span class="type-box"><span class="icon-class"></span><a href="../ace/_Disposable.html">_Disposable</a></span>&nbsp;&gt;&nbsp;<span class="type-box"><span class="icon-class"></span><a href="../ace/_HasProxy.html">_HasProxy</a></span>&nbsp;&gt;&nbsp;<span class="type-box"><span class="icon-class"></span><strong>Selection</strong></span></p>
+<span class="type-box"><span class="icon-class"></span><a href="../ace/_Disposable.html">_Disposable</a></span>&nbsp;&gt;&nbsp;<span class="type-box"><span class="icon-class"></span><strong>Selection</strong></span></p>
 <div>
 <h3>Constructors</h3>
 <div class="method"><h4 id="">
 <button class="show-code">Code</button>
-new <strong>Selection</strong>(<a href="../ace/EditSession.html">EditSession</a> session) <a class="anchor-link" href="#"
+factory <strong>Selection</strong>(<a href="../ace/EditSession.html">EditSession</a> session) <a class="anchor-link" href="#"
               title="Permalink to Selection.Selection">#</a></h4>
 <div class="doc">
 <p>Creates a new <a class="crossref" href="../ace/Selection.html">Selection</a> for the given 
 <span class="param">session</span>.</p>
 <pre class="source">
-Selection(EditSession session) 
- : this._(new js.Proxy(
-     _context.ace.define.modules['ace/selection'].Selection, 
-     session._proxy));
+factory Selection(EditSession session) =&gt; new _SelectionProxy(session);
 </pre>
 </div>
 </div>
@@ -231,7 +200,7 @@ final <a href="../ace/Point.html">Point</a>         <strong>cursor</strong> <a c
         <div class="doc">
 <p>The current position of the cursor.</p>
 <pre class="source">
-Point get cursor =&gt; new Point._(_proxy.getCursor());
+Point get cursor;
 </pre>
 </div>
 </div>
@@ -243,7 +212,7 @@ final bool         <strong>isBackwards</strong> <a class="anchor-link"
         </h4>
         <div class="doc">
 <pre class="source">
-bool get isBackwards =&gt; _proxy.isBackwards();
+bool get isBackwards;
 </pre>
 </div>
 </div>
@@ -256,7 +225,7 @@ final bool         <strong>isEmpty</strong> <a class="anchor-link"
         <div class="doc">
 <p>Returns <code>true</code> if this selection is empty.</p>
 <pre class="source">
-bool get isEmpty =&gt; _proxy.isEmpty();
+bool get isEmpty;
 </pre>
 </div>
 </div>
@@ -269,7 +238,7 @@ final bool         <strong>isMultiLine</strong> <a class="anchor-link"
         <div class="doc">
 <p>Returns <code>true</code> if this selection is multi-line.</p>
 <pre class="source">
-bool get isMultiLine =&gt; _proxy.isMultiLine();
+bool get isMultiLine;
 </pre>
 </div>
 </div>
@@ -282,7 +251,7 @@ final Stream         <strong>onChangeCursor</strong> <a class="anchor-link"
         <div class="doc">
 <p>Fired whenever the <a class="crossref" href="../ace/Selection.html#cursor">cursor</a> position changes.</p>
 <pre class="source">
-Stream get onChangeCursor =&gt; _onChangeCursor.stream;
+Stream get onChangeCursor;
 </pre>
 </div>
 </div>
@@ -295,7 +264,7 @@ final Stream         <strong>onChangeSelection</strong> <a class="anchor-link"
         <div class="doc">
 <p>Fired whenever the cursor selection changes.</p>
 <pre class="source">
-Stream get onChangeSelection =&gt; _onChangeSelection.stream;
+Stream get onChangeSelection;
 </pre>
 </div>
 </div>
@@ -308,7 +277,7 @@ final <a href="../ace/Range.html">Range</a>         <strong>range</strong> <a cl
         <div class="doc">
 <p>The current <a class="crossref" href="../ace/Range.html">Range</a> of the selected text.</p>
 <pre class="source">
-Range get range =&gt; new Range._(_proxy.getRange());
+Range get range;
 </pre>
 </div>
 </div>
@@ -316,41 +285,24 @@ Range get range =&gt; new Range._(_proxy.getRange());
 <div>
 <h3>Methods</h3>
 <div class="method inherited"><h4 id="dispose">
-<button class="show-code">Code</button>
-void <strong>dispose</strong>() <a class="anchor-link" href="#dispose"
+abstract void <strong>dispose</strong>() <a class="anchor-link" href="#dispose"
               title="Permalink to Selection.dispose">#</a></h4>
-<div class="inherited-from">inherited from <a href="../ace/_HasProxy.html">_HasProxy</a> </div><div class="doc">
-<div class="inherited">
+<div class="inherited-from">inherited from <a href="../ace/_Disposable.html">_Disposable</a> </div><div class="doc">
 <p>Dispose of any resources held by this object.</p>
 <p>This method will release any javascript proxy objects help by this 
 object.  It will also close any streams exposed by the object.  It is an
 error to call any methods or access any fields of this object after this
 method has been called.</p>
-<div class="docs-inherited-from">docs inherited from <a href="../ace/_Disposable.html">_Disposable</a> </div></div>
-<pre class="source">
-void dispose() {
- if (_hasProxy) {
-   _onDispose();
-   js.release(_proxy);
-   _proxy = null;
- }
-}
-</pre>
 </div>
 </div>
 <div class="method"><h4 id="mergeOverlappingRanges">
-<button class="show-code">Code</button>
-void <strong>mergeOverlappingRanges</strong>() <a class="anchor-link" href="#mergeOverlappingRanges"
+abstract void <strong>mergeOverlappingRanges</strong>() <a class="anchor-link" href="#mergeOverlappingRanges"
               title="Permalink to Selection.mergeOverlappingRanges">#</a></h4>
 <div class="doc">
-<pre class="source">
-void mergeOverlappingRanges() =&gt; _proxy.mergeOverlappingRanges();
-</pre>
 </div>
 </div>
 <div class="method"><h4 id="moveCursorBy">
-<button class="show-code">Code</button>
-void <strong>moveCursorBy</strong>(int rows, int columns) <a class="anchor-link" href="#moveCursorBy"
+abstract void <strong>moveCursorBy</strong>(int rows, int columns) <a class="anchor-link" href="#moveCursorBy"
               title="Permalink to Selection.moveCursorBy">#</a></h4>
 <div class="doc">
 <p>Moves the <a class="crossref" href="../ace/Selection.html#cursor">cursor</a> position by the given number of 
@@ -361,92 +313,59 @@ relative to its current position.</p>
 <span class="param">rows</span> or 
 <span class="param">columns</span> move the <a class="crossref" href="../ace/Selection.html#cursor">cursor</a> backwards in the
 document.</p>
-<pre class="source">
-void moveCursorBy(int rows, int columns) =&gt; 
-   _proxy.moveCursorBy(rows, columns);
-</pre>
 </div>
 </div>
 <div class="method"><h4 id="moveCursorDown">
-<button class="show-code">Code</button>
-void <strong>moveCursorDown</strong>() <a class="anchor-link" href="#moveCursorDown"
+abstract void <strong>moveCursorDown</strong>() <a class="anchor-link" href="#moveCursorDown"
               title="Permalink to Selection.moveCursorDown">#</a></h4>
 <div class="doc">
 <p>Moves the <a class="crossref" href="../ace/Selection.html#cursor">cursor</a> down one row.</p>
-<pre class="source">
-void moveCursorDown() =&gt; _proxy.moveCursorDown();
-</pre>
 </div>
 </div>
 <div class="method"><h4 id="moveCursorFileEnd">
-<button class="show-code">Code</button>
-void <strong>moveCursorFileEnd</strong>() <a class="anchor-link" href="#moveCursorFileEnd"
+abstract void <strong>moveCursorFileEnd</strong>() <a class="anchor-link" href="#moveCursorFileEnd"
               title="Permalink to Selection.moveCursorFileEnd">#</a></h4>
 <div class="doc">
 <p>Moves the <a class="crossref" href="../ace/Selection.html#cursor">cursor</a> to the end of the document.</p>
-<pre class="source">
-void moveCursorFileEnd() =&gt; _proxy.moveCursorFileEnd();
-</pre>
 </div>
 </div>
 <div class="method"><h4 id="moveCursorFileStart">
-<button class="show-code">Code</button>
-void <strong>moveCursorFileStart</strong>() <a class="anchor-link" href="#moveCursorFileStart"
+abstract void <strong>moveCursorFileStart</strong>() <a class="anchor-link" href="#moveCursorFileStart"
               title="Permalink to Selection.moveCursorFileStart">#</a></h4>
 <div class="doc">
 <p>Moves the <a class="crossref" href="../ace/Selection.html#cursor">cursor</a> to the start of the document.</p>
-<pre class="source">
-void moveCursorFileStart() =&gt; _proxy.moveCursorFileStart();
-</pre>
 </div>
 </div>
 <div class="method"><h4 id="moveCursorLeft">
-<button class="show-code">Code</button>
-void <strong>moveCursorLeft</strong>() <a class="anchor-link" href="#moveCursorLeft"
+abstract void <strong>moveCursorLeft</strong>() <a class="anchor-link" href="#moveCursorLeft"
               title="Permalink to Selection.moveCursorLeft">#</a></h4>
 <div class="doc">
 <p>Moves the <a class="crossref" href="../ace/Selection.html#cursor">cursor</a> left one column.</p>
-<pre class="source">
-void moveCursorLeft() =&gt; _proxy.moveCursorLeft();
-</pre>
 </div>
 </div>
 <div class="method"><h4 id="moveCursorLineEnd">
-<button class="show-code">Code</button>
-void <strong>moveCursorLineEnd</strong>() <a class="anchor-link" href="#moveCursorLineEnd"
+abstract void <strong>moveCursorLineEnd</strong>() <a class="anchor-link" href="#moveCursorLineEnd"
               title="Permalink to Selection.moveCursorLineEnd">#</a></h4>
 <div class="doc">
 <p>Moves the <a class="crossref" href="../ace/Selection.html#cursor">cursor</a> to the end of the current line.</p>
-<pre class="source">
-void moveCursorLineEnd() =&gt; _proxy.moveCursorLineEnd();
-</pre>
 </div>
 </div>
 <div class="method"><h4 id="moveCursorLineStart">
-<button class="show-code">Code</button>
-void <strong>moveCursorLineStart</strong>() <a class="anchor-link" href="#moveCursorLineStart"
+abstract void <strong>moveCursorLineStart</strong>() <a class="anchor-link" href="#moveCursorLineStart"
               title="Permalink to Selection.moveCursorLineStart">#</a></h4>
 <div class="doc">
 <p>Moves the <a class="crossref" href="../ace/Selection.html#cursor">cursor</a> to the start of the current line.</p>
-<pre class="source">
-void moveCursorLineStart() =&gt; _proxy.moveCursorLineStart();
-</pre>
 </div>
 </div>
 <div class="method"><h4 id="moveCursorRight">
-<button class="show-code">Code</button>
-void <strong>moveCursorRight</strong>() <a class="anchor-link" href="#moveCursorRight"
+abstract void <strong>moveCursorRight</strong>() <a class="anchor-link" href="#moveCursorRight"
               title="Permalink to Selection.moveCursorRight">#</a></h4>
 <div class="doc">
 <p>Moves the <a class="crossref" href="../ace/Selection.html#cursor">cursor</a> right one column.</p>
-<pre class="source">
-void moveCursorRight() =&gt; _proxy.moveCursorRight();
-</pre>
 </div>
 </div>
 <div class="method"><h4 id="moveCursorTo">
-<button class="show-code">Code</button>
-void <strong>moveCursorTo</strong>(int row, int column, {bool keepDesiredColumn: false}) <a class="anchor-link" href="#moveCursorTo"
+abstract void <strong>moveCursorTo</strong>(int row, int column, {bool keepDesiredColumn: false}) <a class="anchor-link" href="#moveCursorTo"
               title="Permalink to Selection.moveCursorTo">#</a></h4>
 <div class="doc">
 <p>Moves the <a class="crossref" href="../ace/Selection.html#cursor">cursor</a> to the given 
@@ -455,15 +374,10 @@ void <strong>moveCursorTo</strong>(int row, int column, {bool keepDesiredColumn:
 <p>If 
 <span class="param">keepDesiredColumn</span> is <code>true</code>, the cursor move does not respect the
 previous column.</p>
-<pre class="source">
-void moveCursorTo(int row, int column, {bool keepDesiredColumn: false}) =&gt;
-   _proxy.moveCursorTo(row, column, keepDesiredColumn);
-</pre>
 </div>
 </div>
 <div class="method"><h4 id="moveCursorToScreen">
-<button class="show-code">Code</button>
-void <strong>moveCursorToScreen</strong>(int row, int column, {bool keepDesiredColumn: false}) <a class="anchor-link" href="#moveCursorToScreen"
+abstract void <strong>moveCursorToScreen</strong>(int row, int column, {bool keepDesiredColumn: false}) <a class="anchor-link" href="#moveCursorToScreen"
               title="Permalink to Selection.moveCursorToScreen">#</a></h4>
 <div class="doc">
 <p>Moves the <a class="crossref" href="../ace/Selection.html#cursor">cursor</a> to the the given 
@@ -477,247 +391,148 @@ previous column.</p>
 <span class="param">row</span> and 
 <span class="param">column</span> are converted to document coordinates
 with <a class="crossref" href="../ace/EditSession.html#screenToDocumentPosition">EditSession.screenToDocumentPosition</a> before the <a class="crossref" href="../ace/Selection.html#cursor">cursor</a> is moved.</p>
-<pre class="source">
-void moveCursorToScreen(int row, int column, 
-                       {bool keepDesiredColumn: false}) =&gt;
-   _proxy.moveCursorToScreen(row, column, keepDesiredColumn);
-</pre>
 </div>
 </div>
 <div class="method"><h4 id="moveCursorUp">
-<button class="show-code">Code</button>
-void <strong>moveCursorUp</strong>() <a class="anchor-link" href="#moveCursorUp"
+abstract void <strong>moveCursorUp</strong>() <a class="anchor-link" href="#moveCursorUp"
               title="Permalink to Selection.moveCursorUp">#</a></h4>
 <div class="doc">
 <p>Moves the <a class="crossref" href="../ace/Selection.html#cursor">cursor</a> up one row.</p>
-<pre class="source">
-void moveCursorUp() =&gt; _proxy.moveCursorUp();
-</pre>
 </div>
 </div>
 <div class="method"><h4 id="moveCursorWordLeft">
-<button class="show-code">Code</button>
-void <strong>moveCursorWordLeft</strong>() <a class="anchor-link" href="#moveCursorWordLeft"
+abstract void <strong>moveCursorWordLeft</strong>() <a class="anchor-link" href="#moveCursorWordLeft"
               title="Permalink to Selection.moveCursorWordLeft">#</a></h4>
 <div class="doc">
 <p>Moves the <a class="crossref" href="../ace/Selection.html#cursor">cursor</a> to the start of the first word on the left.</p>
-<pre class="source">
-void moveCursorWordLeft() =&gt; _proxy.moveCursorWordLeft();
-</pre>
 </div>
 </div>
 <div class="method"><h4 id="moveCursorWordRight">
-<button class="show-code">Code</button>
-void <strong>moveCursorWordRight</strong>() <a class="anchor-link" href="#moveCursorWordRight"
+abstract void <strong>moveCursorWordRight</strong>() <a class="anchor-link" href="#moveCursorWordRight"
               title="Permalink to Selection.moveCursorWordRight">#</a></h4>
 <div class="doc">
 <p>Moves the <a class="crossref" href="../ace/Selection.html#cursor">cursor</a> to the start of the first word on the right.</p>
-<pre class="source">
-void moveCursorWordRight() =&gt; _proxy.moveCursorWordRight();
-</pre>
 </div>
 </div>
 <div class="method"><h4 id="selectAll">
-<button class="show-code">Code</button>
-void <strong>selectAll</strong>() <a class="anchor-link" href="#selectAll"
+abstract void <strong>selectAll</strong>() <a class="anchor-link" href="#selectAll"
               title="Permalink to Selection.selectAll">#</a></h4>
 <div class="doc">
 <p>Selects all the text in the document.</p>
-<pre class="source">
-void selectAll() =&gt; _proxy.selectAll();
-</pre>
 </div>
 </div>
 <div class="method"><h4 id="selectAWord">
-<button class="show-code">Code</button>
-void <strong>selectAWord</strong>() <a class="anchor-link" href="#selectAWord"
+abstract void <strong>selectAWord</strong>() <a class="anchor-link" href="#selectAWord"
               title="Permalink to Selection.selectAWord">#</a></h4>
 <div class="doc">
 <p>Selects a word, including its right whitespace.</p>
-<pre class="source">
-void selectAWord() =&gt; _proxy.selectAWord();
-</pre>
 </div>
 </div>
 <div class="method"><h4 id="selectDown">
-<button class="show-code">Code</button>
-void <strong>selectDown</strong>() <a class="anchor-link" href="#selectDown"
+abstract void <strong>selectDown</strong>() <a class="anchor-link" href="#selectDown"
               title="Permalink to Selection.selectDown">#</a></h4>
 <div class="doc">
 <p>Selects down one row.</p>
-<pre class="source">
-void selectDown() =&gt; _proxy.selectDown();
-</pre>
 </div>
 </div>
 <div class="method"><h4 id="selectFileEnd">
-<button class="show-code">Code</button>
-void <strong>selectFileEnd</strong>() <a class="anchor-link" href="#selectFileEnd"
+abstract void <strong>selectFileEnd</strong>() <a class="anchor-link" href="#selectFileEnd"
               title="Permalink to Selection.selectFileEnd">#</a></h4>
 <div class="doc">
 <p>Selects to the end of the document.</p>
-<pre class="source">
-void selectFileEnd() =&gt; _proxy.selectFileEnd();
-</pre>
 </div>
 </div>
 <div class="method"><h4 id="selectFileStart">
-<button class="show-code">Code</button>
-void <strong>selectFileStart</strong>() <a class="anchor-link" href="#selectFileStart"
+abstract void <strong>selectFileStart</strong>() <a class="anchor-link" href="#selectFileStart"
               title="Permalink to Selection.selectFileStart">#</a></h4>
 <div class="doc">
 <p>Selects to the start of the document.</p>
-<pre class="source">
-void selectFileStart() =&gt; _proxy.selectFileStart();
-</pre>
 </div>
 </div>
 <div class="method"><h4 id="selectLeft">
-<button class="show-code">Code</button>
-void <strong>selectLeft</strong>() <a class="anchor-link" href="#selectLeft"
+abstract void <strong>selectLeft</strong>() <a class="anchor-link" href="#selectLeft"
               title="Permalink to Selection.selectLeft">#</a></h4>
 <div class="doc">
 <p>Selects to the left one column.</p>
-<pre class="source">
-void selectLeft() =&gt; _proxy.selectLeft();
-</pre>
 </div>
 </div>
 <div class="method"><h4 id="selectLine">
-<button class="show-code">Code</button>
-void <strong>selectLine</strong>() <a class="anchor-link" href="#selectLine"
+abstract void <strong>selectLine</strong>() <a class="anchor-link" href="#selectLine"
               title="Permalink to Selection.selectLine">#</a></h4>
 <div class="doc">
 <p>Selects the entire current line.</p>
-<pre class="source">
-void selectLine() =&gt; _proxy.selectLine();
-</pre>
 </div>
 </div>
 <div class="method"><h4 id="selectLineEnd">
-<button class="show-code">Code</button>
-void <strong>selectLineEnd</strong>() <a class="anchor-link" href="#selectLineEnd"
+abstract void <strong>selectLineEnd</strong>() <a class="anchor-link" href="#selectLineEnd"
               title="Permalink to Selection.selectLineEnd">#</a></h4>
 <div class="doc">
 <p>Selects to the end of the current line.</p>
-<pre class="source">
-void selectLineEnd() =&gt; _proxy.selectLineEnd();
-</pre>
 </div>
 </div>
 <div class="method"><h4 id="selectLineStart">
-<button class="show-code">Code</button>
-void <strong>selectLineStart</strong>() <a class="anchor-link" href="#selectLineStart"
+abstract void <strong>selectLineStart</strong>() <a class="anchor-link" href="#selectLineStart"
               title="Permalink to Selection.selectLineStart">#</a></h4>
 <div class="doc">
 <p>Selects to the start of the current line.</p>
-<pre class="source">
-void selectLineStart() =&gt; _proxy.selectLineStart();
-</pre>
 </div>
 </div>
 <div class="method"><h4 id="selectRight">
-<button class="show-code">Code</button>
-void <strong>selectRight</strong>() <a class="anchor-link" href="#selectRight"
+abstract void <strong>selectRight</strong>() <a class="anchor-link" href="#selectRight"
               title="Permalink to Selection.selectRight">#</a></h4>
 <div class="doc">
 <p>Selects to the right one column.</p>
-<pre class="source">
-void selectRight() =&gt; _proxy.selectRight();
-</pre>
 </div>
 </div>
 <div class="method"><h4 id="selectTo">
-<button class="show-code">Code</button>
-void <strong>selectTo</strong>(int row, int column) <a class="anchor-link" href="#selectTo"
+abstract void <strong>selectTo</strong>(int row, int column) <a class="anchor-link" href="#selectTo"
               title="Permalink to Selection.selectTo">#</a></h4>
 <div class="doc">
 <p>Selects to the given 
 <span class="param">row</span> and 
 <span class="param">column</span>.</p>
-<pre class="source">
-void selectTo(int row, int column) =&gt; _proxy.selectTo(row, column);
-</pre>
 </div>
 </div>
 <div class="method"><h4 id="selectUp">
-<button class="show-code">Code</button>
-void <strong>selectUp</strong>() <a class="anchor-link" href="#selectUp"
+abstract void <strong>selectUp</strong>() <a class="anchor-link" href="#selectUp"
               title="Permalink to Selection.selectUp">#</a></h4>
 <div class="doc">
 <p>Selects up one row.</p>
-<pre class="source">
-void selectUp() =&gt; _proxy.selectUp();
-</pre>
 </div>
 </div>
 <div class="method"><h4 id="selectWord">
-<button class="show-code">Code</button>
-void <strong>selectWord</strong>() <a class="anchor-link" href="#selectWord"
+abstract void <strong>selectWord</strong>() <a class="anchor-link" href="#selectWord"
               title="Permalink to Selection.selectWord">#</a></h4>
 <div class="doc">
 <p>Selects an entire word boundary.</p>
-<pre class="source">
-void selectWord() =&gt; _proxy.selectWord();
-</pre>
 </div>
 </div>
 <div class="method"><h4 id="selectWordLeft">
-<button class="show-code">Code</button>
-void <strong>selectWordLeft</strong>() <a class="anchor-link" href="#selectWordLeft"
+abstract void <strong>selectWordLeft</strong>() <a class="anchor-link" href="#selectWordLeft"
               title="Permalink to Selection.selectWordLeft">#</a></h4>
 <div class="doc">
 <p>Selects the first word to the left and moves the <a class="crossref" href="../ace/Selection.html#cursor">cursor</a> to the start of 
 the word.</p>
-<pre class="source">
-void selectWordLeft() =&gt; _proxy.selectWordLeft();
-</pre>
 </div>
 </div>
 <div class="method"><h4 id="selectWordRight">
-<button class="show-code">Code</button>
-void <strong>selectWordRight</strong>() <a class="anchor-link" href="#selectWordRight"
+abstract void <strong>selectWordRight</strong>() <a class="anchor-link" href="#selectWordRight"
               title="Permalink to Selection.selectWordRight">#</a></h4>
 <div class="doc">
 <p>Selects the first word to the right and moves the <a class="crossref" href="../ace/Selection.html#cursor">cursor</a> to the end of
 the word.</p>
-<pre class="source">
-void selectWordRight() =&gt; _proxy.selectWordRight();
-</pre>
 </div>
 </div>
 <div class="method"><h4 id="setSelectionAnchor">
-<button class="show-code">Code</button>
-void <strong>setSelectionAnchor</strong>(int row, int column) <a class="anchor-link" href="#setSelectionAnchor"
+abstract void <strong>setSelectionAnchor</strong>(int row, int column) <a class="anchor-link" href="#setSelectionAnchor"
               title="Permalink to Selection.setSelectionAnchor">#</a></h4>
 <div class="doc">
-<pre class="source">
-void setSelectionAnchor(int row, int column) =&gt;
-   _proxy.setSelectionAnchor(row, column);
-</pre>
 </div>
 </div>
 <div class="method"><h4 id="shiftSelection">
-<button class="show-code">Code</button>
-void <strong>shiftSelection</strong>(int columns) <a class="anchor-link" href="#shiftSelection"
+abstract void <strong>shiftSelection</strong>(int columns) <a class="anchor-link" href="#shiftSelection"
               title="Permalink to Selection.shiftSelection">#</a></h4>
 <div class="doc">
-<pre class="source">
-void shiftSelection(int columns) =&gt; _proxy.shiftSelection(columns);
-</pre>
-</div>
-</div>
-<div class="method inherited"><h4 id="toString">
-<button class="show-code">Code</button>
-String <strong>toString</strong>() <a class="anchor-link" href="#toString"
-              title="Permalink to Selection.toString">#</a></h4>
-<div class="inherited-from">inherited from <a href="../ace/_HasProxy.html">_HasProxy</a> </div><div class="doc">
-<div class="inherited">
-<p>Returns a string representation of this object.</p>
-<div class="docs-inherited-from">docs inherited from Object </div></div>
-<pre class="source">
-String toString() =&gt; _context.JSON.stringify(_proxy);
-</pre>
 </div>
 </div>
 </div>
@@ -725,7 +540,7 @@ String toString() =&gt; _context.JSON.stringify(_proxy);
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2013-10-05 09:18:07.771</div>
+          <div>This page was generated at 2013-10-05 09:34:34.226</div>
         </div>
         <script async src="../client-live-nav.js"></script>
         </body></html>
