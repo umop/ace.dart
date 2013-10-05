@@ -143,8 +143,11 @@ class Editor extends _HasProxy {
  /// The current [EditSession] being used; setting a new session fires an 
  /// [onChangeSession] event.
  EditSession
-   get session =&gt; new EditSession._(_proxy.getSession());
-   set session(EditSession session) =&gt; _proxy.setSession(session._proxy);
+   get session =&gt; new _EditSessionProxy._(_proxy.getSession());
+   set session(EditSession session) { 
+     assert(session is _EditSessionProxy);
+     _proxy.setSession((session as _EditSessionProxy)._proxy);
+   }
  
  /// Whether or not invisible characters such as the space character and new 
  /// line character are shown in this editor.
@@ -177,8 +180,8 @@ class Editor extends _HasProxy {
        _onChange.add(new Delta._forProxy(e.data)));
    _jsOnChangeSession = new js.Callback.many((e,__) {
      _onChangeSession.add(new EditSessionChangeEvent._(
-         new EditSession._(e.oldSession),
-         new EditSession._(e.session))); 
+         new _EditSessionProxy._(e.oldSession),
+         new _EditSessionProxy._(e.session))); 
    });
    _jsOnCopy = new js.Callback.many((e,__) =&gt; _onCopy.add(e));
    _jsOnFocus = new js.Callback.many((_,__) =&gt; _onFocus.add(this));
@@ -654,10 +657,13 @@ Range get selectionRange =&gt; new Range._(_proxy.getSelectionRange());
 <a class="crossref" href="../ace/Editor.html#onChangeSession">onChangeSession</a> event.</p>
 <pre class="source">
 EditSession
- get session =&gt; new EditSession._(_proxy.getSession());
+ get session =&gt; new _EditSessionProxy._(_proxy.getSession());
 </pre>
 <pre class="source">
-set session(EditSession session) =&gt; _proxy.setSession(session._proxy);
+set session(EditSession session) { 
+ assert(session is _EditSessionProxy);
+ _proxy.setSession((session as _EditSessionProxy)._proxy);
+}
 </pre>
 </div>
 </div>
@@ -1208,7 +1214,7 @@ void updateSelectionMarkers() =&gt; _proxy.updateSelectionMarkers();
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2013-10-05 17:47:41.681</div>
+          <div>This page was generated at 2013-10-05 18:30:47.489</div>
         </div>
         <script async src="../client-live-nav.js"></script>
         </body></html>
