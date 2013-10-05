@@ -162,8 +162,11 @@ class Editor extends _HasProxy {
  TextInput get textInput =&gt; new TextInput._(_proxy.textInput);
    
  Theme
-   get theme =&gt; new Theme._(_proxy.getTheme());
-   set theme(Theme theme) =&gt; _proxy.setTheme(theme._theme);
+   get theme =&gt; new _ThemeProxy._(_proxy.getTheme());
+   set theme(Theme theme) {
+     assert(theme is _ThemeProxy);
+     _proxy.setTheme((theme as _ThemeProxy)._theme);
+   }
  
  /// Returns the current [session.value].
  String get value =&gt; _proxy.getValue();
@@ -716,10 +719,13 @@ TextInput get textInput =&gt; new TextInput._(_proxy.textInput);
         <div class="doc">
 <pre class="source">
 Theme
- get theme =&gt; new Theme._(_proxy.getTheme());
+ get theme =&gt; new _ThemeProxy._(_proxy.getTheme());
 </pre>
 <pre class="source">
-set theme(Theme theme) =&gt; _proxy.setTheme(theme._theme);
+set theme(Theme theme) {
+ assert(theme is _ThemeProxy);
+ _proxy.setTheme((theme as _ThemeProxy)._theme);
+}
 </pre>
 </div>
 </div>
@@ -1202,7 +1208,7 @@ void updateSelectionMarkers() =&gt; _proxy.updateSelectionMarkers();
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2013-10-05 10:13:59.002</div>
+          <div>This page was generated at 2013-10-05 17:00:42.756</div>
         </div>
         <script async src="../client-live-nav.js"></script>
         </body></html>

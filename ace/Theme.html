@@ -2,7 +2,7 @@
         <html>
         <head>
                 <meta charset="utf-8">
-        <title>Theme class / ace Library / Dart Documentation</title>
+        <title>Theme abstract class / ace Library / Dart Documentation</title>
         <link rel="stylesheet" type="text/css"
             href="../styles.css">
         <link href="//fonts.googleapis.com/css?family=Open+Sans:400,600,700,800" rel="stylesheet" type="text/css">
@@ -27,13 +27,13 @@
 </div>
 <div class="content">
         <h2><strong>Theme</strong>
-          class
+          abstract class
         </h2>
         
 <button id="show-inherited" class="show-inherited">Hide inherited</button>
 <div class="doc">
 <pre class="source">
-class Theme extends _HasProxy {
+abstract class Theme extends _Disposable {
  
  static const AMBIANCE                 = 'ambiance';
  static const CHAOS                    = 'chaos';
@@ -81,49 +81,27 @@ class Theme extends _HasProxy {
              TOMORROW_NIGHT_BRIGHT, TOMORROW_NIGHT_EIGHTIES, TWILIGHT, 
              VIBRANT_INK, XCODE ];
  
- final String _themePath;
+ String get cssClass;
  
- get _theme =&gt; _hasProxy ? _proxy : _themePath;
+ String get cssText;
  
- bool get isDark {
-   if (!_hasProxy) throw new StateError('$_themePath is not yet loaded.');
-   return _proxy.isDark;
- }
- 
- String get cssClass {
-   if (!_hasProxy) throw new StateError('$_themePath is not yet loaded.');
-   return _proxy.cssClass;
- }
- 
- String get cssText {
-   if (!_hasProxy) throw new StateError('$_themePath is not yet loaded.');
-   return _proxy.cssText;
- }
+ bool get isDark;
  
  /// Creates a theme for the given [name].
  /// 
  /// The [name] must be one of the values in [THEMES].
- Theme.named(String name) : this('ace/theme/$name');
+ factory Theme.named(String name) =&gt; new _ThemeProxy.named(name);
  
  /// Creates a theme for the given [themePath].
  /// 
  /// The [themePath] is a path such as `ace/theme/monokai`.
- Theme(String themePath) : super.async(new Future&lt;js.Proxy&gt;(() {
-   final completer = new Completer&lt;js.Proxy&gt;();
-   _context.ace.config.loadModule(js.array(['theme', themePath]), 
-       new js.Callback.once((module) {
-           completer.complete(js.retain(module));
-       }));
-   return completer.future;
- })), _themePath = themePath;
- 
- Theme._(js.Proxy proxy) : super(proxy), _themePath = null;
+ factory Theme(String themePath) =&gt; new _ThemeProxy(themePath);
 }
 </pre>
 </div>
 <h3>Extends</h3>
 <p>
-<span class="type-box"><span class="icon-class"></span><a href="../ace/_Disposable.html">_Disposable</a></span>&nbsp;&gt;&nbsp;<span class="type-box"><span class="icon-class"></span><a href="../ace/_HasProxy.html">_HasProxy</a></span>&nbsp;&gt;&nbsp;<span class="type-box"><span class="icon-class"></span><strong>Theme</strong></span></p>
+<span class="type-box"><span class="icon-class"></span><a href="../ace/_Disposable.html">_Disposable</a></span>&nbsp;&gt;&nbsp;<span class="type-box"><span class="icon-class"></span><strong>Theme</strong></span></p>
 <div>
 <h3>Static Properties</h3>
 <div class="field"><h4 id="AMBIANCE">
@@ -515,7 +493,7 @@ static const XCODE                    = 'xcode'
 <h3>Constructors</h3>
 <div class="method"><h4 id="">
 <button class="show-code">Code</button>
-new <strong>Theme</strong>(String themePath) <a class="anchor-link" href="#"
+factory <strong>Theme</strong>(String themePath) <a class="anchor-link" href="#"
               title="Permalink to Theme.Theme">#</a></h4>
 <div class="doc">
 <p>Creates a theme for the given 
@@ -523,20 +501,13 @@ new <strong>Theme</strong>(String themePath) <a class="anchor-link" href="#"
 <p>The 
 <span class="param">themePath</span> is a path such as <code>ace/theme/monokai</code>.</p>
 <pre class="source">
-Theme(String themePath) : super.async(new Future&lt;js.Proxy&gt;(() {
- final completer = new Completer&lt;js.Proxy&gt;();
- _context.ace.config.loadModule(js.array(['theme', themePath]), 
-     new js.Callback.once((module) {
-         completer.complete(js.retain(module));
-     }));
- return completer.future;
-})), _themePath = themePath;
+factory Theme(String themePath) =&gt; new _ThemeProxy(themePath);
 </pre>
 </div>
 </div>
 <div class="method"><h4 id="named">
 <button class="show-code">Code</button>
-new <strong>Theme.named</strong>(String name) <a class="anchor-link" href="#named"
+factory <strong>Theme.named</strong>(String name) <a class="anchor-link" href="#named"
               title="Permalink to Theme.Theme.named">#</a></h4>
 <div class="doc">
 <p>Creates a theme for the given 
@@ -544,7 +515,7 @@ new <strong>Theme.named</strong>(String name) <a class="anchor-link" href="#name
 <p>The 
 <span class="param">name</span> must be one of the values in <a class="crossref" href="../ace/Theme.html#THEMES">THEMES</a>.</p>
 <pre class="source">
-Theme.named(String name) : this('ace/theme/$name');
+factory Theme.named(String name) =&gt; new _ThemeProxy.named(name);
 </pre>
 </div>
 </div>
@@ -559,10 +530,7 @@ final String         <strong>cssClass</strong> <a class="anchor-link"
         </h4>
         <div class="doc">
 <pre class="source">
-String get cssClass {
- if (!_hasProxy) throw new StateError('$_themePath is not yet loaded.');
- return _proxy.cssClass;
-}
+String get cssClass;
 </pre>
 </div>
 </div>
@@ -574,10 +542,7 @@ final String         <strong>cssText</strong> <a class="anchor-link"
         </h4>
         <div class="doc">
 <pre class="source">
-String get cssText {
- if (!_hasProxy) throw new StateError('$_themePath is not yet loaded.');
- return _proxy.cssText;
-}
+String get cssText;
 </pre>
 </div>
 </div>
@@ -589,10 +554,7 @@ final bool         <strong>isDark</strong> <a class="anchor-link"
         </h4>
         <div class="doc">
 <pre class="source">
-bool get isDark {
- if (!_hasProxy) throw new StateError('$_themePath is not yet loaded.');
- return _proxy.isDark;
-}
+bool get isDark;
 </pre>
 </div>
 </div>
@@ -600,39 +562,14 @@ bool get isDark {
 <div class="inherited">
 <h3>Methods</h3>
 <div class="method inherited"><h4 id="dispose">
-<button class="show-code">Code</button>
-void <strong>dispose</strong>() <a class="anchor-link" href="#dispose"
+abstract void <strong>dispose</strong>() <a class="anchor-link" href="#dispose"
               title="Permalink to Theme.dispose">#</a></h4>
-<div class="inherited-from">inherited from <a href="../ace/_HasProxy.html">_HasProxy</a> </div><div class="doc">
-<div class="inherited">
+<div class="inherited-from">inherited from <a href="../ace/_Disposable.html">_Disposable</a> </div><div class="doc">
 <p>Dispose of any resources held by this object.</p>
 <p>This method will release any javascript proxy objects help by this 
 object.  It will also close any streams exposed by the object.  It is an
 error to call any methods or access any fields of this object after this
 method has been called.</p>
-<div class="docs-inherited-from">docs inherited from <a href="../ace/_Disposable.html">_Disposable</a> </div></div>
-<pre class="source">
-void dispose() {
- if (_hasProxy) {
-   _onDispose();
-   js.release(_proxy);
-   _proxy = null;
- }
-}
-</pre>
-</div>
-</div>
-<div class="method inherited"><h4 id="toString">
-<button class="show-code">Code</button>
-String <strong>toString</strong>() <a class="anchor-link" href="#toString"
-              title="Permalink to Theme.toString">#</a></h4>
-<div class="inherited-from">inherited from <a href="../ace/_HasProxy.html">_HasProxy</a> </div><div class="doc">
-<div class="inherited">
-<p>Returns a string representation of this object.</p>
-<div class="docs-inherited-from">docs inherited from Object </div></div>
-<pre class="source">
-String toString() =&gt; _context.JSON.stringify(_proxy);
-</pre>
 </div>
 </div>
 </div>
@@ -640,7 +577,7 @@ String toString() =&gt; _context.JSON.stringify(_proxy);
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2013-10-05 10:13:58.731</div>
+          <div>This page was generated at 2013-10-05 17:00:42.443</div>
         </div>
         <script async src="../client-live-nav.js"></script>
         </body></html>
