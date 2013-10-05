@@ -2,7 +2,7 @@
         <html>
         <head>
                 <meta charset="utf-8">
-        <title>Editor class / ace Library / Dart Documentation</title>
+        <title>Editor abstract class / ace Library / Dart Documentation</title>
         <link rel="stylesheet" type="text/css"
             href="../styles.css">
         <link href="//fonts.googleapis.com/css?family=Open+Sans:400,600,700,800" rel="stylesheet" type="text/css">
@@ -27,7 +27,7 @@
 </div>
 <div class="content">
         <h2><strong>Editor</strong>
-          class
+          abstract class
         </h2>
         
 <button id="show-inherited" class="show-inherited">Hide inherited</button>
@@ -38,289 +38,206 @@ as well as the <a class="crossref" href="../ace/VirtualRenderer.html">VirtualRen
 Event sessions dealing with the mouse and keyboard are bubbled up from the
 <a class="crossref" href="../ace/Document.html">Document</a> to the <a class="crossref" href="../ace/Editor.html">Editor</a>, which decides what to do with them.</p>
 <pre class="source">
-class Editor extends _HasProxy {
- 
- js.Callback _jsOnBlur;
- js.Callback _jsOnChange;
- js.Callback _jsOnChangeSession;
- js.Callback _jsOnCopy;
- js.Callback _jsOnFocus;
- js.Callback _jsOnPaste;
- 
- final _onBlur = new StreamController.broadcast();
- final _onChange = new StreamController&lt;Delta&gt;.broadcast();
- final _onChangeSession = 
-     new StreamController&lt;EditSessionChangeEvent&gt;.broadcast();
- final _onCopy = new StreamController&lt;String&gt;.broadcast();
- final _onFocus = new StreamController.broadcast();
- final _onPaste = new StreamController&lt;String&gt;.broadcast();
+abstract class Editor extends _Disposable {
  
  /// Fired whenever this editor has been blurred.
- Stream get onBlur =&gt; _onBlur.stream;
+ Stream get onBlur;
  
  /// Fired whenever the [session.document] changes.
- Stream&lt;Delta&gt; get onChange =&gt; _onChange.stream;
+ Stream&lt;Delta&gt; get onChange;
  
  /// Fired whenever the [session] changes.
- Stream&lt;EditSessionChangeEvent&gt; get onChangeSession =&gt; 
-     _onChangeSession.stream;
+ Stream&lt;EditSessionChangeEvent&gt; get onChangeSession;
  
  /// Fired whenever text is copied.
- Stream&lt;String&gt; get onCopy =&gt; _onCopy.stream;
+ Stream&lt;String&gt; get onCopy;
  
  /// Fired whenever this editor comes into focus.
- Stream get onFocus =&gt; _onFocus.stream;
+ Stream get onFocus;
  
  /// Fired whenever text is pasted.
- Stream&lt;String&gt; get onPaste =&gt; _onPaste.stream;  
+ Stream&lt;String&gt; get onPaste;  
  
  /// The string of text in the current [selectionRange].
- String get copyText =&gt; _proxy.getCopyText();
+ String get copyText;
  
  /// The current position of the cursor.
- Point get cursorPosition =&gt; new Point._(_proxy.getCursorPosition());
+ Point get cursorPosition;
  
  /// The current mouse drag delay, in milliseconds.
- int
-   get dragDelay =&gt; _proxy.getDragDelay();
-   set dragDelay(int dragDelay) =&gt; _proxy.setDragDelay(dragDelay);
- 
+ int dragDelay;
+
  /// The index of the first visible row.
- int get firstVisibleRow =&gt; _proxy.getFirstVisibleRow();
+ int get firstVisibleRow;
  
  /// The font size in pixels for this editor's text.
- int
-   get fontSize =&gt; _proxy.getFontSize();
-   set fontSize(int fontSize) =&gt; _proxy.setFontSize(fontSize);
- 
+ int fontSize;
+
  /// Whether or not the current line should be highlighted.
- bool
-   get highlightActiveLine =&gt; _proxy.getHighlightActiveLine();
-   set highlightActiveLine(bool highlightActiveLine) =&gt;
-       _proxy.setHighlightActiveLine(highlightActiveLine);
-   
- bool
-   get highlightGutterLine =&gt; _proxy.getHighlightGutterLine();
-   set highlightGutterLine(bool highlightGutterLine) =&gt;
-       _proxy.setHighlightGutterLine(highlightGutterLine);
-   
- bool
-   get highlightSelectedWord =&gt; _proxy.getHighlightSelectedWord();
-   set highlightSelectedWord(bool highlightSelectedWord) =&gt;
-       _proxy.setHighlightSelectedWord(highlightSelectedWord);
-   
+ bool highlightActiveLine;
+
+ bool highlightGutterLine;
+
+ bool highlightSelectedWord;
+
  /// Returns _true_ if current [textInput] is in focus.
- bool get isFocused =&gt; _proxy.isFocused();
+ bool get isFocused;
  
  /// The current [session.overwrite].
- bool
-   get overwrite =&gt; _proxy.getOverwrite();
-   set overwrite(bool overwrite) =&gt; _proxy.setOverwrite(overwrite);
+ bool overwrite;
  
  /// The column number of where the print margin is.
- int
-   get printMarginColumn =&gt; _proxy.getPrintMarginColumn();
-   set printMarginColumn(int printMarginColumn) =&gt; 
-       _proxy.setPrintMarginColumn(printMarginColumn);
-   
+ int printMarginColumn;
+
  /// Whether or not this editor is set to read-only mode.
  /// 
  /// If `true` then this editor can not be modified.
- bool
-   get readOnly =&gt; _proxy.getReadOnly();
-   set readOnly(bool readOnly) =&gt; _proxy.setReadOnly(readOnly);
- 
- VirtualRenderer get renderer =&gt; new _VirtualRendererProxy._(_proxy.renderer);
+ bool readOnly;
+
+ VirtualRenderer get renderer;
  
  /// The current mouse scroll speed, in milliseconds.
- int
-   get scrollSpeed =&gt; _proxy.getScrollSpeed();
-   set scrollSpeed(int scrollSpeed) =&gt; _proxy.setScrollSpeed(scrollSpeed);
-   
- Selection get selection =&gt; new _SelectionProxy._(_proxy.getSelection());
- Range get selectionRange =&gt; new Range._(_proxy.getSelectionRange());
+ int scrollSpeed;
+
+ Selection get selection;
+ 
+ Range get selectionRange;
  
  /// The current [EditSession] being used; setting a new session fires an 
  /// [onChangeSession] event.
- EditSession
-   get session =&gt; new _EditSessionProxy._(_proxy.getSession());
-   set session(EditSession session) { 
-     assert(session is _EditSessionProxy);
-     _proxy.setSession((session as _EditSessionProxy)._proxy);
-   }
+ EditSession session;
  
  /// Whether or not invisible characters such as the space character and new 
  /// line character are shown in this editor.
- bool
-   get showInvisibles =&gt; _proxy.getShowInvisibles();
-   set showInvisibles(bool showInvisibles) =&gt; 
-       _proxy.setShowInvisibles(showInvisibles);
- 
+ bool showInvisibles;
+
  /// Whether or not the [printMarginColumn] is shown in this editor.
- bool
-   get showPrintMargin =&gt; _proxy.getShowPrintMargin();
-   set showPrintMargin(bool showPrintMargin) =&gt; 
-       _proxy.setShowPrintMargin(showPrintMargin);
+ bool showPrintMargin;
+
+ TextInput get textInput;
    
- TextInput get textInput =&gt; new TextInput._(_proxy.textInput);
-   
- Theme
-   get theme =&gt; new _ThemeProxy._(_proxy.getTheme());
-   set theme(Theme theme) {
-     assert(theme is _ThemeProxy);
-     _proxy.setTheme((theme as _ThemeProxy)._theme);
-   }
+ Theme theme;
  
  /// Returns the current [session.value].
- String get value =&gt; _proxy.getValue();
-   
- Editor._(js.Proxy proxy) : super(proxy) {
-   _jsOnBlur = new js.Callback.many((_,__) =&gt; _onBlur.add(this));
-   _jsOnChange = new js.Callback.many((e,__) =&gt;
-       _onChange.add(new Delta._forProxy(e.data)));
-   _jsOnChangeSession = new js.Callback.many((e,__) {
-     _onChangeSession.add(new EditSessionChangeEvent._(
-         new _EditSessionProxy._(e.oldSession),
-         new _EditSessionProxy._(e.session))); 
-   });
-   _jsOnCopy = new js.Callback.many((e,__) =&gt; _onCopy.add(e));
-   _jsOnFocus = new js.Callback.many((_,__) =&gt; _onFocus.add(this));
-   _jsOnPaste = new js.Callback.many((e,__) =&gt; _onPaste.add(e));
-   _proxy.on('blur', _jsOnBlur);
-   _proxy.on('change', _jsOnChange);
-   _proxy.on('changeSession', _jsOnChangeSession);
-   _proxy.on('copy', _jsOnCopy);
-   _proxy.on('focus', _jsOnFocus);
-   _proxy.on('paste', _jsOnPaste);
- }
+ String get value;
  
- void _onDispose() {
-   _onBlur.close();
-   _onChange.close();
-   _onChangeSession.close();
-   _onCopy.close();
-   _onFocus.close();
-   _onPaste.close();
-   _jsOnBlur.dispose();
-   _jsOnChange.dispose();
-   _jsOnChangeSession.dispose();
-   _jsOnCopy.dispose();
-   _jsOnFocus.dispose();
-   _jsOnPaste.dispose();
-   _proxy.destroy();
- }
- 
- void alignCursors() =&gt; _proxy.alignCursors();
+ void alignCursors();
  
  /// Indents the current line by the current [session.tabSize].
- void blockIndent() =&gt; _proxy.blockIndent();
+ void blockIndent();
  
  /// Outdents the current line by the current [session.tabSize].
- void blockOutdent() =&gt; _proxy.blockOutdent();
+ void blockOutdent();
  
  /// Blurs the current [textInput].
- void blur() =&gt; _proxy.blur();
+ void blur();
  
- void centerSelection() =&gt; _proxy.centerSelection();
- void clearSelection() =&gt; _proxy.clearSelection();
- int copyLinesDown() =&gt; _proxy.copyLinesDown();
- int copyLinesUp() =&gt; _proxy.copyLinesUp();
- void exitMultiSelectMode() =&gt; _proxy.exitMultiSelectMode();
+ void centerSelection();
+ 
+ void clearSelection();
+ 
+ int copyLinesDown();
+ 
+ int copyLinesUp();
+ 
+ void exitMultiSelectMode();
  
  /// Brings the current [textInput] into focus.
- void focus() =&gt; _proxy.focus();
+ void focus();
  
- void gotoPageDown() =&gt; _proxy.gotoPageDown();
- void gotoPageUp() =&gt; _proxy.gotoPageUp();
- void indent() =&gt; _proxy.indent();
+ void gotoPageDown();
+ 
+ void gotoPageUp();
+ 
+ void indent();
  
  /// Insert [text] at the current [cursorPosition].
- void insert(String text) =&gt; _proxy.insert(text);
+ void insert(String text);
  
- bool isRowFullyVisible(int row) =&gt; _proxy.isRowFullyVisible(row);
- bool isRowVisible(int row) =&gt; _proxy.isRowVisible(row);
+ bool isRowFullyVisible(int row);
+ 
+ bool isRowVisible(int row);
  
  /// Move the cursor down in the document the specified number of times.
  /// Note that this does de-select the current [selection].
- void navigateDown(int times) =&gt; _proxy.navigateDown(times);
+ void navigateDown(int times);
  
  /// Move the cursor to the end of the current document.
  /// Note that this does de-select the current [selection].
- void navigateFileEnd() =&gt; _proxy.navigateFileEnd();
+ void navigateFileEnd();
  
  /// Move the cursor to the start of the current document.
  /// Note that this does de-select the current [selection].
- void navigateFileStart() =&gt; _proxy.navigateFileStart();
+ void navigateFileStart();
  
  /// Move the cursor left in the document the specified number of times.
  /// Note that this does de-select the current [selection].
- void navigateLeft(int times) =&gt; _proxy.navigateLeft(times);
+ void navigateLeft(int times);
  
  /// Move the [cursorPosition] to the end of the current line.
  /// Note that this does de-select the current [selection].
- void navigateLineEnd() =&gt; _proxy.navigateLineEnd();
+ void navigateLineEnd();
  
  /// Move the [cursorPosition] to the start of the current line.
  /// Note that this does de-select the current [selection].
- void navigateLineStart() =&gt; _proxy.navigateLineStart();
+ void navigateLineStart();
  
  /// Move the [cursorPosition] right in the document the specified number of 
  /// times.  Note that this does de-select the current [selection].
- void navigateRight(int times) =&gt; _proxy.navigateRight(times);
+ void navigateRight(int times);
  
  /// Move the [cursorPosition] to the specified [row] and [column].
  /// Note that this does de-select the current selection.
- void navigateTo(int row, int column) =&gt; _proxy.navigateTo(row, column);
+ void navigateTo(int row, int column);
  
  /// Move the [cursorPosition] up in the document the specified number of 
  /// times.  Note that this does de-select the current [selection].
- void navigateUp(int times) =&gt; _proxy.navigateUp(times);
+ void navigateUp(int times);
  
  /// Move the [cursorPosition] to the word immediately to its left. 
  /// Note that this does de-select the current [selection].
- void navigateWordLeft() =&gt; _proxy.navigateWordLeft();
+ void navigateWordLeft();
  
  /// Move the [cursorPosition] to the word immediately to its right. 
  /// Note that this does de-select the current [selection].
- void navigateWordRight() =&gt; _proxy.navigateWordRight();
+ void navigateWordRight();
  
  /// Remove all of the words to the right of the current [selection], until the 
  /// end of the line.
- void removeToLineEnd() =&gt; _proxy.removeToLineEnd();
+ void removeToLineEnd();
  
  /// Removes all of the words to the left of the current [selection], until the 
  /// start of the line.
- void removeToLineStart() =&gt; _proxy.removeToLineStart();
+ void removeToLineStart();
  
  /// Remove the word directly to the left of the current [selection].
- void removeWordLeft() =&gt; _proxy.removeWordLeft();
+ void removeWordLeft();
  
  /// Remove the word directly to the right of the current [selection].
- void removeWordRight() =&gt; _proxy.removeWordRight();  
+ void removeWordRight();  
  
- void resize(bool force) =&gt; _proxy.resize(force);
- String setValue(String val, int cursorPos) {
-   assert(cursorPos &gt;= -1 &amp;&amp; cursorPos &lt;= 1);
-   return _proxy.setValue(val, cursorPos);
- }
+ void resize(bool force);
+ 
+ String setValue(String val, int cursorPos);
  
  /// Sets the value of [overwrite] to the opposite of its current value.
- void toggleOverwrite() =&gt; _proxy.toggleOverwrite();
+ void toggleOverwrite();
  
  /// Converts the current [selection] entirely into lowercase characters.
- void toLowerCase() =&gt; _proxy.toLowerCase();
+ void toLowerCase();
  
  /// Converts the current [selection] entirely into uppercase characters.
- void toUpperCase() =&gt; _proxy.toUpperCase();
+ void toUpperCase();
  
- void transposeLetters() =&gt; _proxy.transposeLetters();
- void updateSelectionMarkers() =&gt; _proxy.updateSelectionMarkers();
+ void transposeLetters();
+ 
+ void updateSelectionMarkers();
 }
 </pre>
 </div>
 <h3>Extends</h3>
 <p>
-<span class="type-box"><span class="icon-class"></span><a href="../ace/_Disposable.html">_Disposable</a></span>&nbsp;&gt;&nbsp;<span class="type-box"><span class="icon-class"></span><a href="../ace/_HasProxy.html">_HasProxy</a></span>&nbsp;&gt;&nbsp;<span class="type-box"><span class="icon-class"></span><strong>Editor</strong></span></p>
+<span class="type-box"><span class="icon-class"></span><a href="../ace/_Disposable.html">_Disposable</a></span>&nbsp;&gt;&nbsp;<span class="type-box"><span class="icon-class"></span><strong>Editor</strong></span></p>
 <div>
 <h3>Properties</h3>
 <div class="field"><h4 id="copyText">
@@ -332,7 +249,7 @@ final String         <strong>copyText</strong> <a class="anchor-link"
         <div class="doc">
 <p>The string of text in the current <a class="crossref" href="../ace/Editor.html#selectionRange">selectionRange</a>.</p>
 <pre class="source">
-String get copyText =&gt; _proxy.getCopyText();
+String get copyText;
 </pre>
 </div>
 </div>
@@ -345,7 +262,7 @@ final <a href="../ace/Point.html">Point</a>         <strong>cursorPosition</stro
         <div class="doc">
 <p>The current position of the cursor.</p>
 <pre class="source">
-Point get cursorPosition =&gt; new Point._(_proxy.getCursorPosition());
+Point get cursorPosition;
 </pre>
 </div>
 </div>
@@ -358,11 +275,7 @@ int         <strong>dragDelay</strong> <a class="anchor-link"
         <div class="doc">
 <p>The current mouse drag delay, in milliseconds.</p>
 <pre class="source">
-int
- get dragDelay =&gt; _proxy.getDragDelay();
-</pre>
-<pre class="source">
-set dragDelay(int dragDelay) =&gt; _proxy.setDragDelay(dragDelay);
+int dragDelay
 </pre>
 </div>
 </div>
@@ -375,7 +288,7 @@ final int         <strong>firstVisibleRow</strong> <a class="anchor-link"
         <div class="doc">
 <p>The index of the first visible row.</p>
 <pre class="source">
-int get firstVisibleRow =&gt; _proxy.getFirstVisibleRow();
+int get firstVisibleRow;
 </pre>
 </div>
 </div>
@@ -388,11 +301,7 @@ int         <strong>fontSize</strong> <a class="anchor-link"
         <div class="doc">
 <p>The font size in pixels for this editor's text.</p>
 <pre class="source">
-int
- get fontSize =&gt; _proxy.getFontSize();
-</pre>
-<pre class="source">
-set fontSize(int fontSize) =&gt; _proxy.setFontSize(fontSize);
+int fontSize
 </pre>
 </div>
 </div>
@@ -405,12 +314,7 @@ bool         <strong>highlightActiveLine</strong> <a class="anchor-link"
         <div class="doc">
 <p>Whether or not the current line should be highlighted.</p>
 <pre class="source">
-bool
- get highlightActiveLine =&gt; _proxy.getHighlightActiveLine();
-</pre>
-<pre class="source">
-set highlightActiveLine(bool highlightActiveLine) =&gt;
-   _proxy.setHighlightActiveLine(highlightActiveLine);
+bool highlightActiveLine
 </pre>
 </div>
 </div>
@@ -422,12 +326,7 @@ bool         <strong>highlightGutterLine</strong> <a class="anchor-link"
         </h4>
         <div class="doc">
 <pre class="source">
-bool
- get highlightGutterLine =&gt; _proxy.getHighlightGutterLine();
-</pre>
-<pre class="source">
-set highlightGutterLine(bool highlightGutterLine) =&gt;
-   _proxy.setHighlightGutterLine(highlightGutterLine);
+bool highlightGutterLine
 </pre>
 </div>
 </div>
@@ -439,12 +338,7 @@ bool         <strong>highlightSelectedWord</strong> <a class="anchor-link"
         </h4>
         <div class="doc">
 <pre class="source">
-bool
- get highlightSelectedWord =&gt; _proxy.getHighlightSelectedWord();
-</pre>
-<pre class="source">
-set highlightSelectedWord(bool highlightSelectedWord) =&gt;
-   _proxy.setHighlightSelectedWord(highlightSelectedWord);
+bool highlightSelectedWord
 </pre>
 </div>
 </div>
@@ -457,7 +351,7 @@ final bool         <strong>isFocused</strong> <a class="anchor-link"
         <div class="doc">
 <p>Returns <em>true</em> if current <a class="crossref" href="../ace/Editor.html#textInput">textInput</a> is in focus.</p>
 <pre class="source">
-bool get isFocused =&gt; _proxy.isFocused();
+bool get isFocused;
 </pre>
 </div>
 </div>
@@ -470,7 +364,7 @@ final Stream         <strong>onBlur</strong> <a class="anchor-link"
         <div class="doc">
 <p>Fired whenever this editor has been blurred.</p>
 <pre class="source">
-Stream get onBlur =&gt; _onBlur.stream;
+Stream get onBlur;
 </pre>
 </div>
 </div>
@@ -483,7 +377,7 @@ final Stream&lt;<a href="../ace/Delta.html">Delta</a>&gt;         <strong>onChan
         <div class="doc">
 <p>Fired whenever the <code>session.document</code> changes.</p>
 <pre class="source">
-Stream&lt;Delta&gt; get onChange =&gt; _onChange.stream;
+Stream&lt;Delta&gt; get onChange;
 </pre>
 </div>
 </div>
@@ -496,8 +390,7 @@ final Stream&lt;<a href="../ace/EditSessionChangeEvent.html">EditSessionChangeEv
         <div class="doc">
 <p>Fired whenever the <a class="crossref" href="../ace/Editor.html#session">session</a> changes.</p>
 <pre class="source">
-Stream&lt;EditSessionChangeEvent&gt; get onChangeSession =&gt; 
-   _onChangeSession.stream;
+Stream&lt;EditSessionChangeEvent&gt; get onChangeSession;
 </pre>
 </div>
 </div>
@@ -510,7 +403,7 @@ final Stream&lt;String&gt;         <strong>onCopy</strong> <a class="anchor-link
         <div class="doc">
 <p>Fired whenever text is copied.</p>
 <pre class="source">
-Stream&lt;String&gt; get onCopy =&gt; _onCopy.stream;
+Stream&lt;String&gt; get onCopy;
 </pre>
 </div>
 </div>
@@ -523,7 +416,7 @@ final Stream         <strong>onFocus</strong> <a class="anchor-link"
         <div class="doc">
 <p>Fired whenever this editor comes into focus.</p>
 <pre class="source">
-Stream get onFocus =&gt; _onFocus.stream;
+Stream get onFocus;
 </pre>
 </div>
 </div>
@@ -536,7 +429,7 @@ final Stream&lt;String&gt;         <strong>onPaste</strong> <a class="anchor-lin
         <div class="doc">
 <p>Fired whenever text is pasted.</p>
 <pre class="source">
-Stream&lt;String&gt; get onPaste =&gt; _onPaste.stream;
+Stream&lt;String&gt; get onPaste;
 </pre>
 </div>
 </div>
@@ -549,11 +442,7 @@ bool         <strong>overwrite</strong> <a class="anchor-link"
         <div class="doc">
 <p>The current <code>session.overwrite</code>.</p>
 <pre class="source">
-bool
- get overwrite =&gt; _proxy.getOverwrite();
-</pre>
-<pre class="source">
-set overwrite(bool overwrite) =&gt; _proxy.setOverwrite(overwrite);
+bool overwrite
 </pre>
 </div>
 </div>
@@ -566,12 +455,7 @@ int         <strong>printMarginColumn</strong> <a class="anchor-link"
         <div class="doc">
 <p>The column number of where the print margin is.</p>
 <pre class="source">
-int
- get printMarginColumn =&gt; _proxy.getPrintMarginColumn();
-</pre>
-<pre class="source">
-set printMarginColumn(int printMarginColumn) =&gt; 
-   _proxy.setPrintMarginColumn(printMarginColumn);
+int printMarginColumn
 </pre>
 </div>
 </div>
@@ -585,11 +469,7 @@ bool         <strong>readOnly</strong> <a class="anchor-link"
 <p>Whether or not this editor is set to read-only mode.</p>
 <p>If <code>true</code> then this editor can not be modified.</p>
 <pre class="source">
-bool
- get readOnly =&gt; _proxy.getReadOnly();
-</pre>
-<pre class="source">
-set readOnly(bool readOnly) =&gt; _proxy.setReadOnly(readOnly);
+bool readOnly
 </pre>
 </div>
 </div>
@@ -601,7 +481,7 @@ final <a href="../ace/VirtualRenderer.html">VirtualRenderer</a>         <strong>
         </h4>
         <div class="doc">
 <pre class="source">
-VirtualRenderer get renderer =&gt; new _VirtualRendererProxy._(_proxy.renderer);
+VirtualRenderer get renderer;
 </pre>
 </div>
 </div>
@@ -614,11 +494,7 @@ int         <strong>scrollSpeed</strong> <a class="anchor-link"
         <div class="doc">
 <p>The current mouse scroll speed, in milliseconds.</p>
 <pre class="source">
-int
- get scrollSpeed =&gt; _proxy.getScrollSpeed();
-</pre>
-<pre class="source">
-set scrollSpeed(int scrollSpeed) =&gt; _proxy.setScrollSpeed(scrollSpeed);
+int scrollSpeed
 </pre>
 </div>
 </div>
@@ -630,7 +506,7 @@ final <a href="../ace/Selection.html">Selection</a>         <strong>selection</s
         </h4>
         <div class="doc">
 <pre class="source">
-Selection get selection =&gt; new _SelectionProxy._(_proxy.getSelection());
+Selection get selection;
 </pre>
 </div>
 </div>
@@ -642,7 +518,7 @@ final <a href="../ace/Range.html">Range</a>         <strong>selectionRange</stro
         </h4>
         <div class="doc">
 <pre class="source">
-Range get selectionRange =&gt; new Range._(_proxy.getSelectionRange());
+Range get selectionRange;
 </pre>
 </div>
 </div>
@@ -656,14 +532,7 @@ Range get selectionRange =&gt; new Range._(_proxy.getSelectionRange());
 <p>The current <a class="crossref" href="../ace/EditSession.html">EditSession</a> being used; setting a new session fires an 
 <a class="crossref" href="../ace/Editor.html#onChangeSession">onChangeSession</a> event.</p>
 <pre class="source">
-EditSession
- get session =&gt; new _EditSessionProxy._(_proxy.getSession());
-</pre>
-<pre class="source">
-set session(EditSession session) { 
- assert(session is _EditSessionProxy);
- _proxy.setSession((session as _EditSessionProxy)._proxy);
-}
+EditSession session
 </pre>
 </div>
 </div>
@@ -677,12 +546,7 @@ bool         <strong>showInvisibles</strong> <a class="anchor-link"
 <p>Whether or not invisible characters such as the space character and new 
 line character are shown in this editor.</p>
 <pre class="source">
-bool
- get showInvisibles =&gt; _proxy.getShowInvisibles();
-</pre>
-<pre class="source">
-set showInvisibles(bool showInvisibles) =&gt; 
-   _proxy.setShowInvisibles(showInvisibles);
+bool showInvisibles
 </pre>
 </div>
 </div>
@@ -695,12 +559,7 @@ bool         <strong>showPrintMargin</strong> <a class="anchor-link"
         <div class="doc">
 <p>Whether or not the <a class="crossref" href="../ace/Editor.html#printMarginColumn">printMarginColumn</a> is shown in this editor.</p>
 <pre class="source">
-bool
- get showPrintMargin =&gt; _proxy.getShowPrintMargin();
-</pre>
-<pre class="source">
-set showPrintMargin(bool showPrintMargin) =&gt; 
-   _proxy.setShowPrintMargin(showPrintMargin);
+bool showPrintMargin
 </pre>
 </div>
 </div>
@@ -712,7 +571,7 @@ final <a href="../ace/TextInput.html">TextInput</a>         <strong>textInput</s
         </h4>
         <div class="doc">
 <pre class="source">
-TextInput get textInput =&gt; new TextInput._(_proxy.textInput);
+TextInput get textInput;
 </pre>
 </div>
 </div>
@@ -724,14 +583,7 @@ TextInput get textInput =&gt; new TextInput._(_proxy.textInput);
         </h4>
         <div class="doc">
 <pre class="source">
-Theme
- get theme =&gt; new _ThemeProxy._(_proxy.getTheme());
-</pre>
-<pre class="source">
-set theme(Theme theme) {
- assert(theme is _ThemeProxy);
- _proxy.setTheme((theme as _ThemeProxy)._theme);
-}
+Theme theme
 </pre>
 </div>
 </div>
@@ -744,7 +596,7 @@ final String         <strong>value</strong> <a class="anchor-link"
         <div class="doc">
 <p>Returns the current <code>session.value</code>.</p>
 <pre class="source">
-String get value =&gt; _proxy.getValue();
+String get value;
 </pre>
 </div>
 </div>
@@ -752,461 +604,281 @@ String get value =&gt; _proxy.getValue();
 <div>
 <h3>Methods</h3>
 <div class="method"><h4 id="alignCursors">
-<button class="show-code">Code</button>
-void <strong>alignCursors</strong>() <a class="anchor-link" href="#alignCursors"
+abstract void <strong>alignCursors</strong>() <a class="anchor-link" href="#alignCursors"
               title="Permalink to Editor.alignCursors">#</a></h4>
 <div class="doc">
-<pre class="source">
-void alignCursors() =&gt; _proxy.alignCursors();
-</pre>
 </div>
 </div>
 <div class="method"><h4 id="blockIndent">
-<button class="show-code">Code</button>
-void <strong>blockIndent</strong>() <a class="anchor-link" href="#blockIndent"
+abstract void <strong>blockIndent</strong>() <a class="anchor-link" href="#blockIndent"
               title="Permalink to Editor.blockIndent">#</a></h4>
 <div class="doc">
 <p>Indents the current line by the current <code>session.tabSize</code>.</p>
-<pre class="source">
-void blockIndent() =&gt; _proxy.blockIndent();
-</pre>
 </div>
 </div>
 <div class="method"><h4 id="blockOutdent">
-<button class="show-code">Code</button>
-void <strong>blockOutdent</strong>() <a class="anchor-link" href="#blockOutdent"
+abstract void <strong>blockOutdent</strong>() <a class="anchor-link" href="#blockOutdent"
               title="Permalink to Editor.blockOutdent">#</a></h4>
 <div class="doc">
 <p>Outdents the current line by the current <code>session.tabSize</code>.</p>
-<pre class="source">
-void blockOutdent() =&gt; _proxy.blockOutdent();
-</pre>
 </div>
 </div>
 <div class="method"><h4 id="blur">
-<button class="show-code">Code</button>
-void <strong>blur</strong>() <a class="anchor-link" href="#blur"
+abstract void <strong>blur</strong>() <a class="anchor-link" href="#blur"
               title="Permalink to Editor.blur">#</a></h4>
 <div class="doc">
 <p>Blurs the current <a class="crossref" href="../ace/Editor.html#textInput">textInput</a>.</p>
-<pre class="source">
-void blur() =&gt; _proxy.blur();
-</pre>
 </div>
 </div>
 <div class="method"><h4 id="centerSelection">
-<button class="show-code">Code</button>
-void <strong>centerSelection</strong>() <a class="anchor-link" href="#centerSelection"
+abstract void <strong>centerSelection</strong>() <a class="anchor-link" href="#centerSelection"
               title="Permalink to Editor.centerSelection">#</a></h4>
 <div class="doc">
-<pre class="source">
-void centerSelection() =&gt; _proxy.centerSelection();
-</pre>
 </div>
 </div>
 <div class="method"><h4 id="clearSelection">
-<button class="show-code">Code</button>
-void <strong>clearSelection</strong>() <a class="anchor-link" href="#clearSelection"
+abstract void <strong>clearSelection</strong>() <a class="anchor-link" href="#clearSelection"
               title="Permalink to Editor.clearSelection">#</a></h4>
 <div class="doc">
-<pre class="source">
-void clearSelection() =&gt; _proxy.clearSelection();
-</pre>
 </div>
 </div>
 <div class="method"><h4 id="copyLinesDown">
-<button class="show-code">Code</button>
-int <strong>copyLinesDown</strong>() <a class="anchor-link" href="#copyLinesDown"
+abstract int <strong>copyLinesDown</strong>() <a class="anchor-link" href="#copyLinesDown"
               title="Permalink to Editor.copyLinesDown">#</a></h4>
 <div class="doc">
-<pre class="source">
-int copyLinesDown() =&gt; _proxy.copyLinesDown();
-</pre>
 </div>
 </div>
 <div class="method"><h4 id="copyLinesUp">
-<button class="show-code">Code</button>
-int <strong>copyLinesUp</strong>() <a class="anchor-link" href="#copyLinesUp"
+abstract int <strong>copyLinesUp</strong>() <a class="anchor-link" href="#copyLinesUp"
               title="Permalink to Editor.copyLinesUp">#</a></h4>
 <div class="doc">
-<pre class="source">
-int copyLinesUp() =&gt; _proxy.copyLinesUp();
-</pre>
 </div>
 </div>
 <div class="method inherited"><h4 id="dispose">
-<button class="show-code">Code</button>
-void <strong>dispose</strong>() <a class="anchor-link" href="#dispose"
+abstract void <strong>dispose</strong>() <a class="anchor-link" href="#dispose"
               title="Permalink to Editor.dispose">#</a></h4>
-<div class="inherited-from">inherited from <a href="../ace/_HasProxy.html">_HasProxy</a> </div><div class="doc">
-<div class="inherited">
+<div class="inherited-from">inherited from <a href="../ace/_Disposable.html">_Disposable</a> </div><div class="doc">
 <p>Dispose of any resources held by this object.</p>
 <p>This method will release any javascript proxy objects help by this 
 object.  It will also close any streams exposed by the object.  It is an
 error to call any methods or access any fields of this object after this
 method has been called.</p>
-<div class="docs-inherited-from">docs inherited from <a href="../ace/_Disposable.html">_Disposable</a> </div></div>
-<pre class="source">
-void dispose() {
- if (_hasProxy) {
-   _onDispose();
-   js.release(_proxy);
-   _proxy = null;
- }
-}
-</pre>
 </div>
 </div>
 <div class="method"><h4 id="exitMultiSelectMode">
-<button class="show-code">Code</button>
-void <strong>exitMultiSelectMode</strong>() <a class="anchor-link" href="#exitMultiSelectMode"
+abstract void <strong>exitMultiSelectMode</strong>() <a class="anchor-link" href="#exitMultiSelectMode"
               title="Permalink to Editor.exitMultiSelectMode">#</a></h4>
 <div class="doc">
-<pre class="source">
-void exitMultiSelectMode() =&gt; _proxy.exitMultiSelectMode();
-</pre>
 </div>
 </div>
 <div class="method"><h4 id="focus">
-<button class="show-code">Code</button>
-void <strong>focus</strong>() <a class="anchor-link" href="#focus"
+abstract void <strong>focus</strong>() <a class="anchor-link" href="#focus"
               title="Permalink to Editor.focus">#</a></h4>
 <div class="doc">
 <p>Brings the current <a class="crossref" href="../ace/Editor.html#textInput">textInput</a> into focus.</p>
-<pre class="source">
-void focus() =&gt; _proxy.focus();
-</pre>
 </div>
 </div>
 <div class="method"><h4 id="gotoPageDown">
-<button class="show-code">Code</button>
-void <strong>gotoPageDown</strong>() <a class="anchor-link" href="#gotoPageDown"
+abstract void <strong>gotoPageDown</strong>() <a class="anchor-link" href="#gotoPageDown"
               title="Permalink to Editor.gotoPageDown">#</a></h4>
 <div class="doc">
-<pre class="source">
-void gotoPageDown() =&gt; _proxy.gotoPageDown();
-</pre>
 </div>
 </div>
 <div class="method"><h4 id="gotoPageUp">
-<button class="show-code">Code</button>
-void <strong>gotoPageUp</strong>() <a class="anchor-link" href="#gotoPageUp"
+abstract void <strong>gotoPageUp</strong>() <a class="anchor-link" href="#gotoPageUp"
               title="Permalink to Editor.gotoPageUp">#</a></h4>
 <div class="doc">
-<pre class="source">
-void gotoPageUp() =&gt; _proxy.gotoPageUp();
-</pre>
 </div>
 </div>
 <div class="method"><h4 id="indent">
-<button class="show-code">Code</button>
-void <strong>indent</strong>() <a class="anchor-link" href="#indent"
+abstract void <strong>indent</strong>() <a class="anchor-link" href="#indent"
               title="Permalink to Editor.indent">#</a></h4>
 <div class="doc">
-<pre class="source">
-void indent() =&gt; _proxy.indent();
-</pre>
 </div>
 </div>
 <div class="method"><h4 id="insert">
-<button class="show-code">Code</button>
-void <strong>insert</strong>(String text) <a class="anchor-link" href="#insert"
+abstract void <strong>insert</strong>(String text) <a class="anchor-link" href="#insert"
               title="Permalink to Editor.insert">#</a></h4>
 <div class="doc">
 <p>Insert 
 <span class="param">text</span> at the current <a class="crossref" href="../ace/Editor.html#cursorPosition">cursorPosition</a>.</p>
-<pre class="source">
-void insert(String text) =&gt; _proxy.insert(text);
-</pre>
 </div>
 </div>
 <div class="method"><h4 id="isRowFullyVisible">
-<button class="show-code">Code</button>
-bool <strong>isRowFullyVisible</strong>(int row) <a class="anchor-link" href="#isRowFullyVisible"
+abstract bool <strong>isRowFullyVisible</strong>(int row) <a class="anchor-link" href="#isRowFullyVisible"
               title="Permalink to Editor.isRowFullyVisible">#</a></h4>
 <div class="doc">
-<pre class="source">
-bool isRowFullyVisible(int row) =&gt; _proxy.isRowFullyVisible(row);
-</pre>
 </div>
 </div>
 <div class="method"><h4 id="isRowVisible">
-<button class="show-code">Code</button>
-bool <strong>isRowVisible</strong>(int row) <a class="anchor-link" href="#isRowVisible"
+abstract bool <strong>isRowVisible</strong>(int row) <a class="anchor-link" href="#isRowVisible"
               title="Permalink to Editor.isRowVisible">#</a></h4>
 <div class="doc">
-<pre class="source">
-bool isRowVisible(int row) =&gt; _proxy.isRowVisible(row);
-</pre>
 </div>
 </div>
 <div class="method"><h4 id="navigateDown">
-<button class="show-code">Code</button>
-void <strong>navigateDown</strong>(int times) <a class="anchor-link" href="#navigateDown"
+abstract void <strong>navigateDown</strong>(int times) <a class="anchor-link" href="#navigateDown"
               title="Permalink to Editor.navigateDown">#</a></h4>
 <div class="doc">
 <p>Move the cursor down in the document the specified number of times.
 Note that this does de-select the current <a class="crossref" href="../ace/Editor.html#selection">selection</a>.</p>
-<pre class="source">
-void navigateDown(int times) =&gt; _proxy.navigateDown(times);
-</pre>
 </div>
 </div>
 <div class="method"><h4 id="navigateFileEnd">
-<button class="show-code">Code</button>
-void <strong>navigateFileEnd</strong>() <a class="anchor-link" href="#navigateFileEnd"
+abstract void <strong>navigateFileEnd</strong>() <a class="anchor-link" href="#navigateFileEnd"
               title="Permalink to Editor.navigateFileEnd">#</a></h4>
 <div class="doc">
 <p>Move the cursor to the end of the current document.
 Note that this does de-select the current <a class="crossref" href="../ace/Editor.html#selection">selection</a>.</p>
-<pre class="source">
-void navigateFileEnd() =&gt; _proxy.navigateFileEnd();
-</pre>
 </div>
 </div>
 <div class="method"><h4 id="navigateFileStart">
-<button class="show-code">Code</button>
-void <strong>navigateFileStart</strong>() <a class="anchor-link" href="#navigateFileStart"
+abstract void <strong>navigateFileStart</strong>() <a class="anchor-link" href="#navigateFileStart"
               title="Permalink to Editor.navigateFileStart">#</a></h4>
 <div class="doc">
 <p>Move the cursor to the start of the current document.
 Note that this does de-select the current <a class="crossref" href="../ace/Editor.html#selection">selection</a>.</p>
-<pre class="source">
-void navigateFileStart() =&gt; _proxy.navigateFileStart();
-</pre>
 </div>
 </div>
 <div class="method"><h4 id="navigateLeft">
-<button class="show-code">Code</button>
-void <strong>navigateLeft</strong>(int times) <a class="anchor-link" href="#navigateLeft"
+abstract void <strong>navigateLeft</strong>(int times) <a class="anchor-link" href="#navigateLeft"
               title="Permalink to Editor.navigateLeft">#</a></h4>
 <div class="doc">
 <p>Move the cursor left in the document the specified number of times.
 Note that this does de-select the current <a class="crossref" href="../ace/Editor.html#selection">selection</a>.</p>
-<pre class="source">
-void navigateLeft(int times) =&gt; _proxy.navigateLeft(times);
-</pre>
 </div>
 </div>
 <div class="method"><h4 id="navigateLineEnd">
-<button class="show-code">Code</button>
-void <strong>navigateLineEnd</strong>() <a class="anchor-link" href="#navigateLineEnd"
+abstract void <strong>navigateLineEnd</strong>() <a class="anchor-link" href="#navigateLineEnd"
               title="Permalink to Editor.navigateLineEnd">#</a></h4>
 <div class="doc">
 <p>Move the <a class="crossref" href="../ace/Editor.html#cursorPosition">cursorPosition</a> to the end of the current line.
 Note that this does de-select the current <a class="crossref" href="../ace/Editor.html#selection">selection</a>.</p>
-<pre class="source">
-void navigateLineEnd() =&gt; _proxy.navigateLineEnd();
-</pre>
 </div>
 </div>
 <div class="method"><h4 id="navigateLineStart">
-<button class="show-code">Code</button>
-void <strong>navigateLineStart</strong>() <a class="anchor-link" href="#navigateLineStart"
+abstract void <strong>navigateLineStart</strong>() <a class="anchor-link" href="#navigateLineStart"
               title="Permalink to Editor.navigateLineStart">#</a></h4>
 <div class="doc">
 <p>Move the <a class="crossref" href="../ace/Editor.html#cursorPosition">cursorPosition</a> to the start of the current line.
 Note that this does de-select the current <a class="crossref" href="../ace/Editor.html#selection">selection</a>.</p>
-<pre class="source">
-void navigateLineStart() =&gt; _proxy.navigateLineStart();
-</pre>
 </div>
 </div>
 <div class="method"><h4 id="navigateRight">
-<button class="show-code">Code</button>
-void <strong>navigateRight</strong>(int times) <a class="anchor-link" href="#navigateRight"
+abstract void <strong>navigateRight</strong>(int times) <a class="anchor-link" href="#navigateRight"
               title="Permalink to Editor.navigateRight">#</a></h4>
 <div class="doc">
 <p>Move the <a class="crossref" href="../ace/Editor.html#cursorPosition">cursorPosition</a> right in the document the specified number of 
 times.  Note that this does de-select the current <a class="crossref" href="../ace/Editor.html#selection">selection</a>.</p>
-<pre class="source">
-void navigateRight(int times) =&gt; _proxy.navigateRight(times);
-</pre>
 </div>
 </div>
 <div class="method"><h4 id="navigateTo">
-<button class="show-code">Code</button>
-void <strong>navigateTo</strong>(int row, int column) <a class="anchor-link" href="#navigateTo"
+abstract void <strong>navigateTo</strong>(int row, int column) <a class="anchor-link" href="#navigateTo"
               title="Permalink to Editor.navigateTo">#</a></h4>
 <div class="doc">
 <p>Move the <a class="crossref" href="../ace/Editor.html#cursorPosition">cursorPosition</a> to the specified 
 <span class="param">row</span> and 
 <span class="param">column</span>.
 Note that this does de-select the current selection.</p>
-<pre class="source">
-void navigateTo(int row, int column) =&gt; _proxy.navigateTo(row, column);
-</pre>
 </div>
 </div>
 <div class="method"><h4 id="navigateUp">
-<button class="show-code">Code</button>
-void <strong>navigateUp</strong>(int times) <a class="anchor-link" href="#navigateUp"
+abstract void <strong>navigateUp</strong>(int times) <a class="anchor-link" href="#navigateUp"
               title="Permalink to Editor.navigateUp">#</a></h4>
 <div class="doc">
 <p>Move the <a class="crossref" href="../ace/Editor.html#cursorPosition">cursorPosition</a> up in the document the specified number of 
 times.  Note that this does de-select the current <a class="crossref" href="../ace/Editor.html#selection">selection</a>.</p>
-<pre class="source">
-void navigateUp(int times) =&gt; _proxy.navigateUp(times);
-</pre>
 </div>
 </div>
 <div class="method"><h4 id="navigateWordLeft">
-<button class="show-code">Code</button>
-void <strong>navigateWordLeft</strong>() <a class="anchor-link" href="#navigateWordLeft"
+abstract void <strong>navigateWordLeft</strong>() <a class="anchor-link" href="#navigateWordLeft"
               title="Permalink to Editor.navigateWordLeft">#</a></h4>
 <div class="doc">
 <p>Move the <a class="crossref" href="../ace/Editor.html#cursorPosition">cursorPosition</a> to the word immediately to its left. 
 Note that this does de-select the current <a class="crossref" href="../ace/Editor.html#selection">selection</a>.</p>
-<pre class="source">
-void navigateWordLeft() =&gt; _proxy.navigateWordLeft();
-</pre>
 </div>
 </div>
 <div class="method"><h4 id="navigateWordRight">
-<button class="show-code">Code</button>
-void <strong>navigateWordRight</strong>() <a class="anchor-link" href="#navigateWordRight"
+abstract void <strong>navigateWordRight</strong>() <a class="anchor-link" href="#navigateWordRight"
               title="Permalink to Editor.navigateWordRight">#</a></h4>
 <div class="doc">
 <p>Move the <a class="crossref" href="../ace/Editor.html#cursorPosition">cursorPosition</a> to the word immediately to its right. 
 Note that this does de-select the current <a class="crossref" href="../ace/Editor.html#selection">selection</a>.</p>
-<pre class="source">
-void navigateWordRight() =&gt; _proxy.navigateWordRight();
-</pre>
 </div>
 </div>
 <div class="method"><h4 id="removeToLineEnd">
-<button class="show-code">Code</button>
-void <strong>removeToLineEnd</strong>() <a class="anchor-link" href="#removeToLineEnd"
+abstract void <strong>removeToLineEnd</strong>() <a class="anchor-link" href="#removeToLineEnd"
               title="Permalink to Editor.removeToLineEnd">#</a></h4>
 <div class="doc">
 <p>Remove all of the words to the right of the current <a class="crossref" href="../ace/Editor.html#selection">selection</a>, until the 
 end of the line.</p>
-<pre class="source">
-void removeToLineEnd() =&gt; _proxy.removeToLineEnd();
-</pre>
 </div>
 </div>
 <div class="method"><h4 id="removeToLineStart">
-<button class="show-code">Code</button>
-void <strong>removeToLineStart</strong>() <a class="anchor-link" href="#removeToLineStart"
+abstract void <strong>removeToLineStart</strong>() <a class="anchor-link" href="#removeToLineStart"
               title="Permalink to Editor.removeToLineStart">#</a></h4>
 <div class="doc">
 <p>Removes all of the words to the left of the current <a class="crossref" href="../ace/Editor.html#selection">selection</a>, until the 
 start of the line.</p>
-<pre class="source">
-void removeToLineStart() =&gt; _proxy.removeToLineStart();
-</pre>
 </div>
 </div>
 <div class="method"><h4 id="removeWordLeft">
-<button class="show-code">Code</button>
-void <strong>removeWordLeft</strong>() <a class="anchor-link" href="#removeWordLeft"
+abstract void <strong>removeWordLeft</strong>() <a class="anchor-link" href="#removeWordLeft"
               title="Permalink to Editor.removeWordLeft">#</a></h4>
 <div class="doc">
 <p>Remove the word directly to the left of the current <a class="crossref" href="../ace/Editor.html#selection">selection</a>.</p>
-<pre class="source">
-void removeWordLeft() =&gt; _proxy.removeWordLeft();
-</pre>
 </div>
 </div>
 <div class="method"><h4 id="removeWordRight">
-<button class="show-code">Code</button>
-void <strong>removeWordRight</strong>() <a class="anchor-link" href="#removeWordRight"
+abstract void <strong>removeWordRight</strong>() <a class="anchor-link" href="#removeWordRight"
               title="Permalink to Editor.removeWordRight">#</a></h4>
 <div class="doc">
 <p>Remove the word directly to the right of the current <a class="crossref" href="../ace/Editor.html#selection">selection</a>.</p>
-<pre class="source">
-void removeWordRight() =&gt; _proxy.removeWordRight();
-</pre>
 </div>
 </div>
 <div class="method"><h4 id="resize">
-<button class="show-code">Code</button>
-void <strong>resize</strong>(bool force) <a class="anchor-link" href="#resize"
+abstract void <strong>resize</strong>(bool force) <a class="anchor-link" href="#resize"
               title="Permalink to Editor.resize">#</a></h4>
 <div class="doc">
-<pre class="source">
-void resize(bool force) =&gt; _proxy.resize(force);
-</pre>
 </div>
 </div>
 <div class="method"><h4 id="setValue">
-<button class="show-code">Code</button>
-String <strong>setValue</strong>(String val, int cursorPos) <a class="anchor-link" href="#setValue"
+abstract String <strong>setValue</strong>(String val, int cursorPos) <a class="anchor-link" href="#setValue"
               title="Permalink to Editor.setValue">#</a></h4>
 <div class="doc">
-<pre class="source">
-String setValue(String val, int cursorPos) {
- assert(cursorPos &gt;= -1 &amp;&amp; cursorPos &lt;= 1);
- return _proxy.setValue(val, cursorPos);
-}
-</pre>
 </div>
 </div>
 <div class="method"><h4 id="toggleOverwrite">
-<button class="show-code">Code</button>
-void <strong>toggleOverwrite</strong>() <a class="anchor-link" href="#toggleOverwrite"
+abstract void <strong>toggleOverwrite</strong>() <a class="anchor-link" href="#toggleOverwrite"
               title="Permalink to Editor.toggleOverwrite">#</a></h4>
 <div class="doc">
 <p>Sets the value of <a class="crossref" href="../ace/Editor.html#overwrite">overwrite</a> to the opposite of its current value.</p>
-<pre class="source">
-void toggleOverwrite() =&gt; _proxy.toggleOverwrite();
-</pre>
 </div>
 </div>
 <div class="method"><h4 id="toLowerCase">
-<button class="show-code">Code</button>
-void <strong>toLowerCase</strong>() <a class="anchor-link" href="#toLowerCase"
+abstract void <strong>toLowerCase</strong>() <a class="anchor-link" href="#toLowerCase"
               title="Permalink to Editor.toLowerCase">#</a></h4>
 <div class="doc">
 <p>Converts the current <a class="crossref" href="../ace/Editor.html#selection">selection</a> entirely into lowercase characters.</p>
-<pre class="source">
-void toLowerCase() =&gt; _proxy.toLowerCase();
-</pre>
-</div>
-</div>
-<div class="method inherited"><h4 id="toString">
-<button class="show-code">Code</button>
-String <strong>toString</strong>() <a class="anchor-link" href="#toString"
-              title="Permalink to Editor.toString">#</a></h4>
-<div class="inherited-from">inherited from <a href="../ace/_HasProxy.html">_HasProxy</a> </div><div class="doc">
-<div class="inherited">
-<p>Returns a string representation of this object.</p>
-<div class="docs-inherited-from">docs inherited from Object </div></div>
-<pre class="source">
-String toString() =&gt; _context.JSON.stringify(_proxy);
-</pre>
 </div>
 </div>
 <div class="method"><h4 id="toUpperCase">
-<button class="show-code">Code</button>
-void <strong>toUpperCase</strong>() <a class="anchor-link" href="#toUpperCase"
+abstract void <strong>toUpperCase</strong>() <a class="anchor-link" href="#toUpperCase"
               title="Permalink to Editor.toUpperCase">#</a></h4>
 <div class="doc">
 <p>Converts the current <a class="crossref" href="../ace/Editor.html#selection">selection</a> entirely into uppercase characters.</p>
-<pre class="source">
-void toUpperCase() =&gt; _proxy.toUpperCase();
-</pre>
 </div>
 </div>
 <div class="method"><h4 id="transposeLetters">
-<button class="show-code">Code</button>
-void <strong>transposeLetters</strong>() <a class="anchor-link" href="#transposeLetters"
+abstract void <strong>transposeLetters</strong>() <a class="anchor-link" href="#transposeLetters"
               title="Permalink to Editor.transposeLetters">#</a></h4>
 <div class="doc">
-<pre class="source">
-void transposeLetters() =&gt; _proxy.transposeLetters();
-</pre>
 </div>
 </div>
 <div class="method"><h4 id="updateSelectionMarkers">
-<button class="show-code">Code</button>
-void <strong>updateSelectionMarkers</strong>() <a class="anchor-link" href="#updateSelectionMarkers"
+abstract void <strong>updateSelectionMarkers</strong>() <a class="anchor-link" href="#updateSelectionMarkers"
               title="Permalink to Editor.updateSelectionMarkers">#</a></h4>
 <div class="doc">
-<pre class="source">
-void updateSelectionMarkers() =&gt; _proxy.updateSelectionMarkers();
-</pre>
 </div>
 </div>
 </div>
@@ -1214,7 +886,7 @@ void updateSelectionMarkers() =&gt; _proxy.updateSelectionMarkers();
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2013-10-05 18:30:47.489</div>
+          <div>This page was generated at 2013-10-05 19:03:45.117</div>
         </div>
         <script async src="../client-live-nav.js"></script>
         </body></html>
