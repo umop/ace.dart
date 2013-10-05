@@ -2,7 +2,7 @@
         <html>
         <head>
                 <meta charset="utf-8">
-        <title>VirtualRenderer class / ace Library / Dart Documentation</title>
+        <title>VirtualRenderer abstract class / ace Library / Dart Documentation</title>
         <link rel="stylesheet" type="text/css"
             href="../styles.css">
         <link href="//fonts.googleapis.com/css?family=Open+Sans:400,600,700,800" rel="stylesheet" type="text/css">
@@ -27,50 +27,42 @@
 </div>
 <div class="content">
         <h2><strong>VirtualRenderer</strong>
-          class
+          abstract class
         </h2>
         
 <button id="show-inherited" class="show-inherited">Hide inherited</button>
 <div class="doc">
 <p>The renderer draws to the screen.</p>
 <pre class="source">
-class VirtualRenderer extends _HasProxy {
+abstract class VirtualRenderer extends _Disposable {
  
  /// The index of the first visible row.
- int get firstVisibleRow =&gt; _proxy.getFirstVisibleRow();
+ int get firstVisibleRow;
  
  /// Whether or not the gutter has a fixed width.
- bool
-   get fixedWidthGutter =&gt; _proxy.getOption('fixedWidthGutter');
-   set fixedWidthGutter(bool fixedWidthGutter) =&gt; 
-       _proxy.setOption('fixedWidthGutter', fixedWidthGutter);
+ bool fixedWidthGutter;
  
  /// Creates a new VirtualRenderer within the given [container], applying the 
  /// given [theme].
- VirtualRenderer(html.Element container, Theme theme) : this._(
-       new js.Proxy(
-           _context.ace.define.modules['ace/virtual_renderer'].VirtualRenderer, 
-           container, 
-           theme._theme));
-   
- VirtualRenderer._(js.Proxy proxy) : super(proxy);
+ factory VirtualRenderer(html.Element container, Theme theme) =&gt;
+     new _VirtualRendererProxy(container, theme);
  
  /// Updates all of the layers, for all the rows.
  /// 
  /// By default this schedules an asynchronous update.  If [force] is `true`
  /// then the update is performed immediately.
- void updateFull({bool force: false}) =&gt; _proxy.updateFull(force);
+ void updateFull({bool force: false});
 }
 </pre>
 </div>
 <h3>Extends</h3>
 <p>
-<span class="type-box"><span class="icon-class"></span><a href="../ace/_Disposable.html">_Disposable</a></span>&nbsp;&gt;&nbsp;<span class="type-box"><span class="icon-class"></span><a href="../ace/_HasProxy.html">_HasProxy</a></span>&nbsp;&gt;&nbsp;<span class="type-box"><span class="icon-class"></span><strong>VirtualRenderer</strong></span></p>
+<span class="type-box"><span class="icon-class"></span><a href="../ace/_Disposable.html">_Disposable</a></span>&nbsp;&gt;&nbsp;<span class="type-box"><span class="icon-class"></span><strong>VirtualRenderer</strong></span></p>
 <div>
 <h3>Constructors</h3>
 <div class="method"><h4 id="">
 <button class="show-code">Code</button>
-new <strong>VirtualRenderer</strong>(Element container, <a href="../ace/Theme.html">Theme</a> theme) <a class="anchor-link" href="#"
+factory <strong>VirtualRenderer</strong>(Element container, <a href="../ace/Theme.html">Theme</a> theme) <a class="anchor-link" href="#"
               title="Permalink to VirtualRenderer.VirtualRenderer">#</a></h4>
 <div class="doc">
 <p>Creates a new VirtualRenderer within the given 
@@ -78,11 +70,8 @@ new <strong>VirtualRenderer</strong>(Element container, <a href="../ace/Theme.ht
 given 
 <span class="param">theme</span>.</p>
 <pre class="source">
-VirtualRenderer(html.Element container, Theme theme) : this._(
-     new js.Proxy(
-         _context.ace.define.modules['ace/virtual_renderer'].VirtualRenderer, 
-         container, 
-         theme._theme));
+factory VirtualRenderer(html.Element container, Theme theme) =&gt;
+   new _VirtualRendererProxy(container, theme);
 </pre>
 </div>
 </div>
@@ -98,7 +87,7 @@ final int         <strong>firstVisibleRow</strong> <a class="anchor-link"
         <div class="doc">
 <p>The index of the first visible row.</p>
 <pre class="source">
-int get firstVisibleRow =&gt; _proxy.getFirstVisibleRow();
+int get firstVisibleRow;
 </pre>
 </div>
 </div>
@@ -111,12 +100,7 @@ bool         <strong>fixedWidthGutter</strong> <a class="anchor-link"
         <div class="doc">
 <p>Whether or not the gutter has a fixed width.</p>
 <pre class="source">
-bool
- get fixedWidthGutter =&gt; _proxy.getOption('fixedWidthGutter');
-</pre>
-<pre class="source">
-set fixedWidthGutter(bool fixedWidthGutter) =&gt; 
-   _proxy.setOption('fixedWidthGutter', fixedWidthGutter);
+bool fixedWidthGutter
 </pre>
 </div>
 </div>
@@ -124,53 +108,24 @@ set fixedWidthGutter(bool fixedWidthGutter) =&gt;
 <div>
 <h3>Methods</h3>
 <div class="method inherited"><h4 id="dispose">
-<button class="show-code">Code</button>
-void <strong>dispose</strong>() <a class="anchor-link" href="#dispose"
+abstract void <strong>dispose</strong>() <a class="anchor-link" href="#dispose"
               title="Permalink to VirtualRenderer.dispose">#</a></h4>
-<div class="inherited-from">inherited from <a href="../ace/_HasProxy.html">_HasProxy</a> </div><div class="doc">
-<div class="inherited">
+<div class="inherited-from">inherited from <a href="../ace/_Disposable.html">_Disposable</a> </div><div class="doc">
 <p>Dispose of any resources held by this object.</p>
 <p>This method will release any javascript proxy objects help by this 
 object.  It will also close any streams exposed by the object.  It is an
 error to call any methods or access any fields of this object after this
 method has been called.</p>
-<div class="docs-inherited-from">docs inherited from <a href="../ace/_Disposable.html">_Disposable</a> </div></div>
-<pre class="source">
-void dispose() {
- if (_hasProxy) {
-   _onDispose();
-   js.release(_proxy);
-   _proxy = null;
- }
-}
-</pre>
-</div>
-</div>
-<div class="method inherited"><h4 id="toString">
-<button class="show-code">Code</button>
-String <strong>toString</strong>() <a class="anchor-link" href="#toString"
-              title="Permalink to VirtualRenderer.toString">#</a></h4>
-<div class="inherited-from">inherited from <a href="../ace/_HasProxy.html">_HasProxy</a> </div><div class="doc">
-<div class="inherited">
-<p>Returns a string representation of this object.</p>
-<div class="docs-inherited-from">docs inherited from Object </div></div>
-<pre class="source">
-String toString() =&gt; _context.JSON.stringify(_proxy);
-</pre>
 </div>
 </div>
 <div class="method"><h4 id="updateFull">
-<button class="show-code">Code</button>
-void <strong>updateFull</strong>({bool force: false}) <a class="anchor-link" href="#updateFull"
+abstract void <strong>updateFull</strong>({bool force: false}) <a class="anchor-link" href="#updateFull"
               title="Permalink to VirtualRenderer.updateFull">#</a></h4>
 <div class="doc">
 <p>Updates all of the layers, for all the rows.</p>
 <p>By default this schedules an asynchronous update.  If 
 <span class="param">force</span> is <code>true</code>
 then the update is performed immediately.</p>
-<pre class="source">
-void updateFull({bool force: false}) =&gt; _proxy.updateFull(force);
-</pre>
 </div>
 </div>
 </div>
@@ -178,7 +133,7 @@ void updateFull({bool force: false}) =&gt; _proxy.updateFull(force);
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2013-10-04 15:57:16.067</div>
+          <div>This page was generated at 2013-10-05 09:05:43.636</div>
         </div>
         <script async src="../client-live-nav.js"></script>
         </body></html>

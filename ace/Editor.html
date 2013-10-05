@@ -129,7 +129,7 @@ class Editor extends _HasProxy {
    get readOnly =&gt; _proxy.getReadOnly();
    set readOnly(bool readOnly) =&gt; _proxy.setReadOnly(readOnly);
  
- VirtualRenderer get renderer =&gt; new VirtualRenderer._(_proxy.renderer);
+ VirtualRenderer get renderer =&gt; new _VirtualRendererProxy._(_proxy.renderer);
  
  /// The current mouse scroll speed, in milliseconds.
  int
@@ -594,7 +594,7 @@ final <a href="../ace/VirtualRenderer.html">VirtualRenderer</a>         <strong>
         </h4>
         <div class="doc">
 <pre class="source">
-VirtualRenderer get renderer =&gt; new VirtualRenderer._(_proxy.renderer);
+VirtualRenderer get renderer =&gt; new _VirtualRendererProxy._(_proxy.renderer);
 </pre>
 </div>
 </div>
@@ -1201,7 +1201,7 @@ void updateSelectionMarkers() =&gt; _proxy.updateSelectionMarkers();
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2013-10-04 15:57:16.707</div>
+          <div>This page was generated at 2013-10-05 09:05:44.155</div>
         </div>
         <script async src="../client-live-nav.js"></script>
         </body></html>
