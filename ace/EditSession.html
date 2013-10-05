@@ -104,8 +104,11 @@ class EditSession extends _HasProxy {
  
  /// The current [Mode] of this session.
  Mode
-   get mode =&gt; new Mode._(_proxy.getMode());
-   set mode(Mode mode) =&gt; _proxy.setMode(mode._mode);
+   get mode =&gt; new _ModeProxy._(_proxy.getMode());
+   set mode(Mode mode) {
+     assert(mode is _ModeProxy);
+     _proxy.setMode((mode as _ModeProxy)._mode);
+   }
    
  /// The new line mode.  May be one of `windows`, `unix` or `auto`.
  // TODO(rms): enum
@@ -211,7 +214,7 @@ class EditSession extends _HasProxy {
  EditSession(Document document, Mode mode) 
  : this._(
      new js.Proxy(_context.ace.EditSession, 
-         (document as _DocumentProxy)._proxy, mode._mode));
+         (document as _DocumentProxy)._proxy, (mode as _ModeProxy)._mode));
  
  EditSession._(js.Proxy proxy) : super(proxy) {    
    _jsOnChange = new js.Callback.many((e,__) =&gt; 
@@ -400,7 +403,7 @@ text
 EditSession(Document document, Mode mode) 
 : this._(
    new js.Proxy(_context.ace.EditSession, 
-       (document as _DocumentProxy)._proxy, mode._mode));
+       (document as _DocumentProxy)._proxy, (mode as _ModeProxy)._mode));
 </pre>
 </div>
 </div>
@@ -466,10 +469,13 @@ int get length =&gt; _proxy.getLength();
 <p>The current <a class="crossref" href="../ace/Mode.html">Mode</a> of this session.</p>
 <pre class="source">
 Mode
- get mode =&gt; new Mode._(_proxy.getMode());
+ get mode =&gt; new _ModeProxy._(_proxy.getMode());
 </pre>
 <pre class="source">
-set mode(Mode mode) =&gt; _proxy.setMode(mode._mode);
+set mode(Mode mode) {
+ assert(mode is _ModeProxy);
+ _proxy.setMode((mode as _ModeProxy)._mode);
+}
 </pre>
 </div>
 </div>
@@ -1240,7 +1246,7 @@ String toString() =&gt; _proxy.toString();
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2013-10-05 17:00:42.700</div>
+          <div>This page was generated at 2013-10-05 17:27:00.961</div>
         </div>
         <script async src="../client-live-nav.js"></script>
         </body></html>
