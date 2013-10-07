@@ -57,7 +57,7 @@ abstract class Document extends _Disposable {
  String value;
 
  /// Creates a new Document with the given [text], if any, or else it is empty.
- factory Document([String text = '']) =&gt; new _DocumentProxy(text);
+ factory Document({String text: ''}) =&gt; new _DocumentProxy(text);
  
  /// Applies all of the given [deltas] to this document in the order given.
  void applyDeltas(Iterable&lt;Delta&gt; deltas);
@@ -146,13 +146,13 @@ abstract class Document extends _Disposable {
 <h3>Constructors</h3>
 <div class="method"><h4 id="">
 <button class="show-code">Code</button>
-factory <strong>Document</strong>([String text = '']) <a class="anchor-link" href="#"
+factory <strong>Document</strong>({String text: ''}) <a class="anchor-link" href="#"
               title="Permalink to Document.Document">#</a></h4>
 <div class="doc">
 <p>Creates a new Document with the given 
 <span class="param">text</span>, if any, or else it is empty.</p>
 <pre class="source">
-factory Document([String text = '']) =&gt; new _DocumentProxy(text);
+factory Document({String text: ''}) =&gt; new _DocumentProxy(text);
 </pre>
 </div>
 </div>
@@ -407,7 +407,7 @@ order given.</p>
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2013-10-07 07:32:52.317</div>
+          <div>This page was generated at 2013-10-07 08:10:18.577</div>
         </div>
         <script async src="../client-live-nav.js"></script>
         </body></html>
