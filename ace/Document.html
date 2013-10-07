@@ -60,7 +60,7 @@ abstract class Document extends _Disposable {
  factory Document({String text: ''}) =&gt; new _DocumentProxy(text);
  
  /// Applies all of the given [deltas] to this document in the order given.
- void applyDeltas(Iterable&lt;Delta&gt; deltas);
+ void applyDeltas(List&lt;Delta&gt; deltas);
  
  /// Creates a new [Anchor] to define a floating point in this document.
  Anchor createAnchor(int row, int column);
@@ -139,7 +139,7 @@ abstract class Document extends _Disposable {
  
  /// Reverts all of the given [deltas] to this document in reverse of the 
  /// order given.
- void revertDeltas(Iterable&lt;Delta&gt; deltas);
+ void revertDeltas(List&lt;Delta&gt; deltas);
 }
 </pre>
 </div>
@@ -233,7 +233,7 @@ String value
 <div>
 <h3>Methods</h3>
 <div class="method"><h4 id="applyDeltas">
-abstract void <strong>applyDeltas</strong>(Iterable&lt;<a href="../ace/Delta.html">Delta</a>&gt; deltas) <a class="anchor-link" href="#applyDeltas"
+abstract void <strong>applyDeltas</strong>(List&lt;<a href="../ace/Delta.html">Delta</a>&gt; deltas) <a class="anchor-link" href="#applyDeltas"
               title="Permalink to Document.applyDeltas">#</a></h4>
 <div class="doc">
 <p>Applies all of the given 
@@ -407,7 +407,7 @@ a point at the end of the new text.</p>
 </div>
 </div>
 <div class="method"><h4 id="revertDeltas">
-abstract void <strong>revertDeltas</strong>(Iterable&lt;<a href="../ace/Delta.html">Delta</a>&gt; deltas) <a class="anchor-link" href="#revertDeltas"
+abstract void <strong>revertDeltas</strong>(List&lt;<a href="../ace/Delta.html">Delta</a>&gt; deltas) <a class="anchor-link" href="#revertDeltas"
               title="Permalink to Document.revertDeltas">#</a></h4>
 <div class="doc">
 <p>Reverts all of the given 
@@ -420,7 +420,7 @@ order given.</p>
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2013-10-07 12:51:46.092</div>
+          <div>This page was generated at 2013-10-07 13:01:06.766</div>
         </div>
         <script async src="../client-live-nav.js"></script>
         </body></html>
