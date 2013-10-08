@@ -37,9 +37,12 @@
 point.</p>
 <pre class="source">
 class Range implements Comparable&lt;Range&gt; {
+   
+ /// The start point of this range.
+ Point start;
  
- final Point start;
- final Point end;
+ /// The end point of this range.
+ Point end;
 
  /// Returns _true_ if this range's [start] point equals its [end] point.
  bool get isEmpty =&gt; start.row == end.row &amp;&amp; start.column == end.column;
@@ -53,6 +56,24 @@ class Range implements Comparable&lt;Range&gt; {
      new Point(endRow, endColumn));
  
  Range.fromPoints(this.start, this.end);
+ 
+ /// Creates a new range that is the union of all the given [ranges].
+ /// 
+ /// The returned range has a [start] point that comes first among all the
+ /// given [ranges] and an [end] point that comes last among all the given 
+ /// [ranges].
+ factory Range.union(Iterable&lt;Range&gt; ranges) =&gt; 
+     ranges.reduce((Range value, Range e) {
+       final cmp = value.compareTo(e);
+       if (cmp == 0) {
+         return value;
+       } else if (cmp &lt; 0) {
+         value.start = new Point(e.start.row, e.start.column);      
+       } else {
+         value.end = new Point(e.end.row, e.end.column);  
+       }
+       return value;
+     });
  
  Range._(proxy) 
  : this(
@@ -226,18 +247,47 @@ Range.fromPoints(this.start, this.end);
 </pre>
 </div>
 </div>
+<div class="method"><h4 id="union">
+<button class="show-code">Code</button>
+factory <strong>Range.union</strong>(Iterable&lt;<a href="../ace/Range.html">Range</a>&gt; ranges) <a class="anchor-link" href="#union"
+              title="Permalink to Range.Range.union">#</a></h4>
+<div class="doc">
+<p>Creates a new range that is the union of all the given 
+<span class="param">ranges</span>.</p>
+<p>The returned range has a <a class="crossref" href="../ace/Range.html#start">start</a> point that comes first among all the
+given 
+<span class="param">ranges</span> and an <a class="crossref" href="../ace/Range.html#end">end</a> point that comes last among all the given 
+
+<span class="param">ranges</span>.</p>
+<pre class="source">
+factory Range.union(Iterable&lt;Range&gt; ranges) =&gt; 
+   ranges.reduce((Range value, Range e) {
+     final cmp = value.compareTo(e);
+     if (cmp == 0) {
+       return value;
+     } else if (cmp &lt; 0) {
+       value.start = new Point(e.start.row, e.start.column);      
+     } else {
+       value.end = new Point(e.end.row, e.end.column);  
+     }
+     return value;
+   });
+</pre>
+</div>
+</div>
 </div>
 <div>
 <h3>Properties</h3>
 <div class="field"><h4 id="end">
 <button class="show-code">Code</button>
-final <a href="../ace/Point.html">Point</a>         <strong>end</strong> <a class="anchor-link"
+<a href="../ace/Point.html">Point</a>         <strong>end</strong> <a class="anchor-link"
             href="#end"
             title="Permalink to Range.end">#</a>
         </h4>
         <div class="doc">
+<p>The end point of this range.</p>
 <pre class="source">
-final Point end
+Point end
 </pre>
 </div>
 </div>
@@ -291,13 +341,14 @@ bool get isMultiLine =&gt; start.row != end.row;
 </div>
 <div class="field"><h4 id="start">
 <button class="show-code">Code</button>
-final <a href="../ace/Point.html">Point</a>         <strong>start</strong> <a class="anchor-link"
+<a href="../ace/Point.html">Point</a>         <strong>start</strong> <a class="anchor-link"
             href="#start"
             title="Permalink to Range.start">#</a>
         </h4>
         <div class="doc">
+<p>The start point of this range.</p>
 <pre class="source">
-final Point start
+Point start
 </pre>
 </div>
 </div>
@@ -576,7 +627,7 @@ String toString() =&gt;
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2013-10-08 10:01:55.281</div>
+          <div>This page was generated at 2013-10-08 11:00:22.047</div>
         </div>
         <script async src="../client-live-nav.js"></script>
         </body></html>
