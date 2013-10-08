@@ -158,9 +158,15 @@ class Range implements Comparable&lt;Range&gt; {
  /// This method performs a check that is _endpoint - inclusive_.  That is, it
  /// will return `true` if:
  /// 
- ///     [start.row]     &lt;= [row]    &lt;= [end.row]      &amp;&amp;
- ///     [start.column]  &lt;= [column] &lt;= [end.column]
+ ///     start.row     &lt;= row      &lt;= end.row      &amp;&amp;
+ ///     start.column  &lt;= column   &lt;= end.column
  bool contains(int row, int column) =&gt; compare(row, column) == 0;
+ 
+ /// Returns `true` if the given [other] is within this range.
+ /// 
+ /// This method performs a check that is _endpoint - inclusive_.
+ bool containsRange(Range other) =&gt; 
+     comparePoint(other.start) == 0 &amp;&amp; comparePoint(other.end) == 0;
  
  /// Returns `true` if the given `other` intersects this range.
  bool intersects(Range other) {
@@ -486,11 +492,25 @@ bool <strong>contains</strong>(int row, int column) <a class="anchor-link" href=
 <span class="param">column</span> are within this range.</p>
 <p>This method performs a check that is <em>endpoint - inclusive</em>.  That is, it
 will return <code>true</code> if:</p>
-<pre><code>[start.row]     &lt;= [row]    &lt;= [end.row]      &amp;&amp;
-[start.column]  &lt;= [column] &lt;= [end.column]
+<pre><code>start.row     &lt;= row      &lt;= end.row      &amp;&amp;
+start.column  &lt;= column   &lt;= end.column
 </code></pre>
 <pre class="source">
 bool contains(int row, int column) =&gt; compare(row, column) == 0;
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="containsRange">
+<button class="show-code">Code</button>
+bool <strong>containsRange</strong>(<a href="../ace/Range.html">Range</a> other) <a class="anchor-link" href="#containsRange"
+              title="Permalink to Range.containsRange">#</a></h4>
+<div class="doc">
+<p>Returns <code>true</code> if the given 
+<span class="param">other</span> is within this range.</p>
+<p>This method performs a check that is <em>endpoint - inclusive</em>.</p>
+<pre class="source">
+bool containsRange(Range other) =&gt; 
+   comparePoint(other.start) == 0 &amp;&amp; comparePoint(other.end) == 0;
 </pre>
 </div>
 </div>
@@ -556,7 +576,7 @@ String toString() =&gt;
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2013-10-08 09:52:47.300</div>
+          <div>This page was generated at 2013-10-08 10:01:55.281</div>
         </div>
         <script async src="../client-live-nav.js"></script>
         </body></html>
