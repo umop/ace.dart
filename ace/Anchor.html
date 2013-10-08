@@ -53,8 +53,10 @@ abstract class Anchor extends _Disposable {
      new _AnchorProxy(document, row, column);
  
  /// Sets the anchor [position] to the specified [row] and [column]. 
- /// If [noClip] is `true`, the position is not clipped.
- void setPosition(int row, int column, bool noClip);
+ /// 
+ /// By default, the position will be clipped to the bounds of the [document].
+ /// If [clip] is given as `false`, the position will not be clipped.
+ void setPosition(int row, int column, {bool clip: true});
 }
 </pre>
 </div>
@@ -136,14 +138,15 @@ method has been called.</p>
 </div>
 </div>
 <div class="method"><h4 id="setPosition">
-abstract void <strong>setPosition</strong>(int row, int column, bool noClip) <a class="anchor-link" href="#setPosition"
+abstract void <strong>setPosition</strong>(int row, int column, {bool clip: true}) <a class="anchor-link" href="#setPosition"
               title="Permalink to Anchor.setPosition">#</a></h4>
 <div class="doc">
 <p>Sets the anchor <a class="crossref" href="../ace/Anchor.html#position">position</a> to the specified 
 <span class="param">row</span> and 
-<span class="param">column</span>. 
+<span class="param">column</span>. </p>
+<p>By default, the position will be clipped to the bounds of the <a class="crossref" href="../ace/Anchor.html#document">document</a>.
 If 
-<span class="param">noClip</span> is <code>true</code>, the position is not clipped.</p>
+<span class="param">clip</span> is given as <code>false</code>, the position will not be clipped.</p>
 </div>
 </div>
 </div>
@@ -151,7 +154,7 @@ If
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2013-10-08 06:18:57.304</div>
+          <div>This page was generated at 2013-10-08 06:28:53.783</div>
         </div>
         <script async src="../client-live-nav.js"></script>
         </body></html>
