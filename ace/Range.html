@@ -155,26 +155,12 @@ class Range implements Comparable&lt;Range&gt; {
  
  /// Returns `true` if the given [row] and [column] are within this range.
  /// 
- /// This method performs a check that is _endpoint - inclusive_.  That is, if
- /// the point given by [row] and [column] yields `true` for a call to [isEnd]
- /// or [isStart] then this method will return `true`.
- bool contains(int row, int column) =&gt; compare(row, column) == 0;
- 
- /// Returns `true` if the given [row] and [column] are inside of this range.
+ /// This method performs a check that is _endpoint - inclusive_.  That is, it
+ /// will return `true` if:
  /// 
- /// This method performs a check that is _endpoint - exclusive_.  That is, if
- /// the point given by [row] and [column] yields `true` for a call to [isEnd] 
- /// or [isStart] then this method will return `false`.
- bool inside(int row, int column) {
-   if (compare(row, column) == 0) {
-     if (isEnd(row, column) || isStart(row, column)) {
-       return false;
-     } else {
-       return true;
-     }
-   }
-   return false;
- }
+ ///     [start.row] &lt;= [row] &lt;= [end.row] &amp;&amp;
+ ///     [start.column] &lt;= [column] &lt;= [end.column]
+ bool contains(int row, int column) =&gt; compare(row, column) == 0;
  
  /// Returns `true` if the given `other` intersects this range.
  bool intersects(Range other) {
@@ -498,40 +484,13 @@ bool <strong>contains</strong>(int row, int column) <a class="anchor-link" href=
 <p>Returns <code>true</code> if the given 
 <span class="param">row</span> and 
 <span class="param">column</span> are within this range.</p>
-<p>This method performs a check that is <em>endpoint - inclusive</em>.  That is, if
-the point given by 
-<span class="param">row</span> and 
-<span class="param">column</span> yields <code>true</code> for a call to <a class="crossref" href="../ace/Range.html#isEnd">isEnd</a>
-or <a class="crossref" href="../ace/Range.html#isStart">isStart</a> then this method will return <code>true</code>.</p>
+<p>This method performs a check that is <em>endpoint - inclusive</em>.  That is, it
+will return <code>true</code> if:</p>
+<pre><code>[start.row] &lt;= [row] &lt;= [end.row] &amp;&amp;
+[start.column] &lt;= [column] &lt;= [end.column]
+</code></pre>
 <pre class="source">
 bool contains(int row, int column) =&gt; compare(row, column) == 0;
-</pre>
-</div>
-</div>
-<div class="method"><h4 id="inside">
-<button class="show-code">Code</button>
-bool <strong>inside</strong>(int row, int column) <a class="anchor-link" href="#inside"
-              title="Permalink to Range.inside">#</a></h4>
-<div class="doc">
-<p>Returns <code>true</code> if the given 
-<span class="param">row</span> and 
-<span class="param">column</span> are inside of this range.</p>
-<p>This method performs a check that is <em>endpoint - exclusive</em>.  That is, if
-the point given by 
-<span class="param">row</span> and 
-<span class="param">column</span> yields <code>true</code> for a call to <a class="crossref" href="../ace/Range.html#isEnd">isEnd</a> 
-or <a class="crossref" href="../ace/Range.html#isStart">isStart</a> then this method will return <code>false</code>.</p>
-<pre class="source">
-bool inside(int row, int column) {
- if (compare(row, column) == 0) {
-   if (isEnd(row, column) || isStart(row, column)) {
-     return false;
-   } else {
-     return true;
-   }
- }
- return false;
-}
 </pre>
 </div>
 </div>
@@ -597,7 +556,7 @@ String toString() =&gt;
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2013-10-08 09:36:35.154</div>
+          <div>This page was generated at 2013-10-08 09:50:10.335</div>
         </div>
         <script async src="../client-live-nav.js"></script>
         </body></html>
