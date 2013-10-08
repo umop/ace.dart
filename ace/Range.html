@@ -158,8 +158,8 @@ class Range implements Comparable&lt;Range&gt; {
  /// This method performs a check that is _endpoint - inclusive_.  That is, it
  /// will return `true` if:
  /// 
- ///     [start.row] &lt;= [row] &lt;= [end.row] &amp;&amp;
- ///     [start.column] &lt;= [column] &lt;= [end.column]
+ ///     [start.row]     &lt;= [row]    &lt;= [end.row]      &amp;&amp;
+ ///     [start.column]  &lt;= [column] &lt;= [end.column]
  bool contains(int row, int column) =&gt; compare(row, column) == 0;
  
  /// Returns `true` if the given `other` intersects this range.
@@ -486,8 +486,8 @@ bool <strong>contains</strong>(int row, int column) <a class="anchor-link" href=
 <span class="param">column</span> are within this range.</p>
 <p>This method performs a check that is <em>endpoint - inclusive</em>.  That is, it
 will return <code>true</code> if:</p>
-<pre><code>[start.row] &lt;= [row] &lt;= [end.row] &amp;&amp;
-[start.column] &lt;= [column] &lt;= [end.column]
+<pre><code>[start.row]     &lt;= [row]    &lt;= [end.row]      &amp;&amp;
+[start.column]  &lt;= [column] &lt;= [end.column]
 </code></pre>
 <pre class="source">
 bool contains(int row, int column) =&gt; compare(row, column) == 0;
@@ -556,7 +556,7 @@ String toString() =&gt;
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2013-10-08 09:50:10.335</div>
+          <div>This page was generated at 2013-10-08 09:52:47.300</div>
         </div>
         <script async src="../client-live-nav.js"></script>
         </body></html>
