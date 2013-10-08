@@ -153,11 +153,32 @@ class Range implements Comparable&lt;Range&gt; {
  /// This method forwards the call to the [compareRange] method.
  int compareTo(Range other) =&gt; compareRange(other);
  
+ /// Returns `true` if the given `row` and `column` are inside of this range.
+ bool inside(int row, int column) {
+   if (compare(row, column) == 0) {
+     if (isEnd(row, column) || isStart(row, column)) {
+       return false;
+     } else {
+       return true;
+     }
+   }
+   return false;
+ }
+ 
  /// Returns `true` if the given `other` intersects this range.
  bool intersects(Range other) {
    final cmp = compareRange(other);
    return (cmp == -1 || cmp == 0 || cmp == 1);
  }
+ 
+ /// Returns `true` if the point given by [row] and [column] is equal to this
+ /// range's [end] point.
+ bool isEnd(int row, int column) =&gt; end.row == row &amp;&amp; end.column == column;
+ 
+ /// Returns `true` if the point given by [row] and [column] is equal to this
+ /// range's [start] point.
+ bool isStart(int row, int column) =&gt; 
+     start.row == row &amp;&amp; start.column == column;
  
  js.Proxy _toProxy() =&gt; 
      new js.Proxy(_context.ace.define.modules['ace/range'].Range, 
@@ -458,6 +479,26 @@ int compareTo(Range other) =&gt; compareRange(other);
 </pre>
 </div>
 </div>
+<div class="method"><h4 id="inside">
+<button class="show-code">Code</button>
+bool <strong>inside</strong>(int row, int column) <a class="anchor-link" href="#inside"
+              title="Permalink to Range.inside">#</a></h4>
+<div class="doc">
+<p>Returns <code>true</code> if the given <code>row</code> and <code>column</code> are inside of this range.</p>
+<pre class="source">
+bool inside(int row, int column) {
+ if (compare(row, column) == 0) {
+   if (isEnd(row, column) || isStart(row, column)) {
+     return false;
+   } else {
+     return true;
+   }
+ }
+ return false;
+}
+</pre>
+</div>
+</div>
 <div class="method"><h4 id="intersects">
 <button class="show-code">Code</button>
 bool <strong>intersects</strong>(<a href="../ace/Range.html">Range</a> other) <a class="anchor-link" href="#intersects"
@@ -469,6 +510,35 @@ bool intersects(Range other) {
  final cmp = compareRange(other);
  return (cmp == -1 || cmp == 0 || cmp == 1);
 }
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="isEnd">
+<button class="show-code">Code</button>
+bool <strong>isEnd</strong>(int row, int column) <a class="anchor-link" href="#isEnd"
+              title="Permalink to Range.isEnd">#</a></h4>
+<div class="doc">
+<p>Returns <code>true</code> if the point given by 
+<span class="param">row</span> and 
+<span class="param">column</span> is equal to this
+range's <a class="crossref" href="../ace/Range.html#end">end</a> point.</p>
+<pre class="source">
+bool isEnd(int row, int column) =&gt; end.row == row &amp;&amp; end.column == column;
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="isStart">
+<button class="show-code">Code</button>
+bool <strong>isStart</strong>(int row, int column) <a class="anchor-link" href="#isStart"
+              title="Permalink to Range.isStart">#</a></h4>
+<div class="doc">
+<p>Returns <code>true</code> if the point given by 
+<span class="param">row</span> and 
+<span class="param">column</span> is equal to this
+range's <a class="crossref" href="../ace/Range.html#start">start</a> point.</p>
+<pre class="source">
+bool isStart(int row, int column) =&gt; 
+   start.row == row &amp;&amp; start.column == column;
 </pre>
 </div>
 </div>
@@ -491,7 +561,7 @@ String toString() =&gt;
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2013-10-08 08:40:34.917</div>
+          <div>This page was generated at 2013-10-08 09:15:05.064</div>
         </div>
         <script async src="../client-live-nav.js"></script>
         </body></html>
