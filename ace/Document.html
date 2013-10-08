@@ -57,7 +57,17 @@ abstract class Document extends _Disposable {
  String value;
 
  /// Creates a new Document with the given [text], if any, or else it is empty.
- factory Document({String text: ''}) =&gt; new _DocumentProxy(text);
+ /// 
+ /// **WARNING** do not set [useExperimental] to `true` in production code; 
+ /// this is an experimental flag to enable continuous integration testing of a 
+ /// work-in-progress pure Dart implementation, and may be removed at any time.
+ factory Document({ String text: '', bool useExperimental: false }) {
+   if (useExperimental) {
+     return new _Document(text);
+   } else {
+     return new _DocumentProxy(text);
+   }
+ }
  
  /// Applies all of the given [deltas] to this document in the order given.
  void applyDeltas(List&lt;Delta&gt; deltas);
@@ -150,13 +160,23 @@ abstract class Document extends _Disposable {
 <h3>Constructors</h3>
 <div class="method"><h4 id="">
 <button class="show-code">Code</button>
-factory <strong>Document</strong>({String text: ''}) <a class="anchor-link" href="#"
+factory <strong>Document</strong>({String text: '', bool useExperimental: false}) <a class="anchor-link" href="#"
               title="Permalink to Document.Document">#</a></h4>
 <div class="doc">
 <p>Creates a new Document with the given 
 <span class="param">text</span>, if any, or else it is empty.</p>
+<p><strong>WARNING</strong> do not set 
+<span class="param">useExperimental</span> to <code>true</code> in production code; 
+this is an experimental flag to enable continuous integration testing of a 
+work-in-progress pure Dart implementation, and may be removed at any time.</p>
 <pre class="source">
-factory Document({String text: ''}) =&gt; new _DocumentProxy(text);
+factory Document({ String text: '', bool useExperimental: false }) {
+ if (useExperimental) {
+   return new _Document(text);
+ } else {
+   return new _DocumentProxy(text);
+ }
+}
 </pre>
 </div>
 </div>
@@ -420,7 +440,7 @@ order given.</p>
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2013-10-08 06:51:04.943</div>
+          <div>This page was generated at 2013-10-08 07:33:21.322</div>
         </div>
         <script async src="../client-live-nav.js"></script>
         </body></html>
