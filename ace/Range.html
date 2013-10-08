@@ -55,6 +55,14 @@ class Range implements Comparable&lt;Range&gt; {
      new Point(startRow, startColumn), 
      new Point(endRow, endColumn));
  
+ /// Constructs a new [Range] that is a copy of the given [other].
+ Range.copy(Range other) 
+   : this(
+       other.start.row, 
+       other.start.column, 
+       other.end.row, 
+       other.end.column);
+ 
  Range.fromPoints(this.start, this.end);
  
  /// Creates a new range that is the union of all the given [ranges].
@@ -62,18 +70,25 @@ class Range implements Comparable&lt;Range&gt; {
  /// The returned range has a [start] point that comes first among all the
  /// given [ranges] and an [end] point that comes last among all the given 
  /// [ranges].
- factory Range.union(Iterable&lt;Range&gt; ranges) =&gt; 
-     ranges.reduce((Range value, Range e) {
-       final cmp = value.compareTo(e);
-       if (cmp == 0) {
-         return value;
-       } else if (cmp &lt; 0) {
-         value.start = new Point(e.start.row, e.start.column);      
-       } else {
-         value.end = new Point(e.end.row, e.end.column);  
-       }
+ /// 
+ /// If the given [ranges] is an empty iterable this throws an [ArgumentError].
+ factory Range.union(Iterable&lt;Range&gt; ranges)  {
+   if (ranges.isEmpty) {
+     throw new ArgumentError('ranges must not be empty.');
+   }
+   final initialValue = new Range.copy(ranges.first);    
+   return ranges.skip(1).fold(initialValue, (Range value, Range e) {
+     final cmp = value.compareTo(e);
+     if (cmp == 0) {
        return value;
-     });
+     } else if (cmp &lt; 0) {
+       value.start = new Point(e.start.row, e.start.column);      
+     } else {
+       value.end = new Point(e.end.row, e.end.column);  
+     }
+     return value;
+   });
+ }
  
  Range._(proxy) 
  : this(
@@ -237,6 +252,23 @@ Range(int startRow, int startColumn, int endRow, int endColumn)
 </pre>
 </div>
 </div>
+<div class="method"><h4 id="copy">
+<button class="show-code">Code</button>
+new <strong>Range.copy</strong>(<a href="../ace/Range.html">Range</a> other) <a class="anchor-link" href="#copy"
+              title="Permalink to Range.Range.copy">#</a></h4>
+<div class="doc">
+<p>Constructs a new <a class="crossref" href="../ace/Range.html">Range</a> that is a copy of the given 
+<span class="param">other</span>.</p>
+<pre class="source">
+Range.copy(Range other) 
+ : this(
+     other.start.row, 
+     other.start.column, 
+     other.end.row, 
+     other.end.column);
+</pre>
+</div>
+</div>
 <div class="method"><h4 id="fromPoints">
 <button class="show-code">Code</button>
 new <strong>Range.fromPoints</strong>(<a href="../ace/Point.html">Point</a> start, <a href="../ace/Point.html">Point</a> end) <a class="anchor-link" href="#fromPoints"
@@ -259,19 +291,26 @@ given
 <span class="param">ranges</span> and an <a class="crossref" href="../ace/Range.html#end">end</a> point that comes last among all the given 
 
 <span class="param">ranges</span>.</p>
+<p>If the given 
+<span class="param">ranges</span> is an empty iterable this throws an <a class="crossref" href="../dart_core/ArgumentError.html">ArgumentError</a>.</p>
 <pre class="source">
-factory Range.union(Iterable&lt;Range&gt; ranges) =&gt; 
-   ranges.reduce((Range value, Range e) {
-     final cmp = value.compareTo(e);
-     if (cmp == 0) {
-       return value;
-     } else if (cmp &lt; 0) {
-       value.start = new Point(e.start.row, e.start.column);      
-     } else {
-       value.end = new Point(e.end.row, e.end.column);  
-     }
+factory Range.union(Iterable&lt;Range&gt; ranges)  {
+ if (ranges.isEmpty) {
+   throw new ArgumentError('ranges must not be empty.');
+ }
+ final initialValue = new Range.copy(ranges.first);    
+ return ranges.skip(1).fold(initialValue, (Range value, Range e) {
+   final cmp = value.compareTo(e);
+   if (cmp == 0) {
      return value;
-   });
+   } else if (cmp &lt; 0) {
+     value.start = new Point(e.start.row, e.start.column);      
+   } else {
+     value.end = new Point(e.end.row, e.end.column);  
+   }
+   return value;
+ });
+}
 </pre>
 </div>
 </div>
@@ -627,7 +666,7 @@ String toString() =&gt;
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2013-10-08 11:02:23.195</div>
+          <div>This page was generated at 2013-10-08 11:23:12.950</div>
         </div>
         <script async src="../client-live-nav.js"></script>
         </body></html>

@@ -34,18 +34,30 @@
 <div class="doc">
 <pre class="source">
 class Point {
+ 
  final int row;
+ 
  final int column;
+ 
+ /// Constructs a new [Point] with the given [row] and [column].
  const Point(this.row, this.column);
+ 
+ /// Constructs a new [Point] that is a copy of the given [other].
+ Point.copy(Point other) : this(other.row, other.column);
+ 
  Point._(proxy) : this(proxy.row, proxy.column);  
+ 
  bool operator ==(Object other) {
    if(identical(this, other)) return true;
    if(other is! Point) return false; 
    final o = other;
    return row == o.row &amp;&amp; column == o.column;
  }  
+ 
  int get hashCode =&gt; row.hashCode ^ column.hashCode;
+ 
  js.Proxy _toProxy() =&gt; js.map({'row': row, 'column': column});
+ 
  String toString() =&gt; 'Point: [${row}/${column}]';
 }
 </pre>
@@ -57,14 +69,23 @@ class Point {
 const <strong>Point</strong>(int row, int column) <a class="anchor-link" href="#"
               title="Permalink to Point.Point">#</a></h4>
 <div class="doc">
-<div class="inherited">
-<p>Creates a new <a class="crossref" href="../dart_core/Object.html">Object</a> instance.</p>
-<p><a class="crossref" href="../dart_core/Object.html">Object</a> instances have no meaningful state, and are only useful
-through their identity. An <a class="crossref" href="../dart_core/Object.html">Object</a> instance is equal to itself
-only.</p>
-<div class="docs-inherited-from">docs inherited from Object </div></div>
+<p>Constructs a new <a class="crossref" href="../ace/Point.html">Point</a> with the given 
+<span class="param">row</span> and 
+<span class="param">column</span>.</p>
 <pre class="source">
 const Point(this.row, this.column);
+</pre>
+</div>
+</div>
+<div class="method"><h4 id="copy">
+<button class="show-code">Code</button>
+new <strong>Point.copy</strong>(<a href="../ace/Point.html">Point</a> other) <a class="anchor-link" href="#copy"
+              title="Permalink to Point.Point.copy">#</a></h4>
+<div class="doc">
+<p>Constructs a new <a class="crossref" href="../ace/Point.html">Point</a> that is a copy of the given 
+<span class="param">other</span>.</p>
+<pre class="source">
+Point.copy(Point other) : this(other.row, other.column);
 </pre>
 </div>
 </div>
@@ -177,7 +198,7 @@ String toString() =&gt; 'Point: [${row}/${column}]';
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2013-10-08 11:02:23.215</div>
+          <div>This page was generated at 2013-10-08 11:23:12.972</div>
         </div>
         <script async src="../client-live-nav.js"></script>
         </body></html>
