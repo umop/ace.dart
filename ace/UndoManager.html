@@ -45,10 +45,11 @@ abstract class UndoManager extends _Disposable {
  /// Performs a redo operation on the associated document, reinstating the last 
  /// change.
  /// 
- /// If [dontSelect] is _true_ then the range of the change will not be 
- /// selected.  Returns the range of the operation that is performed, or `null`
- /// if [hasRedo] is _false_.
- Range redo(bool dontSelect);
+ /// If [select] is _false_ then the range of the change will not be selected.  
+ /// 
+ /// Returns the range of the operation that is performed, or `null` if 
+ /// [hasRedo] is _false_.
+ Range redo({bool select: true});
  
  /// Destroys the stack of [undo] and [redo] operations.
  void reset();
@@ -56,10 +57,11 @@ abstract class UndoManager extends _Disposable {
  /// Performs an undo operation on the associated document, reverting the last 
  /// change.
  /// 
- /// If [dontSelect] is _true_ then the range of the change will not be 
- /// selected.  Returns the range of the operation that is performed, or `null`
- /// if [hasUndo] is _false_.
- Range undo(bool dontSelect);
+ /// If [select] is _false_ then the range of the change will not be selected.  
+ /// 
+ /// Returns the range of the operation that is performed, or `null` if 
+ /// [hasUndo] is _false_.
+ Range undo({bool select: true});
 }
 </pre>
 </div>
@@ -109,15 +111,15 @@ method has been called.</p>
 </div>
 </div>
 <div class="method"><h4 id="redo">
-abstract <a href="../ace/Range.html">Range</a> <strong>redo</strong>(bool dontSelect) <a class="anchor-link" href="#redo"
+abstract <a href="../ace/Range.html">Range</a> <strong>redo</strong>({bool select: true}) <a class="anchor-link" href="#redo"
               title="Permalink to UndoManager.redo">#</a></h4>
 <div class="doc">
 <p>Performs a redo operation on the associated document, reinstating the last 
 change.</p>
 <p>If 
-<span class="param">dontSelect</span> is <em>true</em> then the range of the change will not be 
-selected.  Returns the range of the operation that is performed, or <code>null</code>
-if <a class="crossref" href="../ace/UndoManager.html#hasRedo">hasRedo</a> is <em>false</em>.</p>
+<span class="param">select</span> is <em>false</em> then the range of the change will not be selected.  </p>
+<p>Returns the range of the operation that is performed, or <code>null</code> if 
+<a class="crossref" href="../ace/UndoManager.html#hasRedo">hasRedo</a> is <em>false</em>.</p>
 </div>
 </div>
 <div class="method"><h4 id="reset">
@@ -128,15 +130,15 @@ abstract void <strong>reset</strong>() <a class="anchor-link" href="#reset"
 </div>
 </div>
 <div class="method"><h4 id="undo">
-abstract <a href="../ace/Range.html">Range</a> <strong>undo</strong>(bool dontSelect) <a class="anchor-link" href="#undo"
+abstract <a href="../ace/Range.html">Range</a> <strong>undo</strong>({bool select: true}) <a class="anchor-link" href="#undo"
               title="Permalink to UndoManager.undo">#</a></h4>
 <div class="doc">
 <p>Performs an undo operation on the associated document, reverting the last 
 change.</p>
 <p>If 
-<span class="param">dontSelect</span> is <em>true</em> then the range of the change will not be 
-selected.  Returns the range of the operation that is performed, or <code>null</code>
-if <a class="crossref" href="../ace/UndoManager.html#hasUndo">hasUndo</a> is <em>false</em>.</p>
+<span class="param">select</span> is <em>false</em> then the range of the change will not be selected.  </p>
+<p>Returns the range of the operation that is performed, or <code>null</code> if 
+<a class="crossref" href="../ace/UndoManager.html#hasUndo">hasUndo</a> is <em>false</em>.</p>
 </div>
 </div>
 </div>
@@ -144,7 +146,7 @@ if <a class="crossref" href="../ace/UndoManager.html#hasUndo">hasUndo</a> is <em
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2013-10-09 05:35:09.872</div>
+          <div>This page was generated at 2013-10-09 14:09:19.788</div>
         </div>
         <script async src="../client-live-nav.js"></script>
         </body></html>
