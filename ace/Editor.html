@@ -230,10 +230,10 @@ abstract class Editor extends _Disposable {
  /// The given [cursorPosition] will determine which of the following calls is
  /// made on this editor after setting the new [EditSession.value]:
  /// 
- ///     0   :   [selectAll]
- ///     1   :   [navigateFileEnd]
- ///     -1  :   [navigateFileStart]
- ///     
+ /// * 0   : [selectAll]
+ /// * 1   : [navigateFileEnd]
+ /// * -1  : [navigateFileStart]
+ /// 
  String setValue(String value, {int cursorPosition: 0});
  
  /// Sets the value of [overwrite] to the opposite of its current value.
@@ -883,12 +883,7 @@ abstract String <strong>setValue</strong>(String value, {int cursorPosition: 0})
 <span class="param">value</span>.</p>
 <p>The given 
 <span class="param">cursorPosition</span> will determine which of the following calls is
-made on this editor after setting the new <a class="crossref" href="../ace/EditSession.html#value">EditSession.value</a>:</p>
-<pre><code>0   :   [selectAll]
-1   :   [navigateFileEnd]
--1  :   [navigateFileStart]
-
-</code></pre>
+made on this editor after setting the new <a class="crossref" href="../ace/EditSession.html#value">EditSession.value</a>:</p><ul><li>0   : <code>selectAll</code></li><li>1   : <a class="crossref" href="../ace/Editor.html#navigateFileEnd">navigateFileEnd</a></li><li>-1  : <a class="crossref" href="../ace/Editor.html#navigateFileStart">navigateFileStart</a></li></ul>
 </div>
 </div>
 <div class="method"><h4 id="toggleOverwrite">
@@ -939,7 +934,7 @@ abstract void <strong>updateSelectionMarkers</strong>() <a class="anchor-link" h
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2013-10-10 08:44:40.836</div>
+          <div>This page was generated at 2013-10-10 08:50:44.642</div>
         </div>
         <script async src="../client-live-nav.js"></script>
         </body></html>
