@@ -159,47 +159,60 @@ abstract class Editor extends _Disposable {
  
  bool isRowVisible(int row);
  
- /// Move the cursor down in the document the specified number of times.
+ /// Move the cursor down in the document the specified number of [times].
+ /// 
  /// Note that this does de-select the current [selection].
- void navigateDown(int times);
+ void navigateDown([int times = 1]);
  
  /// Move the cursor to the end of the current document.
+ /// 
  /// Note that this does de-select the current [selection].
  void navigateFileEnd();
  
  /// Move the cursor to the start of the current document.
+ /// 
  /// Note that this does de-select the current [selection].
  void navigateFileStart();
  
- /// Move the cursor left in the document the specified number of times.
+ /// Move the cursor left in the document the specified number of [times].
+ /// 
  /// Note that this does de-select the current [selection].
- void navigateLeft(int times);
+ void navigateLeft([int times = 1]);
  
  /// Move the [cursorPosition] to the end of the current line.
+ /// 
  /// Note that this does de-select the current [selection].
  void navigateLineEnd();
  
  /// Move the [cursorPosition] to the start of the current line.
+ /// 
  /// Note that this does de-select the current [selection].
  void navigateLineStart();
  
  /// Move the [cursorPosition] right in the document the specified number of 
- /// times.  Note that this does de-select the current [selection].
- void navigateRight(int times);
+ /// [times].  
+ /// 
+ /// Note that this does de-select the current [selection].
+ void navigateRight([int times = 1]);
  
  /// Move the [cursorPosition] to the specified [row] and [column].
+ /// 
  /// Note that this does de-select the current selection.
  void navigateTo(int row, int column);
  
  /// Move the [cursorPosition] up in the document the specified number of 
- /// times.  Note that this does de-select the current [selection].
- void navigateUp(int times);
+ /// [times].
+ /// 
+ /// Note that this does de-select the current [selection].
+ void navigateUp([int times = 1]);
  
  /// Move the [cursorPosition] to the word immediately to its left. 
+ /// 
  /// Note that this does de-select the current [selection].
  void navigateWordLeft();
  
  /// Move the [cursorPosition] to the word immediately to its right. 
+ /// 
  /// Note that this does de-select the current [selection].
  void navigateWordRight();
  
@@ -745,59 +758,63 @@ abstract bool <strong>isRowVisible</strong>(int row) <a class="anchor-link" href
 </div>
 </div>
 <div class="method"><h4 id="navigateDown">
-abstract void <strong>navigateDown</strong>(int times) <a class="anchor-link" href="#navigateDown"
+abstract void <strong>navigateDown</strong>([int times = 1]) <a class="anchor-link" href="#navigateDown"
               title="Permalink to Editor.navigateDown">#</a></h4>
 <div class="doc">
-<p>Move the cursor down in the document the specified number of times.
-Note that this does de-select the current <a class="crossref" href="../ace/Editor.html#selection">selection</a>.</p>
+<p>Move the cursor down in the document the specified number of 
+<span class="param">times</span>.</p>
+<p>Note that this does de-select the current <a class="crossref" href="../ace/Editor.html#selection">selection</a>.</p>
 </div>
 </div>
 <div class="method"><h4 id="navigateFileEnd">
 abstract void <strong>navigateFileEnd</strong>() <a class="anchor-link" href="#navigateFileEnd"
               title="Permalink to Editor.navigateFileEnd">#</a></h4>
 <div class="doc">
-<p>Move the cursor to the end of the current document.
-Note that this does de-select the current <a class="crossref" href="../ace/Editor.html#selection">selection</a>.</p>
+<p>Move the cursor to the end of the current document.</p>
+<p>Note that this does de-select the current <a class="crossref" href="../ace/Editor.html#selection">selection</a>.</p>
 </div>
 </div>
 <div class="method"><h4 id="navigateFileStart">
 abstract void <strong>navigateFileStart</strong>() <a class="anchor-link" href="#navigateFileStart"
               title="Permalink to Editor.navigateFileStart">#</a></h4>
 <div class="doc">
-<p>Move the cursor to the start of the current document.
-Note that this does de-select the current <a class="crossref" href="../ace/Editor.html#selection">selection</a>.</p>
+<p>Move the cursor to the start of the current document.</p>
+<p>Note that this does de-select the current <a class="crossref" href="../ace/Editor.html#selection">selection</a>.</p>
 </div>
 </div>
 <div class="method"><h4 id="navigateLeft">
-abstract void <strong>navigateLeft</strong>(int times) <a class="anchor-link" href="#navigateLeft"
+abstract void <strong>navigateLeft</strong>([int times = 1]) <a class="anchor-link" href="#navigateLeft"
               title="Permalink to Editor.navigateLeft">#</a></h4>
 <div class="doc">
-<p>Move the cursor left in the document the specified number of times.
-Note that this does de-select the current <a class="crossref" href="../ace/Editor.html#selection">selection</a>.</p>
+<p>Move the cursor left in the document the specified number of 
+<span class="param">times</span>.</p>
+<p>Note that this does de-select the current <a class="crossref" href="../ace/Editor.html#selection">selection</a>.</p>
 </div>
 </div>
 <div class="method"><h4 id="navigateLineEnd">
 abstract void <strong>navigateLineEnd</strong>() <a class="anchor-link" href="#navigateLineEnd"
               title="Permalink to Editor.navigateLineEnd">#</a></h4>
 <div class="doc">
-<p>Move the <a class="crossref" href="../ace/Editor.html#cursorPosition">cursorPosition</a> to the end of the current line.
-Note that this does de-select the current <a class="crossref" href="../ace/Editor.html#selection">selection</a>.</p>
+<p>Move the <a class="crossref" href="../ace/Editor.html#cursorPosition">cursorPosition</a> to the end of the current line.</p>
+<p>Note that this does de-select the current <a class="crossref" href="../ace/Editor.html#selection">selection</a>.</p>
 </div>
 </div>
 <div class="method"><h4 id="navigateLineStart">
 abstract void <strong>navigateLineStart</strong>() <a class="anchor-link" href="#navigateLineStart"
               title="Permalink to Editor.navigateLineStart">#</a></h4>
 <div class="doc">
-<p>Move the <a class="crossref" href="../ace/Editor.html#cursorPosition">cursorPosition</a> to the start of the current line.
-Note that this does de-select the current <a class="crossref" href="../ace/Editor.html#selection">selection</a>.</p>
+<p>Move the <a class="crossref" href="../ace/Editor.html#cursorPosition">cursorPosition</a> to the start of the current line.</p>
+<p>Note that this does de-select the current <a class="crossref" href="../ace/Editor.html#selection">selection</a>.</p>
 </div>
 </div>
 <div class="method"><h4 id="navigateRight">
-abstract void <strong>navigateRight</strong>(int times) <a class="anchor-link" href="#navigateRight"
+abstract void <strong>navigateRight</strong>([int times = 1]) <a class="anchor-link" href="#navigateRight"
               title="Permalink to Editor.navigateRight">#</a></h4>
 <div class="doc">
 <p>Move the <a class="crossref" href="../ace/Editor.html#cursorPosition">cursorPosition</a> right in the document the specified number of 
-times.  Note that this does de-select the current <a class="crossref" href="../ace/Editor.html#selection">selection</a>.</p>
+
+<span class="param">times</span>.  </p>
+<p>Note that this does de-select the current <a class="crossref" href="../ace/Editor.html#selection">selection</a>.</p>
 </div>
 </div>
 <div class="method"><h4 id="navigateTo">
@@ -806,32 +823,34 @@ abstract void <strong>navigateTo</strong>(int row, int column) <a class="anchor-
 <div class="doc">
 <p>Move the <a class="crossref" href="../ace/Editor.html#cursorPosition">cursorPosition</a> to the specified 
 <span class="param">row</span> and 
-<span class="param">column</span>.
-Note that this does de-select the current selection.</p>
+<span class="param">column</span>.</p>
+<p>Note that this does de-select the current selection.</p>
 </div>
 </div>
 <div class="method"><h4 id="navigateUp">
-abstract void <strong>navigateUp</strong>(int times) <a class="anchor-link" href="#navigateUp"
+abstract void <strong>navigateUp</strong>([int times = 1]) <a class="anchor-link" href="#navigateUp"
               title="Permalink to Editor.navigateUp">#</a></h4>
 <div class="doc">
 <p>Move the <a class="crossref" href="../ace/Editor.html#cursorPosition">cursorPosition</a> up in the document the specified number of 
-times.  Note that this does de-select the current <a class="crossref" href="../ace/Editor.html#selection">selection</a>.</p>
+
+<span class="param">times</span>.</p>
+<p>Note that this does de-select the current <a class="crossref" href="../ace/Editor.html#selection">selection</a>.</p>
 </div>
 </div>
 <div class="method"><h4 id="navigateWordLeft">
 abstract void <strong>navigateWordLeft</strong>() <a class="anchor-link" href="#navigateWordLeft"
               title="Permalink to Editor.navigateWordLeft">#</a></h4>
 <div class="doc">
-<p>Move the <a class="crossref" href="../ace/Editor.html#cursorPosition">cursorPosition</a> to the word immediately to its left. 
-Note that this does de-select the current <a class="crossref" href="../ace/Editor.html#selection">selection</a>.</p>
+<p>Move the <a class="crossref" href="../ace/Editor.html#cursorPosition">cursorPosition</a> to the word immediately to its left. </p>
+<p>Note that this does de-select the current <a class="crossref" href="../ace/Editor.html#selection">selection</a>.</p>
 </div>
 </div>
 <div class="method"><h4 id="navigateWordRight">
 abstract void <strong>navigateWordRight</strong>() <a class="anchor-link" href="#navigateWordRight"
               title="Permalink to Editor.navigateWordRight">#</a></h4>
 <div class="doc">
-<p>Move the <a class="crossref" href="../ace/Editor.html#cursorPosition">cursorPosition</a> to the word immediately to its right. 
-Note that this does de-select the current <a class="crossref" href="../ace/Editor.html#selection">selection</a>.</p>
+<p>Move the <a class="crossref" href="../ace/Editor.html#cursorPosition">cursorPosition</a> to the word immediately to its right. </p>
+<p>Note that this does de-select the current <a class="crossref" href="../ace/Editor.html#selection">selection</a>.</p>
 </div>
 </div>
 <div class="method"><h4 id="redo">
@@ -946,7 +965,7 @@ abstract void <strong>updateSelectionMarkers</strong>() <a class="anchor-link" h
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2013-10-10 11:54:15.320</div>
+          <div>This page was generated at 2013-10-10 12:08:38.354</div>
         </div>
         <script async src="../client-live-nav.js"></script>
         </body></html>
