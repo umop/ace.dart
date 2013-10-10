@@ -225,6 +225,9 @@ abstract class Editor extends _Disposable {
  
  void resize(bool force);
  
+ /// Selects all the text in this editor.
+ void selectAll();
+ 
  /// Sets the current [EditSession.value] to the given [value].
  /// 
  /// The given [cursorPosition] will determine which of the following calls is
@@ -875,6 +878,13 @@ abstract void <strong>resize</strong>(bool force) <a class="anchor-link" href="#
 <div class="doc">
 </div>
 </div>
+<div class="method"><h4 id="selectAll">
+abstract void <strong>selectAll</strong>() <a class="anchor-link" href="#selectAll"
+              title="Permalink to Editor.selectAll">#</a></h4>
+<div class="doc">
+<p>Selects all the text in this editor.</p>
+</div>
+</div>
 <div class="method"><h4 id="setValue">
 abstract String <strong>setValue</strong>(String value, {int cursorPosition: 0}) <a class="anchor-link" href="#setValue"
               title="Permalink to Editor.setValue">#</a></h4>
@@ -883,7 +893,7 @@ abstract String <strong>setValue</strong>(String value, {int cursorPosition: 0})
 <span class="param">value</span>.</p>
 <p>The given 
 <span class="param">cursorPosition</span> will determine which of the following calls is
-made on this editor after setting the new <a class="crossref" href="../ace/EditSession.html#value">EditSession.value</a>:</p><ul><li>0   : <code>selectAll</code></li><li>1   : <a class="crossref" href="../ace/Editor.html#navigateFileEnd">navigateFileEnd</a></li><li>-1  : <a class="crossref" href="../ace/Editor.html#navigateFileStart">navigateFileStart</a></li></ul>
+made on this editor after setting the new <a class="crossref" href="../ace/EditSession.html#value">EditSession.value</a>:</p><ul><li>0   : <a class="crossref" href="../ace/Editor.html#selectAll">selectAll</a></li><li>1   : <a class="crossref" href="../ace/Editor.html#navigateFileEnd">navigateFileEnd</a></li><li>-1  : <a class="crossref" href="../ace/Editor.html#navigateFileStart">navigateFileStart</a></li></ul>
 </div>
 </div>
 <div class="method"><h4 id="toggleOverwrite">
@@ -934,7 +944,7 @@ abstract void <strong>updateSelectionMarkers</strong>() <a class="anchor-link" h
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2013-10-10 08:50:44.642</div>
+          <div>This page was generated at 2013-10-10 10:32:08.745</div>
         </div>
         <script async src="../client-live-nav.js"></script>
         </body></html>
