@@ -205,7 +205,7 @@ abstract class Editor extends _Disposable {
  /// Performs a redo operation on the current [EditSession.document], 
  /// reapplying the last change.
  /// 
- /// The current [EditSession.undoManager.hasRedo] may be called to check if
+ /// The current [session]'s [UndoManager.hasRedo] may be called to check if
  /// there are any redo operations to perform.
  void redo();
  
@@ -225,7 +225,16 @@ abstract class Editor extends _Disposable {
  
  void resize(bool force);
  
- String setValue(String val, int cursorPos);
+ /// Sets the current [EditSession.value] to the given [value].
+ /// 
+ /// The given [cursorPosition] will determine which of the following calls is
+ /// made on this editor after setting the new [EditSession.value]:
+ /// 
+ ///     0   :   [selectAll]
+ ///     1   :   [navigateFileEnd]
+ ///     -1  :   [navigateFileStart]
+ ///     
+ String setValue(String value, {int cursorPosition: 0});
  
  /// Sets the value of [overwrite] to the opposite of its current value.
  void toggleOverwrite();
@@ -241,7 +250,7 @@ abstract class Editor extends _Disposable {
  /// Performs an undo operation on the current [EditSession.document], 
  /// reverting the last change. 
  /// 
- /// The current [EditSession.undoManager.hasUndo] may be called to check if
+ /// The current [session]'s [UndoManager.hasUndo] may be called to check if
  /// there are any undo operations to perform.
  void undo();
  
@@ -826,7 +835,7 @@ abstract void <strong>redo</strong>() <a class="anchor-link" href="#redo"
 <div class="doc">
 <p>Performs a redo operation on the current <a class="crossref" href="../ace/EditSession.html#document">EditSession.document</a>, 
 reapplying the last change.</p>
-<p>The current <a class="crossref" href="../ace/EditSession.html#undoManager">EditSession.undoManager.hasRedo</a> may be called to check if
+<p>The current <a class="crossref" href="../ace/Editor.html#session">session</a>'s <a class="crossref" href="../ace/UndoManager.html#hasRedo">UndoManager.hasRedo</a> may be called to check if
 there are any redo operations to perform.</p>
 </div>
 </div>
@@ -867,9 +876,19 @@ abstract void <strong>resize</strong>(bool force) <a class="anchor-link" href="#
 </div>
 </div>
 <div class="method"><h4 id="setValue">
-abstract String <strong>setValue</strong>(String val, int cursorPos) <a class="anchor-link" href="#setValue"
+abstract String <strong>setValue</strong>(String value, {int cursorPosition: 0}) <a class="anchor-link" href="#setValue"
               title="Permalink to Editor.setValue">#</a></h4>
 <div class="doc">
+<p>Sets the current <a class="crossref" href="../ace/EditSession.html#value">EditSession.value</a> to the given 
+<span class="param">value</span>.</p>
+<p>The given 
+<span class="param">cursorPosition</span> will determine which of the following calls is
+made on this editor after setting the new <a class="crossref" href="../ace/EditSession.html#value">EditSession.value</a>:</p>
+<pre><code>0   :   [selectAll]
+1   :   [navigateFileEnd]
+-1  :   [navigateFileStart]
+
+</code></pre>
 </div>
 </div>
 <div class="method"><h4 id="toggleOverwrite">
@@ -905,7 +924,7 @@ abstract void <strong>undo</strong>() <a class="anchor-link" href="#undo"
 <div class="doc">
 <p>Performs an undo operation on the current <a class="crossref" href="../ace/EditSession.html#document">EditSession.document</a>, 
 reverting the last change. </p>
-<p>The current <a class="crossref" href="../ace/EditSession.html#undoManager">EditSession.undoManager.hasUndo</a> may be called to check if
+<p>The current <a class="crossref" href="../ace/Editor.html#session">session</a>'s <a class="crossref" href="../ace/UndoManager.html#hasUndo">UndoManager.hasUndo</a> may be called to check if
 there are any undo operations to perform.</p>
 </div>
 </div>
@@ -920,7 +939,7 @@ abstract void <strong>updateSelectionMarkers</strong>() <a class="anchor-link" h
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2013-10-10 08:24:28.970</div>
+          <div>This page was generated at 2013-10-10 08:44:40.836</div>
         </div>
         <script async src="../client-live-nav.js"></script>
         </body></html>
