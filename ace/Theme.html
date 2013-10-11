@@ -87,15 +87,31 @@ abstract class Theme extends _Disposable {
  
  bool get isDark;
  
+ /// Whether or not this theme has finished loading.
+ bool get isLoaded;
+ 
+ /// The name of this theme.
+ /// 
+ /// The [name] should be one of the values in [THEMES].
+ String get name;
+ 
+ /// The path of this theme.
+ /// 
+ /// This is a path such as `ace/theme/monokai`.
+ String get path;
+ 
+ /// Completes when this theme [isLoaded].
+ Future get onLoad;
+ 
  /// Creates a theme for the given [name].
  /// 
- /// The [name] must be one of the values in [THEMES].
- factory Theme.named(String name) =&gt; new _ThemeProxy.named(name);
+ /// The [name] should be one of the values in [THEMES].
+ factory Theme.named(String name) =&gt; new Theme('ace/theme/$name');
  
- /// Creates a theme for the given [themePath].
+ /// Creates a theme for the given [path].
  /// 
- /// The [themePath] is a path such as `ace/theme/monokai`.
- factory Theme(String themePath) =&gt; new _ThemeProxy(themePath);
+ /// The [path] is a path such as `ace/theme/monokai`.
+ factory Theme(String path) =&gt; new _ThemeProxy(path);
 }
 </pre>
 </div>
@@ -493,15 +509,15 @@ static const XCODE                    = 'xcode'
 <h3>Constructors</h3>
 <div class="method"><h4 id="">
 <button class="show-code">Code</button>
-factory <strong>Theme</strong>(String themePath) <a class="anchor-link" href="#"
+factory <strong>Theme</strong>(String path) <a class="anchor-link" href="#"
               title="Permalink to Theme.Theme">#</a></h4>
 <div class="doc">
 <p>Creates a theme for the given 
-<span class="param">themePath</span>.</p>
+<span class="param">path</span>.</p>
 <p>The 
-<span class="param">themePath</span> is a path such as <code>ace/theme/monokai</code>.</p>
+<span class="param">path</span> is a path such as <code>ace/theme/monokai</code>.</p>
 <pre class="source">
-factory Theme(String themePath) =&gt; new _ThemeProxy(themePath);
+factory Theme(String path) =&gt; new _ThemeProxy(path);
 </pre>
 </div>
 </div>
@@ -513,9 +529,9 @@ factory <strong>Theme.named</strong>(String name) <a class="anchor-link" href="#
 <p>Creates a theme for the given 
 <span class="param">name</span>.</p>
 <p>The 
-<span class="param">name</span> must be one of the values in <a class="crossref" href="../ace/Theme.html#THEMES">THEMES</a>.</p>
+<span class="param">name</span> should be one of the values in <a class="crossref" href="../ace/Theme.html#THEMES">THEMES</a>.</p>
 <pre class="source">
-factory Theme.named(String name) =&gt; new _ThemeProxy.named(name);
+factory Theme.named(String name) =&gt; new Theme('ace/theme/$name');
 </pre>
 </div>
 </div>
@@ -558,6 +574,60 @@ bool get isDark;
 </pre>
 </div>
 </div>
+<div class="field"><h4 id="isLoaded">
+<button class="show-code">Code</button>
+final bool         <strong>isLoaded</strong> <a class="anchor-link"
+            href="#isLoaded"
+            title="Permalink to Theme.isLoaded">#</a>
+        </h4>
+        <div class="doc">
+<p>Whether or not this theme has finished loading.</p>
+<pre class="source">
+bool get isLoaded;
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="name">
+<button class="show-code">Code</button>
+final String         <strong>name</strong> <a class="anchor-link"
+            href="#name"
+            title="Permalink to Theme.name">#</a>
+        </h4>
+        <div class="doc">
+<p>The name of this theme.</p>
+<p>The <a class="crossref" href="../ace/Theme.html#name">name</a> should be one of the values in <a class="crossref" href="../ace/Theme.html#THEMES">THEMES</a>.</p>
+<pre class="source">
+String get name;
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="onLoad">
+<button class="show-code">Code</button>
+final Future         <strong>onLoad</strong> <a class="anchor-link"
+            href="#onLoad"
+            title="Permalink to Theme.onLoad">#</a>
+        </h4>
+        <div class="doc">
+<p>Completes when this theme <a class="crossref" href="../ace/Theme.html#isLoaded">isLoaded</a>.</p>
+<pre class="source">
+Future get onLoad;
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="path">
+<button class="show-code">Code</button>
+final String         <strong>path</strong> <a class="anchor-link"
+            href="#path"
+            title="Permalink to Theme.path">#</a>
+        </h4>
+        <div class="doc">
+<p>The path of this theme.</p>
+<p>This is a path such as <code>ace/theme/monokai</code>.</p>
+<pre class="source">
+String get path;
+</pre>
+</div>
+</div>
 </div>
 <div class="inherited">
 <h3>Methods</h3>
@@ -577,7 +647,7 @@ method has been called.</p>
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2013-10-10 16:00:51.769</div>
+          <div>This page was generated at 2013-10-11 07:45:32.230</div>
         </div>
         <script async src="../client-live-nav.js"></script>
         </body></html>
