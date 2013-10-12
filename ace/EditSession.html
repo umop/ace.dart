@@ -125,8 +125,9 @@ abstract class EditSession extends _Disposable {
  UndoManager undoManager;
 
  /// Whether or not the range of an undo or redo operation is selected.
- // TODO(rms): https://github.com/rmsmith/ace.dart/issues/2
- set undoSelect(bool enable);
+ bool
+   get undoSelect;
+   set undoSelect(bool enable);
    
  /// Whether or not to use soft tabs.  
  /// 
@@ -582,11 +583,21 @@ UndoManager undoManager
 </pre>
 </div>
 </div>
-<div class="method"><h4 id="undoSelect=">
-abstract dynamic <strong>set undoSelect</strong>(bool enable) <a class="anchor-link" href="#undoSelect="
-              title="Permalink to EditSession.set undoSelect">#</a></h4>
-<div class="doc">
+<div class="field"><h4 id="undoSelect">
+<button class="show-code">Code</button>
+bool         <strong>undoSelect</strong> <a class="anchor-link"
+            href="#undoSelect"
+            title="Permalink to EditSession.undoSelect">#</a>
+        </h4>
+        <div class="doc">
 <p>Whether or not the range of an undo or redo operation is selected.</p>
+<pre class="source">
+bool
+ get undoSelect;
+</pre>
+<pre class="source">
+set undoSelect(bool enable);
+</pre>
 </div>
 </div>
 <div class="field"><h4 id="useSoftTabs">
@@ -930,7 +941,7 @@ abstract void <strong>toggleOverwrite</strong>() <a class="anchor-link" href="#t
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2013-10-12 08:25:58.173</div>
+          <div>This page was generated at 2013-10-12 13:46:12.391</div>
         </div>
         <script async src="../client-live-nav.js"></script>
         </body></html>
