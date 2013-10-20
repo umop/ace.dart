@@ -88,6 +88,19 @@ abstract class Document extends _Disposable {
  /// single string.
  String getTextRange(Range range);
  
+ /// Converts the given character [index] in this document to a [Point].
+ /// 
+ /// Index refers to the "absolute position" of a character in this document.
+ /// For example:
+ ///     var x = 0; // 10 characters, plus one for newline
+ ///     var y = -1;
+ /// Here, `y` has an index of `15`; `10` characters for the first row, a
+ /// newline character, and `5` characters until `y` in the second row. 
+ /// 
+ /// The optional [startRow] defaults to `0` and represents the row from which 
+ /// to start the conversion.
+ Point indexToPosition(int index, {int startRow: 0});
+ 
  /// Inserts a block of [text] at the given [position] and returns a point at
  /// the end of the inserted text.  This method also fires an [onChange] event.
  Point insert(Point position, String text);
@@ -311,6 +324,24 @@ abstract String <strong>getTextRange</strong>(<a href="../ace/Range.html">Range<
 single string.</p>
 </div>
 </div>
+<div class="method"><h4 id="indexToPosition">
+abstract <a href="../ace/Point.html">Point</a> <strong>indexToPosition</strong>(int index, {int startRow: 0}) <a class="anchor-link" href="#indexToPosition"
+              title="Permalink to Document.indexToPosition">#</a></h4>
+<div class="doc">
+<p>Converts the given character 
+<span class="param">index</span> in this document to a <a class="crossref" href="../ace/Point.html">Point</a>.</p>
+<p>Index refers to the "absolute position" of a character in this document.
+For example:</p>
+<pre><code>var x = 0; // 10 characters, plus one for newline
+var y = -1;
+</code></pre>
+<p>Here, <code>y</code> has an index of <code>15</code>; <code>10</code> characters for the first row, a
+newline character, and <code>5</code> characters until <code>y</code> in the second row. </p>
+<p>The optional 
+<span class="param">startRow</span> defaults to <code>0</code> and represents the row from which 
+to start the conversion.</p>
+</div>
+</div>
 <div class="method"><h4 id="insert">
 abstract <a href="../ace/Point.html">Point</a> <strong>insert</strong>(<a href="../ace/Point.html">Point</a> position, String text) <a class="anchor-link" href="#insert"
               title="Permalink to Document.insert">#</a></h4>
@@ -440,7 +471,7 @@ order given.</p>
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2013-10-20 12:15:39.906</div>
+          <div>This page was generated at 2013-10-20 12:41:15.153</div>
         </div>
         <script async src="../client-live-nav.js"></script>
         </body></html>
