@@ -43,21 +43,22 @@ abstract class Delta {
  final Range range;  
  
  factory Delta._forProxy(proxy) {
-   switch(proxy.action) {
+   switch(proxy['action']) {
      case 'insertLines': return new InsertLinesDelta._fromProxy(proxy);
      case 'insertText': return new InsertTextDelta._fromProxy(proxy);
      case 'removeLines': return new RemoveLinesDelta._fromProxy(proxy);
      case 'removeText': return new RemoveTextDelta._fromProxy(proxy);
-     default: throw new UnsupportedError('Unknown action: ${proxy.action}');
+     default: throw new UnsupportedError('Unknown action: ${proxy['action']}');
    }
  }
  
  Delta._(this.action, this.range);
  
- Delta._fromProxy(js.Proxy proxy) 
- : this._(proxy.action, new Range._(proxy.range));
+ Delta._fromProxy(js.JsObject proxy) 
+ : this._(proxy['action'], new Range._(proxy['range']));
  
- js.Proxy _toProxy() =&gt; js.map({'action': action, 'range': range._toProxy()});
+ js.JsObject _toProxy() =&gt; 
+     new js.JsObject.jsify({'action': action, 'range': range._toProxy()});
 }
 </pre>
 </div>
@@ -97,7 +98,7 @@ final Range range
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2013-10-24 09:16:55.835</div>
+          <div>This page was generated at 2013-10-24 12:40:55.084</div>
         </div>
         <script async src="../client-live-nav.js"></script>
         </body></html>

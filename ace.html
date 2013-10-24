@@ -39,7 +39,7 @@
 <pre class="source">
 Editor edit(html.Element element) {
  assert(element != null);
- return new _EditorProxy._(_context.ace.edit(element));
+ return new _EditorProxy._(_context['ace'].callMethod('edit', [element]));
 }
 </pre>
 </div>
@@ -57,8 +57,9 @@ EditSession createEditSession(String text, Mode mode) {
  assert(text != null);
  assert(mode != null);
  assert(mode is _ModeProxy);
- return new _EditSessionProxy._( _context.ace.createEditSession(text, 
-     (mode as _ModeProxy)._mode));
+ return new _EditSessionProxy._(
+     _context['ace'].callMethod('createEditSession', 
+         [text, (mode as _ModeProxy)._mode]));
 }
 </pre>
 </div>
@@ -200,7 +201,7 @@ EditSession createEditSession(String text, Mode mode) {
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2013-10-24 09:16:55.253</div>
+          <div>This page was generated at 2013-10-24 12:40:54.673</div>
         </div>
         <script async src="client-live-nav.js"></script>
         </body></html>

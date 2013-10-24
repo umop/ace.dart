@@ -43,9 +43,9 @@ class InsertTextDelta extends Delta {
  
  InsertTextDelta._fromProxy(proxy)
  : super._fromProxy(proxy)
- , text = proxy.text;
+ , text = proxy['text'];
  
- js.Proxy _toProxy() =&gt; super._toProxy()..['text'] = text;
+ js.JsObject _toProxy() =&gt; super._toProxy()..['text'] = text;
 }
 </pre>
 </div>
@@ -98,7 +98,7 @@ final String text
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2013-10-24 09:16:55.826</div>
+          <div>This page was generated at 2013-10-24 12:40:55.076</div>
         </div>
         <script async src="../client-live-nav.js"></script>
         </body></html>

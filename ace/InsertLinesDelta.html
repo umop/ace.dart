@@ -43,9 +43,10 @@ class InsertLinesDelta extends Delta {
  
  InsertLinesDelta._fromProxy(proxy) 
  : super._fromProxy(proxy)
- , lines = _list(proxy.lines);
+ , lines = _list(proxy['lines']);
  
- js.Proxy _toProxy() =&gt; super._toProxy()..['lines'] = js.array(lines);
+ js.JsObject _toProxy() =&gt; 
+     super._toProxy()..['lines'] = new js.JsObject.jsify(lines);
 }
 </pre>
 </div>
@@ -98,7 +99,7 @@ final Range range
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2013-10-24 09:16:55.830</div>
+          <div>This page was generated at 2013-10-24 12:40:55.080</div>
         </div>
         <script async src="../client-live-nav.js"></script>
         </body></html>

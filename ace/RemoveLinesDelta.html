@@ -47,11 +47,13 @@ class RemoveLinesDelta extends Delta {
  
  RemoveLinesDelta._fromProxy(proxy) 
    : super._fromProxy(proxy)
-   , lines = _list(proxy.lines)
-   , nl = proxy.nl;
+   , lines = _list(proxy['lines'])
+   , nl = proxy['nl'];
  
- js.Proxy _toProxy() =&gt; 
-     super._toProxy()..['lines'] = js.array(lines)..['nl'] = nl;
+ js.JsObject _toProxy() =&gt; 
+     super._toProxy()
+     ..['lines'] = new js.JsObject.jsify(lines)
+     ..['nl'] = nl;
 }
 </pre>
 </div>
@@ -118,7 +120,7 @@ final Range range
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2013-10-24 09:16:55.813</div>
+          <div>This page was generated at 2013-10-24 12:40:55.071</div>
         </div>
         <script async src="../client-live-nav.js"></script>
         </body></html>

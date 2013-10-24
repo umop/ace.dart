@@ -92,10 +92,10 @@ class Range implements Comparable&lt;Range&gt; {
  
  Range._(proxy) 
  : this(
-     proxy.start.row, 
-     proxy.start.column, 
-     proxy.end.row, 
-     proxy.end.column);
+     proxy['start']['row'], 
+     proxy['start']['column'], 
+     proxy['end']['row'], 
+     proxy['end']['column']);
  
  bool operator ==(Object other) {
    if(identical(this, other)) return true;
@@ -219,9 +219,9 @@ class Range implements Comparable&lt;Range&gt; {
  bool isStart(int row, int column) =&gt; 
      start.row == row &amp;&amp; start.column == column;
  
- js.Proxy _toProxy() =&gt; 
-     new js.Proxy(_context.ace.define.modules['ace/range'].Range, 
-         start.row, start.column, end.row, end.column);
+ js.JsObject _toProxy() =&gt; 
+     new js.JsObject(_modules['ace/range'][Range], 
+         [start.row, start.column, end.row, end.column]);
  
  String toString() =&gt; 
      'Range: [${start.row}/${start.column}] -&gt; [${end.row}/${end.column}]';
@@ -666,7 +666,7 @@ String toString() =&gt;
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2013-10-24 09:16:55.652</div>
+          <div>This page was generated at 2013-10-24 12:40:54.896</div>
         </div>
         <script async src="../client-live-nav.js"></script>
         </body></html>
