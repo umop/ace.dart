@@ -52,7 +52,7 @@ class RemoveLinesDelta extends Delta {
  
  js.JsObject _toProxy() =&gt; 
      super._toProxy()
-     ..['lines'] = new js.JsObject.jsify(lines)
+     ..['lines'] = _jsify(lines)
      ..['nl'] = nl;
 }
 </pre>
@@ -120,7 +120,7 @@ final Range range
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2013-10-25 12:30:42.197</div>
+          <div>This page was generated at 2013-10-26 08:43:27.970</div>
         </div>
         <script async src="../client-live-nav.js"></script>
         </body></html>

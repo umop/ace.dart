@@ -58,7 +58,7 @@ abstract class Delta {
  : this._(proxy['action'], new Range._(proxy['range']));
  
  js.JsObject _toProxy() =&gt; 
-     new js.JsObject.jsify({'action': action, 'range': range._toProxy()});
+     _jsify({'action': action, 'range': range._toProxy()});
 }
 </pre>
 </div>
@@ -98,7 +98,7 @@ final Range range
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2013-10-25 12:30:42.213</div>
+          <div>This page was generated at 2013-10-26 08:43:27.983</div>
         </div>
         <script async src="../client-live-nav.js"></script>
         </body></html>
