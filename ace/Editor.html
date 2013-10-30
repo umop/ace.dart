@@ -142,6 +142,10 @@ abstract class Editor extends _Disposable {
  /// Clears the current [selection].
  void clearSelection();
  
+ /// Copies all of the lines in the current [selection] down one row.
+ /// 
+ /// This method copies entire rows, so the copied range may be larger than
+ /// the current [selectionRange].
  int copyLinesDown();
  
  int copyLinesUp();
@@ -697,6 +701,9 @@ abstract void <strong>clearSelection</strong>() <a class="anchor-link" href="#cl
 abstract int <strong>copyLinesDown</strong>() <a class="anchor-link" href="#copyLinesDown"
               title="Permalink to Editor.copyLinesDown">#</a></h4>
 <div class="doc">
+<p>Copies all of the lines in the current <a class="crossref" href="../ace/Editor.html#selection">selection</a> down one row.</p>
+<p>This method copies entire rows, so the copied range may be larger than
+the current <a class="crossref" href="../ace/Editor.html#selectionRange">selectionRange</a>.</p>
 </div>
 </div>
 <div class="method"><h4 id="copyLinesUp">
@@ -975,7 +982,7 @@ abstract void <strong>updateSelectionMarkers</strong>() <a class="anchor-link" h
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2013-10-30 09:57:09.245</div>
+          <div>This page was generated at 2013-10-30 10:21:20.437</div>
         </div>
         <script async src="../client-live-nav.js"></script>
         </body></html>
