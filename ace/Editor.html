@@ -101,8 +101,10 @@ abstract class Editor extends _Disposable {
  /// The current mouse scroll speed, in milliseconds.
  int scrollSpeed;
 
+ /// The current [Selection].
  Selection get selection;
  
+ /// The [Selection.range] of the current [selection].
  Range get selectionRange;
  
  /// The current [EditSession] being used; setting a new session fires an 
@@ -550,6 +552,7 @@ final <a href="../ace/Selection.html">Selection</a>         <strong>selection</s
             title="Permalink to Editor.selection">#</a>
         </h4>
         <div class="doc">
+<p>The current <a class="crossref" href="../ace/Selection.html">Selection</a>.</p>
 <pre class="source">
 Selection get selection;
 </pre>
@@ -562,6 +565,7 @@ final <a href="../ace/Range.html">Range</a>         <strong>selectionRange</stro
             title="Permalink to Editor.selectionRange">#</a>
         </h4>
         <div class="doc">
+<p>The <a class="crossref" href="../ace/Selection.html#range">Selection.range</a> of the current <a class="crossref" href="../ace/Editor.html#selection">selection</a>.</p>
 <pre class="source">
 Range get selectionRange;
 </pre>
@@ -971,7 +975,7 @@ abstract void <strong>updateSelectionMarkers</strong>() <a class="anchor-link" h
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2013-10-28 22:22:30.157</div>
+          <div>This page was generated at 2013-10-30 09:57:09.245</div>
         </div>
         <script async src="../client-live-nav.js"></script>
         </body></html>
