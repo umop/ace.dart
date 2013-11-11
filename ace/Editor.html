@@ -38,7 +38,7 @@ as well as the <a class="crossref" href="../ace/VirtualRenderer.html">VirtualRen
 Event sessions dealing with the mouse and keyboard are bubbled up from the
 <a class="crossref" href="../ace/Document.html">Document</a> to the <a class="crossref" href="../ace/Editor.html">Editor</a>, which decides what to do with them.</p>
 <pre class="source">
-abstract class Editor extends _Disposable {
+abstract class Editor extends _Disposable implements OptionsProvider {
  
  /// Fired whenever this editor has been blurred.
  Stream get onBlur;
@@ -300,6 +300,9 @@ abstract class Editor extends _Disposable {
 <h3>Extends</h3>
 <p>
 <span class="type-box"><span class="icon-class"></span><a href="../ace/_Disposable.html">_Disposable</a></span>&nbsp;&gt;&nbsp;<span class="type-box"><span class="icon-class"></span><strong>Editor</strong></span></p>
+<h3>Implements</h3>
+<p>
+<span class="type-box"><span class="icon-class"></span><a href="../ace/OptionsProvider.html">OptionsProvider</a></span></p>
 <div>
 <h3>Properties</h3>
 <div class="field"><h4 id="copyText">
@@ -752,6 +755,18 @@ abstract void <strong>focus</strong>() <a class="anchor-link" href="#focus"
 <p>Brings the current <a class="crossref" href="../ace/Editor.html#textInput">textInput</a> into focus.</p>
 </div>
 </div>
+<div class="method inherited"><h4 id="getOption">
+abstract dynamic <strong>getOption</strong>(String name) <a class="anchor-link" href="#getOption"
+              title="Permalink to Editor.getOption">#</a></h4>
+<div class="inherited-from">inherited from <a href="../ace/OptionsProvider.html">OptionsProvider</a> </div><div class="doc">
+</div>
+</div>
+<div class="method inherited"><h4 id="getOptions">
+abstract Map&lt;String, dynamic&gt; <strong>getOptions</strong>(List&lt;String&gt; optionNames) <a class="anchor-link" href="#getOptions"
+              title="Permalink to Editor.getOptions">#</a></h4>
+<div class="inherited-from">inherited from <a href="../ace/OptionsProvider.html">OptionsProvider</a> </div><div class="doc">
+</div>
+</div>
 <div class="method"><h4 id="gotoPageDown">
 abstract void <strong>gotoPageDown</strong>() <a class="anchor-link" href="#gotoPageDown"
               title="Permalink to Editor.gotoPageDown">#</a></h4>
@@ -956,6 +971,18 @@ abstract void <strong>selectAll</strong>() <a class="anchor-link" href="#selectA
 <p>Selects all the text in this editor.</p>
 </div>
 </div>
+<div class="method inherited"><h4 id="setOption">
+abstract void <strong>setOption</strong>(String name, value) <a class="anchor-link" href="#setOption"
+              title="Permalink to Editor.setOption">#</a></h4>
+<div class="inherited-from">inherited from <a href="../ace/OptionsProvider.html">OptionsProvider</a> </div><div class="doc">
+</div>
+</div>
+<div class="method inherited"><h4 id="setOptions">
+abstract void <strong>setOptions</strong>(Map&lt;String, dynamic&gt; options) <a class="anchor-link" href="#setOptions"
+              title="Permalink to Editor.setOptions">#</a></h4>
+<div class="inherited-from">inherited from <a href="../ace/OptionsProvider.html">OptionsProvider</a> </div><div class="doc">
+</div>
+</div>
 <div class="method"><h4 id="setValue">
 abstract String <strong>setValue</strong>(String value, [int cursorPosition = 0]) <a class="anchor-link" href="#setValue"
               title="Permalink to Editor.setValue">#</a></h4>
@@ -1015,7 +1042,7 @@ abstract void <strong>updateSelectionMarkers</strong>() <a class="anchor-link" h
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2013-11-09 10:01:39.148</div>
+          <div>This page was generated at 2013-11-11 09:56:50.788</div>
         </div>
         <script async src="../client-live-nav.js"></script>
         </body></html>
