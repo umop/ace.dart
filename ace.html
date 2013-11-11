@@ -31,7 +31,7 @@
 <h3>Functions</h3>
 <div class="method"><h4 id="require">
 <button class="show-code">Code</button>
-void <strong>require</strong>(String modulePath) <a class="anchor-link" href="#require"
+dynamic <strong>require</strong>(String modulePath) <a class="anchor-link" href="#require"
               title="Permalink to require">#</a></h4>
 <div class="doc">
 <p>Loads the module for the given 
@@ -39,8 +39,8 @@ void <strong>require</strong>(String modulePath) <a class="anchor-link" href="#r
 <p>The 
 <span class="param">modulePath</span> is a path such as <code>ace/ext/language_tools</code>.</p>
 <pre class="source">
-void require(String modulePath) {
- _context['ace'].callMethod('require', [modulePath]);
+require(String modulePath) { 
+ return _context['ace'].callMethod('require', [modulePath]);
 }
 </pre>
 </div>
@@ -223,7 +223,7 @@ EditSession createEditSession(String text, Mode mode) {
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2013-11-11 10:40:25.117</div>
+          <div>This page was generated at 2013-11-11 12:16:00.639</div>
         </div>
         <script async src="client-live-nav.js"></script>
         </body></html>
