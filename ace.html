@@ -40,7 +40,7 @@ dynamic <strong>require</strong>(String modulePath) <a class="anchor-link" href=
 <span class="param">modulePath</span> is a path such as <code>ace/ext/language_tools</code>.</p>
 <pre class="source">
 require(String modulePath) { 
- return _context['ace'].callMethod('require', [modulePath]);
+ return _ace.callMethod('require', [modulePath]);
 }
 </pre>
 </div>
@@ -55,7 +55,7 @@ require(String modulePath) {
 <pre class="source">
 Editor edit(html.Element element) {
  assert(element != null);
- return new _EditorProxy._(_context['ace'].callMethod('edit', [element]));
+ return new _EditorProxy._(_ace.callMethod('edit', [element]));
 }
 </pre>
 </div>
@@ -74,8 +74,7 @@ EditSession createEditSession(String text, Mode mode) {
  assert(mode != null);
  assert(mode is _ModeProxy);
  return new _EditSessionProxy._(
-     _context['ace'].callMethod('createEditSession', 
-         [text, (mode as _ModeProxy)._mode]));
+     _ace.callMethod('createEditSession', [text, (mode as _ModeProxy)._mode]));
 }
 </pre>
 </div>
@@ -223,7 +222,7 @@ EditSession createEditSession(String text, Mode mode) {
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2013-11-12 08:21:08.844</div>
+          <div>This page was generated at 2013-11-12 08:35:42.888</div>
         </div>
         <script async src="client-live-nav.js"></script>
         </body></html>
