@@ -45,14 +45,19 @@ abstract class Mode extends _Disposable {
  
  /// Whether or not this mode has finished loading.
  bool get isLoaded;
- 
+     
  /// Completes when this mode [isLoaded].
  Future get onLoad;
  
- /// Creates a mode for the given [modePath].
+ /// The path of this mode.
  /// 
- /// The [modePath] is a path such as `ace/mode/text`.
- factory Mode(String modePath) =&gt; new _ModeProxy(modePath);
+ /// This is a path such as `ace/mode/text`.
+ String get path;
+ 
+ /// Creates a mode for the given [path].
+ /// 
+ /// The [path] is a path such as `ace/mode/text`.
+ factory Mode(String path) =&gt; new _ModeProxy(path);
 }
 </pre>
 </div>
@@ -63,15 +68,15 @@ abstract class Mode extends _Disposable {
 <h3>Constructors</h3>
 <div class="method"><h4 id="">
 <button class="show-code">Code</button>
-factory <strong>Mode</strong>(String modePath) <a class="anchor-link" href="#"
+factory <strong>Mode</strong>(String path) <a class="anchor-link" href="#"
               title="Permalink to Mode.Mode">#</a></h4>
 <div class="doc">
 <p>Creates a mode for the given 
-<span class="param">modePath</span>.</p>
+<span class="param">path</span>.</p>
 <p>The 
-<span class="param">modePath</span> is a path such as <code>ace/mode/text</code>.</p>
+<span class="param">path</span> is a path such as <code>ace/mode/text</code>.</p>
 <pre class="source">
-factory Mode(String modePath) =&gt; new _ModeProxy(modePath);
+factory Mode(String path) =&gt; new _ModeProxy(path);
 </pre>
 </div>
 </div>
@@ -121,6 +126,20 @@ Future get onLoad;
 </pre>
 </div>
 </div>
+<div class="field"><h4 id="path">
+<button class="show-code">Code</button>
+final String         <strong>path</strong> <a class="anchor-link"
+            href="#path"
+            title="Permalink to Mode.path">#</a>
+        </h4>
+        <div class="doc">
+<p>The path of this mode.</p>
+<p>This is a path such as <code>ace/mode/text</code>.</p>
+<pre class="source">
+String get path;
+</pre>
+</div>
+</div>
 </div>
 <div class="inherited">
 <h3>Methods</h3>
@@ -140,7 +159,7 @@ method has been called.</p>
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2013-11-13 06:23:45.023</div>
+          <div>This page was generated at 2013-11-13 12:59:22.062</div>
         </div>
         <script async src="../client-live-nav.js"></script>
         </body></html>
