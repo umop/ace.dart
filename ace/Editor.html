@@ -85,6 +85,8 @@ abstract class Editor extends _Disposable implements OptionsProvider {
  /// Returns _true_ if current [textInput] is in focus.
  bool get isFocused;
  
+ KeyBinding get keyBinding;
+ 
  /// The current [session.overwrite].
  bool overwrite;
  
@@ -419,6 +421,18 @@ final bool         <strong>isFocused</strong> <a class="anchor-link"
 <p>Returns <em>true</em> if current <a class="crossref" href="../ace/Editor.html#textInput">textInput</a> is in focus.</p>
 <pre class="source">
 bool get isFocused;
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="keyBinding">
+<button class="show-code">Code</button>
+final <a href="../ace/KeyBinding.html">KeyBinding</a>         <strong>keyBinding</strong> <a class="anchor-link"
+            href="#keyBinding"
+            title="Permalink to Editor.keyBinding">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+KeyBinding get keyBinding;
 </pre>
 </div>
 </div>
@@ -1042,7 +1056,7 @@ abstract void <strong>updateSelectionMarkers</strong>() <a class="anchor-link" h
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2013-11-14 12:58:19.814</div>
+          <div>This page was generated at 2013-11-15 09:16:17.517</div>
         </div>
         <script async src="../client-live-nav.js"></script>
         </body></html>
