@@ -44,7 +44,10 @@ abstract class KeyboardHandler extends _Disposable {
 
  /// Whether or not this keyboard handler has finished loading.
  bool get isLoaded;
-     
+ 
+ /// The name of this keyboard handler.
+ String get name;
+ 
  /// Completes when this keyboard handler [isLoaded].
  Future get onLoad;
  
@@ -159,6 +162,19 @@ bool get isLoaded;
 </pre>
 </div>
 </div>
+<div class="field"><h4 id="name">
+<button class="show-code">Code</button>
+final String         <strong>name</strong> <a class="anchor-link"
+            href="#name"
+            title="Permalink to KeyboardHandler.name">#</a>
+        </h4>
+        <div class="doc">
+<p>The name of this keyboard handler.</p>
+<pre class="source">
+String get name;
+</pre>
+</div>
+</div>
 <div class="field"><h4 id="onLoad">
 <button class="show-code">Code</button>
 final Future         <strong>onLoad</strong> <a class="anchor-link"
@@ -206,7 +222,7 @@ method has been called.</p>
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2013-11-15 10:17:36.003</div>
+          <div>This page was generated at 2013-11-15 10:20:01.866</div>
         </div>
         <script async src="../client-live-nav.js"></script>
         </body></html>
