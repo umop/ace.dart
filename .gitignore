@@ -3,4 +3,4 @@ packages/
 example/
 test/
 docs/
-content_shell*/*
+content_shell**
