@@ -35,17 +35,20 @@
 <pre class="source">
 abstract class KeyboardHandler extends _Disposable {
 
- static const EMACS = 'emacs';
- static const VIM   = 'vim';
+ static const DEFAULT  = null;
+ static const EMACS    = 'emacs';
+ static const VIM      = 'vim';
 
  /// A list of the available keyboard bindings for use with the 
  /// [new KeyboardHandler.named] constructor.
- static const List&lt;String&gt; BINDINGS = const [ EMACS, VIM ];
+ static const List&lt;String&gt; BINDINGS = const [ DEFAULT, EMACS, VIM ];
 
  /// Whether or not this keyboard handler has finished loading.
  bool get isLoaded;
  
  /// The name of this keyboard handler.
+ /// 
+ /// The [name] should be one of the values in [BINDINGS].
  String get name;
  
  /// Completes when this keyboard handler [isLoaded].
@@ -61,8 +64,13 @@ abstract class KeyboardHandler extends _Disposable {
  /// Creates a keyboard for the given [name].
  /// 
  /// The [name] should be one of the values in [BINDINGS].
- factory KeyboardHandler.named(String name) =&gt; 
-     new KeyboardHandler('ace/keyboard/$name');
+ factory KeyboardHandler.named(String name) {
+   if (name == DEFAULT) {
+     return new _KeyboardHandlerProxy._(DEFAULT);
+   } else {
+     return new KeyboardHandler('ace/keyboard/$name');
+   }
+ }
  
  /// Creates a keyboard for the given [path].
  /// 
@@ -86,7 +94,19 @@ const List&lt;String&gt;         <strong>BINDINGS</strong> <a class="anchor-link
 <p>A list of the available keyboard bindings for use with the 
 <a class="crossref" href="../ace/KeyboardHandler.html#named">new KeyboardHandler.named</a> constructor.</p>
 <pre class="source">
-static const List&lt;String&gt; BINDINGS = const [ EMACS, VIM ]
+static const List&lt;String&gt; BINDINGS = const [ DEFAULT, EMACS, VIM ]
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="DEFAULT">
+<button class="show-code">Code</button>
+const         <strong>DEFAULT</strong> <a class="anchor-link"
+            href="#DEFAULT"
+            title="Permalink to KeyboardHandler.DEFAULT">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+static const DEFAULT  = null
 </pre>
 </div>
 </div>
@@ -98,7 +118,7 @@ const         <strong>EMACS</strong> <a class="anchor-link"
         </h4>
         <div class="doc">
 <pre class="source">
-static const EMACS = 'emacs'
+static const EMACS    = 'emacs'
 </pre>
 </div>
 </div>
@@ -110,7 +130,7 @@ const         <strong>VIM</strong> <a class="anchor-link"
         </h4>
         <div class="doc">
 <pre class="source">
-static const VIM   = 'vim'
+static const VIM      = 'vim'
 </pre>
 </div>
 </div>
@@ -141,8 +161,13 @@ factory <strong>KeyboardHandler.named</strong>(String name) <a class="anchor-lin
 <p>The 
 <span class="param">name</span> should be one of the values in <a class="crossref" href="../ace/KeyboardHandler.html#BINDINGS">BINDINGS</a>.</p>
 <pre class="source">
-factory KeyboardHandler.named(String name) =&gt; 
-   new KeyboardHandler('ace/keyboard/$name');
+factory KeyboardHandler.named(String name) {
+ if (name == DEFAULT) {
+   return new _KeyboardHandlerProxy._(DEFAULT);
+ } else {
+   return new KeyboardHandler('ace/keyboard/$name');
+ }
+}
 </pre>
 </div>
 </div>
@@ -170,6 +195,7 @@ final String         <strong>name</strong> <a class="anchor-link"
         </h4>
         <div class="doc">
 <p>The name of this keyboard handler.</p>
+<p>The <a class="crossref" href="../ace/KeyboardHandler.html#name">name</a> should be one of the values in <a class="crossref" href="../ace/KeyboardHandler.html#BINDINGS">BINDINGS</a>.</p>
 <pre class="source">
 String get name;
 </pre>
@@ -222,7 +248,7 @@ method has been called.</p>
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2013-11-18 20:38:40.458</div>
+          <div>This page was generated at 2013-11-19 20:23:51.553</div>
         </div>
         <script async src="../client-live-nav.js"></script>
         </body></html>
