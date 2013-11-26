@@ -34,13 +34,16 @@
 <div class="doc">
 <p>The renderer draws to the screen.</p>
 <pre class="source">
-abstract class VirtualRenderer extends _Disposable {
+abstract class VirtualRenderer extends _Disposable implements OptionsProvider {
  
  /// The index of the first visible row.
  int get firstVisibleRow;
  
  /// Whether or not the gutter has a fixed width.
  bool fixedWidthGutter;
+ 
+ /// The column number of where the print margin is.
+ int printMarginColumn;
  
  /// Whether or not the gutter is visible.
  bool showGutter;
@@ -61,6 +64,9 @@ abstract class VirtualRenderer extends _Disposable {
 <h3>Extends</h3>
 <p>
 <span class="type-box"><span class="icon-class"></span><a href="../ace/_Disposable.html">_Disposable</a></span>&nbsp;&gt;&nbsp;<span class="type-box"><span class="icon-class"></span><strong>VirtualRenderer</strong></span></p>
+<h3>Implements</h3>
+<p>
+<span class="type-box"><span class="icon-class"></span><a href="../ace/OptionsProvider.html">OptionsProvider</a></span></p>
 <div>
 <h3>Constructors</h3>
 <div class="method"><h4 id="">
@@ -107,6 +113,19 @@ bool fixedWidthGutter
 </pre>
 </div>
 </div>
+<div class="field"><h4 id="printMarginColumn">
+<button class="show-code">Code</button>
+int         <strong>printMarginColumn</strong> <a class="anchor-link"
+            href="#printMarginColumn"
+            title="Permalink to VirtualRenderer.printMarginColumn">#</a>
+        </h4>
+        <div class="doc">
+<p>The column number of where the print margin is.</p>
+<pre class="source">
+int printMarginColumn
+</pre>
+</div>
+</div>
 <div class="field"><h4 id="showGutter">
 <button class="show-code">Code</button>
 bool         <strong>showGutter</strong> <a class="anchor-link"
@@ -134,6 +153,30 @@ error to call any methods or access any fields of this object after this
 method has been called.</p>
 </div>
 </div>
+<div class="method inherited"><h4 id="getOption">
+abstract dynamic <strong>getOption</strong>(String name) <a class="anchor-link" href="#getOption"
+              title="Permalink to VirtualRenderer.getOption">#</a></h4>
+<div class="inherited-from">inherited from <a href="../ace/OptionsProvider.html">OptionsProvider</a> </div><div class="doc">
+</div>
+</div>
+<div class="method inherited"><h4 id="getOptions">
+abstract Map&lt;String, dynamic&gt; <strong>getOptions</strong>(List&lt;String&gt; optionNames) <a class="anchor-link" href="#getOptions"
+              title="Permalink to VirtualRenderer.getOptions">#</a></h4>
+<div class="inherited-from">inherited from <a href="../ace/OptionsProvider.html">OptionsProvider</a> </div><div class="doc">
+</div>
+</div>
+<div class="method inherited"><h4 id="setOption">
+abstract void <strong>setOption</strong>(String name, value) <a class="anchor-link" href="#setOption"
+              title="Permalink to VirtualRenderer.setOption">#</a></h4>
+<div class="inherited-from">inherited from <a href="../ace/OptionsProvider.html">OptionsProvider</a> </div><div class="doc">
+</div>
+</div>
+<div class="method inherited"><h4 id="setOptions">
+abstract void <strong>setOptions</strong>(Map&lt;String, dynamic&gt; options) <a class="anchor-link" href="#setOptions"
+              title="Permalink to VirtualRenderer.setOptions">#</a></h4>
+<div class="inherited-from">inherited from <a href="../ace/OptionsProvider.html">OptionsProvider</a> </div><div class="doc">
+</div>
+</div>
 <div class="method"><h4 id="updateFull">
 abstract void <strong>updateFull</strong>({bool force: false}) <a class="anchor-link" href="#updateFull"
               title="Permalink to VirtualRenderer.updateFull">#</a></h4>
@@ -149,7 +192,7 @@ then the update is performed immediately.</p>
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2013-11-26 07:03:07.098</div>
+          <div>This page was generated at 2013-11-26 08:52:07.390</div>
         </div>
         <script async src="../client-live-nav.js"></script>
         </body></html>
