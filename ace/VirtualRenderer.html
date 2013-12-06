@@ -36,11 +36,17 @@
 <pre class="source">
 abstract class VirtualRenderer extends _Disposable implements OptionsProvider {
  
+ /// The root element containing this renderer.
+ html.Element get containerElement;
+ 
  /// The index of the first visible row.
  int get firstVisibleRow;
  
  /// Whether or not the gutter has a fixed width.
  bool fixedWidthGutter;
+ 
+ /// The element that the mouse events handlers are attached to.
+ html.Element get mouseEventTarget;
  
  /// The column number of where the print margin is.
  int printMarginColumn;
@@ -87,6 +93,19 @@ factory VirtualRenderer(html.Element container, Theme theme) =&gt;
 </div>
 <div>
 <h3>Properties</h3>
+<div class="field"><h4 id="containerElement">
+<button class="show-code">Code</button>
+final Element         <strong>containerElement</strong> <a class="anchor-link"
+            href="#containerElement"
+            title="Permalink to VirtualRenderer.containerElement">#</a>
+        </h4>
+        <div class="doc">
+<p>The root element containing this renderer.</p>
+<pre class="source">
+html.Element get containerElement;
+</pre>
+</div>
+</div>
 <div class="field"><h4 id="firstVisibleRow">
 <button class="show-code">Code</button>
 final int         <strong>firstVisibleRow</strong> <a class="anchor-link"
@@ -110,6 +129,19 @@ bool         <strong>fixedWidthGutter</strong> <a class="anchor-link"
 <p>Whether or not the gutter has a fixed width.</p>
 <pre class="source">
 bool fixedWidthGutter
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="mouseEventTarget">
+<button class="show-code">Code</button>
+final Element         <strong>mouseEventTarget</strong> <a class="anchor-link"
+            href="#mouseEventTarget"
+            title="Permalink to VirtualRenderer.mouseEventTarget">#</a>
+        </h4>
+        <div class="doc">
+<p>The element that the mouse events handlers are attached to.</p>
+<pre class="source">
+html.Element get mouseEventTarget;
 </pre>
 </div>
 </div>
@@ -192,7 +224,7 @@ then the update is performed immediately.</p>
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2013-12-03 08:47:56.008</div>
+          <div>This page was generated at 2013-12-06 15:39:15.403</div>
         </div>
         <script async src="../client-live-nav.js"></script>
         </body></html>
