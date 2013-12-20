@@ -43,6 +43,9 @@ abstract class EditSession extends _Disposable {
  /// Fired whenever the [document] changes.
  Stream&lt;Delta&gt; get onChange;
  
+ /// Fired whenever one of the [annotations] changes.
+ Stream get onChangeAnnotation;
+ 
  /// Fired whenever the gutter changes, either by setting or removing
  /// breakpoints, or when the gutter decorations change.
  Stream get onChangeBreakpoint;
@@ -64,6 +67,9 @@ abstract class EditSession extends _Disposable {
  
  /// Fired whenever the [useWrapMode] changes.
  Stream get onChangeWrapMode;
+ 
+ /// The current annotations for this session.
+ List&lt;Annotation&gt; annotations;
  
  /// A map from row index to CSS class name for all of the breakpoints in the 
  /// current [document].
@@ -170,6 +176,10 @@ abstract class EditSession extends _Disposable {
  // TODO(rms): undocumented and complex in ace.js, but a key ingredient in the
  // line wrapping code so we should deduce some documentation...
  bool adjustWrapLimit(int desiredLimit, int printMargin);
+ 
+ /// Clears all [annotations] for this session and fires an 
+ /// [onChangeAnnotation] event.
+ void clearAnnotations();
  
  /// Removes a breakpoint on the given [row] and fires an 
  /// [onChangeBreakPoint] event.
@@ -292,6 +302,19 @@ factory EditSession(Document document, Mode mode) =&gt;
 </div>
 <div>
 <h3>Properties</h3>
+<div class="field"><h4 id="annotations">
+<button class="show-code">Code</button>
+List&lt;<a href="../ace/Annotation.html">Annotation</a>&gt;         <strong>annotations</strong> <a class="anchor-link"
+            href="#annotations"
+            title="Permalink to EditSession.annotations">#</a>
+        </h4>
+        <div class="doc">
+<p>The current annotations for this session.</p>
+<pre class="source">
+List&lt;Annotation&gt; annotations
+</pre>
+</div>
+</div>
 <div class="field"><h4 id="breakpoints">
 <button class="show-code">Code</button>
 final Map&lt;int, String&gt;         <strong>breakpoints</strong> <a class="anchor-link"
@@ -370,6 +393,19 @@ final Stream&lt;<a href="../ace/Delta.html">Delta</a>&gt;         <strong>onChan
 <p>Fired whenever the <a class="crossref" href="../ace/EditSession.html#document">document</a> changes.</p>
 <pre class="source">
 Stream&lt;Delta&gt; get onChange;
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="onChangeAnnotation">
+<button class="show-code">Code</button>
+final Stream         <strong>onChangeAnnotation</strong> <a class="anchor-link"
+            href="#onChangeAnnotation"
+            title="Permalink to EditSession.onChangeAnnotation">#</a>
+        </h4>
+        <div class="doc">
+<p>Fired whenever one of the <a class="crossref" href="../ace/EditSession.html#annotations">annotations</a> changes.</p>
+<pre class="source">
+Stream get onChangeAnnotation;
 </pre>
 </div>
 </div>
@@ -698,6 +734,14 @@ abstract bool <strong>adjustWrapLimit</strong>(int desiredLimit, int printMargin
 <div class="doc">
 </div>
 </div>
+<div class="method"><h4 id="clearAnnotations">
+abstract void <strong>clearAnnotations</strong>() <a class="anchor-link" href="#clearAnnotations"
+              title="Permalink to EditSession.clearAnnotations">#</a></h4>
+<div class="doc">
+<p>Clears all <a class="crossref" href="../ace/EditSession.html#annotations">annotations</a> for this session and fires an 
+<a class="crossref" href="../ace/EditSession.html#onChangeAnnotation">onChangeAnnotation</a> event.</p>
+</div>
+</div>
 <div class="method"><h4 id="clearBreakpoint">
 abstract void <strong>clearBreakpoint</strong>(int row) <a class="anchor-link" href="#clearBreakpoint"
               title="Permalink to EditSession.clearBreakpoint">#</a></h4>
@@ -935,7 +979,7 @@ abstract void <strong>toggleOverwrite</strong>() <a class="anchor-link" href="#t
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2013-12-12 11:15:41.699</div>
+          <div>This page was generated at 2013-12-20 11:00:27.825</div>
         </div>
         <script async src="../client-live-nav.js"></script>
         </body></html>

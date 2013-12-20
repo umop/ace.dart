@@ -56,7 +56,7 @@ class Point {
  
  int get hashCode =&gt; row.hashCode ^ column.hashCode;
  
- js.JsObject _toProxy() =&gt; _jsify({'row': row, 'column': column});
+ js.JsObject _toProxy() =&gt; _jsMap({'row': row, 'column': column});
  
  String toString() =&gt; 'Point: [${row}/${column}]';
 }
@@ -198,7 +198,7 @@ String toString() =&gt; 'Point: [${row}/${column}]';
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2013-12-12 11:15:41.633</div>
+          <div>This page was generated at 2013-12-20 11:00:27.753</div>
         </div>
         <script async src="../client-live-nav.js"></script>
         </body></html>
