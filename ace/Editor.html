@@ -297,6 +297,14 @@ abstract class Editor extends _Disposable implements OptionsProvider {
  /// Converts the current [selection] entirely into uppercase characters.
  void toUpperCase();
  
+ /// Transposes two characters on either side of the current [cursorPosition].
+ /// 
+ /// When called at the end of a line, rather than transposing the last 
+ /// character of the line with the newline, which would be useless, this 
+ /// method transposes the last two characters on the line.
+ /// 
+ /// If the current [selection] is not empty or the current [cursorPosition]
+ /// is at the beginning of a line then this method does nothing.
  void transposeLetters();
  
  /// Performs an undo operation on the current [EditSession.document], 
@@ -1067,6 +1075,12 @@ abstract void <strong>toUpperCase</strong>() <a class="anchor-link" href="#toUpp
 abstract void <strong>transposeLetters</strong>() <a class="anchor-link" href="#transposeLetters"
               title="Permalink to Editor.transposeLetters">#</a></h4>
 <div class="doc">
+<p>Transposes two characters on either side of the current <a class="crossref" href="../ace/Editor.html#cursorPosition">cursorPosition</a>.</p>
+<p>When called at the end of a line, rather than transposing the last 
+character of the line with the newline, which would be useless, this 
+method transposes the last two characters on the line.</p>
+<p>If the current <a class="crossref" href="../ace/Editor.html#selection">selection</a> is not empty or the current <a class="crossref" href="../ace/Editor.html#cursorPosition">cursorPosition</a>
+is at the beginning of a line then this method does nothing.</p>
 </div>
 </div>
 <div class="method"><h4 id="undo">
@@ -1090,7 +1104,7 @@ abstract void <strong>updateSelectionMarkers</strong>() <a class="anchor-link" h
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2014-01-02 12:20:45.483</div>
+          <div>This page was generated at 2014-01-02 12:54:32.788</div>
         </div>
         <script async src="../client-live-nav.js"></script>
         </body></html>
