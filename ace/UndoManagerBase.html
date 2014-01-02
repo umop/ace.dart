@@ -40,7 +40,7 @@ abstract class UndoManagerBase extends _HasReverseProxy implements UndoManager {
  
  EditSession _session;
  /// The [EditSession] whose undo stack this undo manager manages; may be 
- /// `null` until the first call to [onExecuted].
+ /// `null` until the first call to [UndoManager.onExecuted].
  EditSession get session =&gt; _session;
  
  UndoManagerBase() {
@@ -151,7 +151,7 @@ final <a href="../ace/EditSession.html">EditSession</a>         <strong>session<
         </h4>
         <div class="doc">
 <p>The <a class="crossref" href="../ace/EditSession.html">EditSession</a> whose undo stack this undo manager manages; may be 
-<code>null</code> until the first call to <code>onExecuted</code>.</p>
+<code>null</code> until the first call to <a class="crossref" href="../ace/UndoManager.html#onExecuted">UndoManager.onExecuted</a>.</p>
 <pre class="source">
 EditSession get session =&gt; _session;
 </pre>
@@ -227,7 +227,7 @@ change.</p>
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2014-01-02 20:13:19.737</div>
+          <div>This page was generated at 2014-01-02 20:15:44.117</div>
         </div>
         <script async src="../client-live-nav.js"></script>
         </body></html>
