@@ -1,0 +1,234 @@
+        <!DOCTYPE html>
+        <html>
+        <head>
+                <meta charset="utf-8">
+        <title>UndoManagerBase abstract class / ace Library / Dart Documentation</title>
+        <link rel="stylesheet" type="text/css"
+            href="../styles.css">
+        <link href="//fonts.googleapis.com/css?family=Open+Sans:400,600,700,800" rel="stylesheet" type="text/css">
+        <link rel="shortcut icon" href="../favicon.ico">
+        
+        </head>
+        <body data-library="ace" data-type="UndoManagerBase">
+        <div class="page">
+        <div class="header">
+          <a href="../index.html"><div class="logo"></div></a>
+          <a href="../index.html">Dart Documentation</a>
+         &rsaquo; <a href="../ace.html">ace</a> &rsaquo; <a href="../ace/UndoManagerBase.html">UndoManagerBase</a>        <div id="search-box">
+          <input type="search" name="q" id="q" autocomplete="off"
+              class="search-input" placeholder="Search API">
+        </div>
+        
+      </div>
+      <div class="drop-down" id="drop-down"></div>
+      
+        <div class="nav">
+        
+</div>
+<div class="content">
+        <h2><strong>UndoManagerBase</strong>
+          abstract class
+        </h2>
+        
+<button id="show-inherited" class="show-inherited">Hide inherited</button>
+<div class="doc">
+<p>A base class for implementing <a class="crossref" href="../ace/UndoManager.html">UndoManager</a>.</p>
+<p>When setting <a class="crossref" href="../ace/EditSession.html#undoManager">EditSession.undoManager</a> the argument <em>must</em> be an object
+derived from this class.</p>
+<pre class="source">
+abstract class UndoManagerBase extends _HasReverseProxy implements UndoManager {
+ 
+ EditSession _session;
+ /// The [EditSession] whose undo stack this undo manager manages; may be 
+ /// `null` until the first [UndoManagerDelta] is executed.
+ EditSession get session =&gt; _session;
+ 
+ UndoManagerBase() {
+   _proxy['execute'] = new js.JsFunction.withThis((_, options) {
+     if (_session == null) {
+       _session = new _EditSessionProxy._(options['args'][1]);
+     }   
+     List&lt;UndoManagerDelta&gt; deltas =_list(options['args'][0]).map((proxy) =&gt; 
+         new UndoManagerDelta._(proxy)).toList(growable: false);      
+     bool merge = options['merge'];
+     onExecuted(deltas, merge);
+   });
+   _proxy['hasRedo'] = new js.JsFunction.withThis((_) =&gt; hasRedo);
+   _proxy['hasUndo'] = new js.JsFunction.withThis((_) =&gt; hasUndo);    
+   _proxy['redo'] = new js.JsFunction.withThis((_,[bool dontSelect = false]) =&gt; 
+       redo(select: !dontSelect));
+   _proxy['reset'] = new js.JsFunction.withThis((_) =&gt; reset());
+   _proxy['undo'] = new js.JsFunction.withThis((_,[bool dontSelect = false]) =&gt; 
+       undo(select: !dontSelect)); 
+ }
+ 
+ void _onDispose() {
+   _proxy.deleteProperty('execute');
+   _proxy.deleteProperty('hasRedo');
+   _proxy.deleteProperty('hasUndo');    
+   _proxy.deleteProperty('redo');
+   _proxy.deleteProperty('reset');
+   _proxy.deleteProperty('undo');
+ }
+}
+</pre>
+</div>
+<h3>Extends</h3>
+<p>
+<span class="type-box"><span class="icon-class"></span><a href="../ace/_Disposable.html">_Disposable</a></span>&nbsp;&gt;&nbsp;<span class="type-box"><span class="icon-class"></span><a href="../ace/_HasReverseProxy.html">_HasReverseProxy</a></span>&nbsp;&gt;&nbsp;<span class="type-box"><span class="icon-class"></span><strong>UndoManagerBase</strong></span></p>
+<h3>Implements</h3>
+<p>
+<span class="type-box"><span class="icon-class"></span><a href="../ace/UndoManager.html">UndoManager</a></span></p>
+<div>
+<h3>Constructors</h3>
+<div class="method"><h4 id="">
+<button class="show-code">Code</button>
+new <strong>UndoManagerBase</strong>() <a class="anchor-link" href="#"
+              title="Permalink to UndoManagerBase.UndoManagerBase">#</a></h4>
+<div class="doc">
+<div class="inherited">
+<p>Creates a new <a class="crossref" href="../dart_core/Object.html">Object</a> instance.</p>
+<p><a class="crossref" href="../dart_core/Object.html">Object</a> instances have no meaningful state, and are only useful
+through their identity. An <a class="crossref" href="../dart_core/Object.html">Object</a> instance is equal to itself
+only.</p>
+<div class="docs-inherited-from">docs inherited from Object </div></div>
+<pre class="source">
+UndoManagerBase() {
+ _proxy['execute'] = new js.JsFunction.withThis((_, options) {
+   if (_session == null) {
+     _session = new _EditSessionProxy._(options['args'][1]);
+   }   
+   List&lt;UndoManagerDelta&gt; deltas =_list(options['args'][0]).map((proxy) =&gt; 
+       new UndoManagerDelta._(proxy)).toList(growable: false);      
+   bool merge = options['merge'];
+   onExecuted(deltas, merge);
+ });
+ _proxy['hasRedo'] = new js.JsFunction.withThis((_) =&gt; hasRedo);
+ _proxy['hasUndo'] = new js.JsFunction.withThis((_) =&gt; hasUndo);    
+ _proxy['redo'] = new js.JsFunction.withThis((_,[bool dontSelect = false]) =&gt; 
+     redo(select: !dontSelect));
+ _proxy['reset'] = new js.JsFunction.withThis((_) =&gt; reset());
+ _proxy['undo'] = new js.JsFunction.withThis((_,[bool dontSelect = false]) =&gt; 
+     undo(select: !dontSelect)); 
+}
+</pre>
+</div>
+</div>
+</div>
+<div>
+<h3>Properties</h3>
+<div class="field inherited"><h4 id="hasRedo">
+<button class="show-code">Code</button>
+final bool         <strong>hasRedo</strong> <a class="anchor-link"
+            href="#hasRedo"
+            title="Permalink to UndoManagerBase.hasRedo">#</a>
+        </h4>
+        <div class="inherited-from">inherited from <a href="../ace/UndoManager.html">UndoManager</a> </div><div class="doc">
+<p>Returns <code>true</code> if there are <a class="crossref" href="../ace/UndoManager.html#redo">redo</a> operations left to perform.</p>
+<pre class="source">
+bool get hasRedo;
+</pre>
+</div>
+</div>
+<div class="field inherited"><h4 id="hasUndo">
+<button class="show-code">Code</button>
+final bool         <strong>hasUndo</strong> <a class="anchor-link"
+            href="#hasUndo"
+            title="Permalink to UndoManagerBase.hasUndo">#</a>
+        </h4>
+        <div class="inherited-from">inherited from <a href="../ace/UndoManager.html">UndoManager</a> </div><div class="doc">
+<p>Returns <code>true</code> if there are <a class="crossref" href="../ace/UndoManager.html#undo">undo</a> operations left to perform.</p>
+<pre class="source">
+bool get hasUndo;
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="session">
+<button class="show-code">Code</button>
+final <a href="../ace/EditSession.html">EditSession</a>         <strong>session</strong> <a class="anchor-link"
+            href="#session"
+            title="Permalink to UndoManagerBase.session">#</a>
+        </h4>
+        <div class="doc">
+<p>The <a class="crossref" href="../ace/EditSession.html">EditSession</a> whose undo stack this undo manager manages; may be 
+<code>null</code> until the first <a class="crossref" href="../ace/UndoManagerDelta.html">UndoManagerDelta</a> is executed.</p>
+<pre class="source">
+EditSession get session =&gt; _session;
+</pre>
+</div>
+</div>
+</div>
+<div class="inherited">
+<h3>Methods</h3>
+<div class="method inherited"><h4 id="dispose">
+<button class="show-code">Code</button>
+void <strong>dispose</strong>() <a class="anchor-link" href="#dispose"
+              title="Permalink to UndoManagerBase.dispose">#</a></h4>
+<div class="inherited-from">inherited from <a href="../ace/_HasReverseProxy.html">_HasReverseProxy</a> </div><div class="doc">
+<div class="inherited">
+<p>Dispose of any resources held by this object.</p>
+<p>This method will release any javascript proxy objects help by this 
+object.  It will also close any streams exposed by the object.  It is an
+error to call any methods or access any fields of this object after this
+method has been called.</p>
+<div class="docs-inherited-from">docs inherited from <a href="../ace/_Disposable.html">_Disposable</a> </div></div>
+<pre class="source">
+void dispose() {
+ if (_hasProxy) {
+   _onDispose();
+   _proxy = null;
+ }
+}
+</pre>
+</div>
+</div>
+<div class="method inherited"><h4 id="onExecuted">
+abstract void <strong>onExecuted</strong>(List&lt;<a href="../ace/UndoManagerDelta.html">UndoManagerDelta</a>&gt; deltas, bool merge) <a class="anchor-link" href="#onExecuted"
+              title="Permalink to UndoManagerBase.onExecuted">#</a></h4>
+<div class="inherited-from">inherited from <a href="../ace/UndoManager.html">UndoManager</a> </div><div class="doc">
+<p>Called internally when the given 
+<span class="param">deltas</span> have been executed.</p>
+<p>It is an error to call this method from outside this library.</p>
+</div>
+</div>
+<div class="method inherited"><h4 id="redo">
+abstract <a href="../ace/Range.html">Range</a> <strong>redo</strong>({bool select: true}) <a class="anchor-link" href="#redo"
+              title="Permalink to UndoManagerBase.redo">#</a></h4>
+<div class="inherited-from">inherited from <a href="../ace/UndoManager.html">UndoManager</a> </div><div class="doc">
+<p>Performs a redo operation on the associated document, reapplying the last 
+change.</p>
+<p>If 
+<span class="param">select</span> is <em>false</em> then the range of the change will not be selected.  </p>
+<p>Returns the range of the operation that is performed, or <code>null</code> if 
+<a class="crossref" href="../ace/UndoManager.html#hasRedo">hasRedo</a> is <em>false</em>.</p>
+</div>
+</div>
+<div class="method inherited"><h4 id="reset">
+abstract void <strong>reset</strong>() <a class="anchor-link" href="#reset"
+              title="Permalink to UndoManagerBase.reset">#</a></h4>
+<div class="inherited-from">inherited from <a href="../ace/UndoManager.html">UndoManager</a> </div><div class="doc">
+<p>Destroys the stack of <a class="crossref" href="../ace/UndoManager.html#undo">undo</a> and <a class="crossref" href="../ace/UndoManager.html#redo">redo</a> operations.</p>
+</div>
+</div>
+<div class="method inherited"><h4 id="undo">
+abstract <a href="../ace/Range.html">Range</a> <strong>undo</strong>({bool select: true}) <a class="anchor-link" href="#undo"
+              title="Permalink to UndoManagerBase.undo">#</a></h4>
+<div class="inherited-from">inherited from <a href="../ace/UndoManager.html">UndoManager</a> </div><div class="doc">
+<p>Performs an undo operation on the associated document, reverting the last 
+change.</p>
+<p>If 
+<span class="param">select</span> is <em>false</em> then the range of the change will not be selected.  </p>
+<p>Returns the range of the operation that is performed, or <code>null</code> if 
+<a class="crossref" href="../ace/UndoManager.html#hasUndo">hasUndo</a> is <em>false</em>.</p>
+</div>
+</div>
+</div>
+        </div>
+        <div class="clear"></div>
+        </div>
+        <div class="footer">
+          <div>This page was generated at 2014-01-02 19:58:34.273</div>
+        </div>
+        <script async src="../client-live-nav.js"></script>
+        </body></html>
+        

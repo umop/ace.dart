@@ -1,0 +1,104 @@
+        <!DOCTYPE html>
+        <html>
+        <head>
+                <meta charset="utf-8">
+        <title>UndoManagerDelta class / ace Library / Dart Documentation</title>
+        <link rel="stylesheet" type="text/css"
+            href="../styles.css">
+        <link href="//fonts.googleapis.com/css?family=Open+Sans:400,600,700,800" rel="stylesheet" type="text/css">
+        <link rel="shortcut icon" href="../favicon.ico">
+        
+        </head>
+        <body data-library="ace" data-type="UndoManagerDelta">
+        <div class="page">
+        <div class="header">
+          <a href="../index.html"><div class="logo"></div></a>
+          <a href="../index.html">Dart Documentation</a>
+         &rsaquo; <a href="../ace.html">ace</a> &rsaquo; <a href="../ace/UndoManagerDelta.html">UndoManagerDelta</a>        <div id="search-box">
+          <input type="search" name="q" id="q" autocomplete="off"
+              class="search-input" placeholder="Search API">
+        </div>
+        
+      </div>
+      <div class="drop-down" id="drop-down"></div>
+      
+        <div class="nav">
+        
+</div>
+<div class="content">
+        <h2><strong>UndoManagerDelta</strong>
+          class
+        </h2>
+        
+<button id="show-inherited" class="show-inherited">Hide inherited</button>
+<div class="doc">
+<pre class="source">
+class UndoManagerDelta {
+
+ final String group;
+ final List&lt;Delta&gt; deltas;
+ 
+ UndoManagerDelta(this.group, this.deltas);
+ 
+ UndoManagerDelta._(proxy) : this(
+     proxy['group'],
+     proxy['deltas'].map((delta) =&gt; 
+         new Delta._forProxy(delta)).toList(growable: false));
+}
+</pre>
+</div>
+<div>
+<h3>Constructors</h3>
+<div class="method"><h4 id="">
+<button class="show-code">Code</button>
+new <strong>UndoManagerDelta</strong>(String group, List&lt;<a href="../ace/Delta.html">Delta</a>&gt; deltas) <a class="anchor-link" href="#"
+              title="Permalink to UndoManagerDelta.UndoManagerDelta">#</a></h4>
+<div class="doc">
+<div class="inherited">
+<p>Creates a new <a class="crossref" href="../dart_core/Object.html">Object</a> instance.</p>
+<p><a class="crossref" href="../dart_core/Object.html">Object</a> instances have no meaningful state, and are only useful
+through their identity. An <a class="crossref" href="../dart_core/Object.html">Object</a> instance is equal to itself
+only.</p>
+<div class="docs-inherited-from">docs inherited from Object </div></div>
+<pre class="source">
+UndoManagerDelta(this.group, this.deltas);
+</pre>
+</div>
+</div>
+</div>
+<div>
+<h3>Properties</h3>
+<div class="field"><h4 id="deltas">
+<button class="show-code">Code</button>
+final List&lt;<a href="../ace/Delta.html">Delta</a>&gt;         <strong>deltas</strong> <a class="anchor-link"
+            href="#deltas"
+            title="Permalink to UndoManagerDelta.deltas">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+final List&lt;Delta&gt; deltas
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="group">
+<button class="show-code">Code</button>
+final String         <strong>group</strong> <a class="anchor-link"
+            href="#group"
+            title="Permalink to UndoManagerDelta.group">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+final String group
+</pre>
+</div>
+</div>
+</div>
+        </div>
+        <div class="clear"></div>
+        </div>
+        <div class="footer">
+          <div>This page was generated at 2014-01-02 19:58:34.068</div>
+        </div>
+        <script async src="../client-live-nav.js"></script>
+        </body></html>
+        
