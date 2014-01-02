@@ -49,7 +49,7 @@ abstract class UndoManagerBase extends _HasReverseProxy implements UndoManager {
        _session = new _EditSessionProxy._(options['args'][1]);
      }   
      List&lt;UndoManagerDelta&gt; deltas =_list(options['args'][0]).map((proxy) =&gt; 
-         new UndoManagerDelta._(proxy)).toList(growable: false);      
+         new UndoManagerDelta._fromProxy(proxy)).toList(growable: false);      
      bool merge = options['merge'];
      onExecuted(deltas, merge);
    });
@@ -99,7 +99,7 @@ UndoManagerBase() {
      _session = new _EditSessionProxy._(options['args'][1]);
    }   
    List&lt;UndoManagerDelta&gt; deltas =_list(options['args'][0]).map((proxy) =&gt; 
-       new UndoManagerDelta._(proxy)).toList(growable: false);      
+       new UndoManagerDelta._fromProxy(proxy)).toList(growable: false);      
    bool merge = options['merge'];
    onExecuted(deltas, merge);
  });
@@ -227,7 +227,7 @@ change.</p>
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2014-01-02 20:15:44.117</div>
+          <div>This page was generated at 2014-01-02 20:20:08.093</div>
         </div>
         <script async src="../client-live-nav.js"></script>
         </body></html>

@@ -36,35 +36,17 @@
 class UndoManagerDelta {
 
  final String group;
+ 
  final List&lt;Delta&gt; deltas;
  
- UndoManagerDelta(this.group, this.deltas);
+ UndoManagerDelta._(this.group, this.deltas);
  
- UndoManagerDelta._(proxy) : this(
+ UndoManagerDelta._fromProxy(proxy) : this._(
      proxy['group'],
      proxy['deltas'].map((delta) =&gt; 
          new Delta._forProxy(delta)).toList(growable: false));
 }
 </pre>
-</div>
-<div>
-<h3>Constructors</h3>
-<div class="method"><h4 id="">
-<button class="show-code">Code</button>
-new <strong>UndoManagerDelta</strong>(String group, List&lt;<a href="../ace/Delta.html">Delta</a>&gt; deltas) <a class="anchor-link" href="#"
-              title="Permalink to UndoManagerDelta.UndoManagerDelta">#</a></h4>
-<div class="doc">
-<div class="inherited">
-<p>Creates a new <a class="crossref" href="../dart_core/Object.html">Object</a> instance.</p>
-<p><a class="crossref" href="../dart_core/Object.html">Object</a> instances have no meaningful state, and are only useful
-through their identity. An <a class="crossref" href="../dart_core/Object.html">Object</a> instance is equal to itself
-only.</p>
-<div class="docs-inherited-from">docs inherited from Object </div></div>
-<pre class="source">
-UndoManagerDelta(this.group, this.deltas);
-</pre>
-</div>
-</div>
 </div>
 <div>
 <h3>Properties</h3>
@@ -97,7 +79,7 @@ final String group
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2014-01-02 20:15:43.891</div>
+          <div>This page was generated at 2014-01-02 20:20:07.862</div>
         </div>
         <script async src="../client-live-nav.js"></script>
         </body></html>
