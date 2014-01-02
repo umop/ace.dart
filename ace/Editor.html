@@ -175,8 +175,11 @@ abstract class Editor extends _Disposable implements OptionsProvider {
  /// Insert [text] at the current [cursorPosition].
  void insert(String text);
  
+ /// Returns `true` if the given [row] is currently fully visible on the 
+ /// screen.
  bool isRowFullyVisible(int row);
  
+ /// Returns `true` if the given [row] is currently visible on the screen.
  bool isRowVisible(int row);
  
  /// Move the cursor down in the document the specified number of [times].
@@ -833,12 +836,17 @@ abstract void <strong>insert</strong>(String text) <a class="anchor-link" href="
 abstract bool <strong>isRowFullyVisible</strong>(int row) <a class="anchor-link" href="#isRowFullyVisible"
               title="Permalink to Editor.isRowFullyVisible">#</a></h4>
 <div class="doc">
+<p>Returns <code>true</code> if the given 
+<span class="param">row</span> is currently fully visible on the 
+screen.</p>
 </div>
 </div>
 <div class="method"><h4 id="isRowVisible">
 abstract bool <strong>isRowVisible</strong>(int row) <a class="anchor-link" href="#isRowVisible"
               title="Permalink to Editor.isRowVisible">#</a></h4>
 <div class="doc">
+<p>Returns <code>true</code> if the given 
+<span class="param">row</span> is currently visible on the screen.</p>
 </div>
 </div>
 <div class="method"><h4 id="navigateDown">
@@ -1080,7 +1088,7 @@ abstract void <strong>updateSelectionMarkers</strong>() <a class="anchor-link" h
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2014-01-02 12:08:20.433</div>
+          <div>This page was generated at 2014-01-02 12:15:51.915</div>
         </div>
         <script async src="../client-live-nav.js"></script>
         </body></html>
