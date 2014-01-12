@@ -1,0 +1,123 @@
+        <!DOCTYPE html>
+        <html>
+        <head>
+                <meta charset="utf-8">
+        <title>Placeholder abstract class / ace Library / Dart Documentation</title>
+        <link rel="stylesheet" type="text/css"
+            href="../styles.css">
+        <link href="//fonts.googleapis.com/css?family=Open+Sans:400,600,700,800" rel="stylesheet" type="text/css">
+        <link rel="shortcut icon" href="../favicon.ico">
+        
+        </head>
+        <body data-library="ace" data-type="Placeholder">
+        <div class="page">
+        <div class="header">
+          <a href="../index.html"><div class="logo"></div></a>
+          <a href="../index.html">Dart Documentation</a>
+         &rsaquo; <a href="../ace.html">ace</a> &rsaquo; <a href="../ace/Placeholder.html">Placeholder</a>        <div id="search-box">
+          <input type="search" name="q" id="q" autocomplete="off"
+              class="search-input" placeholder="Search API">
+        </div>
+        
+      </div>
+      <div class="drop-down" id="drop-down"></div>
+      
+        <div class="nav">
+        
+</div>
+<div class="content">
+        <h2><strong>Placeholder</strong>
+          abstract class
+        </h2>
+        
+<button id="show-inherited" class="show-inherited">Hide inherited</button>
+<div class="doc">
+<pre class="source">
+abstract class Placeholder extends _Disposable {
+ 
+ int get length;
+ 
+ factory Placeholder(
+     EditSession session, 
+     int length, 
+     Point position,
+     Iterable&lt;Point&gt; others,
+     String mainClass,
+     String othersClass) {
+   assert(session is _EditSessionProxy);
+   return new _PlaceholderProxy(
+     session, length, position, others, mainClass, othersClass);
+ }
+}
+</pre>
+</div>
+<h3>Extends</h3>
+<p>
+<span class="type-box"><span class="icon-class"></span><a href="../ace/_Disposable.html">_Disposable</a></span>&nbsp;&gt;&nbsp;<span class="type-box"><span class="icon-class"></span><strong>Placeholder</strong></span></p>
+<div>
+<h3>Constructors</h3>
+<div class="method"><h4 id="">
+<button class="show-code">Code</button>
+factory <strong>Placeholder</strong>(<a href="../ace/EditSession.html">EditSession</a> session, int length, <a href="../ace/Point.html">Point</a> position, Iterable&lt;<a href="../ace/Point.html">Point</a>&gt; others, String mainClass, String othersClass) <a class="anchor-link" href="#"
+              title="Permalink to Placeholder.Placeholder">#</a></h4>
+<div class="doc">
+<div class="inherited">
+<p>Creates a new <a class="crossref" href="../dart_core/Object.html">Object</a> instance.</p>
+<p><a class="crossref" href="../dart_core/Object.html">Object</a> instances have no meaningful state, and are only useful
+through their identity. An <a class="crossref" href="../dart_core/Object.html">Object</a> instance is equal to itself
+only.</p>
+<div class="docs-inherited-from">docs inherited from Object </div></div>
+<pre class="source">
+factory Placeholder(
+   EditSession session, 
+   int length, 
+   Point position,
+   Iterable&lt;Point&gt; others,
+   String mainClass,
+   String othersClass) {
+ assert(session is _EditSessionProxy);
+ return new _PlaceholderProxy(
+   session, length, position, others, mainClass, othersClass);
+}
+</pre>
+</div>
+</div>
+</div>
+<div>
+<h3>Properties</h3>
+<div class="field"><h4 id="length">
+<button class="show-code">Code</button>
+final int         <strong>length</strong> <a class="anchor-link"
+            href="#length"
+            title="Permalink to Placeholder.length">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+int get length;
+</pre>
+</div>
+</div>
+</div>
+<div class="inherited">
+<h3>Methods</h3>
+<div class="method inherited"><h4 id="dispose">
+abstract void <strong>dispose</strong>() <a class="anchor-link" href="#dispose"
+              title="Permalink to Placeholder.dispose">#</a></h4>
+<div class="inherited-from">inherited from <a href="../ace/_Disposable.html">_Disposable</a> </div><div class="doc">
+<p>Dispose of any resources held by this object.</p>
+<p>This method will release any javascript proxy objects help by this 
+object.  It will also close any streams exposed by the object.  It is an
+error to call any methods or access any fields of this object after this
+method has been called.</p>
+</div>
+</div>
+</div>
+        </div>
+        <div class="clear"></div>
+        </div>
+        <div class="footer">
+          <div>This page was generated at 2014-01-12 18:47:30.509</div>
+        </div>
+        <script async src="../client-live-nav.js"></script>
+        </body></html>
+        

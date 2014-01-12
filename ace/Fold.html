@@ -1,0 +1,176 @@
+        <!DOCTYPE html>
+        <html>
+        <head>
+                <meta charset="utf-8">
+        <title>Fold abstract class / ace Library / Dart Documentation</title>
+        <link rel="stylesheet" type="text/css"
+            href="../styles.css">
+        <link href="//fonts.googleapis.com/css?family=Open+Sans:400,600,700,800" rel="stylesheet" type="text/css">
+        <link rel="shortcut icon" href="../favicon.ico">
+        
+        </head>
+        <body data-library="ace" data-type="Fold">
+        <div class="page">
+        <div class="header">
+          <a href="../index.html"><div class="logo"></div></a>
+          <a href="../index.html">Dart Documentation</a>
+         &rsaquo; <a href="../ace.html">ace</a> &rsaquo; <a href="../ace/Fold.html">Fold</a>        <div id="search-box">
+          <input type="search" name="q" id="q" autocomplete="off"
+              class="search-input" placeholder="Search API">
+        </div>
+        
+      </div>
+      <div class="drop-down" id="drop-down"></div>
+      
+        <div class="nav">
+        
+</div>
+<div class="content">
+        <h2><strong>Fold</strong>
+          abstract class
+        </h2>
+        
+<button id="show-inherited" class="show-inherited">Hide inherited</button>
+<div class="doc">
+<pre class="source">
+abstract class Fold extends RangeList {
+ 
+ Placeholder get placeholder;
+ Range get range; 
+ 
+ factory Fold(Range range, Placeholder placeholder) {
+   assert(placeholder is _PlaceholderProxy);
+   return new _FoldProxy(range, placeholder);
+ }
+}
+</pre>
+</div>
+<h3>Extends</h3>
+<p>
+<span class="type-box"><span class="icon-class"></span><a href="../ace/_Disposable.html">_Disposable</a></span>&nbsp;&gt;&nbsp;<span class="type-box"><span class="icon-class"></span><a href="../ace/RangeList.html">RangeList</a></span>&nbsp;&gt;&nbsp;<span class="type-box"><span class="icon-class"></span><strong>Fold</strong></span></p>
+<div>
+<h3>Constructors</h3>
+<div class="method"><h4 id="">
+<button class="show-code">Code</button>
+factory <strong>Fold</strong>(<a href="../ace/Range.html">Range</a> range, <a href="../ace/Placeholder.html">Placeholder</a> placeholder) <a class="anchor-link" href="#"
+              title="Permalink to Fold.Fold">#</a></h4>
+<div class="doc">
+<div class="inherited">
+<p>Creates a new <a class="crossref" href="../dart_core/Object.html">Object</a> instance.</p>
+<p><a class="crossref" href="../dart_core/Object.html">Object</a> instances have no meaningful state, and are only useful
+through their identity. An <a class="crossref" href="../dart_core/Object.html">Object</a> instance is equal to itself
+only.</p>
+<div class="docs-inherited-from">docs inherited from Object </div></div>
+<pre class="source">
+factory Fold(Range range, Placeholder placeholder) {
+ assert(placeholder is _PlaceholderProxy);
+ return new _FoldProxy(range, placeholder);
+}
+</pre>
+</div>
+</div>
+</div>
+<div>
+<h3>Properties</h3>
+<div class="field"><h4 id="placeholder">
+<button class="show-code">Code</button>
+final <a href="../ace/Placeholder.html">Placeholder</a>         <strong>placeholder</strong> <a class="anchor-link"
+            href="#placeholder"
+            title="Permalink to Fold.placeholder">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+Placeholder get placeholder;
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="range">
+<button class="show-code">Code</button>
+final <a href="../ace/Range.html">Range</a>         <strong>range</strong> <a class="anchor-link"
+            href="#range"
+            title="Permalink to Fold.range">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+Range get range;
+</pre>
+</div>
+</div>
+<div class="field inherited"><h4 id="ranges">
+<button class="show-code">Code</button>
+List&lt;<a href="../ace/Range.html">Range</a>&gt;         <strong>ranges</strong> <a class="anchor-link"
+            href="#ranges"
+            title="Permalink to Fold.ranges">#</a>
+        </h4>
+        <div class="inherited-from">inherited from <a href="../ace/RangeList.html">RangeList</a> </div><div class="doc">
+<pre class="source">
+List&lt;Range&gt; ranges
+</pre>
+</div>
+</div>
+</div>
+<div class="inherited">
+<h3>Methods</h3>
+<div class="method inherited"><h4 id="add">
+abstract List&lt;<a href="../ace/Range.html">Range</a>&gt; <strong>add</strong>(<a href="../ace/Range.html">Range</a> range) <a class="anchor-link" href="#add"
+              title="Permalink to Fold.add">#</a></h4>
+<div class="inherited-from">inherited from <a href="../ace/RangeList.html">RangeList</a> </div><div class="doc">
+</div>
+</div>
+<div class="method inherited"><h4 id="addList">
+abstract List&lt;List&lt;<a href="../ace/Range.html">Range</a>&gt;&gt; <strong>addList</strong>(Iterable&lt;<a href="../ace/Range.html">Range</a>&gt; ranges) <a class="anchor-link" href="#addList"
+              title="Permalink to Fold.addList">#</a></h4>
+<div class="inherited-from">inherited from <a href="../ace/RangeList.html">RangeList</a> </div><div class="doc">
+</div>
+</div>
+<div class="method inherited"><h4 id="contains">
+abstract bool <strong>contains</strong>(int row, int column) <a class="anchor-link" href="#contains"
+              title="Permalink to Fold.contains">#</a></h4>
+<div class="inherited-from">inherited from <a href="../ace/RangeList.html">RangeList</a> </div><div class="doc">
+</div>
+</div>
+<div class="method inherited"><h4 id="containsPoint">
+abstract bool <strong>containsPoint</strong>(<a href="../ace/Point.html">Point</a> p) <a class="anchor-link" href="#containsPoint"
+              title="Permalink to Fold.containsPoint">#</a></h4>
+<div class="inherited-from">inherited from <a href="../ace/RangeList.html">RangeList</a> </div><div class="doc">
+</div>
+</div>
+<div class="method inherited"><h4 id="dispose">
+abstract void <strong>dispose</strong>() <a class="anchor-link" href="#dispose"
+              title="Permalink to Fold.dispose">#</a></h4>
+<div class="inherited-from">inherited from <a href="../ace/_Disposable.html">_Disposable</a> </div><div class="doc">
+<p>Dispose of any resources held by this object.</p>
+<p>This method will release any javascript proxy objects help by this 
+object.  It will also close any streams exposed by the object.  It is an
+error to call any methods or access any fields of this object after this
+method has been called.</p>
+</div>
+</div>
+<div class="method inherited"><h4 id="merge">
+abstract List&lt;<a href="../ace/Range.html">Range</a>&gt; <strong>merge</strong>() <a class="anchor-link" href="#merge"
+              title="Permalink to Fold.merge">#</a></h4>
+<div class="inherited-from">inherited from <a href="../ace/RangeList.html">RangeList</a> </div><div class="doc">
+</div>
+</div>
+<div class="method inherited"><h4 id="pointIndex">
+abstract int <strong>pointIndex</strong>(<a href="../ace/Point.html">Point</a> p, {bool excludeEdges: false, int startIndex: 0}) <a class="anchor-link" href="#pointIndex"
+              title="Permalink to Fold.pointIndex">#</a></h4>
+<div class="inherited-from">inherited from <a href="../ace/RangeList.html">RangeList</a> </div><div class="doc">
+</div>
+</div>
+<div class="method inherited"><h4 id="substractPoint">
+abstract List&lt;<a href="../ace/Range.html">Range</a>&gt; <strong>substractPoint</strong>(<a href="../ace/Point.html">Point</a> p) <a class="anchor-link" href="#substractPoint"
+              title="Permalink to Fold.substractPoint">#</a></h4>
+<div class="inherited-from">inherited from <a href="../ace/RangeList.html">RangeList</a> </div><div class="doc">
+</div>
+</div>
+</div>
+        </div>
+        <div class="clear"></div>
+        </div>
+        <div class="footer">
+          <div>This page was generated at 2014-01-12 18:47:30.567</div>
+        </div>
+        <script async src="../client-live-nav.js"></script>
+        </body></html>
+        

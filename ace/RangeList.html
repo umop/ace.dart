@@ -1,0 +1,156 @@
+        <!DOCTYPE html>
+        <html>
+        <head>
+                <meta charset="utf-8">
+        <title>RangeList abstract class / ace Library / Dart Documentation</title>
+        <link rel="stylesheet" type="text/css"
+            href="../styles.css">
+        <link href="//fonts.googleapis.com/css?family=Open+Sans:400,600,700,800" rel="stylesheet" type="text/css">
+        <link rel="shortcut icon" href="../favicon.ico">
+        
+        </head>
+        <body data-library="ace" data-type="RangeList">
+        <div class="page">
+        <div class="header">
+          <a href="../index.html"><div class="logo"></div></a>
+          <a href="../index.html">Dart Documentation</a>
+         &rsaquo; <a href="../ace.html">ace</a> &rsaquo; <a href="../ace/RangeList.html">RangeList</a>        <div id="search-box">
+          <input type="search" name="q" id="q" autocomplete="off"
+              class="search-input" placeholder="Search API">
+        </div>
+        
+      </div>
+      <div class="drop-down" id="drop-down"></div>
+      
+        <div class="nav">
+        
+</div>
+<div class="content">
+        <h2><strong>RangeList</strong>
+          abstract class
+        </h2>
+        
+<button id="show-inherited" class="show-inherited">Hide inherited</button>
+<div class="doc">
+<pre class="source">
+abstract class RangeList extends _Disposable {
+ 
+ List&lt;Range&gt; ranges;
+ 
+ factory RangeList() =&gt; new _RangeListProxy();
+ 
+ List&lt;Range&gt; add(Range range);
+ List&lt;List&lt;Range&gt;&gt; addList(Iterable&lt;Range&gt; ranges);
+ bool contains(int row, int column);
+ bool containsPoint(Point p);
+ List&lt;Range&gt; merge();
+ int pointIndex(Point p, { bool excludeEdges: false, int startIndex: 0 });
+ List&lt;Range&gt; substractPoint(Point p);
+}
+</pre>
+</div>
+<h3>Extends</h3>
+<p>
+<span class="type-box"><span class="icon-class"></span><a href="../ace/_Disposable.html">_Disposable</a></span>&nbsp;&gt;&nbsp;<span class="type-box"><span class="icon-class"></span><strong>RangeList</strong></span></p>
+<h3>Subclasses</h3>
+<p>
+<span class="type-box"><span class="icon-class"></span><a href="../ace/Fold.html">Fold</a></span></p>
+<div>
+<h3>Constructors</h3>
+<div class="method"><h4 id="">
+<button class="show-code">Code</button>
+factory <strong>RangeList</strong>() <a class="anchor-link" href="#"
+              title="Permalink to RangeList.RangeList">#</a></h4>
+<div class="doc">
+<div class="inherited">
+<p>Creates a new <a class="crossref" href="../dart_core/Object.html">Object</a> instance.</p>
+<p><a class="crossref" href="../dart_core/Object.html">Object</a> instances have no meaningful state, and are only useful
+through their identity. An <a class="crossref" href="../dart_core/Object.html">Object</a> instance is equal to itself
+only.</p>
+<div class="docs-inherited-from">docs inherited from Object </div></div>
+<pre class="source">
+factory RangeList() =&gt; new _RangeListProxy();
+</pre>
+</div>
+</div>
+</div>
+<div>
+<h3>Properties</h3>
+<div class="field"><h4 id="ranges">
+<button class="show-code">Code</button>
+List&lt;<a href="../ace/Range.html">Range</a>&gt;         <strong>ranges</strong> <a class="anchor-link"
+            href="#ranges"
+            title="Permalink to RangeList.ranges">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+List&lt;Range&gt; ranges
+</pre>
+</div>
+</div>
+</div>
+<div>
+<h3>Methods</h3>
+<div class="method"><h4 id="add">
+abstract List&lt;<a href="../ace/Range.html">Range</a>&gt; <strong>add</strong>(<a href="../ace/Range.html">Range</a> range) <a class="anchor-link" href="#add"
+              title="Permalink to RangeList.add">#</a></h4>
+<div class="doc">
+</div>
+</div>
+<div class="method"><h4 id="addList">
+abstract List&lt;List&lt;<a href="../ace/Range.html">Range</a>&gt;&gt; <strong>addList</strong>(Iterable&lt;<a href="../ace/Range.html">Range</a>&gt; ranges) <a class="anchor-link" href="#addList"
+              title="Permalink to RangeList.addList">#</a></h4>
+<div class="doc">
+</div>
+</div>
+<div class="method"><h4 id="contains">
+abstract bool <strong>contains</strong>(int row, int column) <a class="anchor-link" href="#contains"
+              title="Permalink to RangeList.contains">#</a></h4>
+<div class="doc">
+</div>
+</div>
+<div class="method"><h4 id="containsPoint">
+abstract bool <strong>containsPoint</strong>(<a href="../ace/Point.html">Point</a> p) <a class="anchor-link" href="#containsPoint"
+              title="Permalink to RangeList.containsPoint">#</a></h4>
+<div class="doc">
+</div>
+</div>
+<div class="method inherited"><h4 id="dispose">
+abstract void <strong>dispose</strong>() <a class="anchor-link" href="#dispose"
+              title="Permalink to RangeList.dispose">#</a></h4>
+<div class="inherited-from">inherited from <a href="../ace/_Disposable.html">_Disposable</a> </div><div class="doc">
+<p>Dispose of any resources held by this object.</p>
+<p>This method will release any javascript proxy objects help by this 
+object.  It will also close any streams exposed by the object.  It is an
+error to call any methods or access any fields of this object after this
+method has been called.</p>
+</div>
+</div>
+<div class="method"><h4 id="merge">
+abstract List&lt;<a href="../ace/Range.html">Range</a>&gt; <strong>merge</strong>() <a class="anchor-link" href="#merge"
+              title="Permalink to RangeList.merge">#</a></h4>
+<div class="doc">
+</div>
+</div>
+<div class="method"><h4 id="pointIndex">
+abstract int <strong>pointIndex</strong>(<a href="../ace/Point.html">Point</a> p, {bool excludeEdges: false, int startIndex: 0}) <a class="anchor-link" href="#pointIndex"
+              title="Permalink to RangeList.pointIndex">#</a></h4>
+<div class="doc">
+</div>
+</div>
+<div class="method"><h4 id="substractPoint">
+abstract List&lt;<a href="../ace/Range.html">Range</a>&gt; <strong>substractPoint</strong>(<a href="../ace/Point.html">Point</a> p) <a class="anchor-link" href="#substractPoint"
+              title="Permalink to RangeList.substractPoint">#</a></h4>
+<div class="doc">
+</div>
+</div>
+</div>
+        </div>
+        <div class="clear"></div>
+        </div>
+        <div class="footer">
+          <div>This page was generated at 2014-01-12 18:47:30.473</div>
+        </div>
+        <script async src="../client-live-nav.js"></script>
+        </body></html>
+        

@@ -38,7 +38,7 @@ state, thus providing a means to change editor state dynamically.</p>
 <p>An instance of <a class="crossref" href="../ace/EditSession.html">EditSession</a> may be attached to only one <a class="crossref" href="../ace/Document.html">Document</a>.  An
 instance of <a class="crossref" href="../ace/Document.html">Document</a> may be attached to more than one <a class="crossref" href="../ace/EditSession.html">EditSession</a>.</p>
 <pre class="source">
-abstract class EditSession extends _Disposable {
+abstract class EditSession extends _Disposable implements Folding {
  
  /// Fired whenever the [document] changes.
  Stream&lt;Delta&gt; get onChange;
@@ -49,6 +49,9 @@ abstract class EditSession extends _Disposable {
  /// Fired whenever the gutter changes, either by setting or removing
  /// breakpoints, or when the gutter decorations change.
  Stream get onChangeBreakpoint;
+ 
+ /// Fired whenever a code fold is added, removed or updated.
+ Stream&lt;FoldChangeEvent&gt; get onChangeFold;
  
  /// Fired whenever the [overwrite] changes.
  Stream get onChangeOverwrite;
@@ -282,6 +285,9 @@ abstract class EditSession extends _Disposable {
 <h3>Extends</h3>
 <p>
 <span class="type-box"><span class="icon-class"></span><a href="../ace/_Disposable.html">_Disposable</a></span>&nbsp;&gt;&nbsp;<span class="type-box"><span class="icon-class"></span><strong>EditSession</strong></span></p>
+<h3>Implements</h3>
+<p>
+<span class="type-box"><span class="icon-class"></span><a href="../ace/Folding.html">Folding</a></span></p>
 <div>
 <h3>Constructors</h3>
 <div class="method"><h4 id="">
@@ -420,6 +426,19 @@ final Stream         <strong>onChangeBreakpoint</strong> <a class="anchor-link"
 breakpoints, or when the gutter decorations change.</p>
 <pre class="source">
 Stream get onChangeBreakpoint;
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="onChangeFold">
+<button class="show-code">Code</button>
+final Stream&lt;<a href="../ace/FoldChangeEvent.html">FoldChangeEvent</a>&gt;         <strong>onChangeFold</strong> <a class="anchor-link"
+            href="#onChangeFold"
+            title="Permalink to EditSession.onChangeFold">#</a>
+        </h4>
+        <div class="doc">
+<p>Fired whenever a code fold is added, removed or updated.</p>
+<pre class="source">
+Stream&lt;FoldChangeEvent&gt; get onChangeFold;
 </pre>
 </div>
 </div>
@@ -719,6 +738,12 @@ Map get wrapLimitRange;
 </div>
 <div>
 <h3>Methods</h3>
+<div class="method inherited"><h4 id="addFold">
+abstract <a href="../ace/Fold.html">Fold</a> <strong>addFold</strong>(<a href="../ace/Fold.html">Fold</a> fold) <a class="anchor-link" href="#addFold"
+              title="Permalink to EditSession.addFold">#</a></h4>
+<div class="inherited-from">inherited from <a href="../ace/Folding.html">Folding</a> </div><div class="doc">
+</div>
+</div>
 <div class="method"><h4 id="addGutterDecoration">
 abstract void <strong>addGutterDecoration</strong>(int row, String className) <a class="anchor-link" href="#addGutterDecoration"
               title="Permalink to EditSession.addGutterDecoration">#</a></h4>
@@ -799,6 +824,12 @@ abstract int <strong>duplicateLines</strong>(int firstRow, int lastRow) <a class
 <span class="param">lastRow</span>, inclusive.</p>
 </div>
 </div>
+<div class="method inherited"><h4 id="getAllFolds">
+abstract List&lt;<a href="../ace/Fold.html">Fold</a>&gt; <strong>getAllFolds</strong>() <a class="anchor-link" href="#getAllFolds"
+              title="Permalink to EditSession.getAllFolds">#</a></h4>
+<div class="inherited-from">inherited from <a href="../ace/Folding.html">Folding</a> </div><div class="doc">
+</div>
+</div>
 <div class="method"><h4 id="getAWordRange">
 abstract <a href="../ace/Range.html">Range</a> <strong>getAWordRange</strong>(int row, int column) <a class="anchor-link" href="#getAWordRange"
               title="Permalink to EditSession.getAWordRange">#</a></h4>
@@ -807,6 +838,12 @@ abstract <a href="../ace/Range.html">Range</a> <strong>getAWordRange</strong>(in
 <p>Start from the given 
 <span class="param">row</span> and 
 <span class="param">column</span>.</p>
+</div>
+</div>
+<div class="method inherited"><h4 id="getFoldAt">
+abstract <a href="../ace/Fold.html">Fold</a> <strong>getFoldAt</strong>(int row, int column, {int side}) <a class="anchor-link" href="#getFoldAt"
+              title="Permalink to EditSession.getFoldAt">#</a></h4>
+<div class="inherited-from">inherited from <a href="../ace/Folding.html">Folding</a> </div><div class="doc">
 </div>
 </div>
 <div class="method"><h4 id="getLine">
@@ -904,6 +941,12 @@ abstract <a href="../ace/Point.html">Point</a> <strong>remove</strong>(<a href="
 <span class="param">range</span> from the current <a class="crossref" href="../ace/EditSession.html#document">document</a>.</p>
 </div>
 </div>
+<div class="method inherited"><h4 id="removeFold">
+abstract void <strong>removeFold</strong>(<a href="../ace/Fold.html">Fold</a> fold) <a class="anchor-link" href="#removeFold"
+              title="Permalink to EditSession.removeFold">#</a></h4>
+<div class="inherited-from">inherited from <a href="../ace/Folding.html">Folding</a> </div><div class="doc">
+</div>
+</div>
 <div class="method"><h4 id="removeGutterDecoration">
 abstract void <strong>removeGutterDecoration</strong>(int row, String className) <a class="anchor-link" href="#removeGutterDecoration"
               title="Permalink to EditSession.removeGutterDecoration">#</a></h4>
@@ -979,7 +1022,7 @@ abstract void <strong>toggleOverwrite</strong>() <a class="anchor-link" href="#t
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2014-01-09 08:18:12.646</div>
+          <div>This page was generated at 2014-01-12 18:47:30.610</div>
         </div>
         <script async src="../client-live-nav.js"></script>
         </body></html>
