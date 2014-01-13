@@ -59,13 +59,15 @@ class Annotation {
    this.html : null,
    this.row  : 0,
    this.text : null,
-   this.type : INFO });
-   
+   this.type : INFO
+ });
+ 
  Annotation._(proxy) : this(
    html: proxy['html'],
    row : proxy['row'] == null ? 0 : proxy['row'],
    text: proxy['text'],
-   type: proxy['type'] == null ? INFO : proxy['type'] );
+   type: proxy['type'] == null ? INFO : proxy['type']
+ );
    
  bool operator ==(Object other) {
    if(identical(this, other)) return true;
@@ -142,7 +144,8 @@ const Annotation({
  this.html : null,
  this.row  : 0,
  this.text : null,
- this.type : INFO });
+ this.type : INFO
+});
 </pre>
 </div>
 </div>
@@ -270,7 +273,7 @@ bool operator ==(Object other) {
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2014-01-12 20:49:49.633</div>
+          <div>This page was generated at 2014-01-13 11:00:52.983</div>
         </div>
         <script async src="../client-live-nav.js"></script>
         </body></html>
