@@ -268,6 +268,12 @@ abstract class EditSession extends _Disposable implements Folding {
  /// Removes the given CSS [className] from the given [row].
  void removeGutterDecoration(int row, String className);
  
+ /// Removes the marker with the given [markerId]. 
+ /// 
+ /// If the marker was in front, this method fires an [onChangeFrontMarker] 
+ /// event; if it was in the back then it fires an [onChangeBackMarker] event.
+ void removeMarker(int markerId);
+ 
  /// Replaces a given [range] in the [document] with the new [text] and returns
  /// a point at the end of the new text.
  Point replace(Range range, String text);
@@ -1021,6 +1027,16 @@ abstract void <strong>removeGutterDecoration</strong>(int row, String className)
 <span class="param">row</span>.</p>
 </div>
 </div>
+<div class="method"><h4 id="removeMarker">
+abstract void <strong>removeMarker</strong>(int markerId) <a class="anchor-link" href="#removeMarker"
+              title="Permalink to EditSession.removeMarker">#</a></h4>
+<div class="doc">
+<p>Removes the marker with the given 
+<span class="param">markerId</span>. </p>
+<p>If the marker was in front, this method fires an <a class="crossref" href="../ace/EditSession.html#onChangeFrontMarker">onChangeFrontMarker</a> 
+event; if it was in the back then it fires an <a class="crossref" href="../ace/EditSession.html#onChangeBackMarker">onChangeBackMarker</a> event.</p>
+</div>
+</div>
 <div class="method"><h4 id="replace">
 abstract <a href="../ace/Point.html">Point</a> <strong>replace</strong>(<a href="../ace/Range.html">Range</a> range, String text) <a class="anchor-link" href="#replace"
               title="Permalink to EditSession.replace">#</a></h4>
@@ -1087,7 +1103,7 @@ abstract void <strong>toggleOverwrite</strong>() <a class="anchor-link" href="#t
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2014-01-13 12:50:41.688</div>
+          <div>This page was generated at 2014-01-13 13:29:31.425</div>
         </div>
         <script async src="../client-live-nav.js"></script>
         </body></html>
