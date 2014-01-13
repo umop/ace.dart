@@ -43,33 +43,34 @@ class Marker {
  /// The CSS class for this marker.
  final String className;
  
- /// The unique id of this marker; may be `null`.
- ///
- /// Marker id's are assigned by an instance of [EditSession].
+ /// The unique id of this marker or `null` if this marker was not created by
+ /// an instance of [EditSession].
  final int id;
  
  /// Whether this marker is rendered in the front marker layer or the back
  /// marker layer.
  final bool inFront;
  
+ /// The defined range of this marker or `null` if this is a dynamic marker. 
  final Range range;
  
+ /// The type of this marker; defaults to [LINE].
  final String type;
  
- Marker._(
+ Marker._({
    this.range, 
-   this.className, {
+   this.className,
    this.id      : null,
    this.inFront : false,
    this.type    : LINE 
  });
  
  Marker._fromProxy(proxy) : this._(
-   new Range._(proxy['range']),
-   proxy['clazz'],
-   id: proxy['id'],
-   inFront: proxy['inFront'],
-   type: proxy['type']
+   range     : proxy['range'] == null ? null : new Range._(proxy['range']),
+   className : proxy['clazz'],
+   id        : proxy['id'],
+   inFront   : proxy['inFront'],
+   type      : proxy['type']
  );
  
  bool operator ==(Object other) {
@@ -83,15 +84,19 @@ class Marker {
        &amp;&amp; type == o.type;
  }
  
- int get hashCode =&gt; className.hashCode ^ id.hashCode ^ inFront.hashCode 
-     ^ range.hashCode ^ type.hashCode;
+ int get hashCode =&gt; className.hashCode 
+     ^ id.hashCode 
+     ^ inFront.hashCode 
+     ^ range.hashCode 
+     ^ type.hashCode;
  
  js.JsObject _toProxy() =&gt; _jsMap({
    'clazz'   : className,
    'id'      : id,
    'inFront' : inFront,
-   'range'   : range._toProxy(),
-   'type'    : type });
+   'range'   : range == null ? null : range._toProxy(),
+   'type'    : type
+ });
 }
 </pre>
 </div>
@@ -179,8 +184,11 @@ there are no distribution guarantees.</p>
 equality operator as well to maintain consistency.</p>
 <div class="docs-inherited-from">docs inherited from Object </div></div>
 <pre class="source">
-int get hashCode =&gt; className.hashCode ^ id.hashCode ^ inFront.hashCode 
-   ^ range.hashCode ^ type.hashCode;
+int get hashCode =&gt; className.hashCode 
+   ^ id.hashCode 
+   ^ inFront.hashCode 
+   ^ range.hashCode 
+   ^ type.hashCode;
 </pre>
 </div>
 </div>
@@ -191,8 +199,8 @@ final int         <strong>id</strong> <a class="anchor-link"
             title="Permalink to Marker.id">#</a>
         </h4>
         <div class="doc">
-<p>The unique id of this marker; may be <code>null</code>.</p>
-<p>Marker id's are assigned by an instance of <a class="crossref" href="../ace/EditSession.html">EditSession</a>.</p>
+<p>The unique id of this marker or <code>null</code> if this marker was not created by
+an instance of <a class="crossref" href="../ace/EditSession.html">EditSession</a>.</p>
 <pre class="source">
 final int id
 </pre>
@@ -219,6 +227,7 @@ final <a href="../ace/Range.html">Range</a>         <strong>range</strong> <a cl
             title="Permalink to Marker.range">#</a>
         </h4>
         <div class="doc">
+<p>The defined range of this marker or <code>null</code> if this is a dynamic marker. </p>
 <pre class="source">
 final Range range
 </pre>
@@ -231,6 +240,7 @@ final String         <strong>type</strong> <a class="anchor-link"
             title="Permalink to Marker.type">#</a>
         </h4>
         <div class="doc">
+<p>The type of this marker; defaults to <a class="crossref" href="../ace/Marker.html#LINE">LINE</a>.</p>
 <pre class="source">
 final String type
 </pre>
@@ -284,7 +294,7 @@ bool operator ==(Object other) {
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2014-01-13 14:55:33.804</div>
+          <div>This page was generated at 2014-01-13 15:29:39.457</div>
         </div>
         <script async src="../client-live-nav.js"></script>
         </body></html>
