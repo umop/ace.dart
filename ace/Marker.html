@@ -1,0 +1,252 @@
+        <!DOCTYPE html>
+        <html>
+        <head>
+                <meta charset="utf-8">
+        <title>Marker class / ace Library / Dart Documentation</title>
+        <link rel="stylesheet" type="text/css"
+            href="../styles.css">
+        <link href="//fonts.googleapis.com/css?family=Open+Sans:400,600,700,800" rel="stylesheet" type="text/css">
+        <link rel="shortcut icon" href="../favicon.ico">
+        
+        </head>
+        <body data-library="ace" data-type="Marker">
+        <div class="page">
+        <div class="header">
+          <a href="../index.html"><div class="logo"></div></a>
+          <a href="../index.html">Dart Documentation</a>
+         &rsaquo; <a href="../ace.html">ace</a> &rsaquo; <a href="../ace/Marker.html">Marker</a>        <div id="search-box">
+          <input type="search" name="q" id="q" autocomplete="off"
+              class="search-input" placeholder="Search API">
+        </div>
+        
+      </div>
+      <div class="drop-down" id="drop-down"></div>
+      
+        <div class="nav">
+        
+</div>
+<div class="content">
+        <h2><strong>Marker</strong>
+          class
+        </h2>
+        
+<button id="show-inherited" class="show-inherited">Hide inherited</button>
+<div class="doc">
+<pre class="source">
+class Marker {
+ 
+ static const LINE = 'line';
+ 
+ /// The CSS class for this marker.
+ final String className;
+ 
+ /// The unique id of this marker; may be `null`.
+ ///
+ /// Marker id's are assigned by an instance of [EditSession].
+ final int id;
+ 
+ /// Whether this marker is rendered in the front marker layer or the back
+ /// marker layer.
+ final bool inFront;
+ 
+ final Range range;
+ 
+ final String type;
+ 
+ Marker._(
+   this.range, 
+   this.className, {
+   this.id      : null,
+   this.inFront : false,
+   this.type    : LINE 
+ });
+ 
+ Marker._fromProxy(proxy) : this._(
+   new Range._(proxy['range']),
+   proxy['clazz'],
+   id: proxy['id'],
+   inFront: proxy['inFront'],
+   type: proxy['type']
+ );
+ 
+ bool operator ==(Object other) {
+   if(identical(this, other)) return true;
+   if(other is! Marker) return false; 
+   final o = other;
+   return className == o.className 
+       &amp;&amp; id == o.id
+       &amp;&amp; inFront == o.inFront
+       &amp;&amp; range == o.range 
+       &amp;&amp; type == o.type;
+ }
+ 
+ int get hashCode =&gt; className.hashCode ^ id.hashCode ^ inFront.hashCode 
+     ^ range.hashCode ^ type.hashCode;
+ 
+ js.JsObject _toProxy() =&gt; _jsMap({
+   'clazz'   : className,
+   'id'      : id,
+   'inFront' : inFront,
+   'range'   : range._toProxy(),
+   'type'    : type });
+}
+</pre>
+</div>
+<div>
+<h3>Static Properties</h3>
+<div class="field"><h4 id="LINE">
+<button class="show-code">Code</button>
+const         <strong>LINE</strong> <a class="anchor-link"
+            href="#LINE"
+            title="Permalink to Marker.LINE">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+static const LINE = 'line'
+</pre>
+</div>
+</div>
+</div>
+<div>
+<h3>Properties</h3>
+<div class="field"><h4 id="className">
+<button class="show-code">Code</button>
+final String         <strong>className</strong> <a class="anchor-link"
+            href="#className"
+            title="Permalink to Marker.className">#</a>
+        </h4>
+        <div class="doc">
+<p>The CSS class for this marker.</p>
+<pre class="source">
+final String className
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="hashCode">
+<button class="show-code">Code</button>
+final int         <strong>hashCode</strong> <a class="anchor-link"
+            href="#hashCode"
+            title="Permalink to Marker.hashCode">#</a>
+        </h4>
+        <div class="doc">
+<div class="inherited">
+<p>Get a hash code for this object.</p>
+<p>All objects have hash codes. Hash codes are guaranteed to be the
+same for objects that are equal when compared using the equality
+operator <code>==</code>. Other than that there are no guarantees about
+the hash codes. They will not be consistent between runs and
+there are no distribution guarantees.</p>
+<p>If a subclass overrides <a class="crossref" href="../ace/Marker.html#hashCode">hashCode</a> it should override the
+equality operator as well to maintain consistency.</p>
+<div class="docs-inherited-from">docs inherited from Object </div></div>
+<pre class="source">
+int get hashCode =&gt; className.hashCode ^ id.hashCode ^ inFront.hashCode 
+   ^ range.hashCode ^ type.hashCode;
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="id">
+<button class="show-code">Code</button>
+final int         <strong>id</strong> <a class="anchor-link"
+            href="#id"
+            title="Permalink to Marker.id">#</a>
+        </h4>
+        <div class="doc">
+<p>The unique id of this marker; may be <code>null</code>.</p>
+<p>Marker id's are assigned by an instance of <a class="crossref" href="../ace/EditSession.html">EditSession</a>.</p>
+<pre class="source">
+final int id
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="inFront">
+<button class="show-code">Code</button>
+final bool         <strong>inFront</strong> <a class="anchor-link"
+            href="#inFront"
+            title="Permalink to Marker.inFront">#</a>
+        </h4>
+        <div class="doc">
+<p>Whether this marker is rendered in the front marker layer or the back
+marker layer.</p>
+<pre class="source">
+final bool inFront
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="range">
+<button class="show-code">Code</button>
+final <a href="../ace/Range.html">Range</a>         <strong>range</strong> <a class="anchor-link"
+            href="#range"
+            title="Permalink to Marker.range">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+final Range range
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="type">
+<button class="show-code">Code</button>
+final String         <strong>type</strong> <a class="anchor-link"
+            href="#type"
+            title="Permalink to Marker.type">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+final String type
+</pre>
+</div>
+</div>
+</div>
+<div>
+<h3>Operators</h3>
+<div class="method"><h4 id="==">
+<button class="show-code">Code</button>
+bool <strong>operator ==</strong>(Object other) <a class="anchor-link" href="#=="
+              title="Permalink to Marker.operator ==">#</a></h4>
+<div class="doc">
+<div class="inherited">
+<p>The equality operator.</p>
+<p>The default behavior for all <a class="crossref" href="../dart_core/Object.html">Object</a>s is to return true if and
+only if <code>this</code> and 
+<span class="param">other</span> are the same object.</p>
+<p>Override this method to specify a different equality relation on
+a class. The overriding method must still be an equivalence relation.
+That is, it must be:</p><ul><li>
+<p>Total: It must return a boolean for all arguments. It should never throw
+   or return <code>null</code>.</p></li><li>
+<p>Reflexive: For all objects <code>o</code>, <code>o == o</code> must be true.</p></li><li>
+<p>Symmetric: For all objects <code>o1</code> and <code>o2</code>, <code>o1 == o2</code> and <code>o2 == o1</code> must
+   either both be true, or both be false.</p></li><li>
+<p>Transitive: For all objects <code>o1</code>, <code>o2</code>, and <code>o3</code>, if <code>o1 == o2</code> and
+   <code>o2 == o3</code> are true, then <code>o1 == o3</code> must be true.</p></li></ul>
+<p>The method should also be consistent over time, so equality of two objects
+should not change over time, or at least only change if one of the objects
+was modified.</p>
+<p>If a subclass overrides the equality operator it should override
+the <a class="crossref" href="../ace/Marker.html#hashCode">hashCode</a> method as well to maintain consistency.</p>
+<div class="docs-inherited-from">docs inherited from Object </div></div>
+<pre class="source">
+bool operator ==(Object other) {
+ if(identical(this, other)) return true;
+ if(other is! Marker) return false; 
+ final o = other;
+ return className == o.className 
+     &amp;&amp; id == o.id
+     &amp;&amp; inFront == o.inFront
+     &amp;&amp; range == o.range 
+     &amp;&amp; type == o.type;
+}
+</pre>
+</div>
+</div>
+</div>
+        </div>
+        <div class="clear"></div>
+        </div>
+        <div class="footer">
+          <div>This page was generated at 2014-01-13 12:38:58.865</div>
+        </div>
+        <script async src="../client-live-nav.js"></script>
+        </body></html>
+        
