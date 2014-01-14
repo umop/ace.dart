@@ -46,6 +46,9 @@ abstract class Editor extends _Disposable implements OptionsProvider {
  /// Fired whenever the [session.document] changes.
  Stream&lt;Delta&gt; get onChange;
  
+ /// Fired whenever the [selection] changes.
+ Stream get onChangeSelection;
+ 
  /// Fired whenever the [session] changes.
  Stream&lt;EditSessionChangeEvent&gt; get onChangeSession;
  
@@ -490,6 +493,19 @@ final Stream&lt;<a href="../ace/Delta.html">Delta</a>&gt;         <strong>onChan
 <p>Fired whenever the <code>session.document</code> changes.</p>
 <pre class="source">
 Stream&lt;Delta&gt; get onChange;
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="onChangeSelection">
+<button class="show-code">Code</button>
+final Stream         <strong>onChangeSelection</strong> <a class="anchor-link"
+            href="#onChangeSelection"
+            title="Permalink to Editor.onChangeSelection">#</a>
+        </h4>
+        <div class="doc">
+<p>Fired whenever the <a class="crossref" href="../ace/Editor.html#selection">selection</a> changes.</p>
+<pre class="source">
+Stream get onChangeSelection;
 </pre>
 </div>
 </div>
@@ -1104,7 +1120,7 @@ abstract void <strong>updateSelectionMarkers</strong>() <a class="anchor-link" h
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2014-01-13 15:29:39.607</div>
+          <div>This page was generated at 2014-01-14 05:39:18.540</div>
         </div>
         <script async src="../client-live-nav.js"></script>
         </body></html>
