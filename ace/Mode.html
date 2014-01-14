@@ -35,6 +35,187 @@
 <pre class="source">
 abstract class Mode extends _Disposable {
  
+ static const ABAP                 = 'abap';
+ static const ACTIONSCRIPT         = 'actionscript';
+ static const ADA                  = 'ada';
+ static const APACHE_CONF          = 'apache_conf';
+ static const ASCIIDOC             = 'asciidoc';
+ static const ASSEMBLY_X86         = 'assembly_x86';
+ static const AUTOHOTKEY           = 'autohotkey';
+ static const BATCHFILE            = 'batchfile';
+ static const C9SEARCH             = 'c9search';
+ static const C_CPP                = 'c_cpp';
+ static const CLOJURE              = 'clojure';
+ static const COBOL                = 'cobol';
+ static const COFFEE               = 'coffee';
+ static const COLDFUSION           = 'coldfusion';
+ static const CSHARP               = 'csharp';
+ static const CSS                  = 'css';
+ static const CURLY                = 'curly';
+ static const D                    = 'd';
+ static const DART                 = 'dart';
+ static const DIFF                 = 'diff';
+ static const DJANGO               = 'django';
+ static const DOT                  = 'dot';
+ static const EJS                  = 'ejs';
+ static const ERLANG               = 'erlang';
+ static const FORTH                = 'forth';
+ static const FTL                  = 'ftl';
+ static const GLSL                 = 'glsl';
+ static const GOLANG               = 'golang';
+ static const GROOVY               = 'groovy';
+ static const HAML                 = 'haml';
+ static const HANDLEBARS           = 'handlebars';
+ static const HASKELL              = 'haskell';
+ static const HAXE                 = 'haxe';
+ static const HTML                 = 'html';
+ static const HTML_COMPLETIONS     = 'html_completions';
+ static const HTML_RUBY            = 'html_ruby';
+ static const INI                  = 'ini';
+ static const JACK                 = 'jack';
+ static const JADE                 = 'jade';
+ static const JAVA                 = 'java';
+ static const JAVASCRIPT           = 'javascript';
+ static const JSON                 = 'json';
+ static const JSONIQ               = 'jsoniq';
+ static const JSP                  = 'jsp';
+ static const JSX                  = 'jsx';
+ static const JULIA                = 'julia';
+ static const LATEX                = 'latex';
+ static const LESS                 = 'less';
+ static const LIQUID               = 'liquid';
+ static const LISP                 = 'lisp';
+ static const LIVESCRIPT           = 'livescript';
+ static const LOGIQL               = 'logiql';
+ static const LSL                  = 'lsl';
+ static const LUA                  = 'lua';
+ static const LUAPAGE              = 'luapage';
+ static const LUCENE               = 'lucene';
+ static const MAKEFILE             = 'makefile';
+ static const MARKDOWN             = 'markdown';
+ static const MATLAB               = 'matlab';
+ static const MEL                  = 'mel';
+ static const MUSHCODE             = 'mushcode';
+ static const MUSHCODE_HIGH_RULES  = 'mushcode_high_rules';
+ static const MYSQL                = 'mysql';
+ static const NIX                  = 'nix';
+ static const OBJECTIVEC           = 'objectivec';
+ static const OCAML                = 'ocaml';
+ static const PASCAL               = 'pascal';
+ static const PERL                 = 'perl';
+ static const PGSQL                = 'pgsql';
+ static const PHP                  = 'php';
+ static const PLAIN_TEXT           = 'plain_text';
+ static const POWERSHELL           = 'powershell';
+ static const PROLOG               = 'prolog';
+ static const PROPERTIES           = 'properties';
+ static const PROTOBUF             = 'protobuf';
+ static const PYTHON               = 'python';
+ static const R                    = 'r';
+ static const RDOC                 = 'rdoc';
+ static const RHTML                = 'rhtml';
+ static const RUBY                 = 'ruby';
+ static const RUST                 = 'rust';
+ static const SASS                 = 'sass';
+ static const SCAD                 = 'scad';
+ static const SCALA                = 'scala';
+ static const SCHEME               = 'scheme';
+ static const SCSS                 = 'scss';
+ static const SH                   = 'sh';
+ static const SJS                  = 'sjs';
+ static const SNIPPETS             = 'snippets';
+ static const SOY_TEMPLATE         = 'soy_template';
+ static const SPACE                = 'space';
+ static const SQL                  = 'sql';
+ static const STYLUS               = 'stylus';
+ static const SVG                  = 'svg';
+ static const TCL                  = 'tcl';
+ static const TEX                  = 'tex';
+ static const TEXT                 = 'text';
+ static const TEXTILE              = 'textile';
+ static const TOML                 = 'toml';
+ static const TWIG                 = 'twig';
+ static const TYPESCRIPT           = 'typescript';
+ static const VBSCRIPT             = 'vbscript';
+ static const VELOCITY             = 'velocity';
+ static const VERILOG              = 'verilog';
+ static const VHDL                 = 'vhdl';
+ static const XML                  = 'xml';
+ static const XQUERY               = 'xquery';
+ static const YAML                 = 'yaml';
+ 
+ /// A list of the available modes for use with the [new Mode.named] 
+ /// constructor.
+ /// 
+ /// This list contains all of the modes in the ace package.  An application
+ /// using this package may choose to include a subset or a superset of these
+ /// modes.
+ static const List&lt;String&gt; MODES = const [ 
+   ABAP, ACTIONSCRIPT, ADA, APACHE_CONF, ASCIIDOC, ASSEMBLY_X86, AUTOHOTKEY,
+   BATCHFILE, C9SEARCH, C_CPP, CLOJURE, COBOL, COFFEE, COLDFUSION, CSHARP, CSS,
+   CURLY, D, DART, DIFF, DJANGO, DOT, EJS, ERLANG, FORTH, FTL, GLSL, GOLANG, 
+   GROOVY, HAML, HANDLEBARS, HASKELL, HAXE, HTML, HTML_COMPLETIONS, HTML_RUBY,
+   INI, JACK, JADE, JAVA, JAVASCRIPT, JSON, JSONIQ, JSP, JSX, JULIA, LATEX, 
+   LESS, LIQUID, LISP, LIVESCRIPT, LOGIQL, LSL, LUA, LUAPAGE, LUCENE, MAKEFILE,
+   MARKDOWN, MATLAB, MEL, MUSHCODE, MUSHCODE_HIGH_RULES, MYSQL, NIX, 
+   OBJECTIVEC, OCAML, PASCAL, PERL, PGSQL, PHP, PLAIN_TEXT, POWERSHELL, PROLOG,
+   PROPERTIES, PROTOBUF, PYTHON, R, RDOC, RHTML, RUBY, RUST, SASS, SCAD, SCALA,
+   SCHEME, SCSS, SH, SJS, SNIPPETS, SOY_TEMPLATE, SPACE, SQL, STYLUS, SVG, TCL,
+   TEX, TEXT, TEXTILE, TOML, TWIG, TYPESCRIPT, VBSCRIPT, VELOCITY, VERILOG, 
+   VHDL, XML, XQUERY, YAML
+ ];
+ 
+ static const Map&lt;String, String&gt; _extensionMap = const {
+   'bat'       : BATCHFILE,
+   'c'         : C_CPP,
+   'cc'        : C_CPP,
+   'cpp'       : C_CPP,
+   'coffee'    : COFFEE,
+   'cs'        : CSHARP,
+   'css'       : CSS,
+   'dart'      : DART,
+   'go'        : GOLANG,
+   'h'         : C_CPP,
+   'hs'        : HASKELL,
+   'html'      : HTML,
+   'hx'        : HAXE,
+   'java'      : JAVA,
+   'js'        : JAVASCRIPT,
+   'json'      : JSON,
+   'less'      : LESS,
+   'lua'       : LUA,
+   'markdown'  : MARKDOWN,
+   'md'        : MARKDOWN,
+   'php'       : PHP,
+   'properties': PROPERTIES,
+   'py'        : PYTHON,
+   'rb'        : RUBY,
+   'scala'     : SCALA,
+   'scss'      : SCSS,
+   'sh'        : SH,
+   'svg'       : SVG,
+   'ts'        : TYPESCRIPT,
+   'xml'       : XML,
+   'yaml'      : YAML
+ };
+ 
+ /// Whether or not this mode has finished loading.
+ bool get isLoaded;
+     
+ /// The name of this mode.
+ /// 
+ /// The [name] is one of the values in [MODES] or a custom mode not defined
+ /// in this package.
+ String get name;
+ 
+ /// Completes when this mode [isLoaded].
+ Future get onLoad;
+ 
+ /// The path of this mode.
+ /// 
+ /// This is a path such as `ace/mode/text`.
+ String get path;
+ 
  /// Creates a mode for the given [filePath], based on its file extension.
  factory Mode.forFile(String filePath) {
    final ext = _ext(filePath);
@@ -43,16 +224,10 @@ abstract class Mode extends _Disposable {
    return new Mode('ace/mode/$mode');
  }
  
- /// Whether or not this mode has finished loading.
- bool get isLoaded;
-     
- /// Completes when this mode [isLoaded].
- Future get onLoad;
- 
- /// The path of this mode.
+ /// Creates a mode for the given [name].
  /// 
- /// This is a path such as `ace/mode/text`.
- String get path;
+ /// The [name] should be one of the values in [MODES].
+ factory Mode.named(String name) =&gt; new Mode('ace/mode/$name');
  
  /// Creates a mode for the given [path].
  /// 
@@ -64,6 +239,1335 @@ abstract class Mode extends _Disposable {
 <h3>Extends</h3>
 <p>
 <span class="type-box"><span class="icon-class"></span><a href="../ace/_Disposable.html">_Disposable</a></span>&nbsp;&gt;&nbsp;<span class="type-box"><span class="icon-class"></span><strong>Mode</strong></span></p>
+<div>
+<h3>Static Properties</h3>
+<div class="field"><h4 id="ABAP">
+<button class="show-code">Code</button>
+const         <strong>ABAP</strong> <a class="anchor-link"
+            href="#ABAP"
+            title="Permalink to Mode.ABAP">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+static const ABAP                 = 'abap'
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="ACTIONSCRIPT">
+<button class="show-code">Code</button>
+const         <strong>ACTIONSCRIPT</strong> <a class="anchor-link"
+            href="#ACTIONSCRIPT"
+            title="Permalink to Mode.ACTIONSCRIPT">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+static const ACTIONSCRIPT         = 'actionscript'
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="ADA">
+<button class="show-code">Code</button>
+const         <strong>ADA</strong> <a class="anchor-link"
+            href="#ADA"
+            title="Permalink to Mode.ADA">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+static const ADA                  = 'ada'
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="APACHE_CONF">
+<button class="show-code">Code</button>
+const         <strong>APACHE_CONF</strong> <a class="anchor-link"
+            href="#APACHE_CONF"
+            title="Permalink to Mode.APACHE_CONF">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+static const APACHE_CONF          = 'apache_conf'
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="ASCIIDOC">
+<button class="show-code">Code</button>
+const         <strong>ASCIIDOC</strong> <a class="anchor-link"
+            href="#ASCIIDOC"
+            title="Permalink to Mode.ASCIIDOC">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+static const ASCIIDOC             = 'asciidoc'
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="ASSEMBLY_X86">
+<button class="show-code">Code</button>
+const         <strong>ASSEMBLY_X86</strong> <a class="anchor-link"
+            href="#ASSEMBLY_X86"
+            title="Permalink to Mode.ASSEMBLY_X86">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+static const ASSEMBLY_X86         = 'assembly_x86'
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="AUTOHOTKEY">
+<button class="show-code">Code</button>
+const         <strong>AUTOHOTKEY</strong> <a class="anchor-link"
+            href="#AUTOHOTKEY"
+            title="Permalink to Mode.AUTOHOTKEY">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+static const AUTOHOTKEY           = 'autohotkey'
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="BATCHFILE">
+<button class="show-code">Code</button>
+const         <strong>BATCHFILE</strong> <a class="anchor-link"
+            href="#BATCHFILE"
+            title="Permalink to Mode.BATCHFILE">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+static const BATCHFILE            = 'batchfile'
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="C9SEARCH">
+<button class="show-code">Code</button>
+const         <strong>C9SEARCH</strong> <a class="anchor-link"
+            href="#C9SEARCH"
+            title="Permalink to Mode.C9SEARCH">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+static const C9SEARCH             = 'c9search'
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="C_CPP">
+<button class="show-code">Code</button>
+const         <strong>C_CPP</strong> <a class="anchor-link"
+            href="#C_CPP"
+            title="Permalink to Mode.C_CPP">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+static const C_CPP                = 'c_cpp'
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="CLOJURE">
+<button class="show-code">Code</button>
+const         <strong>CLOJURE</strong> <a class="anchor-link"
+            href="#CLOJURE"
+            title="Permalink to Mode.CLOJURE">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+static const CLOJURE              = 'clojure'
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="COBOL">
+<button class="show-code">Code</button>
+const         <strong>COBOL</strong> <a class="anchor-link"
+            href="#COBOL"
+            title="Permalink to Mode.COBOL">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+static const COBOL                = 'cobol'
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="COFFEE">
+<button class="show-code">Code</button>
+const         <strong>COFFEE</strong> <a class="anchor-link"
+            href="#COFFEE"
+            title="Permalink to Mode.COFFEE">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+static const COFFEE               = 'coffee'
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="COLDFUSION">
+<button class="show-code">Code</button>
+const         <strong>COLDFUSION</strong> <a class="anchor-link"
+            href="#COLDFUSION"
+            title="Permalink to Mode.COLDFUSION">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+static const COLDFUSION           = 'coldfusion'
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="CSHARP">
+<button class="show-code">Code</button>
+const         <strong>CSHARP</strong> <a class="anchor-link"
+            href="#CSHARP"
+            title="Permalink to Mode.CSHARP">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+static const CSHARP               = 'csharp'
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="CSS">
+<button class="show-code">Code</button>
+const         <strong>CSS</strong> <a class="anchor-link"
+            href="#CSS"
+            title="Permalink to Mode.CSS">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+static const CSS                  = 'css'
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="CURLY">
+<button class="show-code">Code</button>
+const         <strong>CURLY</strong> <a class="anchor-link"
+            href="#CURLY"
+            title="Permalink to Mode.CURLY">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+static const CURLY                = 'curly'
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="D">
+<button class="show-code">Code</button>
+const         <strong>D</strong> <a class="anchor-link"
+            href="#D"
+            title="Permalink to Mode.D">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+static const D                    = 'd'
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="DART">
+<button class="show-code">Code</button>
+const         <strong>DART</strong> <a class="anchor-link"
+            href="#DART"
+            title="Permalink to Mode.DART">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+static const DART                 = 'dart'
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="DIFF">
+<button class="show-code">Code</button>
+const         <strong>DIFF</strong> <a class="anchor-link"
+            href="#DIFF"
+            title="Permalink to Mode.DIFF">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+static const DIFF                 = 'diff'
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="DJANGO">
+<button class="show-code">Code</button>
+const         <strong>DJANGO</strong> <a class="anchor-link"
+            href="#DJANGO"
+            title="Permalink to Mode.DJANGO">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+static const DJANGO               = 'django'
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="DOT">
+<button class="show-code">Code</button>
+const         <strong>DOT</strong> <a class="anchor-link"
+            href="#DOT"
+            title="Permalink to Mode.DOT">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+static const DOT                  = 'dot'
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="EJS">
+<button class="show-code">Code</button>
+const         <strong>EJS</strong> <a class="anchor-link"
+            href="#EJS"
+            title="Permalink to Mode.EJS">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+static const EJS                  = 'ejs'
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="ERLANG">
+<button class="show-code">Code</button>
+const         <strong>ERLANG</strong> <a class="anchor-link"
+            href="#ERLANG"
+            title="Permalink to Mode.ERLANG">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+static const ERLANG               = 'erlang'
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="FORTH">
+<button class="show-code">Code</button>
+const         <strong>FORTH</strong> <a class="anchor-link"
+            href="#FORTH"
+            title="Permalink to Mode.FORTH">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+static const FORTH                = 'forth'
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="FTL">
+<button class="show-code">Code</button>
+const         <strong>FTL</strong> <a class="anchor-link"
+            href="#FTL"
+            title="Permalink to Mode.FTL">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+static const FTL                  = 'ftl'
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="GLSL">
+<button class="show-code">Code</button>
+const         <strong>GLSL</strong> <a class="anchor-link"
+            href="#GLSL"
+            title="Permalink to Mode.GLSL">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+static const GLSL                 = 'glsl'
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="GOLANG">
+<button class="show-code">Code</button>
+const         <strong>GOLANG</strong> <a class="anchor-link"
+            href="#GOLANG"
+            title="Permalink to Mode.GOLANG">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+static const GOLANG               = 'golang'
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="GROOVY">
+<button class="show-code">Code</button>
+const         <strong>GROOVY</strong> <a class="anchor-link"
+            href="#GROOVY"
+            title="Permalink to Mode.GROOVY">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+static const GROOVY               = 'groovy'
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="HAML">
+<button class="show-code">Code</button>
+const         <strong>HAML</strong> <a class="anchor-link"
+            href="#HAML"
+            title="Permalink to Mode.HAML">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+static const HAML                 = 'haml'
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="HANDLEBARS">
+<button class="show-code">Code</button>
+const         <strong>HANDLEBARS</strong> <a class="anchor-link"
+            href="#HANDLEBARS"
+            title="Permalink to Mode.HANDLEBARS">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+static const HANDLEBARS           = 'handlebars'
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="HASKELL">
+<button class="show-code">Code</button>
+const         <strong>HASKELL</strong> <a class="anchor-link"
+            href="#HASKELL"
+            title="Permalink to Mode.HASKELL">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+static const HASKELL              = 'haskell'
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="HAXE">
+<button class="show-code">Code</button>
+const         <strong>HAXE</strong> <a class="anchor-link"
+            href="#HAXE"
+            title="Permalink to Mode.HAXE">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+static const HAXE                 = 'haxe'
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="HTML">
+<button class="show-code">Code</button>
+const         <strong>HTML</strong> <a class="anchor-link"
+            href="#HTML"
+            title="Permalink to Mode.HTML">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+static const HTML                 = 'html'
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="HTML_COMPLETIONS">
+<button class="show-code">Code</button>
+const         <strong>HTML_COMPLETIONS</strong> <a class="anchor-link"
+            href="#HTML_COMPLETIONS"
+            title="Permalink to Mode.HTML_COMPLETIONS">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+static const HTML_COMPLETIONS     = 'html_completions'
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="HTML_RUBY">
+<button class="show-code">Code</button>
+const         <strong>HTML_RUBY</strong> <a class="anchor-link"
+            href="#HTML_RUBY"
+            title="Permalink to Mode.HTML_RUBY">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+static const HTML_RUBY            = 'html_ruby'
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="INI">
+<button class="show-code">Code</button>
+const         <strong>INI</strong> <a class="anchor-link"
+            href="#INI"
+            title="Permalink to Mode.INI">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+static const INI                  = 'ini'
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="JACK">
+<button class="show-code">Code</button>
+const         <strong>JACK</strong> <a class="anchor-link"
+            href="#JACK"
+            title="Permalink to Mode.JACK">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+static const JACK                 = 'jack'
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="JADE">
+<button class="show-code">Code</button>
+const         <strong>JADE</strong> <a class="anchor-link"
+            href="#JADE"
+            title="Permalink to Mode.JADE">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+static const JADE                 = 'jade'
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="JAVA">
+<button class="show-code">Code</button>
+const         <strong>JAVA</strong> <a class="anchor-link"
+            href="#JAVA"
+            title="Permalink to Mode.JAVA">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+static const JAVA                 = 'java'
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="JAVASCRIPT">
+<button class="show-code">Code</button>
+const         <strong>JAVASCRIPT</strong> <a class="anchor-link"
+            href="#JAVASCRIPT"
+            title="Permalink to Mode.JAVASCRIPT">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+static const JAVASCRIPT           = 'javascript'
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="JSON">
+<button class="show-code">Code</button>
+const         <strong>JSON</strong> <a class="anchor-link"
+            href="#JSON"
+            title="Permalink to Mode.JSON">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+static const JSON                 = 'json'
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="JSONIQ">
+<button class="show-code">Code</button>
+const         <strong>JSONIQ</strong> <a class="anchor-link"
+            href="#JSONIQ"
+            title="Permalink to Mode.JSONIQ">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+static const JSONIQ               = 'jsoniq'
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="JSP">
+<button class="show-code">Code</button>
+const         <strong>JSP</strong> <a class="anchor-link"
+            href="#JSP"
+            title="Permalink to Mode.JSP">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+static const JSP                  = 'jsp'
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="JSX">
+<button class="show-code">Code</button>
+const         <strong>JSX</strong> <a class="anchor-link"
+            href="#JSX"
+            title="Permalink to Mode.JSX">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+static const JSX                  = 'jsx'
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="JULIA">
+<button class="show-code">Code</button>
+const         <strong>JULIA</strong> <a class="anchor-link"
+            href="#JULIA"
+            title="Permalink to Mode.JULIA">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+static const JULIA                = 'julia'
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="LATEX">
+<button class="show-code">Code</button>
+const         <strong>LATEX</strong> <a class="anchor-link"
+            href="#LATEX"
+            title="Permalink to Mode.LATEX">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+static const LATEX                = 'latex'
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="LESS">
+<button class="show-code">Code</button>
+const         <strong>LESS</strong> <a class="anchor-link"
+            href="#LESS"
+            title="Permalink to Mode.LESS">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+static const LESS                 = 'less'
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="LIQUID">
+<button class="show-code">Code</button>
+const         <strong>LIQUID</strong> <a class="anchor-link"
+            href="#LIQUID"
+            title="Permalink to Mode.LIQUID">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+static const LIQUID               = 'liquid'
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="LISP">
+<button class="show-code">Code</button>
+const         <strong>LISP</strong> <a class="anchor-link"
+            href="#LISP"
+            title="Permalink to Mode.LISP">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+static const LISP                 = 'lisp'
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="LIVESCRIPT">
+<button class="show-code">Code</button>
+const         <strong>LIVESCRIPT</strong> <a class="anchor-link"
+            href="#LIVESCRIPT"
+            title="Permalink to Mode.LIVESCRIPT">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+static const LIVESCRIPT           = 'livescript'
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="LOGIQL">
+<button class="show-code">Code</button>
+const         <strong>LOGIQL</strong> <a class="anchor-link"
+            href="#LOGIQL"
+            title="Permalink to Mode.LOGIQL">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+static const LOGIQL               = 'logiql'
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="LSL">
+<button class="show-code">Code</button>
+const         <strong>LSL</strong> <a class="anchor-link"
+            href="#LSL"
+            title="Permalink to Mode.LSL">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+static const LSL                  = 'lsl'
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="LUA">
+<button class="show-code">Code</button>
+const         <strong>LUA</strong> <a class="anchor-link"
+            href="#LUA"
+            title="Permalink to Mode.LUA">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+static const LUA                  = 'lua'
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="LUAPAGE">
+<button class="show-code">Code</button>
+const         <strong>LUAPAGE</strong> <a class="anchor-link"
+            href="#LUAPAGE"
+            title="Permalink to Mode.LUAPAGE">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+static const LUAPAGE              = 'luapage'
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="LUCENE">
+<button class="show-code">Code</button>
+const         <strong>LUCENE</strong> <a class="anchor-link"
+            href="#LUCENE"
+            title="Permalink to Mode.LUCENE">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+static const LUCENE               = 'lucene'
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="MAKEFILE">
+<button class="show-code">Code</button>
+const         <strong>MAKEFILE</strong> <a class="anchor-link"
+            href="#MAKEFILE"
+            title="Permalink to Mode.MAKEFILE">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+static const MAKEFILE             = 'makefile'
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="MARKDOWN">
+<button class="show-code">Code</button>
+const         <strong>MARKDOWN</strong> <a class="anchor-link"
+            href="#MARKDOWN"
+            title="Permalink to Mode.MARKDOWN">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+static const MARKDOWN             = 'markdown'
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="MATLAB">
+<button class="show-code">Code</button>
+const         <strong>MATLAB</strong> <a class="anchor-link"
+            href="#MATLAB"
+            title="Permalink to Mode.MATLAB">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+static const MATLAB               = 'matlab'
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="MEL">
+<button class="show-code">Code</button>
+const         <strong>MEL</strong> <a class="anchor-link"
+            href="#MEL"
+            title="Permalink to Mode.MEL">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+static const MEL                  = 'mel'
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="MODES">
+<button class="show-code">Code</button>
+const List&lt;String&gt;         <strong>MODES</strong> <a class="anchor-link"
+            href="#MODES"
+            title="Permalink to Mode.MODES">#</a>
+        </h4>
+        <div class="doc">
+<p>A list of the available modes for use with the <a class="crossref" href="../ace/Mode.html#named">new Mode.named</a> 
+constructor.</p>
+<p>This list contains all of the modes in the ace package.  An application
+using this package may choose to include a subset or a superset of these
+modes.</p>
+<pre class="source">
+static const List&lt;String&gt; MODES = const [ 
+ ABAP, ACTIONSCRIPT, ADA, APACHE_CONF, ASCIIDOC, ASSEMBLY_X86, AUTOHOTKEY,
+ BATCHFILE, C9SEARCH, C_CPP, CLOJURE, COBOL, COFFEE, COLDFUSION, CSHARP, CSS,
+ CURLY, D, DART, DIFF, DJANGO, DOT, EJS, ERLANG, FORTH, FTL, GLSL, GOLANG, 
+ GROOVY, HAML, HANDLEBARS, HASKELL, HAXE, HTML, HTML_COMPLETIONS, HTML_RUBY,
+ INI, JACK, JADE, JAVA, JAVASCRIPT, JSON, JSONIQ, JSP, JSX, JULIA, LATEX, 
+ LESS, LIQUID, LISP, LIVESCRIPT, LOGIQL, LSL, LUA, LUAPAGE, LUCENE, MAKEFILE,
+ MARKDOWN, MATLAB, MEL, MUSHCODE, MUSHCODE_HIGH_RULES, MYSQL, NIX, 
+ OBJECTIVEC, OCAML, PASCAL, PERL, PGSQL, PHP, PLAIN_TEXT, POWERSHELL, PROLOG,
+ PROPERTIES, PROTOBUF, PYTHON, R, RDOC, RHTML, RUBY, RUST, SASS, SCAD, SCALA,
+ SCHEME, SCSS, SH, SJS, SNIPPETS, SOY_TEMPLATE, SPACE, SQL, STYLUS, SVG, TCL,
+ TEX, TEXT, TEXTILE, TOML, TWIG, TYPESCRIPT, VBSCRIPT, VELOCITY, VERILOG, 
+ VHDL, XML, XQUERY, YAML
+]
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="MUSHCODE">
+<button class="show-code">Code</button>
+const         <strong>MUSHCODE</strong> <a class="anchor-link"
+            href="#MUSHCODE"
+            title="Permalink to Mode.MUSHCODE">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+static const MUSHCODE             = 'mushcode'
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="MUSHCODE_HIGH_RULES">
+<button class="show-code">Code</button>
+const         <strong>MUSHCODE_HIGH_RULES</strong> <a class="anchor-link"
+            href="#MUSHCODE_HIGH_RULES"
+            title="Permalink to Mode.MUSHCODE_HIGH_RULES">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+static const MUSHCODE_HIGH_RULES  = 'mushcode_high_rules'
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="MYSQL">
+<button class="show-code">Code</button>
+const         <strong>MYSQL</strong> <a class="anchor-link"
+            href="#MYSQL"
+            title="Permalink to Mode.MYSQL">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+static const MYSQL                = 'mysql'
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="NIX">
+<button class="show-code">Code</button>
+const         <strong>NIX</strong> <a class="anchor-link"
+            href="#NIX"
+            title="Permalink to Mode.NIX">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+static const NIX                  = 'nix'
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="OBJECTIVEC">
+<button class="show-code">Code</button>
+const         <strong>OBJECTIVEC</strong> <a class="anchor-link"
+            href="#OBJECTIVEC"
+            title="Permalink to Mode.OBJECTIVEC">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+static const OBJECTIVEC           = 'objectivec'
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="OCAML">
+<button class="show-code">Code</button>
+const         <strong>OCAML</strong> <a class="anchor-link"
+            href="#OCAML"
+            title="Permalink to Mode.OCAML">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+static const OCAML                = 'ocaml'
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="PASCAL">
+<button class="show-code">Code</button>
+const         <strong>PASCAL</strong> <a class="anchor-link"
+            href="#PASCAL"
+            title="Permalink to Mode.PASCAL">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+static const PASCAL               = 'pascal'
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="PERL">
+<button class="show-code">Code</button>
+const         <strong>PERL</strong> <a class="anchor-link"
+            href="#PERL"
+            title="Permalink to Mode.PERL">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+static const PERL                 = 'perl'
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="PGSQL">
+<button class="show-code">Code</button>
+const         <strong>PGSQL</strong> <a class="anchor-link"
+            href="#PGSQL"
+            title="Permalink to Mode.PGSQL">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+static const PGSQL                = 'pgsql'
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="PHP">
+<button class="show-code">Code</button>
+const         <strong>PHP</strong> <a class="anchor-link"
+            href="#PHP"
+            title="Permalink to Mode.PHP">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+static const PHP                  = 'php'
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="PLAIN_TEXT">
+<button class="show-code">Code</button>
+const         <strong>PLAIN_TEXT</strong> <a class="anchor-link"
+            href="#PLAIN_TEXT"
+            title="Permalink to Mode.PLAIN_TEXT">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+static const PLAIN_TEXT           = 'plain_text'
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="POWERSHELL">
+<button class="show-code">Code</button>
+const         <strong>POWERSHELL</strong> <a class="anchor-link"
+            href="#POWERSHELL"
+            title="Permalink to Mode.POWERSHELL">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+static const POWERSHELL           = 'powershell'
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="PROLOG">
+<button class="show-code">Code</button>
+const         <strong>PROLOG</strong> <a class="anchor-link"
+            href="#PROLOG"
+            title="Permalink to Mode.PROLOG">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+static const PROLOG               = 'prolog'
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="PROPERTIES">
+<button class="show-code">Code</button>
+const         <strong>PROPERTIES</strong> <a class="anchor-link"
+            href="#PROPERTIES"
+            title="Permalink to Mode.PROPERTIES">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+static const PROPERTIES           = 'properties'
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="PROTOBUF">
+<button class="show-code">Code</button>
+const         <strong>PROTOBUF</strong> <a class="anchor-link"
+            href="#PROTOBUF"
+            title="Permalink to Mode.PROTOBUF">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+static const PROTOBUF             = 'protobuf'
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="PYTHON">
+<button class="show-code">Code</button>
+const         <strong>PYTHON</strong> <a class="anchor-link"
+            href="#PYTHON"
+            title="Permalink to Mode.PYTHON">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+static const PYTHON               = 'python'
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="R">
+<button class="show-code">Code</button>
+const         <strong>R</strong> <a class="anchor-link"
+            href="#R"
+            title="Permalink to Mode.R">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+static const R                    = 'r'
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="RDOC">
+<button class="show-code">Code</button>
+const         <strong>RDOC</strong> <a class="anchor-link"
+            href="#RDOC"
+            title="Permalink to Mode.RDOC">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+static const RDOC                 = 'rdoc'
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="RHTML">
+<button class="show-code">Code</button>
+const         <strong>RHTML</strong> <a class="anchor-link"
+            href="#RHTML"
+            title="Permalink to Mode.RHTML">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+static const RHTML                = 'rhtml'
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="RUBY">
+<button class="show-code">Code</button>
+const         <strong>RUBY</strong> <a class="anchor-link"
+            href="#RUBY"
+            title="Permalink to Mode.RUBY">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+static const RUBY                 = 'ruby'
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="RUST">
+<button class="show-code">Code</button>
+const         <strong>RUST</strong> <a class="anchor-link"
+            href="#RUST"
+            title="Permalink to Mode.RUST">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+static const RUST                 = 'rust'
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="SASS">
+<button class="show-code">Code</button>
+const         <strong>SASS</strong> <a class="anchor-link"
+            href="#SASS"
+            title="Permalink to Mode.SASS">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+static const SASS                 = 'sass'
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="SCAD">
+<button class="show-code">Code</button>
+const         <strong>SCAD</strong> <a class="anchor-link"
+            href="#SCAD"
+            title="Permalink to Mode.SCAD">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+static const SCAD                 = 'scad'
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="SCALA">
+<button class="show-code">Code</button>
+const         <strong>SCALA</strong> <a class="anchor-link"
+            href="#SCALA"
+            title="Permalink to Mode.SCALA">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+static const SCALA                = 'scala'
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="SCHEME">
+<button class="show-code">Code</button>
+const         <strong>SCHEME</strong> <a class="anchor-link"
+            href="#SCHEME"
+            title="Permalink to Mode.SCHEME">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+static const SCHEME               = 'scheme'
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="SCSS">
+<button class="show-code">Code</button>
+const         <strong>SCSS</strong> <a class="anchor-link"
+            href="#SCSS"
+            title="Permalink to Mode.SCSS">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+static const SCSS                 = 'scss'
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="SH">
+<button class="show-code">Code</button>
+const         <strong>SH</strong> <a class="anchor-link"
+            href="#SH"
+            title="Permalink to Mode.SH">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+static const SH                   = 'sh'
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="SJS">
+<button class="show-code">Code</button>
+const         <strong>SJS</strong> <a class="anchor-link"
+            href="#SJS"
+            title="Permalink to Mode.SJS">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+static const SJS                  = 'sjs'
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="SNIPPETS">
+<button class="show-code">Code</button>
+const         <strong>SNIPPETS</strong> <a class="anchor-link"
+            href="#SNIPPETS"
+            title="Permalink to Mode.SNIPPETS">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+static const SNIPPETS             = 'snippets'
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="SOY_TEMPLATE">
+<button class="show-code">Code</button>
+const         <strong>SOY_TEMPLATE</strong> <a class="anchor-link"
+            href="#SOY_TEMPLATE"
+            title="Permalink to Mode.SOY_TEMPLATE">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+static const SOY_TEMPLATE         = 'soy_template'
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="SPACE">
+<button class="show-code">Code</button>
+const         <strong>SPACE</strong> <a class="anchor-link"
+            href="#SPACE"
+            title="Permalink to Mode.SPACE">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+static const SPACE                = 'space'
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="SQL">
+<button class="show-code">Code</button>
+const         <strong>SQL</strong> <a class="anchor-link"
+            href="#SQL"
+            title="Permalink to Mode.SQL">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+static const SQL                  = 'sql'
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="STYLUS">
+<button class="show-code">Code</button>
+const         <strong>STYLUS</strong> <a class="anchor-link"
+            href="#STYLUS"
+            title="Permalink to Mode.STYLUS">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+static const STYLUS               = 'stylus'
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="SVG">
+<button class="show-code">Code</button>
+const         <strong>SVG</strong> <a class="anchor-link"
+            href="#SVG"
+            title="Permalink to Mode.SVG">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+static const SVG                  = 'svg'
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="TCL">
+<button class="show-code">Code</button>
+const         <strong>TCL</strong> <a class="anchor-link"
+            href="#TCL"
+            title="Permalink to Mode.TCL">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+static const TCL                  = 'tcl'
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="TEX">
+<button class="show-code">Code</button>
+const         <strong>TEX</strong> <a class="anchor-link"
+            href="#TEX"
+            title="Permalink to Mode.TEX">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+static const TEX                  = 'tex'
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="TEXT">
+<button class="show-code">Code</button>
+const         <strong>TEXT</strong> <a class="anchor-link"
+            href="#TEXT"
+            title="Permalink to Mode.TEXT">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+static const TEXT                 = 'text'
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="TEXTILE">
+<button class="show-code">Code</button>
+const         <strong>TEXTILE</strong> <a class="anchor-link"
+            href="#TEXTILE"
+            title="Permalink to Mode.TEXTILE">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+static const TEXTILE              = 'textile'
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="TOML">
+<button class="show-code">Code</button>
+const         <strong>TOML</strong> <a class="anchor-link"
+            href="#TOML"
+            title="Permalink to Mode.TOML">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+static const TOML                 = 'toml'
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="TWIG">
+<button class="show-code">Code</button>
+const         <strong>TWIG</strong> <a class="anchor-link"
+            href="#TWIG"
+            title="Permalink to Mode.TWIG">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+static const TWIG                 = 'twig'
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="TYPESCRIPT">
+<button class="show-code">Code</button>
+const         <strong>TYPESCRIPT</strong> <a class="anchor-link"
+            href="#TYPESCRIPT"
+            title="Permalink to Mode.TYPESCRIPT">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+static const TYPESCRIPT           = 'typescript'
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="VBSCRIPT">
+<button class="show-code">Code</button>
+const         <strong>VBSCRIPT</strong> <a class="anchor-link"
+            href="#VBSCRIPT"
+            title="Permalink to Mode.VBSCRIPT">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+static const VBSCRIPT             = 'vbscript'
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="VELOCITY">
+<button class="show-code">Code</button>
+const         <strong>VELOCITY</strong> <a class="anchor-link"
+            href="#VELOCITY"
+            title="Permalink to Mode.VELOCITY">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+static const VELOCITY             = 'velocity'
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="VERILOG">
+<button class="show-code">Code</button>
+const         <strong>VERILOG</strong> <a class="anchor-link"
+            href="#VERILOG"
+            title="Permalink to Mode.VERILOG">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+static const VERILOG              = 'verilog'
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="VHDL">
+<button class="show-code">Code</button>
+const         <strong>VHDL</strong> <a class="anchor-link"
+            href="#VHDL"
+            title="Permalink to Mode.VHDL">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+static const VHDL                 = 'vhdl'
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="XML">
+<button class="show-code">Code</button>
+const         <strong>XML</strong> <a class="anchor-link"
+            href="#XML"
+            title="Permalink to Mode.XML">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+static const XML                  = 'xml'
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="XQUERY">
+<button class="show-code">Code</button>
+const         <strong>XQUERY</strong> <a class="anchor-link"
+            href="#XQUERY"
+            title="Permalink to Mode.XQUERY">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+static const XQUERY               = 'xquery'
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="YAML">
+<button class="show-code">Code</button>
+const         <strong>YAML</strong> <a class="anchor-link"
+            href="#YAML"
+            title="Permalink to Mode.YAML">#</a>
+        </h4>
+        <div class="doc">
+<pre class="source">
+static const YAML                 = 'yaml'
+</pre>
+</div>
+</div>
+</div>
 <div>
 <h3>Constructors</h3>
 <div class="method"><h4 id="">
@@ -97,6 +1601,20 @@ factory Mode.forFile(String filePath) {
 </pre>
 </div>
 </div>
+<div class="method"><h4 id="named">
+<button class="show-code">Code</button>
+factory <strong>Mode.named</strong>(String name) <a class="anchor-link" href="#named"
+              title="Permalink to Mode.Mode.named">#</a></h4>
+<div class="doc">
+<p>Creates a mode for the given 
+<span class="param">name</span>.</p>
+<p>The 
+<span class="param">name</span> should be one of the values in <a class="crossref" href="../ace/Mode.html#MODES">MODES</a>.</p>
+<pre class="source">
+factory Mode.named(String name) =&gt; new Mode('ace/mode/$name');
+</pre>
+</div>
+</div>
 </div>
 <div>
 <h3>Properties</h3>
@@ -110,6 +1628,21 @@ final bool         <strong>isLoaded</strong> <a class="anchor-link"
 <p>Whether or not this mode has finished loading.</p>
 <pre class="source">
 bool get isLoaded;
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="name">
+<button class="show-code">Code</button>
+final String         <strong>name</strong> <a class="anchor-link"
+            href="#name"
+            title="Permalink to Mode.name">#</a>
+        </h4>
+        <div class="doc">
+<p>The name of this mode.</p>
+<p>The <a class="crossref" href="../ace/Mode.html#name">name</a> is one of the values in <a class="crossref" href="../ace/Mode.html#MODES">MODES</a> or a custom mode not defined
+in this package.</p>
+<pre class="source">
+String get name;
 </pre>
 </div>
 </div>
@@ -159,7 +1692,7 @@ method has been called.</p>
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2014-01-14 06:03:00.508</div>
+          <div>This page was generated at 2014-01-14 08:28:53.615</div>
         </div>
         <script async src="../client-live-nav.js"></script>
         </body></html>
