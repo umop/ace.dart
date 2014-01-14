@@ -76,17 +76,7 @@ abstract class EditSession extends _Disposable implements Folding {
  
  /// Fired whenever the [useWrapMode] changes.
  Stream get onChangeWrapMode;
- 
- /// The current annotations for this session.
- List&lt;Annotation&gt; annotations;
- 
- /// A map from row index to CSS class name for all of the breakpoints in the 
- /// current [document].
- /// 
- /// A value of _null_ for any given row index indicates that no breakpoint is
- /// set for that row.
- Map&lt;int, String&gt; get breakpoints;
- 
+
  /// The current [Document] associated with this session.
  Document document;
  
@@ -217,10 +207,20 @@ abstract class EditSession extends _Disposable implements Folding {
  /// Duplicates all of the text from [firstRow] to [lastRow], inclusive.
  int duplicateLines(int firstRow, int lastRow);
  
+ /// Returns a copy of the current annotations for this session.
+ List&lt;Annotation&gt; getAnnotations();
+ 
  /// Gets the [Range] of a word, including its right whitespace.
  /// 
  /// Start from the given [row] and [column].
  Range getAWordRange(int row, int column);
+ 
+ /// Returns a map from row index to CSS class name for all of the breakpoints
+ /// in the current [document].
+ /// 
+ /// A value of _null_ for any given row index indicates that no breakpoint is
+ /// set for that row.
+ Map&lt;int, String&gt; getBreakpoints();
  
  /// Returns a verbatim copy of the given line [row] as it is in the current 
  /// [document].
@@ -284,6 +284,10 @@ abstract class EditSession extends _Disposable implements Folding {
  /// visual modifications.
  Point screenToDocumentPosition(int row, int column);
  
+ /// Sets the annotations for this session and fires an [onChangeAnnotation] 
+ /// event.
+ void setAnnotations(List&lt;Annotation&gt; annotations);
+ 
  /// Sets a breakpoint on the given [row] using the optional CSS [className]
  /// and fires an [onChangeBreakPoint] event.
  void setBreakpoint(int row, {String className: 'ace_breakpoint'});
@@ -332,35 +336,6 @@ factory EditSession(Document document, Mode mode) =&gt;
 </div>
 <div>
 <h3>Properties</h3>
-<div class="field"><h4 id="annotations">
-<button class="show-code">Code</button>
-List&lt;<a href="../ace/Annotation.html">Annotation</a>&gt;         <strong>annotations</strong> <a class="anchor-link"
-            href="#annotations"
-            title="Permalink to EditSession.annotations">#</a>
-        </h4>
-        <div class="doc">
-<p>The current annotations for this session.</p>
-<pre class="source">
-List&lt;Annotation&gt; annotations
-</pre>
-</div>
-</div>
-<div class="field"><h4 id="breakpoints">
-<button class="show-code">Code</button>
-final Map&lt;int, String&gt;         <strong>breakpoints</strong> <a class="anchor-link"
-            href="#breakpoints"
-            title="Permalink to EditSession.breakpoints">#</a>
-        </h4>
-        <div class="doc">
-<p>A map from row index to CSS class name for all of the breakpoints in the 
-current <a class="crossref" href="../ace/EditSession.html#document">document</a>.</p>
-<p>A value of <em>null</em> for any given row index indicates that no breakpoint is
-set for that row.</p>
-<pre class="source">
-Map&lt;int, String&gt; get breakpoints;
-</pre>
-</div>
-</div>
 <div class="field"><h4 id="document">
 <button class="show-code">Code</button>
 <a href="../ace/Document.html">Document</a>         <strong>document</strong> <a class="anchor-link"
@@ -433,7 +408,7 @@ final Stream         <strong>onChangeAnnotation</strong> <a class="anchor-link"
             title="Permalink to EditSession.onChangeAnnotation">#</a>
         </h4>
         <div class="doc">
-<p>Fired whenever one of the <a class="crossref" href="../ace/EditSession.html#annotations">annotations</a> changes.</p>
+<p>Fired whenever one of the <code>annotations</code> changes.</p>
 <pre class="source">
 Stream get onChangeAnnotation;
 </pre>
@@ -825,7 +800,7 @@ abstract bool <strong>adjustWrapLimit</strong>(int desiredLimit, int printMargin
 abstract void <strong>clearAnnotations</strong>() <a class="anchor-link" href="#clearAnnotations"
               title="Permalink to EditSession.clearAnnotations">#</a></h4>
 <div class="doc">
-<p>Clears all <a class="crossref" href="../ace/EditSession.html#annotations">annotations</a> for this session and fires an 
+<p>Clears all <code>annotations</code> for this session and fires an 
 <a class="crossref" href="../ace/EditSession.html#onChangeAnnotation">onChangeAnnotation</a> event.</p>
 </div>
 </div>
@@ -842,7 +817,7 @@ abstract void <strong>clearBreakpoint</strong>(int row) <a class="anchor-link" h
 abstract void <strong>clearBreakpoints</strong>() <a class="anchor-link" href="#clearBreakpoints"
               title="Permalink to EditSession.clearBreakpoints">#</a></h4>
 <div class="doc">
-<p>Removes all <a class="crossref" href="../ace/EditSession.html#breakpoints">breakpoints</a> on all rows and fires an <code>onChangeBreakPoint</code> 
+<p>Removes all <code>breakpoints</code> on all rows and fires an <code>onChangeBreakPoint</code> 
 event.</p>
 </div>
 </div>
@@ -892,6 +867,13 @@ abstract List&lt;<a href="../ace/Fold.html">Fold</a>&gt; <strong>getAllFolds</st
 <div class="inherited-from">inherited from <a href="../ace/Folding.html">Folding</a> </div><div class="doc">
 </div>
 </div>
+<div class="method"><h4 id="getAnnotations">
+abstract List&lt;<a href="../ace/Annotation.html">Annotation</a>&gt; <strong>getAnnotations</strong>() <a class="anchor-link" href="#getAnnotations"
+              title="Permalink to EditSession.getAnnotations">#</a></h4>
+<div class="doc">
+<p>Returns a copy of the current annotations for this session.</p>
+</div>
+</div>
 <div class="method"><h4 id="getAWordRange">
 abstract <a href="../ace/Range.html">Range</a> <strong>getAWordRange</strong>(int row, int column) <a class="anchor-link" href="#getAWordRange"
               title="Permalink to EditSession.getAWordRange">#</a></h4>
@@ -900,6 +882,16 @@ abstract <a href="../ace/Range.html">Range</a> <strong>getAWordRange</strong>(in
 <p>Start from the given 
 <span class="param">row</span> and 
 <span class="param">column</span>.</p>
+</div>
+</div>
+<div class="method"><h4 id="getBreakpoints">
+abstract Map&lt;int, String&gt; <strong>getBreakpoints</strong>() <a class="anchor-link" href="#getBreakpoints"
+              title="Permalink to EditSession.getBreakpoints">#</a></h4>
+<div class="doc">
+<p>Returns a map from row index to CSS class name for all of the breakpoints
+in the current <a class="crossref" href="../ace/EditSession.html#document">document</a>.</p>
+<p>A value of <em>null</em> for any given row index indicates that no breakpoint is
+set for that row.</p>
 </div>
 </div>
 <div class="method inherited"><h4 id="getFoldAt">
@@ -1056,6 +1048,14 @@ abstract <a href="../ace/Point.html">Point</a> <strong>screenToDocumentPosition<
 visual modifications.</p>
 </div>
 </div>
+<div class="method"><h4 id="setAnnotations">
+abstract void <strong>setAnnotations</strong>(List&lt;<a href="../ace/Annotation.html">Annotation</a>&gt; annotations) <a class="anchor-link" href="#setAnnotations"
+              title="Permalink to EditSession.setAnnotations">#</a></h4>
+<div class="doc">
+<p>Sets the annotations for this session and fires an <a class="crossref" href="../ace/EditSession.html#onChangeAnnotation">onChangeAnnotation</a> 
+event.</p>
+</div>
+</div>
 <div class="method"><h4 id="setBreakpoint">
 abstract void <strong>setBreakpoint</strong>(int row, {String className: 'ace_breakpoint'}) <a class="anchor-link" href="#setBreakpoint"
               title="Permalink to EditSession.setBreakpoint">#</a></h4>
@@ -1103,7 +1103,7 @@ abstract void <strong>toggleOverwrite</strong>() <a class="anchor-link" href="#t
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2014-01-14 08:28:53.708</div>
+          <div>This page was generated at 2014-01-14 20:49:38.290</div>
         </div>
         <script async src="../client-live-nav.js"></script>
         </body></html>

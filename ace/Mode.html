@@ -199,6 +199,12 @@ abstract class Mode extends _Disposable {
    'yaml'      : YAML
  };
  
+ /// A map from file extension to mode used by the [new Mode.forFile] factory.
+ /// 
+ /// This map is initialized with a default mapping; it may be modified to 
+ /// customize the behavior of the [new Mode.forFile] factory.
+ static final Map&lt;String, String&gt; extensionMap = new Map.from(_extensionMap);
+ 
  /// Whether or not this mode has finished loading.
  bool get isLoaded;
      
@@ -219,9 +225,9 @@ abstract class Mode extends _Disposable {
  /// Creates a mode for the given [filePath], based on its file extension.
  factory Mode.forFile(String filePath) {
    final ext = _ext(filePath);
-   var mode = _extensionMap[ext];
-   if (mode == null) mode = 'text';
-   return new Mode('ace/mode/$mode');
+   var mode = extensionMap[ext];
+   if (mode == null) mode = Mode.TEXT;
+   return new Mode.named(mode);
  }
  
  /// Creates a mode for the given [name].
@@ -526,6 +532,21 @@ const         <strong>ERLANG</strong> <a class="anchor-link"
         <div class="doc">
 <pre class="source">
 static const ERLANG               = 'erlang'
+</pre>
+</div>
+</div>
+<div class="field"><h4 id="extensionMap">
+<button class="show-code">Code</button>
+final Map&lt;String, String&gt;         <strong>extensionMap</strong> <a class="anchor-link"
+            href="#extensionMap"
+            title="Permalink to Mode.extensionMap">#</a>
+        </h4>
+        <div class="doc">
+<p>A map from file extension to mode used by the <a class="crossref" href="../ace/Mode.html#forFile">new Mode.forFile</a> factory.</p>
+<p>This map is initialized with a default mapping; it may be modified to 
+customize the behavior of the <a class="crossref" href="../ace/Mode.html#forFile">new Mode.forFile</a> factory.</p>
+<pre class="source">
+static final Map&lt;String, String&gt; extensionMap = new Map.from(_extensionMap)
 </pre>
 </div>
 </div>
@@ -1594,9 +1615,9 @@ factory <strong>Mode.forFile</strong>(String filePath) <a class="anchor-link" hr
 <pre class="source">
 factory Mode.forFile(String filePath) {
  final ext = _ext(filePath);
- var mode = _extensionMap[ext];
- if (mode == null) mode = 'text';
- return new Mode('ace/mode/$mode');
+ var mode = extensionMap[ext];
+ if (mode == null) mode = Mode.TEXT;
+ return new Mode.named(mode);
 }
 </pre>
 </div>
@@ -1692,7 +1713,7 @@ method has been called.</p>
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2014-01-14 08:28:53.615</div>
+          <div>This page was generated at 2014-01-14 20:49:38.179</div>
         </div>
         <script async src="../client-live-nav.js"></script>
         </body></html>
