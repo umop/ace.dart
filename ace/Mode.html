@@ -223,10 +223,14 @@ abstract class Mode extends _Disposable {
  String get path;
  
  /// Creates a mode for the given [filePath], based on its file extension.
+ /// 
+ /// This factory selects a mode using the current [extensionMap].  If there
+ /// is no matching value for the given [filePath] then this returns the
+ /// [TEXT] mode.
  factory Mode.forFile(String filePath) {
    final ext = _ext(filePath);
    var mode = extensionMap[ext];
-   if (mode == null) mode = Mode.TEXT;
+   if (mode == null) mode = TEXT;
    return new Mode.named(mode);
  }
  
@@ -1612,11 +1616,15 @@ factory <strong>Mode.forFile</strong>(String filePath) <a class="anchor-link" hr
 <div class="doc">
 <p>Creates a mode for the given 
 <span class="param">filePath</span>, based on its file extension.</p>
+<p>This factory selects a mode using the current <a class="crossref" href="../ace/Mode.html#extensionMap">extensionMap</a>.  If there
+is no matching value for the given 
+<span class="param">filePath</span> then this returns the
+<a class="crossref" href="../ace/Mode.html#TEXT">TEXT</a> mode.</p>
 <pre class="source">
 factory Mode.forFile(String filePath) {
  final ext = _ext(filePath);
  var mode = extensionMap[ext];
- if (mode == null) mode = Mode.TEXT;
+ if (mode == null) mode = TEXT;
  return new Mode.named(mode);
 }
 </pre>
@@ -1713,7 +1721,7 @@ method has been called.</p>
         <div class="clear"></div>
         </div>
         <div class="footer">
-          <div>This page was generated at 2014-01-14 20:49:38.179</div>
+          <div>This page was generated at 2014-01-14 21:03:26.078</div>
         </div>
         <script async src="../client-live-nav.js"></script>
         </body></html>
