@@ -131,7 +131,19 @@ void testIndent() {
 
 @Test()
 void testFirstVisibleRow() {
-  expect(editor.firstVisibleRow, equals(0));
+  var firstVisibleRow = editor.firstVisibleRow;
+  expect(firstVisibleRow, equals(0));
+}
+
+@Test()
+void testLastVisibleRow() {
+  editor.setValue(sampleText, 1);
+  var value = editor.value;
+  var lines = editor.session.document.length;
+  editor.navigateDown(3);
+  var cursorPosition = editor.cursorPosition;
+  var lastVisibleRow = editor.renderer.lastVisibleRow;
+  expect(lastVisibleRow, equals(0));
 }
 
 @Test()

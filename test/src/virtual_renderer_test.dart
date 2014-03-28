@@ -60,6 +60,13 @@ void testShowGutter() {
 }
 
 @Test()
+void testLastVisibleLine() {
+  renderer.
+  var lastVisibleRow = renderer.lastVisibleRow;
+  /*%TRACE3*/ print("""(4> 3/26/14): lastVisibleRow: ${lastVisibleRow}"""); // TRACE%
+}
+
+@Test()
 void testGetOption() {
   renderer.fixedWidthGutter = true;
   expect(renderer.getOption('fixedWidthGutter'), isTrue);
