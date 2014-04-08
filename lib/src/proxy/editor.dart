@@ -25,6 +25,9 @@ class _EditorProxy extends _HasProxy implements Editor {
   final _onPaste = new StreamController<String>.broadcast();
   Stream<String> get onPaste => _onPaste.stream;  
   
+  final _onMouseMove = new StreamController.broadcast();
+  Stream<String> get onMouseMove => _onMouseMove.stream;  
+  
   CommandManager get commands => new _CommandManagerProxy._(_proxy['commands']);
   
   String get copyText => call('getCopyText');
@@ -144,6 +147,9 @@ class _EditorProxy extends _HasProxy implements Editor {
       call('on', ['copy', (e,__) => _onCopy.add(e)]);
       call('on', ['focus', (_,__) => _onFocus.add(null)]);
       call('on', ['paste', (e,__) => _onPaste.add(e['text'])]);
+      call('on', ['mousemove', (e,__) =>
+          _onMouseMove.add({"target": e['target']})]
+      );
     }
   }
   
@@ -156,6 +162,7 @@ class _EditorProxy extends _HasProxy implements Editor {
       _onCopy.close();
       _onFocus.close();
       _onPaste.close();
+      _onMouseMove.close();
     }
   }
   
