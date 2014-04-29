@@ -11,7 +11,7 @@ VirtualRenderer renderer;
 @Setup
 setup() {
   implementation = ACE_PROXY_IMPLEMENTATION;
-  html.document.body.append(new html.Element.div()..id = 'editor');  
+  html.document.body.append(new html.Element.div()..id = 'editor');
   renderer = edit(html.querySelector('#editor')).renderer;
 }
 
@@ -29,7 +29,7 @@ void testConstructor() {
 void testGetContainerElement() {
   final container = html.querySelector('#editor');
   expect(container, isNotNull);
-  expect(renderer.containerElement, same(container));  
+  expect(renderer.containerElement, same(container));
 }
 
 @Test()
@@ -42,7 +42,7 @@ void testFixedWidthGutter() {
 
 @Test()
 void testGetMouseEventTarget() {
-  expect(renderer.mouseEventTarget, const isInstanceOf<html.DivElement>());  
+  expect(renderer.mouseEventTarget, const isInstanceOf<html.DivElement>());
 }
 
 @Test()
@@ -61,7 +61,6 @@ void testShowGutter() {
 
 @Test()
 void testLastVisibleLine() {
-  renderer.
   var lastVisibleRow = renderer.lastVisibleRow;
   /*%TRACE3*/ print("""(4> 3/26/14): lastVisibleRow: ${lastVisibleRow}"""); // TRACE%
 }
