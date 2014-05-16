@@ -7,11 +7,13 @@ import 'package:ace/proxy.dart';
 main() {
   ace.implementation = ACE_PROXY_IMPLEMENTATION;
   ace.require('ace/ext/language_tools');
+  ace.require('ace/ext/linking');
   var editor = ace.edit(querySelector('#editor'))
   ..theme = new ace.Theme.named(ace.Theme.TOMORROW)
   ..session.mode = new ace.Mode('ace/mode/html')
   ..setOptions({
     'enableBasicAutocompletion' : true,
-    'enableSnippets' : true
+    'enableSnippets' : true,
+    'enableLinking' : true
   });  
 }
